@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import styles from './counters.module.css'
+import { useState } from "react";
+import styles from "./counters.module.css";
 
 const MyButton = () => {
   const [count, setCount] = useState(0);
   const handleClick = () => {
-    setCount(count + 1)
+    setCount(count + 1);
   };
   return (
     <div>
@@ -16,8 +16,7 @@ const MyButton = () => {
 };
 
 const MyApp = () => {
-  return <MyButton />
+  return <MyButton />;
 };
 
 export default MyApp;
-

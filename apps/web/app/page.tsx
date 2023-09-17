@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
+import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
 import { siteConfig } from "../config/site";
 import { title, subtitle } from "../components/primitives";
@@ -25,7 +25,11 @@ export default function Home(): JSX.Element {
       <div className="flex gap-3">
         <Link
           as={NextLink}
-          className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
           href={siteConfig.links.docs}
           isExternal
         >
