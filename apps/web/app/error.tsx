@@ -1,20 +1,20 @@
-'use client' 
- 
-import { useEffect } from 'react'
- 
+"use client";
+
+import { useEffect } from "react";
+
 export default function Error({
   error,
   reset,
 }: {
-  error: Error
-  reset: () => void
+  error: Error;
+  reset: () => void;
 }): JSX.Element {
   useEffect(() => {
     // Log the error to an error reporting service
     // eslint-disable-next-line no-console -- Display error
-    console.error(error)
-  }, [error])
- 
+    console.error(error);
+  }, [error]);
+
   return (
     <div>
       <h2>Something went wrong!</h2>
@@ -22,11 +22,13 @@ export default function Error({
       <button
         onClick={
           // Attempt to recover by trying to re-render the segment
-          () => { reset(); }
+          () => {
+            reset();
+          }
         }
       >
         Try again
       </button>
     </div>
-  )
+  );
 }
