@@ -1,0 +1,16 @@
+{
+  "index": "Introduction",
+  "another": "Another Page",
+  "advanced": "Advanced (A Folder)",
+  "japanese-page": "C#でサウンドを鳴らす",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "contact": {
+    "title": "Contact ↗",
+    "type": "page",
+    "href": "https://twitter.com/m_uwaya",
+    "newWindow": true
+  }
+}

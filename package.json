@@ -14,8 +14,21 @@
   },
   "name": "nijiviewer",
   "packageManager": "npm@9.5.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MakotoUwaya/nijiviewer.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MakotoUwaya/nijiviewer/issues"
+  },
+  "homepage": "https://github.com/MakotoUwaya/nijiviewer#readme",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "volta": {
+    "node": "18.14.2",
+    "npm": "9.5.0"
+  }
 }
