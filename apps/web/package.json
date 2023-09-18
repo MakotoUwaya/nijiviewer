@@ -42,6 +42,6 @@
     "eslint-config-custom": "*",
     "eslint-config-next": "13.4.19",
     "tsconfig": "*",
-    "typescript": "^4.9.3"
+    "typescript": "^5.0.0"
   }
 }
