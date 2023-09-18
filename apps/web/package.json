@@ -18,7 +18,7 @@
     "@nextui-org/snippet": "2.0.25",
     "@nextui-org/switch": "2.0.21",
     "@nextui-org/system": "2.0.10",
-    "@nextui-org/theme": "2.1.6",
+    "@nextui-org/theme": "2.1.9",
     "@react-aria/ssr": "^3.7.1",
     "@react-aria/visually-hidden": "^3.8.3",
     "autoprefixer": "10.4.15",
