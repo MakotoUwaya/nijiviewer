@@ -21,7 +21,7 @@
     "@nextui-org/theme": "2.1.9",
     "@react-aria/ssr": "^3.7.1",
     "@react-aria/visually-hidden": "^3.8.3",
-    "autoprefixer": "10.4.15",
+    "autoprefixer": "10.4.16",
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.2",
     "intl-messageformat": "^10.5.0",
