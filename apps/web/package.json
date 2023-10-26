@@ -25,7 +25,7 @@
     "clsx": "^2.0.0",
     "framer-motion": "^10.16.2",
     "intl-messageformat": "^10.5.0",
-    "next": "^13.4.19",
+    "next": "^14.0.0",
     "next-themes": "^0.2.1",
     "postcss": "8.4.31",
     "react": "^18.2.0",
@@ -35,12 +35,12 @@
     "ui": "*"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.4.19",
+    "@next/eslint-plugin-next": "^14.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "eslint-config-custom": "*",
-    "eslint-config-next": "13.5.6",
+    "eslint-config-next": "14.0.0",
     "tsconfig": "*",
     "typescript": "^5.0.0"
   }
