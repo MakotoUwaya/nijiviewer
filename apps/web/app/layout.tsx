@@ -1,4 +1,4 @@
-import { Link } from "@nextui-org/link";
+import { Link } from "@nextui-org/react";
 import clsx from "clsx";
 import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
