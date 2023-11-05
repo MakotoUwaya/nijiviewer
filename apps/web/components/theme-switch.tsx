@@ -2,8 +2,8 @@
 
 import { useIsSSR } from "@react-aria/ssr";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
-import type { SwitchProps } from "@nextui-org/switch";
-import { useSwitch } from "@nextui-org/switch";
+import type { SwitchProps } from "@nextui-org/react";
+import { useSwitch } from "@nextui-org/react";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 import type { FC } from "react";

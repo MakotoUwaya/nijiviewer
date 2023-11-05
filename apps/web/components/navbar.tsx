@@ -1,4 +1,9 @@
 import {
+  Button,
+  Input,
+  Kbd,
+  Link,
+  link as linkStyles,
   Navbar as NextUINavbar,
   NavbarContent,
   NavbarMenu,
@@ -6,12 +11,7 @@ import {
   NavbarBrand,
   NavbarItem,
   NavbarMenuItem,
-} from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
+} from "@nextui-org/react";
 import NextLink from "next/link";
 import clsx from "clsx";
 import { siteConfig } from "../config/site";
