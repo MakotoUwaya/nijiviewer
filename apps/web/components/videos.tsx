@@ -27,7 +27,7 @@ export default function Videos(props: VideoProps): JSX.Element {
                   src: v.channel.photo
                 }}
                 className="self-start mb-1"
-                description={`${v.channel.org} / ${v.channel.suborg}`}
+                description={`${v.channel.org} / ${v.channel.suborg.substring(2)}`}
                 name={v.channel.name}
               />
             </div>
