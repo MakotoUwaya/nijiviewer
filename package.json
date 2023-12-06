@@ -13,7 +13,7 @@
     "turbo": "latest"
   },
   "name": "nijiviewer",
-  "packageManager": "npm@10.2.4",
+  "packageManager": "npm@10.2.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MakotoUwaya/nijiviewer.git"
@@ -29,6 +29,6 @@
   ],
   "volta": {
     "node": "20.10.0",
-    "npm": "10.2.4"
+    "npm": "10.2.5"
   }
 }
