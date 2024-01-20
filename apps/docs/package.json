@@ -1,7 +1,7 @@
 {
   "name": "nextra-docs",
   "version": "0.0.1",
-  "description": "Nextra docs sample",
+  "description": "OiChan Docs, Powered by Nextra",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3001",

@@ -2,17 +2,14 @@ import React from "react";
 import type { DocsThemeConfig } from "nextra-theme-docs";
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
+  logo: <span>OiChan Docs</span>,
   project: {
-    link: "https://github.com/MakotoUwaya/nextra-docs-sample",
-  },
-  chat: {
-    link: "https://discord.com",
+    link: "https://github.com/MakotoUwaya/nijiviewer",
   },
   docsRepositoryBase:
-    "https://github.com/MakotoUwaya/nextra-docs-sample/blob/main",
+    "https://github.com/MakotoUwaya/nijiviewer/blob/main",
   footer: {
-    text: "Nextra Docs Sample",
+    text: "Powered by Nextra",
   },
 };
 

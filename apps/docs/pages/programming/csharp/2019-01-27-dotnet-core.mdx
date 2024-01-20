@@ -1,0 +1,56 @@
+---
+title: .NET Core 3.0.100-preview-010177 で WPF-Sample を動かす
+---
+
+WPF が .NET Core 3 で動くようになりましたね。  
+サンプルコードを動かそうとして少しハマったのでメモを残します。
+
+## サンプルコードの取得
+
+https://github.com/Microsoft/wpf-samples
+本家のWPFのサンプルを拝借。
+
+それぞれのプロジェクトにおいて、 `*.netcore.csproj` という名前で .NET Core 向けのプロジェクトファイルが定義されていますが、
+このままではビルド時にエラーが発生して動作しません。
+
+手っ取り早く動くようにするには、以下の通り3つの作業を行います。
+一時的な対応で非常に乱暴なものなので、製品として広く提供するものを開発される方はご注意ください。
+
+## 実施すること
+
+### 1. .NET Framework 用のプロジェクトファイルを削除
+
+`*.netcore.csproj` を残して、ほかのプロジェクトファイルは削除してしまいます。
+
+![プロジェクトファイルのイメージ](./2019-01-27-project-filename.png)
+
+### 2. プロジェクトファイルの書換
+
+ビルドを実行すると、以下のようなエラーが出ます。
+```
+error MC1003: Project file cannot specify more than one ApplicationDefinition element. 
+error BG1003: The project file contains a property value that is not valid. 
+```
+どうも余分な定義があるのが原因のようなので、必要最低限の定義に変更します。
+
+```xml title="*.netcore.csproj"
+<!-- 元々の内容は全て削除して以下だけにする -->
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+</Project>
+```
+
+### 3. AssemblyInfo ファイルの削除
+
+`*Attribute 属性が重複しています`  というエラーが６件くらい出ていましたので、
+Properties/AssemblyInfo.cs ファイル自体をごっそり消してしまいます。
+
+## 結果
+
+あとは `dotnet run` するだけで起動するはずです。
+
+![Wpf-Sampleの起動画面](./2019-01-27-dotnet-run-result.png)
