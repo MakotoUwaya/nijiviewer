@@ -1,12 +1,8 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "japanese-page": "C#でサウンドを鳴らす",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
+  "programming": "Programming",
+  "game": "Game",
+  "hardware": "Hardware",
   "contact": {
     "title": "Contact ↗",
     "type": "page",

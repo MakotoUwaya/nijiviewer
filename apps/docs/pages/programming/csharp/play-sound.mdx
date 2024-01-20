@@ -1,12 +1,10 @@
-# 日本語のページ
+---
+title: "サウンドを鳴らす"
+---
 
-日本語の記事を書いてみて、検索ができるようになっているか確認します。
-以下の記事は適当な文書をコピーして貼り付けています。
+# サウンドを鳴らす
 
------
-https://qiita.com/Oichan/items/b93e8e8ba8211b925d0a
-
-# C#でサウンドを鳴らす
+## はじめに
 
 前回の記事([XAML+C#でWPF NotifyIconを使ってオリジナル通知アイコンを表示する](http://qiita.com/Oichan/items/68a5fd339e12193b3ca4))では、
 指定時間が経過すると、通知ウィンドウが表示されるところまで作成しました。
@@ -14,7 +12,9 @@ https://qiita.com/Oichan/items/b93e8e8ba8211b925d0a
 今回は通知ウィンドウに合わせてサウンドが鳴るようにしてみます。
 調べてみると色々な方法があるようなので、各種ライブラリを試してみました。
 
-## System.Media.SoundPlayer
+## ライブラリ
+
+### System.Media.SoundPlayer
 Waveファイルを再生するだけであれば、デフォルトで組み込まれている`System.Media.SoundPlayer`を使用するのが一番簡単です。
 
 ```csharp:StopWatch.xaml.cs
@@ -48,7 +48,7 @@ waveファイルを用意すれば、上記のコードで再生・停止がで�
 しかし、mp3は再生できません。
 
 
-## Microsoft Small Basic 1.1
+### Microsoft Small Basic 1.1
 >[C#で音楽を再生する一番簡単な方法(Null and void)](http://d.hatena.ne.jp/chi-bd/20140216/1392534158)
 
 上記で紹介されている[Small Basic](http://smallbasic.com/doc.aspx?o=Sound&l=ja)のdllを参照する方法です。
@@ -96,7 +96,7 @@ private void StopSound()
 
 
 
-## [naudio](http://naudio.codeplex.com/)
+### [naudio](http://naudio.codeplex.com/)
 >[C# で音楽再生(アカベコマイリ)](http://akabeko.me/blog/2009/12/c-%E3%81%A7%E9%9F%B3%E6%A5%BD%E5%86%8D%E7%94%9F-1/)
 
 上記で紹介されている[naudio](http://naudio.codeplex.com/)のdllを参照する方法です。
@@ -156,7 +156,7 @@ NAudio.Wave名前空間の配下にあるクラスでMP3を読み込んで、オ
 一度再生したサウンドを再度再生するには、`audioStream.Position = 0;`で頭出しをする必要があります。
 
 
-# まとめ
+## まとめ
 簡易タイマーへの機能追加はこれで一旦完了です。
 
 業務アプリでは標準のライブラリしか使ったことがなかったため、色々な方法がある事に驚きました。
@@ -166,9 +166,3 @@ NAudio.Wave名前空間の配下にあるクラスでMP3を読み込んで、オ
 プリセットのチャイムを鳴らすようにしています。
 
 ソースコードはこちら→[GitHub](https://github.com/MakotoUwaya/SimpleTimer)
-
-***
-naudioを使った自作オーディオプレイヤー開発も試してみたいです。
-作ってみたいものがいっぱいで困ります。
-それではまた。
-
