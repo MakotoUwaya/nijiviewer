@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { fetchLiveVideos } from "../../lib/data";
 import Videos from "@/components/videos";
+import { fetchLiveVideos } from "../../lib/data";
 
 export default async function LiveVideosPage(): Promise<JSX.Element> {
   const liveVideos = await fetchLiveVideos();
