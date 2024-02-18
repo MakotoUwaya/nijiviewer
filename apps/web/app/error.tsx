@@ -12,7 +12,6 @@ export default function Error({
 }): JSX.Element {
   useEffect(() => {
     // Log the error to an error reporting service
-    // eslint-disable-next-line no-console -- Display error
     console.error(error);
   }, [error]);
 

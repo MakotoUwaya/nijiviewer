@@ -8,7 +8,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "eslint": "^8.48.0",
     "prettier": "^3.0.3",
     "tsconfig": "*",
     "turbo": "1.12.4"
