@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome lint ./ --files-ignore-unknown=true",
+    "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
+    "format": "biome format ./ --write"
   },
   "dependencies": {
     "@nextui-org/react": "2.2.9",
@@ -26,12 +28,9 @@
     "ui": "*"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
-    "eslint-config-custom": "*",
-    "eslint-config-next": "14.1.0",
     "tsconfig": "*",
     "typescript": "^5.0.0"
   }

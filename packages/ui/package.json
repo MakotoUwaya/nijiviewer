@@ -5,7 +5,9 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "biome lint ./ --files-ignore-unknown=true",
+    "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
+    "format": "biome format ./ --write",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
@@ -13,7 +15,6 @@
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "eslint-config-custom": "*",
     "react": "^18.2.0",
     "tsconfig": "*",
     "typescript": "^5.0.0"

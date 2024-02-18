@@ -1,6 +1,6 @@
 const withNextra = require('nextra')({
   reactStrictMode: true,
-  transpilePackages: ["ui"],
+  transpilePackages: ['ui'],
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx',
 });

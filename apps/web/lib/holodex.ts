@@ -11,7 +11,7 @@ export interface Video {
   start_actual: Date;
   live_viewers: number;
   channel: Channel;
-};
+}
 
 export interface Channel {
   id: string;
@@ -21,4 +21,4 @@ export interface Channel {
   type: string;
   photo: string;
   english_name: string;
-};
+}
