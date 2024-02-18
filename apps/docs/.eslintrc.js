@@ -1,6 +1,6 @@
 module.exports = {
-  extends: ["custom/next"],
+  extends: ['custom/next'],
   rules: {
-    "react/function-component-definition": "off",
+    'react/function-component-definition': 'off',
   },
 };
