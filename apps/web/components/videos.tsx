@@ -17,15 +17,15 @@ export default function Videos(props: VideoProps): JSX.Element {
           >
             <Image
               alt={v.title}
-              className='z-0 w-full object-cover'
-              isZoomed
+              className='video-trim'
               removeWrapper
+              radius='none'
               src={`https://i.ytimg.com/vi/${v.id}/sddefault.jpg`}
             />
           </a>
-          <CardFooter className='bg-black bottom-0 p-0 z-10'>
+          <CardFooter className='bottom-0 p-0 z-10'>
             <div className='flex flex-col w-full px-1'>
-              <p className='text-tiny text-white break-words h-[32px] my-1'>
+              <p className='text-tiny break-words h-[32px] my-1'>
                 {v.title}
               </p>
               <User

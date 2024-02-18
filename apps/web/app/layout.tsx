@@ -1,10 +1,10 @@
 import { Link } from '@nextui-org/react';
 import clsx from 'clsx';
 import type { Metadata, Viewport } from 'next';
-import '../styles/globals.css';
-import { siteConfig } from '../config/site';
-import { fontSans } from '../config/fonts';
 import { Navbar } from '../components/navbar';
+import { fontSans } from '../config/fonts';
+import { siteConfig } from '../config/site';
+import '../styles/globals.css';
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
           <div className='relative flex flex-col h-screen'>
             <Navbar />
-            <main className='container mx-auto max-w-full pt-16 px-6 flex-grow'>
+            <main className='container mx-auto max-w-full px-6 flex-grow'>
               {children}
             </main>
             <footer className='w-full flex items-center justify-center py-3'>
