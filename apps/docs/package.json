@@ -7,7 +7,9 @@
     "dev": "next dev --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome lint ./ --files-ignore-unknown=true",
+    "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
+    "format": "biome format ./ --write"
   },
   "dependencies": {
     "@next/third-parties": "14.1.0",

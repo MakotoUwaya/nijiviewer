@@ -5,7 +5,9 @@
   "types": "./index.tsx",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "biome lint ./ --files-ignore-unknown=true",
+    "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
+    "format": "biome format ./ --write",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
