@@ -17,7 +17,7 @@
     "@tailwindcss/line-clamp": "0.4.4",
     "autoprefixer": "10.4.17",
     "clsx": "^2.0.0",
-    "framer-motion": "11.0.6",
+    "framer-motion": "11.0.8",
     "intl-messageformat": "^10.5.0",
     "next": "14.1.0",
     "next-themes": "^0.2.1",
