@@ -19,7 +19,7 @@
     "clsx": "^2.0.0",
     "framer-motion": "11.0.8",
     "intl-messageformat": "^10.5.0",
-    "next": "14.1.0",
+    "next": "14.1.1",
     "next-themes": "^0.2.1",
     "postcss": "8.4.35",
     "react": "^18.2.0",
