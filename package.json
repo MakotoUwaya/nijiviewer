@@ -7,7 +7,7 @@
     "format": "turbo run format"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.6.0",
+    "@biomejs/biome": "1.6.1",
     "prettier": "^3.0.3",
     "tsconfig": "*",
     "turbo": "1.12.5"
