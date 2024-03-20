@@ -1,7 +1,7 @@
-import type * as React from 'react';
+import type { FC } from 'react';
 import type { IconSvgProps } from '../types';
 
-export const Logo: React.FC<IconSvgProps> = ({
+export const Logo: FC<IconSvgProps> = ({
   size = 36,
   width,
   height,
@@ -22,7 +22,7 @@ export const Logo: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const DiscordIcon: React.FC<IconSvgProps> = ({
+export const DiscordIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -42,7 +42,7 @@ export const DiscordIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const TwitterIcon: React.FC<IconSvgProps> = ({
+export const TwitterIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -64,7 +64,7 @@ export const TwitterIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const GithubIcon: React.FC<IconSvgProps> = ({
+export const GithubIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -88,7 +88,7 @@ export const GithubIcon: React.FC<IconSvgProps> = ({
   );
 };
 
-export const MoonFilledIcon: React.FC<IconSvgProps> = ({
+export const MoonFilledIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -110,7 +110,7 @@ export const MoonFilledIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const SunFilledIcon: React.FC<IconSvgProps> = ({
+export const SunFilledIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -132,7 +132,7 @@ export const SunFilledIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const HeartFilledIcon: React.FC<IconSvgProps> = ({
+export const HeartFilledIcon: FC<IconSvgProps> = ({
   size = 24,
   width,
   height,
@@ -157,7 +157,7 @@ export const HeartFilledIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-export const SearchIcon: React.FC<IconSvgProps> = (props) => (
+export const SearchIcon: FC<IconSvgProps> = (props) => (
   <svg
     aria-hidden='true'
     fill='none'
@@ -185,7 +185,7 @@ export const SearchIcon: React.FC<IconSvgProps> = (props) => (
   </svg>
 );
 
-export const NextUILogo: React.FC<IconSvgProps> = (props) => {
+export const NextUILogo: FC<IconSvgProps> = (props) => {
   const { width, height = 40 } = props;
 
   return (
