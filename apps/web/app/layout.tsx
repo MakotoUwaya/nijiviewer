@@ -1,12 +1,13 @@
 import { Link } from '@nextui-org/react';
 import clsx from 'clsx';
 import type { Metadata, Viewport } from 'next';
-import Head from 'next/head'
-import Script from 'next/script'
-import { Navbar } from '../components/navbar';
-import { fontSans } from '../config/fonts';
-import { siteConfig } from '../config/site';
-import '../styles/globals.css';
+
+import { Navbar } from '@/components/navbar';
+import { fontSans } from '@/config/fonts';
+import { siteConfig } from '@/config/site';
+import Metrics from '@/metrics';
+import '@/styles/globals.css';
+
 import { Providers } from './providers';
 
 export const metadata: Metadata = {
@@ -37,19 +38,7 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang='en' suppressHydrationWarning>
-      <Head>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
-        <Script id='clarity-script' dangerouslySetInnerHTML={{
-          __html: `
-          (function(c,l,a,r,i,t,y){
-            c[a] = c[a] || (() => { (c[a].q = c[a].q || []).push(arguments) });
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "lpj5ef13xn");
-          `,
-        }} />
-      </Head>
-
+      <head />
       <body
         className={clsx(
           'min-h-screen bg-background font-sans antialiased',
@@ -75,6 +64,7 @@ export default function RootLayout({
             </footer>
           </div>
         </Providers>
+        <Metrics />
       </body>
     </html>
   );
