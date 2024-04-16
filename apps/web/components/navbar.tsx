@@ -3,27 +3,24 @@ import {
   Input,
   Kbd,
   Link,
-  link as linkStyles,
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
   NavbarBrand,
+  NavbarContent,
   NavbarItem,
+  NavbarMenu,
   NavbarMenuItem,
+  NavbarMenuToggle,
+  Navbar as NextUINavbar,
+  link as linkStyles,
 } from '@nextui-org/react';
-import NextLink from 'next/link';
 import clsx from 'clsx';
+import NextLink from 'next/link';
 import { siteConfig } from '../config/site';
-import { ThemeSwitch } from './theme-switch';
 import {
-  TwitterIcon,
   GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
   Logo,
   SearchIcon,
 } from './icons';
+import { ThemeSwitch } from './theme-switch';
 
 export function Navbar(): JSX.Element {
   const searchInput = (
@@ -47,10 +44,11 @@ export function Navbar(): JSX.Element {
     />
   );
 
-  const linkColor = (index: number): 'primary' | 'danger' | 'foreground' => {
-    const color =
-      index === siteConfig.navMenuItems.length - 1 ? 'danger' : 'foreground';
-    return index === 2 ? 'primary' : color;
+  const linkColor = (href: string): 'primary' | 'danger' | 'foreground' => {
+    // const color =
+    //   index === siteConfig.navMenuItems.length - 1 ? 'danger' : 'foreground';
+    // return index === 2 ? 'primary' : color;
+    return 'foreground';
   };
 
   return (
@@ -59,7 +57,7 @@ export function Navbar(): JSX.Element {
         <NavbarBrand as='li' className='gap-3 max-w-fit'>
           <NextLink className='flex justify-start items-center gap-1' href='/'>
             <Logo />
-            <p className='font-bold text-inherit'>ACME</p>
+            <p className='font-bold text-inherit'>NijiViewer</p>
           </NextLink>
         </NavbarBrand>
         <ul className='hidden lg:flex gap-4 justify-start ml-2'>
@@ -85,30 +83,12 @@ export function Navbar(): JSX.Element {
         justify='end'
       >
         <NavbarItem className='hidden sm:flex gap-2'>
-          <Link aria-label='Twitter' href={siteConfig.links.twitter} isExternal>
-            <TwitterIcon className='text-default-500' />
-          </Link>
-          <Link aria-label='Discord' href={siteConfig.links.discord} isExternal>
-            <DiscordIcon className='text-default-500' />
-          </Link>
           <Link aria-label='Github' href={siteConfig.links.github} isExternal>
             <GithubIcon className='text-default-500' />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className='hidden lg:flex'>{searchInput}</NavbarItem>
-        <NavbarItem className='hidden md:flex'>
-          <Button
-            as={Link}
-            className='text-sm font-normal text-default-600 bg-default-100'
-            href={siteConfig.links.sponsor}
-            isExternal
-            startContent={<HeartFilledIcon className='text-danger' />}
-            variant='flat'
-          >
-            Sponsor
-          </Button>
-        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className='sm:hidden basis-1 pl-4' justify='end'>
@@ -122,9 +102,9 @@ export function Navbar(): JSX.Element {
       <NavbarMenu>
         {searchInput}
         <div className='mx-4 mt-2 flex flex-col gap-2'>
-          {siteConfig.navMenuItems.map((item, index) => (
+          {siteConfig.navMenuItems.map((item) => (
             <NavbarMenuItem key={item.href}>
-              <Link color={linkColor(index)} href='#' size='lg'>
+              <Link color={linkColor(item.href)} href={item.href} size='lg'>
                 {item.label}
               </Link>
             </NavbarMenuItem>
