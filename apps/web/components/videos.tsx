@@ -38,9 +38,9 @@ export default function Videos(props: VideoProps): JSX.Element {
                     className: 'min-w-10',
                   }}
                   className='grow self-start mb-1 truncate'
-                  description={`${v.channel.org} / ${v.channel.suborg.substring(
+                  description={`${v.channel.org}${v.channel.suborg ? ` / ${v.channel.suborg.substring(
                     2,
-                  )}`}
+                  )}` : ''}`}
                   name={v.channel.name}
                 />
               </div>
