@@ -2,36 +2,58 @@
 
 import { Avatar, Select, SelectItem } from '@nextui-org/react';
 
+import type { Organization } from '@/lib/holodex';
+
 type OrgSelectorProps = {
-  onUpdateSelected?: (org: string) => void;
+  items: Organization[];
+  defaultSelectedKeys: string[];
+  onChange: (organization: Organization) => void;
 };
 
 export default function OrgSelector({
-  onUpdateSelected,
+  items,
+  defaultSelectedKeys,
+  onChange,
 }: OrgSelectorProps): JSX.Element {
   return (
     <Select
       aria-labelledby='Organization Selector'
       className='max-w-80'
-      defaultSelectedKeys={['Nijisanji']}
+      defaultSelectedKeys={defaultSelectedKeys}
+      items={items}
       onChange={(e) => {
-        onUpdateSelected?.(e.target.value);
+        const organization = items.find(i => i.id === e.target.value);
+        if (organization) {
+          onChange(organization);
+        }
+      }}
+      renderValue={(items) => {
+        return items.map((item) => (
+          <div key={item.key} className="flex items-center gap-2">
+            <Avatar
+              alt={item.data?.name}
+              className="flex-shrink-0"
+              size="sm"
+              src={item.data?.logoUrl}
+            />
+            <div className="flex flex-col">
+              <span>{item.data?.name}</span>
+            </div>
+          </div>
+        ));
       }}
     >
-      <SelectItem
-        aria-labelledby='Nijisanji'
-        key='Nijisanji'
-        value='Nijisanji'
-        startContent={
-          <Avatar
-            alt='Nijisanji'
-            className='w-6 h-6'
-            src='https://yt3.ggpht.com/ytc/AKedOLSWxXsb2nHf7l5JIOhHr1G_DXAIvBTfZatmsimn=s88-c-k-c0x00ffffff-no-rj'
-          />
-        }
-      >
-        にじさんじ
-      </SelectItem>
+
+      {(organization) => (
+        <SelectItem key={organization.id} textValue={organization.name}>
+          <div className="flex gap-2 items-center">
+            <Avatar alt={organization.name} className="flex-shrink-0" size="sm" src={organization.logoUrl} />
+            <div className="flex flex-col">
+              <span className="text-small">{organization.name}</span>
+            </div>
+          </div>
+        </SelectItem>
+      )}
     </Select>
   );
 }

@@ -22,3 +22,9 @@ export interface Channel {
   photo: string;
   english_name: string;
 }
+
+export interface Organization {
+  id: string;
+  name: string;
+  logoUrl: string;
+}
