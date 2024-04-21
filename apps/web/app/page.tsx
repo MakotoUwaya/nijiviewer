@@ -1,8 +1,8 @@
+import { Code, Link, Snippet, button as buttonStyles } from '@nextui-org/react';
 import NextLink from 'next/link';
-import { button as buttonStyles, Code, Link, Snippet } from '@nextui-org/react';
-import { siteConfig } from '../config/site';
-import { title, subtitle } from '../components/primitives';
 import { GithubIcon } from '../components/icons';
+import { subtitle, title } from '../components/primitives';
+import { siteConfig } from '../config/site';
 
 export default function Home(): JSX.Element {
   return (
