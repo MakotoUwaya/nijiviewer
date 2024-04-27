@@ -1,11 +1,15 @@
 import { Card, CardFooter, Image, User } from '@nextui-org/react';
 import type { Video } from '../lib/holodex';
+import { EmptyImage } from './images';
 
 interface VideoProps {
   videos: Video[];
 }
 
 export default function Videos(props: VideoProps): JSX.Element {
+  if (props.videos?.length === 0) {
+    return <div className='flex justify-center p-10'><EmptyImage message='Not found live video' /></div>;
+  }
   return (
     <div className='flex flex-col md:flex-row flex-wrap'>
       {props.videos.map((v) => (
