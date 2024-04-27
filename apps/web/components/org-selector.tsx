@@ -18,7 +18,7 @@ export default function OrgSelector({
   return (
     <Select
       aria-labelledby='Organization Selector'
-      className='max-w-80'
+      className='w-80'
       defaultSelectedKeys={defaultSelectedKeys}
       items={items}
       onChange={(e) => {

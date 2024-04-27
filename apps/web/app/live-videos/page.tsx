@@ -26,7 +26,7 @@ export default function LiveVideosPage(): JSX.Element {
     setOrganization(organization);
   };
   return (
-    <div className='flex-col'>
+    <div className='flex-col w-full'>
       <div className='flex justify-center'>
         <OrgSelector items={organizations} defaultSelectedKeys={[organization.id]} onChange={onChangeOrganization} />
       </div>
