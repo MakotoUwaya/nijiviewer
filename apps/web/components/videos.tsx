@@ -14,7 +14,7 @@ export default function Videos(props: VideoProps): JSX.Element {
     <div className='flex flex-col md:flex-row flex-wrap'>
       {props.videos.map((v) => (
         <div
-          className='p-3 md:max-w-[33%] xl:max-w-[20%]'
+          className='p-3 w-full md:max-w-[33%] xl:max-w-[20%]'
           key={v.id}
         >
           <Card>

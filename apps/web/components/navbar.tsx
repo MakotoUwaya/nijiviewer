@@ -1,7 +1,10 @@
+'use client';
+
+import OrgSelector from '@/components/org-selector';
+import { siteConfig } from '@/config/site';
+import { organizations } from '@/consts/organizations';
+import type { Organization } from '@/lib/holodex';
 import {
-  Button,
-  Input,
-  Kbd,
   Link,
   NavbarBrand,
   NavbarContent,
@@ -14,41 +17,38 @@ import {
 } from '@nextui-org/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
-import { siteConfig } from '../config/site';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
+
 import {
   GithubIcon,
   Logo,
-  SearchIcon,
 } from './icons';
 import { ThemeSwitch } from './theme-switch';
 
-export function Navbar(): JSX.Element {
-  const searchInput = (
-    <Input
-      aria-label='Search'
-      classNames={{
-        inputWrapper: 'bg-default-100',
-        input: 'text-sm',
-      }}
-      endContent={
-        <Kbd className='hidden lg:inline-block' keys={['command']}>
-          K
-        </Kbd>
-      }
-      labelPlacement='outside'
-      placeholder='Search...'
-      startContent={
-        <SearchIcon className='text-base text-default-400 pointer-events-none flex-shrink-0' />
-      }
-      type='search'
-    />
-  );
+const getSegmentName = (path: string): string => {
+  if (path === '/') {
+    return path;
+  }
+  return path.split('/')[1];
+};
+const getLeafSegmentName = (path: string): string => {
+  if (path === '/') {
+    return '';
+  }
+  return decodeURIComponent(path.split("/")[2].trim());
+};
 
+export function Navbar(): JSX.Element {
+  const router = useRouter();
+  const pathName = usePathname();
+  const segmentName = getSegmentName(pathName);
+  const leafSegmentName = getLeafSegmentName(pathName);
   const linkColor = (href: string): 'primary' | 'danger' | 'foreground' => {
-    // const color =
-    //   index === siteConfig.navMenuItems.length - 1 ? 'danger' : 'foreground';
-    // return index === 2 ? 'primary' : color;
-    return 'foreground';
+    return (href === `${segmentName}` || href.startsWith(`/${segmentName}/`)) ? 'primary' : 'foreground';
+  };
+  const onChangeOrganization = (organization: Organization) => {
+    router.push(`/live-videos/${organization.id}`);
   };
 
   return (
@@ -82,13 +82,15 @@ export function Navbar(): JSX.Element {
         className='hidden sm:flex basis-1/5 sm:basis-full'
         justify='end'
       >
+        <div className='hidden md:flex'>
+          <OrgSelector items={organizations} selectedKey={leafSegmentName} onChange={onChangeOrganization} />
+        </div>
         <NavbarItem className='hidden sm:flex gap-2'>
           <Link aria-label='Github' href={siteConfig.links.github} isExternal>
             <GithubIcon className='text-default-500' />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className='hidden lg:flex'>{searchInput}</NavbarItem>
       </NavbarContent>
 
       <NavbarContent className='sm:hidden basis-1 pl-4' justify='end'>
@@ -100,7 +102,7 @@ export function Navbar(): JSX.Element {
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
+        <OrgSelector items={organizations} selectedKey={leafSegmentName} onChange={onChangeOrganization} />
         <div className='mx-4 mt-2 flex flex-col gap-2'>
           {siteConfig.navMenuItems.map((item) => (
             <NavbarMenuItem key={item.href}>
