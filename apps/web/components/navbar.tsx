@@ -36,7 +36,7 @@ const getLeafSegmentName = (path: string): string => {
   if (path === '/') {
     return '';
   }
-  return decodeURIComponent(path.split("/")[2].trim());
+  return decodeURIComponent(path.split("/")[2]?.trim() || '');
 };
 
 export function Navbar(): JSX.Element {
