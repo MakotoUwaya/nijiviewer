@@ -9,8 +9,8 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "Live",
-      href: "/live-videos",
+      label: "Live Videos",
+      href: "/live-videos/Nijisanji",
     },
   ],
   navMenuItems: [
@@ -19,8 +19,8 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "Live",
-      href: "/live-videos",
+      label: "Live Videos",
+      href: "/live-videos/Nijisanji",
     },
   ],
   links: {

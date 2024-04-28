@@ -1,25 +1,23 @@
-'use client';
-
-import { Avatar, Select, SelectItem } from '@nextui-org/react';
-
 import type { Organization } from '@/lib/holodex';
+import { Avatar, Select, SelectItem } from '@nextui-org/react';
 
 type OrgSelectorProps = {
   items: Organization[];
-  defaultSelectedKeys: string[];
+  selectedKey: string;
   onChange: (organization: Organization) => void;
 };
 
 export default function OrgSelector({
   items,
-  defaultSelectedKeys,
+  selectedKey,
   onChange,
 }: OrgSelectorProps): JSX.Element {
   return (
     <Select
       aria-labelledby='Organization Selector'
-      className='max-w-80'
-      defaultSelectedKeys={defaultSelectedKeys}
+      className='w-full md:w-60'
+      defaultSelectedKeys={[selectedKey]}
+      selectedKeys={[selectedKey]}
       items={items}
       onChange={(e) => {
         const organization = items.find(i => i.id === e.target.value);

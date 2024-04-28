@@ -13,5 +13,6 @@ export async function GET(
       },
     }
   );
-  return Response.json(await response.json());
+  const videos = await response.json();
+  return Response.json(videos || []);
 }
