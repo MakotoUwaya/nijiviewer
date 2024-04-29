@@ -1,17 +1,43 @@
-export interface Video {
+type CommonVideo = {
   id: string;
   title: string;
-  type: string;
   topic_id: string;
-  published_at: Date;
-  available_at: Date;
+  published_at: string;
+  available_at: string;
   duration: number;
   status: string;
-  start_scheduled: Date;
-  start_actual: Date;
-  live_viewers: number;
+  start_scheduled: string;
+  start_actual?: string;
   channel: Channel;
-}
+};
+
+export type StreamVideo = CommonVideo & {
+  type: "stream";
+  published_at: string;
+  live_viewers: number;
+};
+
+export type PlaceholderVideo = CommonVideo & {
+  type: "placeholder";
+  link: string;
+  credits: {
+    bot?: {
+      link: string;
+      name: string;
+      user: string;
+    };
+    editor?: {
+      name: string;
+      user: number;
+    };
+  };
+  jp_name?: string;
+  certainty: string;
+  thumbnail: string;
+  placeholderType: string;
+};
+
+export type Video = StreamVideo | PlaceholderVideo;
 
 export interface Channel {
   id: string;
