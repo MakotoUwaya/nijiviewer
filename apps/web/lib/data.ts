@@ -3,9 +3,13 @@ import type { Video } from "./holodex";
 
 export const fetchLiveVideos = async (org: string): Promise<Video[]> => {
   noStore();
-
+  const query = new URLSearchParams({
+    type: "placeholder,stream",
+    include: "mentions",
+    org,
+  });
   const response = await fetch(
-    `https://holodex.net/api/v2/live?status=live&org=${org}`,
+    `https://holodex.net/api/v2/live?${query.toString()}`,
     {
       headers: {
         "x-apikey": process.env.HOLODEX_APIKEY || "",

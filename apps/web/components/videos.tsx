@@ -1,57 +1,39 @@
-import { Card, CardFooter, Image, User } from '@nextui-org/react';
-import type { Video } from '../lib/holodex';
+import type { Video } from '@/lib/holodex';
+import { DateTime } from 'luxon';
 import { EmptyImage } from './images';
+import VideoCardPlaceholder from './video-card-placeholder';
+import VideoCardSkeleton from './video-card-skeleton';
+import VideoCardStream from './video-card-stream'
 
 interface VideoProps {
   videos: Video[];
 }
 
+const hasPast = (target: string | undefined): boolean => {
+  if (!target) {
+    return false;
+  }
+  const targetDateTime = DateTime.fromISO(target);
+  return targetDateTime.diffNow().milliseconds < 0
+}
+
 export default function Videos(props: VideoProps): JSX.Element {
-  if (props.videos?.length === 0) {
+  const liveVideos = props.videos.filter(v => hasPast(v.start_actual));
+  if (liveVideos.length === 0) {
     return <div className='flex justify-center p-10'><EmptyImage message='Not found live video' /></div>;
   }
   return (
     <div className='flex flex-col md:flex-row flex-wrap'>
-      {props.videos.map((v) => (
-        <div
-          className='p-3 w-full md:max-w-[33%] xl:max-w-[20%]'
-          key={v.id}
-        >
-          <Card>
-            <a
-              href={`https://www.youtube.com/watch?v=${v.id}`}
-              rel='noopener noreferrer'
-              target='_blank'
-            >
-              <Image
-                alt={v.title}
-                className='video-trim'
-                removeWrapper
-                radius='none'
-                src={`https://i.ytimg.com/vi/${v.id}/sddefault.jpg`}
-              />
-            </a>
-            <CardFooter className='bottom-0 p-0 z-10'>
-              <div className='flex flex-col w-full px-1'>
-                <p className='text-tiny break-words line-clamp-2 h-[32px] my-1'>
-                  {v.title}
-                </p>
-                <User
-                  avatarProps={{
-                    src: v.channel.photo,
-                    className: 'min-w-10',
-                  }}
-                  className='grow self-start mb-1 truncate'
-                  description={`${v.channel.org}${v.channel.suborg ? ` / ${v.channel.suborg.substring(
-                    2,
-                  )}` : ''}`}
-                  name={v.channel.name}
-                />
-              </div>
-            </CardFooter>
-          </Card>
-        </div>
-      ))}
+      {liveVideos.map((v) => {
+        switch (v.type) {
+          case 'stream':
+            return <VideoCardStream key={v.id}  {...v} />
+          case 'placeholder':
+            return <VideoCardPlaceholder key={v.id}  {...v} />
+          default:
+            return <VideoCardSkeleton />;
+        }
+      })}
     </div>
   );
 }

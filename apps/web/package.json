@@ -19,6 +19,7 @@
     "clsx": "^2.0.0",
     "framer-motion": "11.1.7",
     "intl-messageformat": "^10.5.0",
+    "luxon": "3.4.4",
     "next": "14.2.3",
     "next-themes": "^0.2.1",
     "postcss": "8.4.38",
@@ -29,6 +30,7 @@
     "ui": "*"
   },
   "devDependencies": {
+    "@types/luxon": "3.4.2",
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",

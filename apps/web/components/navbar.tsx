@@ -47,12 +47,14 @@ export function Navbar(): JSX.Element {
   const linkColor = (href: string): 'primary' | 'danger' | 'foreground' => {
     return (href === `${segmentName}` || href.startsWith(`/${segmentName}/`)) ? 'primary' : 'foreground';
   };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const onChangeOrganization = (organization: Organization) => {
+    setIsMenuOpen(false);
     router.push(`/live-videos/${organization.id}`);
   };
 
   return (
-    <NextUINavbar maxWidth='xl' position='sticky'>
+    <NextUINavbar isMenuOpen={isMenuOpen} maxWidth='xl' onMenuOpenChange={setIsMenuOpen} position='sticky'>
       <NavbarContent className='basis-1/5 sm:basis-full' justify='start'>
         <NavbarBrand as='li' className='gap-3 max-w-fit'>
           <NextLink className='flex justify-start items-center gap-1' href='/'>

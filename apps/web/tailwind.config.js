@@ -12,5 +12,5 @@ module.exports = {
     extend: {},
   },
   darkMode: 'class',
-  plugins: [nextui(), require('@tailwindcss/line-clamp')],
+  plugins: [nextui()],
 };
