@@ -3,11 +3,17 @@
  * Do not make direct changes to the file.
  */
 
-
 /** OneOf type helpers */
 type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
-type XOR<T, U> = (T | U) extends object ? (Without<T, U> & U) | (Without<U, T> & T) : T | U;
-type OneOf<T extends any[]> = T extends [infer Only] ? Only : T extends [infer A, infer B, ...infer Rest] ? OneOf<[XOR<A, B>, ...Rest]> : never;
+type XOR<T, U> = T | U extends object
+  ? (Without<T, U> & U) | (Without<U, T> & T)
+  : T | U;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+type OneOf<T extends any[]> = T extends [infer Only]
+  ? Only
+  : T extends [infer A, infer B, ...infer Rest]
+    ? OneOf<[XOR<A, B>, ...Rest]>
+    : never;
 
 export interface paths {
   "/live": {
@@ -49,10 +55,15 @@ export interface paths {
         /** @description OK */
         200: {
           content: {
-            "application/json": OneOf<[components["schemas"]["Video"][], {
-              total?: number;
-              items?: components["schemas"]["Video"][];
-            }]>;
+            "application/json": OneOf<
+              [
+                components["schemas"]["Video"][],
+                {
+                  total?: number;
+                  items?: components["schemas"]["Video"][];
+                },
+              ]
+            >;
           };
         };
       };
@@ -272,7 +283,7 @@ export interface components {
       channel?: components["schemas"]["ChannelMin"];
     };
     /** VideoFull */
-    VideoFull: components["schemas"]["Video"] & ({
+    VideoFull: components["schemas"]["Video"] & {
       /** @description Included when 'includes' contains 'clips' */
       clips?: components["schemas"]["VideoWithChannel"][] | null;
       /** @description Included when 'includes' contains 'sources' */
@@ -282,13 +293,15 @@ export interface components {
       /** @description Included when 'includes' contains 'simulcasts' */
       simulcasts?: components["schemas"]["VideoWithChannel"][] | null;
       /** @description VTubers mentioned by this video, Included when 'includes' contains 'mentions' */
-      mentions?: ((components["schemas"]["ChannelMin"] & ({
-          /** @description Org of the Mentioned Channel */
-          org?: string | null;
-        }))[]) | null;
+      mentions?:
+        | (components["schemas"]["ChannelMin"] & {
+            /** @description Org of the Mentioned Channel */
+            org?: string | null;
+          })[]
+        | null;
       /** @description Number of songs */
       songs?: number | null;
-    });
+    };
   };
   responses: never;
   parameters: {
@@ -305,7 +318,17 @@ export interface components {
     /** @description Order by ascending or descending */
     order?: "asc" | "desc";
     /** @description Comma separated string of extra info for video. Should be a string instead of an array. */
-    videoInclude?: ("clips" | "refers" | "sources" | "simulcasts" | "mentions" | "description" | "live_info" | "channel_stats" | "songs")[];
+    videoInclude?: (
+      | "clips"
+      | "refers"
+      | "sources"
+      | "simulcasts"
+      | "mentions"
+      | "description"
+      | "live_info"
+      | "channel_stats"
+      | "songs"
+    )[];
     /** @description Results limit */
     limit?: number;
     /** @description Offset results */
@@ -339,7 +362,6 @@ export type $defs = Record<string, never>;
 export type external = Record<string, never>;
 
 export interface operations {
-
   /** Get Channel Information */
   "get-v2-channels-channelId": {
     parameters: {
@@ -379,10 +401,15 @@ export interface operations {
       /** @description Success */
       200: {
         content: {
-          "application/json": OneOf<[{
-            total?: number;
-            items?: components["schemas"]["VideoFull"][];
-          }, components["schemas"]["VideoFull"][]]>;
+          "application/json": OneOf<
+            [
+              {
+                total?: number;
+                items?: components["schemas"]["VideoFull"][];
+              },
+              components["schemas"]["VideoFull"][],
+            ]
+          >;
         };
       };
     };
@@ -499,12 +526,12 @@ export interface operations {
           target?: ("clip" | "stream")[];
           /** @description Match all the following conditions */
           conditions?: {
-              /**
-               * @description Look for text in video title or description
-               * @example Okakoro
-               */
-              text?: string;
-            }[];
+            /**
+             * @description Look for text in video title or description
+             * @example Okakoro
+             */
+            text?: string;
+          }[];
           /**
            * @description Return videos that match one of the provided topics
            * @example [
@@ -541,10 +568,15 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": OneOf<[components["schemas"]["VideoWithChannel"][], {
-            total?: number;
-            items?: components["schemas"]["VideoWithChannel"][];
-          }]>;
+          "application/json": OneOf<
+            [
+              components["schemas"]["VideoWithChannel"][],
+              {
+                total?: number;
+                items?: components["schemas"]["VideoWithChannel"][];
+              },
+            ]
+          >;
         };
       };
     };
@@ -616,14 +648,19 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": OneOf<[(components["schemas"]["VideoWithChannel"] & {
-              comments?: components["schemas"]["Comment"][];
-            })[], {
-            total?: number;
-            items?: (components["schemas"]["VideoWithChannel"] & {
+          "application/json": OneOf<
+            [
+              (components["schemas"]["VideoWithChannel"] & {
                 comments?: components["schemas"]["Comment"][];
-              })[];
-          }]>;
+              })[],
+              {
+                total?: number;
+                items?: (components["schemas"]["VideoWithChannel"] & {
+                  comments?: components["schemas"]["Comment"][];
+                })[];
+              },
+            ]
+          >;
         };
       };
     };
