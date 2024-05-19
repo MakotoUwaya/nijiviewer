@@ -14,8 +14,10 @@ export default function VideoCardStream(video: StreamVideo): JSX.Element {
   const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(
     2,
   )}` : ''}`;
+  const canShowViewer = video.topic_id !== 'membersonly';
+  const viewersCount = canShowViewer ? `${video.live_viewers?.toLocaleString() || ''} watching now ` : '';
   const videoStatusText =
-    `${video.topic_id !== 'membersonly' ? `${video.live_viewers.toLocaleString()} watching now` : ''} Started streaming ${getStarted(video.start_actual)}`;
+    `${viewersCount}Started streaming ${getStarted(video.start_actual || '')}`;
 
   return (
     <div
