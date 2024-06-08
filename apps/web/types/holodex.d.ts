@@ -16,7 +16,7 @@ type OneOf<T extends any[]> = T extends [infer Only]
     : never;
 
 export interface paths {
-  "/live": {
+  '/live': {
     /**
      * Query Live and Upcoming Videos
      * @description This is somewhat similar to calling `/videos`.
@@ -34,33 +34,33 @@ export interface paths {
     get: {
       parameters: {
         query?: {
-          channel_id?: components["parameters"]["videoChannelId"];
-          status?: components["parameters"]["videoStatus"];
-          lang?: components["parameters"]["videoLang"];
-          type?: components["parameters"]["videoType"];
-          topic?: components["parameters"]["videoTopicId"];
-          include?: components["parameters"]["videoInclude"];
-          org?: components["parameters"]["org"];
-          mentioned_channel_id?: components["parameters"]["videoMentionedChannelId"];
-          sort?: components["parameters"]["videoSort"];
-          order?: components["parameters"]["order"];
-          limit?: components["parameters"]["limit"];
-          offset?: components["parameters"]["offset"];
-          paginated?: components["parameters"]["paginated"];
-          max_upcoming_hours?: components["parameters"]["videoMaxUpcomingHours"];
-          id?: components["parameters"]["videoIdentifier"];
+          channel_id?: components['parameters']['videoChannelId'];
+          status?: components['parameters']['videoStatus'];
+          lang?: components['parameters']['videoLang'];
+          type?: components['parameters']['videoType'];
+          topic?: components['parameters']['videoTopicId'];
+          include?: components['parameters']['videoInclude'];
+          org?: components['parameters']['org'];
+          mentioned_channel_id?: components['parameters']['videoMentionedChannelId'];
+          sort?: components['parameters']['videoSort'];
+          order?: components['parameters']['order'];
+          limit?: components['parameters']['limit'];
+          offset?: components['parameters']['offset'];
+          paginated?: components['parameters']['paginated'];
+          max_upcoming_hours?: components['parameters']['videoMaxUpcomingHours'];
+          id?: components['parameters']['videoIdentifier'];
         };
       };
       responses: {
         /** @description OK */
         200: {
           content: {
-            "application/json": OneOf<
+            'application/json': OneOf<
               [
-                components["schemas"]["Video"][],
+                components['schemas']['Video'][],
                 {
                   total?: number;
-                  items?: components["schemas"]["Video"][];
+                  items?: components['schemas']['Video'][];
                 },
               ]
             >;
@@ -69,7 +69,7 @@ export interface paths {
       };
     };
   };
-  "/videos": {
+  '/videos': {
     /**
      * Query Videos
      * @description Pretty much everything you need. This is the most 'vanilla' variant with almost no preset values, and `/channels/{channelId}/{type}` and `/live` endpoints both use the same query structure but provision default values differently for some of the query params.
@@ -79,21 +79,21 @@ export interface paths {
     get: {
       parameters: {
         query?: {
-          channel_id?: components["parameters"]["videoChannelId"];
-          status?: components["parameters"]["videoStatus"];
-          lang?: components["parameters"]["videoLang"];
-          type?: components["parameters"]["videoType"];
-          topic?: components["parameters"]["videoTopicId"];
-          include?: components["parameters"]["videoInclude"];
-          org?: components["parameters"]["org"];
-          mentioned_channel_id?: components["parameters"]["videoMentionedChannelId"];
-          sort?: components["parameters"]["videoSort"];
-          order?: components["parameters"]["order"];
-          limit?: components["parameters"]["limit"];
-          offset?: components["parameters"]["offset"];
-          paginated?: components["parameters"]["paginated"];
-          max_upcoming_hours?: components["parameters"]["videoMaxUpcomingHours"];
-          id?: components["parameters"]["videoIdentifier"];
+          channel_id?: components['parameters']['videoChannelId'];
+          status?: components['parameters']['videoStatus'];
+          lang?: components['parameters']['videoLang'];
+          type?: components['parameters']['videoType'];
+          topic?: components['parameters']['videoTopicId'];
+          include?: components['parameters']['videoInclude'];
+          org?: components['parameters']['org'];
+          mentioned_channel_id?: components['parameters']['videoMentionedChannelId'];
+          sort?: components['parameters']['videoSort'];
+          order?: components['parameters']['order'];
+          limit?: components['parameters']['limit'];
+          offset?: components['parameters']['offset'];
+          paginated?: components['parameters']['paginated'];
+          max_upcoming_hours?: components['parameters']['videoMaxUpcomingHours'];
+          id?: components['parameters']['videoIdentifier'];
           /** @description ISO8601 Date String for minimum `available_at`. (`available_at` is the most accurate timestamp of when a video has gone live or became viewable - it is the first non null value of the `start_actual`, `start_scheduled` or `published_at` fields) */
           from?: string;
           /** @description ISO8601 Date String for maximum `available_at` */
@@ -104,45 +104,45 @@ export interface paths {
         /** @description OK */
         200: {
           content: {
-            "application/json": components["schemas"]["VideoFull"];
+            'application/json': components['schemas']['VideoFull'];
           };
         };
       };
     };
   };
-  "/channels/{channelId}": {
+  '/channels/{channelId}': {
     /** Get Channel Information */
-    get: operations["get-v2-channels-channelId"];
+    get: operations['get-v2-channels-channelId'];
     parameters: {
       path: {
-        channelId: components["parameters"]["channelId"];
+        channelId: components['parameters']['channelId'];
       };
     };
   };
-  "/channels/{channelId}/{type}": {
+  '/channels/{channelId}/{type}': {
     /**
      * Query Videos Related to Channel
      * @description A simplified endpoint for access channel specific data. If you want more customization, the same result can be obtained by calling the `/videos` endpoint.
      */
-    get: operations["get-v2-channels-channelId-clips"];
+    get: operations['get-v2-channels-channelId-clips'];
     parameters: {
       path: {
-        channelId: components["parameters"]["channelId"];
+        channelId: components['parameters']['channelId'];
         /** @description The type of video resource to fetch. Clips finds clip videos of a `vtuber` channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId` */
-        type: "clips" | "videos" | "collabs";
+        type: 'clips' | 'videos' | 'collabs';
       };
     };
   };
-  "/users/live": {
+  '/users/live': {
     /**
      * Quickly Access Live / Upcoming for a set of Channels
      * @description This endpoint is similar to the /live endpoint and usually replies much faster. It is more friendly in general. The cost to execute a lookup is significantly cheaper. It's unfortunately less customizable as a result.
      *
      * We recommends using this if you have a fixed set of channel IDs to look up status for.
      */
-    get: operations["get-cached-live"];
+    get: operations['get-cached-live'];
   };
-  "/videos/{videoId}": {
+  '/videos/{videoId}': {
     /**
      * Get a single Video's metadata
      * @description Retrieves a video object.
@@ -151,28 +151,28 @@ export interface paths {
      *
      * Also retrieves Recommendations if query parameter `lang` is set
      */
-    get: operations["get-videos-videoId"];
+    get: operations['get-videos-videoId'];
     parameters: {
       path: {
-        videoId: components["parameters"]["videoId"];
+        videoId: components['parameters']['videoId'];
       };
     };
   };
-  "/channels": {
+  '/channels': {
     /** List Channels */
-    get: operations["get-channels"];
+    get: operations['get-channels'];
   };
-  "/search/videoSearch": {
+  '/search/videoSearch': {
     /**
      * @description Flexible endpoint to search for videos fufilling multiple conditions. Descriptions with "any" implies an OR condition, and "all" implies a AND condition.
      *
      * Searching for topics and clips is not supported, because clips do not contain topic_ids
      */
-    post: operations["post-search-videoSearch"];
+    post: operations['post-search-videoSearch'];
   };
-  "/search/commentSearch": {
+  '/search/commentSearch': {
     /** @description Flexible endpoint to search for comments in videos fufilling multiple conditions. Descriptions with "any" implies an OR condition, and "all" implies a AND condition. */
-    post: operations["post-search-commentSearch"];
+    post: operations['post-search-commentSearch'];
   };
 }
 
@@ -190,7 +190,7 @@ export interface components {
       name?: string;
       english_name?: string | null;
       /** @enum {string} */
-      type?: "vtuber" | "subber";
+      type?: 'vtuber' | 'subber';
       org?: string | null;
       suborg?: string | null;
       photo?: string | null;
@@ -211,7 +211,7 @@ export interface components {
       name?: string;
       english_name?: string | null;
       /** @enum {string} */
-      type?: "vtuber" | "subber";
+      type?: 'vtuber' | 'subber';
       org?: string | null;
       group?: string | null;
       photo?: string | null;
@@ -231,7 +231,7 @@ export interface components {
       id?: string;
       title?: string;
       /** @enum {string} */
-      type?: "stream" | "clip";
+      type?: 'stream' | 'clip';
       /**
        * @description corresponds to a Topic ID, Videos of type `clip` cannot not have topic. Streams may or may not have topic.
        * @example minecraft
@@ -247,7 +247,7 @@ export interface components {
       /** @description Duration of the video in seconds */
       duration?: number;
       /** @enum {string} */
-      status?: "new" | "upcoming" | "live" | "past" | "missing";
+      status?: 'new' | 'upcoming' | 'live' | 'past' | 'missing';
       /**
        * Format: date-time
        * @description Included when includes contains 'live_info'
@@ -276,25 +276,25 @@ export interface components {
       name?: string;
       english_name?: string | null;
       /** @enum {string} */
-      type?: "vtuber" | "subber";
+      type?: 'vtuber' | 'subber';
       photo?: string;
     };
-    VideoWithChannel: components["schemas"]["Video"] & {
-      channel?: components["schemas"]["ChannelMin"];
+    VideoWithChannel: components['schemas']['Video'] & {
+      channel?: components['schemas']['ChannelMin'];
     };
     /** VideoFull */
-    VideoFull: components["schemas"]["Video"] & {
+    VideoFull: components['schemas']['Video'] & {
       /** @description Included when 'includes' contains 'clips' */
-      clips?: components["schemas"]["VideoWithChannel"][] | null;
+      clips?: components['schemas']['VideoWithChannel'][] | null;
       /** @description Included when 'includes' contains 'sources' */
-      sources?: components["schemas"]["VideoWithChannel"][] | null;
+      sources?: components['schemas']['VideoWithChannel'][] | null;
       /** @description Included when 'includes' contains 'refers' */
-      refers?: components["schemas"]["VideoWithChannel"][] | null;
+      refers?: components['schemas']['VideoWithChannel'][] | null;
       /** @description Included when 'includes' contains 'simulcasts' */
-      simulcasts?: components["schemas"]["VideoWithChannel"][] | null;
+      simulcasts?: components['schemas']['VideoWithChannel'][] | null;
       /** @description VTubers mentioned by this video, Included when 'includes' contains 'mentions' */
       mentions?:
-        | (components["schemas"]["ChannelMin"] & {
+        | (components['schemas']['ChannelMin'] & {
             /** @description Org of the Mentioned Channel */
             org?: string | null;
           })[]
@@ -306,7 +306,7 @@ export interface components {
   responses: never;
   parameters: {
     /** @description Filter by type of video */
-    videoType?: "stream" | "clip";
+    videoType?: 'stream' | 'clip';
     /** @description A comma separated list of language codes to filter channels/clips, official streams do not follow this parameter */
     videoLang?: string;
     /** @description Filter by video uploader channel id */
@@ -316,25 +316,25 @@ export interface components {
     /** @description Sort by any returned video field */
     videoSort?: string;
     /** @description Order by ascending or descending */
-    order?: "asc" | "desc";
+    order?: 'asc' | 'desc';
     /** @description Comma separated string of extra info for video. Should be a string instead of an array. */
     videoInclude?: (
-      | "clips"
-      | "refers"
-      | "sources"
-      | "simulcasts"
-      | "mentions"
-      | "description"
-      | "live_info"
-      | "channel_stats"
-      | "songs"
+      | 'clips'
+      | 'refers'
+      | 'sources'
+      | 'simulcasts'
+      | 'mentions'
+      | 'description'
+      | 'live_info'
+      | 'channel_stats'
+      | 'songs'
     )[];
     /** @description Results limit */
     limit?: number;
     /** @description Offset results */
     offset?: number;
     /** @description Filter by video status */
-    videoStatus?: "new" | "upcoming" | "live" | "past" | "missing";
+    videoStatus?: 'new' | 'upcoming' | 'live' | 'past' | 'missing';
     /** @description Filter by mentioned channel id, excludes itself. Generally used to find collabs/clips that include the requested channel */
     videoMentionedChannelId?: string;
     /** @description Filter by clips that feature the org's talent or videos posted by the org's talent */
@@ -350,7 +350,7 @@ export interface components {
     /** @description A single Youtube Video ID. If Specified, only this video can be returned (may be filtered out by other conditions though) */
     videoIdentifier?: string;
     /** @description Type of Channel, whether it's a vtuber or a subber. Leave unset to query all. */
-    channelType?: "subber" | "vtuber";
+    channelType?: 'subber' | 'vtuber';
   };
   requestBodies: never;
   headers: never;
@@ -363,17 +363,17 @@ export type external = Record<string, never>;
 
 export interface operations {
   /** Get Channel Information */
-  "get-v2-channels-channelId": {
+  'get-v2-channels-channelId': {
     parameters: {
       path: {
-        channelId: components["parameters"]["channelId"];
+        channelId: components['parameters']['channelId'];
       };
     };
     responses: {
       /** @description Success */
       200: {
         content: {
-          "application/json": components["schemas"]["Channel"];
+          'application/json': components['schemas']['Channel'];
         };
       };
     };
@@ -382,32 +382,32 @@ export interface operations {
    * Query Videos Related to Channel
    * @description A simplified endpoint for access channel specific data. If you want more customization, the same result can be obtained by calling the `/videos` endpoint.
    */
-  "get-v2-channels-channelId-clips": {
+  'get-v2-channels-channelId-clips': {
     parameters: {
       query?: {
-        lang?: components["parameters"]["videoLang"];
-        include?: components["parameters"]["videoInclude"];
-        limit?: components["parameters"]["limit"];
-        offset?: components["parameters"]["offset"];
-        paginated?: components["parameters"]["paginated"];
+        lang?: components['parameters']['videoLang'];
+        include?: components['parameters']['videoInclude'];
+        limit?: components['parameters']['limit'];
+        offset?: components['parameters']['offset'];
+        paginated?: components['parameters']['paginated'];
       };
       path: {
-        channelId: components["parameters"]["channelId"];
+        channelId: components['parameters']['channelId'];
         /** @description The type of video resource to fetch. Clips finds clip videos of a `vtuber` channel, Video finds the `channelId` channel's uploads, and collabs finds videos uploaded by other channels that mention this `channelId` */
-        type: "clips" | "videos" | "collabs";
+        type: 'clips' | 'videos' | 'collabs';
       };
     };
     responses: {
       /** @description Success */
       200: {
         content: {
-          "application/json": OneOf<
+          'application/json': OneOf<
             [
               {
                 total?: number;
-                items?: components["schemas"]["VideoFull"][];
+                items?: components['schemas']['VideoFull'][];
               },
-              components["schemas"]["VideoFull"][],
+              components['schemas']['VideoFull'][],
             ]
           >;
         };
@@ -420,7 +420,7 @@ export interface operations {
    *
    * We recommends using this if you have a fixed set of channel IDs to look up status for.
    */
-  "get-cached-live": {
+  'get-cached-live': {
     parameters: {
       query?: {
         /** @description comma separated Youtube Channel IDs */
@@ -431,7 +431,7 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["Video"][];
+          'application/json': components['schemas']['Video'][];
         };
       };
     };
@@ -444,37 +444,37 @@ export interface operations {
    *
    * Also retrieves Recommendations if query parameter `lang` is set
    */
-  "get-videos-videoId": {
+  'get-videos-videoId': {
     parameters: {
       query?: {
-        lang?: components["parameters"]["videoLang"];
+        lang?: components['parameters']['videoLang'];
         /** @description if `1` then will reply with timestamp comments for this video */
-        c?: "1" | "0";
+        c?: '1' | '0';
       };
       path: {
-        videoId: components["parameters"]["videoId"];
+        videoId: components['parameters']['videoId'];
       };
     };
     responses: {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["VideoFull"] & {
+          'application/json': components['schemas']['VideoFull'] & {
             /** @description Comments are only returned if c === '1' */
-            comments?: components["schemas"]["Comment"][];
-            recommendations?: components["schemas"]["Video"][];
+            comments?: components['schemas']['Comment'][];
+            recommendations?: components['schemas']['Video'][];
           };
         };
       };
     };
   };
   /** List Channels */
-  "get-channels": {
+  'get-channels': {
     parameters: {
       query?: {
-        type?: components["parameters"]["channelType"];
-        offset?: components["parameters"]["offset"];
-        limit?: components["parameters"]["limit"];
+        type?: components['parameters']['channelType'];
+        offset?: components['parameters']['offset'];
+        limit?: components['parameters']['limit'];
         /** @description If set, filter for Vtuber belonging to a specific org */
         org?: string;
         /** @description Comma separated list of languages. Language is a property of Channel, so only Channels satisfying the language will be returned. Leave empty to search for Vtubers and/or all clippers. */
@@ -482,14 +482,14 @@ export interface operations {
         /** @description Column to sort on, leave default to use 'org' as sort. Any first level property of channel should work here. */
         sort?: string;
         /** @description ASC or DESC order, default asc. */
-        order?: "asc" | "desc";
+        order?: 'asc' | 'desc';
       };
     };
     responses: {
       /** @description OK */
       200: {
         content: {
-          "application/json": components["schemas"]["ChannelWithGroup"][];
+          'application/json': components['schemas']['ChannelWithGroup'][];
         };
       };
     };
@@ -499,15 +499,15 @@ export interface operations {
    *
    * Searching for topics and clips is not supported, because clips do not contain topic_ids
    */
-  "post-search-videoSearch": {
+  'post-search-videoSearch': {
     requestBody?: {
       content: {
-        "application/json": {
+        'application/json': {
           /**
            * @default newest
            * @enum {string}
            */
-          sort: "oldest" | "newest";
+          sort: 'oldest' | 'newest';
           /**
            * @description If set, will filter clips to only show clips with these langs + all vtuber streams (provided `target` is not set to filter out streams)
            * @example [
@@ -523,7 +523,7 @@ export interface operations {
            *   "stream"
            * ]
            */
-          target?: ("clip" | "stream")[];
+          target?: ('clip' | 'stream')[];
           /** @description Match all the following conditions */
           conditions?: {
             /**
@@ -568,12 +568,12 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": OneOf<
+          'application/json': OneOf<
             [
-              components["schemas"]["VideoWithChannel"][],
+              components['schemas']['VideoWithChannel'][],
               {
                 total?: number;
-                items?: components["schemas"]["VideoWithChannel"][];
+                items?: components['schemas']['VideoWithChannel'][];
               },
             ]
           >;
@@ -582,15 +582,15 @@ export interface operations {
     };
   };
   /** @description Flexible endpoint to search for comments in videos fufilling multiple conditions. Descriptions with "any" implies an OR condition, and "all" implies a AND condition. */
-  "post-search-commentSearch": {
+  'post-search-commentSearch': {
     requestBody?: {
       content: {
-        "application/json": {
+        'application/json': {
           /**
            * @default newest
            * @enum {string}
            */
-          sort: "oldest" | "newest";
+          sort: 'oldest' | 'newest';
           /**
            * @description If set, will filter clips to only show clips with these langs + all vtuber streams (provided `target` is not set to filter out streams)
            * @example [
@@ -606,7 +606,7 @@ export interface operations {
            *   "stream"
            * ]
            */
-          target?: ("clip" | "stream")[];
+          target?: ('clip' | 'stream')[];
           /**
            * @description Find videos with comments containing specified string (case insensitive)
            * @example Lemon
@@ -648,15 +648,15 @@ export interface operations {
       /** @description OK */
       200: {
         content: {
-          "application/json": OneOf<
+          'application/json': OneOf<
             [
-              (components["schemas"]["VideoWithChannel"] & {
-                comments?: components["schemas"]["Comment"][];
+              (components['schemas']['VideoWithChannel'] & {
+                comments?: components['schemas']['Comment'][];
               })[],
               {
                 total?: number;
-                items?: (components["schemas"]["VideoWithChannel"] & {
-                  comments?: components["schemas"]["Comment"][];
+                items?: (components['schemas']['VideoWithChannel'] & {
+                  comments?: components['schemas']['Comment'][];
                 })[];
               },
             ]

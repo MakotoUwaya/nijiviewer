@@ -8,10 +8,15 @@ type Props = {
 };
 
 const isValidOrganizationName = (organizationName: string): boolean => {
-  return !!organizationName && !!organizations.find((o) => o.id === decodeURIComponent(organizationName));
+  return (
+    !!organizationName &&
+    !!organizations.find((o) => o.id === decodeURIComponent(organizationName))
+  );
 };
 
-export default async function LiveVideosPage({ params }: Props): Promise<JSX.Element> {
+export default async function LiveVideosPage({
+  params,
+}: Props): Promise<JSX.Element> {
   const organizationName = params.organizationName;
   if (!isValidOrganizationName(organizationName)) {
     return <>Request Error</>;

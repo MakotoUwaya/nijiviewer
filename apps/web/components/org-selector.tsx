@@ -20,34 +20,38 @@ export default function OrgSelector({
       selectedKeys={[selectedKey]}
       items={items}
       onChange={(e) => {
-        const organization = items.find(i => i.id === e.target.value);
+        const organization = items.find((i) => i.id === e.target.value);
         if (organization) {
           onChange(organization);
         }
       }}
       renderValue={(items) => {
         return items.map((item) => (
-          <div key={item.key} className="flex items-center gap-2">
+          <div key={item.key} className='flex items-center gap-2'>
             <Avatar
               alt={item.data?.name}
-              className="flex-shrink-0"
-              size="sm"
+              className='flex-shrink-0'
+              size='sm'
               src={item.data?.logoUrl}
             />
-            <div className="flex flex-col">
+            <div className='flex flex-col'>
               <span>{item.data?.name}</span>
             </div>
           </div>
         ));
       }}
     >
-
       {(organization) => (
         <SelectItem key={organization.id} textValue={organization.name}>
-          <div className="flex gap-2 items-center">
-            <Avatar alt={organization.name} className="flex-shrink-0" size="sm" src={organization.logoUrl} />
-            <div className="flex flex-col">
-              <span className="text-small">{organization.name}</span>
+          <div className='flex gap-2 items-center'>
+            <Avatar
+              alt={organization.name}
+              className='flex-shrink-0'
+              size='sm'
+              src={organization.logoUrl}
+            />
+            <div className='flex flex-col'>
+              <span className='text-small'>{organization.name}</span>
             </div>
           </div>
         </SelectItem>

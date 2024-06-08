@@ -20,10 +20,7 @@ import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import {
-  GithubIcon,
-  Logo,
-} from './icons';
+import { GithubIcon, Logo } from './icons';
 import { ThemeSwitch } from './theme-switch';
 
 const getSegmentName = (path: string): string => {
@@ -36,7 +33,7 @@ const getLeafSegmentName = (path: string): string => {
   if (path === '/') {
     return '';
   }
-  return decodeURIComponent(path.split("/")[2]?.trim() || '');
+  return decodeURIComponent(path.split('/')[2]?.trim() || '');
 };
 
 export function Navbar(): JSX.Element {
@@ -45,7 +42,9 @@ export function Navbar(): JSX.Element {
   const segmentName = getSegmentName(pathName);
   const leafSegmentName = getLeafSegmentName(pathName);
   const linkColor = (href: string): 'primary' | 'danger' | 'foreground' => {
-    return (href === `${segmentName}` || href.startsWith(`/${segmentName}/`)) ? 'primary' : 'foreground';
+    return href === `${segmentName}` || href.startsWith(`/${segmentName}/`)
+      ? 'primary'
+      : 'foreground';
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const onChangeOrganization = (organization: Organization) => {
@@ -54,7 +53,12 @@ export function Navbar(): JSX.Element {
   };
 
   return (
-    <NextUINavbar isMenuOpen={isMenuOpen} maxWidth='xl' onMenuOpenChange={setIsMenuOpen} position='sticky'>
+    <NextUINavbar
+      isMenuOpen={isMenuOpen}
+      maxWidth='xl'
+      onMenuOpenChange={setIsMenuOpen}
+      position='sticky'
+    >
       <NavbarContent className='basis-1/5 sm:basis-full' justify='start'>
         <NavbarBrand as='li' className='gap-3 max-w-fit'>
           <NextLink className='flex justify-start items-center gap-1' href='/'>
@@ -87,7 +91,11 @@ export function Navbar(): JSX.Element {
         justify='end'
       >
         <div className='hidden md:flex'>
-          <OrgSelector items={organizations} selectedKey={leafSegmentName} onChange={onChangeOrganization} />
+          <OrgSelector
+            items={organizations}
+            selectedKey={leafSegmentName}
+            onChange={onChangeOrganization}
+          />
         </div>
         <NavbarItem className='hidden sm:flex gap-2'>
           <Link aria-label='Github' href={siteConfig.links.github} isExternal>
@@ -106,7 +114,11 @@ export function Navbar(): JSX.Element {
       </NavbarContent>
 
       <NavbarMenu>
-        <OrgSelector items={organizations} selectedKey={leafSegmentName} onChange={onChangeOrganization} />
+        <OrgSelector
+          items={organizations}
+          selectedKey={leafSegmentName}
+          onChange={onChangeOrganization}
+        />
         <div className='mx-4 mt-2 flex flex-col gap-2'>
           {siteConfig.navMenuItems.map((item) => (
             <NavbarMenuItem key={item.href}>

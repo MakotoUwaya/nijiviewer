@@ -12,13 +12,13 @@ type CommonVideo = {
 };
 
 export type StreamVideo = CommonVideo & {
-  type: "stream";
+  type: 'stream';
   published_at: string;
   live_viewers: number;
 };
 
 export type PlaceholderVideo = CommonVideo & {
-  type: "placeholder";
+  type: 'placeholder';
   link: string;
   credits: {
     bot?: {
