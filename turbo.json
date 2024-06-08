@@ -6,7 +6,7 @@
   "globalEnv": [
     "HOLODEX_APIKEY"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": [
         "^build"
