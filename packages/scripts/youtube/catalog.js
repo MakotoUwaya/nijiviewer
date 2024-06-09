@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export const catalogData = {
   booksByIsbn: {
     "978-1779501127": {
@@ -29,4 +31,29 @@ export const catalogData = {
       bookIsbns: ["978-1779501127"],
     },
   },
+};
+
+export const authorNames = (catalog, book) => {
+  const authorIds = _.get(book, "authorIds");
+  return _.map(authorIds, authorId => {
+    return _.get(catalog, ["authorsById", authorId, "name"]);
+  });
+};
+
+export const bookInfo = (catalog, book) => {
+  return {
+    title: _.get(book, "title"),
+    isbn: _.get(book, "isbn"),
+    authorNames: authorNames(catalog, book),
+  };
+};
+
+export const searchBooksByTitle = (catalog, query) => {
+  const allBooks = _.values(_.get(catalog, "booksByIsbn"));
+  const matchingBooks = _.filter(allBooks, book => {
+    return _.get(book, "title").includes(query);
+  });
+  return _.map(matchingBooks, book => {
+    return bookInfo(catalog, book);
+  });
 };
