@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "dotenv": "16.4.5"
+  },
+  "dependencies": {
+    "lodash": "4.17.21"
   }
 }
