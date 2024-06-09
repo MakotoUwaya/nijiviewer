@@ -1,0 +1,12 @@
+{
+  "name": "youtube-script",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "exec": "node -r dotenv/config index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "dotenv": "16.4.5"
+  }
+}

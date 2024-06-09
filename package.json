@@ -25,7 +25,8 @@
   "homepage": "https://github.com/MakotoUwaya/nijiviewer#readme",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "packages/scripts/*"
   ],
   "volta": {
     "node": "20.14.0",
