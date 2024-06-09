@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env.local', override: true });
 
+import { watchmenBook } from './book.js';
+
 const getLatestVideoByChannelId = async (channelId, maxResults = 10) => {
   // biome-ignore lint/style/useTemplate: <explanation>
   const url = 'https://www.googleapis.com/youtube/v3/search' +
@@ -18,8 +20,10 @@ const getLatestVideoByChannelId = async (channelId, maxResults = 10) => {
 const main = async () => {
   console.log("Hello World");
 
-  const list = await getLatestVideoByChannelId('UC0t_U2BgpK5LcSB9_ccuH4g', 10);
-  console.log(list);
+  // const list = await getLatestVideoByChannelId('UC0t_U2BgpK5LcSB9_ccuH4g', 10);
+  // console.log(list);
+
+  console.log(watchmenBook);
 };
 
 await main();
