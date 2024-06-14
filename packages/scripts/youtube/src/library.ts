@@ -1,6 +1,6 @@
-import _ from 'lodash';
+import _ from "lodash";
 
-import { searchBooksByTitle } from './catalog.js';
+import { searchBooksByTitle } from "./catalog";
 
 export const libraryData = {
   catalog: {
@@ -22,7 +22,7 @@ export const libraryData = {
             isLent: false,
           },
         ],
-      }
+      },
     },
     authorsById: {
       "alan-moore": {
@@ -37,8 +37,13 @@ export const libraryData = {
   },
 };
 
-export const searchBooksByTitleJSON = (library, query) => {
-  const results = searchBooksByTitle(_.get(library, "catalog"), query);
+export const searchBooksByTitleJSON = (
+  library: Record<string, unknown>,
+  query: string
+) => {
+  const results = searchBooksByTitle(
+    _.get(library, "catalog") as Record<string, unknown>,
+    query
+  );
   return JSON.stringify(results, null, 2);
 };
-

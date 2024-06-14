@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "exec": "node -r dotenv/config index.js",
+    "exec": "node --no-warnings=ExperimentalWarning --loader ts-node/esm src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "dotenv": "16.4.5"
+    "dotenv": "16.4.5",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.5"
   },
   "dependencies": {
     "lodash": "4.17.21"

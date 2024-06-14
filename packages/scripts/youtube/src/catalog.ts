@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 export const catalogData = {
   booksByIsbn: {
@@ -19,7 +19,7 @@ export const catalogData = {
           isLent: false,
         },
       ],
-    }
+    },
   },
   authorsById: {
     "alan-moore": {
@@ -33,14 +33,20 @@ export const catalogData = {
   },
 };
 
-export const authorNames = (catalog, book) => {
-  const authorIds = _.get(book, "authorIds");
-  return _.map(authorIds, authorId => {
+export const authorNames = (
+  catalog: Record<string, unknown>,
+  book: Record<string, unknown>
+) => {
+  const authorIds = _.get(book, "authorIds") as string[];
+  return _.map(authorIds, (authorId) => {
     return _.get(catalog, ["authorsById", authorId, "name"]);
   });
 };
 
-export const bookInfo = (catalog, book) => {
+export const bookInfo = (
+  catalog: Record<string, unknown>,
+  book: Record<string, unknown>
+) => {
   return {
     title: _.get(book, "title"),
     isbn: _.get(book, "isbn"),
@@ -48,12 +54,15 @@ export const bookInfo = (catalog, book) => {
   };
 };
 
-export const searchBooksByTitle = (catalog, query) => {
+export const searchBooksByTitle = (
+  catalog: Record<string, unknown>,
+  query: string
+) => {
   const allBooks = _.values(_.get(catalog, "booksByIsbn"));
-  const matchingBooks = _.filter(allBooks, book => {
+  const matchingBooks = _.filter(allBooks, (book) => {
     return _.get(book, "title").includes(query);
   });
-  return _.map(matchingBooks, book => {
+  return _.map(matchingBooks, (book) => {
     return bookInfo(catalog, book);
   });
 };
