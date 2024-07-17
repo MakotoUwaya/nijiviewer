@@ -35,7 +35,7 @@
     "@types/node": "^20.0.0",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
-    "openapi-typescript": "7.0.3",
+    "openapi-typescript": "7.0.4",
     "tsconfig": "*",
     "typescript": "^5.0.0"
   }
