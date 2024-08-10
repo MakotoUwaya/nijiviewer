@@ -1,0 +1,73 @@
+---
+title: FiveM の初期セットアップ
+---
+
+GTA5 をマルチプレイモードで遊ぶ場合に、 Mod 要素を追加できるサーバです。
+
+
+## FiveM Server 初期セットアップ
+
+Windows 向けには [【GTAV】WindowsでFiveMサーバーの立て方を詳しく解説します！！](https://dareblo.com/gtav-fivem-server-setup/) の解説があるので、こちらを参考にセットアップしてください。  
+FiveM Client のインストールもこちらで行います。
+
+## リソース
+
+[スクリプト一覧](https://docs.google.com/spreadsheets/d/1Mr2r4rjVWrBoeGrOhW8OJJkt7JY_BoAO3AS8lbD-OUs/edit?gid=758343486#gid=758343486)
+
+### qbcore
+
+基本となる Mod のパック
+
+qbcore [Windows Installation](https://docs.qbcore.org/qbcore-documentation/guides/windows-installation)
+
+### map
+
+地図表示が分かりやすく改善され、番地が表示されるようになる
+
+[Postal Code Map & Minimap](https://forum.cfx.re/t/release-postal-code-map-minimap-new-improved-v1-3/147458)
+
+「Download by clicking here」をクリックして、ファイルをダウンロード  
+`resource/[defaultmaps]/map` に配置する
+
+### VoiceRangeMarker
+
+VC の範囲を可視化する
+
+```sh
+cd "resource/resources\[standalone]"
+git clone https://github.com/bsrypt/errorism.voiceRangeMarker.git
+```
+
+`resources/[standalone]/errorism.voiceRangeMarker` に配置する
+
+### Dices & RPS Minigames
+
+```sh
+cd resources\[standalone]
+git clone https://github.com/BarBaroNN/bb-dices.git
+```
+
+`resources/[standalone]/bb-dices` に配置する
+
+### Improved Females
+
+```sh
+cd resources
+git clone https://github.com/zfbx/improved-females.git
+```
+
+server.cfg に以下の指定を追加
+
+```
+ensure improved-females
+```
+
+## 起動手順
+
+1. MySQL(MariaDB) 起動
+    - xampp-control.exe を実行
+    - MySQL Start
+2. FiveM Server 起動
+    - Server/FXServer.exe を実行
+3. FiveM Client 起動
+    - FiveM.exe を実行
