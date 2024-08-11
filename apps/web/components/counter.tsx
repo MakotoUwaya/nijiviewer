@@ -4,6 +4,9 @@ import { Button } from '@nextui-org/react';
 import { useState } from 'react';
 
 type CounterProps = {
+  /**
+  * Optional click handler
+  */
   onClick?: () => void;
 };
 

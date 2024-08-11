@@ -3,7 +3,7 @@ import { fn } from "@storybook/test";
 import { Counter } from "./counter";
 
 const meta = {
-  title: "Example/Counter",
+  title: "Components/Counter",
   component: Counter,
   tags: ["autodocs"],
 } satisfies Meta<typeof Counter>;
