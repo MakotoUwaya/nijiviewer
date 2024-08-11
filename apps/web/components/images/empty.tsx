@@ -1,5 +1,5 @@
+import type { ImageSvgProps } from '@/types';
 import type { FC } from 'react';
-import type { ImageSvgProps } from '../types';
 
 export const EmptyImage: FC<ImageSvgProps> = ({
   message = 'Empty',
@@ -15,7 +15,7 @@ export const EmptyImage: FC<ImageSvgProps> = ({
       width={width}
       {...props}
     >
-      <title>Empty Image</title>
+      <title>{message}</title>
       <path
         d='M127.701 245.846C191.049 245.846 242.402 194.492 242.402 131.145C242.402 67.797 191.049 16.4436 127.701 16.4436C64.3533 16.4436 12.9999 67.797 12.9999 131.145C12.9999 194.492 64.3533 245.846 127.701 245.846Z'
         fill='url(#paint0_linear_5_1044)'
