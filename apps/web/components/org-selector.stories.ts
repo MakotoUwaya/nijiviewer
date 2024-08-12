@@ -1,7 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
-
-import { organizations } from "@/consts/organizations";
 
 import { ThemeSwitch } from "./theme-switch";
 
