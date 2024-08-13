@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { organizationMap } from "@/consts/organizations";
+import { organizationMap } from "@/const/organizations";
 
 import OrgSelector from "./org-selector";
 

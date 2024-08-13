@@ -1,5 +1,5 @@
 import Videos from '@/components/videos';
-import { organizationMap } from '@/consts/organizations';
+import { organizationMap } from '@/const/organizations';
 import { fetchLiveVideos } from '@/lib/data';
 import type { Video } from '@/lib/holodex';
 

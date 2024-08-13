@@ -2,7 +2,7 @@
 
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
-import { organizationMap } from '@/consts/organizations';
+import { organizationMap } from '@/const/organizations';
 import type { Organization } from '@/lib/holodex';
 import {
   Link,

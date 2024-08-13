@@ -42,7 +42,10 @@
           },
           "type": {
             "type": "string",
-            "enum": ["vtuber", "subber"]
+            "enum": [
+              "vtuber",
+              "subber"
+            ]
           },
           "org": {
             "type": "string",
@@ -111,7 +114,10 @@
           },
           "type": {
             "type": "string",
-            "enum": ["vtuber", "subber"]
+            "enum": [
+              "vtuber",
+              "subber"
+            ]
           },
           "org": {
             "type": "string",
@@ -177,7 +183,10 @@
           },
           "type": {
             "type": "string",
-            "enum": ["stream", "clip"]
+            "enum": [
+              "stream",
+              "clip"
+            ]
           },
           "topic_id": {
             "type": "string",
@@ -201,7 +210,13 @@
           },
           "status": {
             "type": "string",
-            "enum": ["new", "upcoming", "live", "past", "missing"]
+            "enum": [
+              "new",
+              "upcoming",
+              "live",
+              "past",
+              "missing"
+            ]
           },
           "start_scheduled": {
             "description": "Included when includes contains 'live_info'",
@@ -254,7 +269,10 @@
           },
           "type": {
             "type": "string",
-            "enum": ["vtuber", "subber"]
+            "enum": [
+              "vtuber",
+              "subber"
+            ]
           },
           "photo": {
             "type": "string"
@@ -360,7 +378,10 @@
         "description": "Filter by type of video",
         "schema": {
           "type": "string",
-          "enum": ["stream", "clip"]
+          "enum": [
+            "stream",
+            "clip"
+          ]
         }
       },
       "videoLang": {
@@ -412,7 +433,10 @@
         "description": "Order by ascending or descending",
         "schema": {
           "type": "string",
-          "enum": ["asc", "desc"],
+          "enum": [
+            "asc",
+            "desc"
+          ],
           "default": "desc"
         }
       },
@@ -470,7 +494,13 @@
         "required": false,
         "schema": {
           "type": "string",
-          "enum": ["new", "upcoming", "live", "past", "missing"],
+          "enum": [
+            "new",
+            "upcoming",
+            "live",
+            "past",
+            "missing"
+          ],
           "example": "past"
         }
       },
@@ -546,7 +576,10 @@
         "required": false,
         "schema": {
           "type": "string",
-          "enum": ["subber", "vtuber"]
+          "enum": [
+            "subber",
+            "vtuber"
+          ]
         },
         "description": "Type of Channel, whether it's a vtuber or a subber. Leave unset to query all. "
       }
@@ -1136,7 +1169,11 @@
         {
           "schema": {
             "type": "string",
-            "enum": ["clips", "videos", "collabs"]
+            "enum": [
+              "clips",
+              "videos",
+              "collabs"
+            ]
           },
           "name": "type",
           "in": "path",
@@ -1231,7 +1268,10 @@
             "schema": {
               "type": "string",
               "example": "1",
-              "enum": ["1", "0"]
+              "enum": [
+                "1",
+                "0"
+              ]
             },
             "in": "query",
             "name": "c",
@@ -1302,7 +1342,10 @@
           {
             "schema": {
               "type": "string",
-              "enum": ["asc", "desc"]
+              "enum": [
+                "asc",
+                "desc"
+              ]
             },
             "in": "query",
             "name": "order",
@@ -1359,15 +1402,26 @@
                 "x-examples": {
                   "example-1": {
                     "sort": "newest",
-                    "lang": ["en", "ja"],
-                    "target": ["stream", "clip"],
+                    "lang": [
+                      "en",
+                      "ja"
+                    ],
+                    "target": [
+                      "stream",
+                      "clip"
+                    ],
                     "conditions": [],
-                    "topic": ["singing"],
+                    "topic": [
+                      "singing"
+                    ],
                     "vch": [
                       "UChAnqc_AY5_I3Px5dig3X1Q",
                       "UCvaTdHTWBGv3MKj3KVqJVCw"
                     ],
-                    "org": ["Nijisanji", "Hololive"],
+                    "org": [
+                      "Nijisanji",
+                      "Hololive"
+                    ],
                     "comment": [],
                     "paginated": true,
                     "offset": 0,
@@ -1378,13 +1432,19 @@
                   "sort": {
                     "type": "string",
                     "minLength": 1,
-                    "enum": ["oldest", "newest"],
+                    "enum": [
+                      "oldest",
+                      "newest"
+                    ],
                     "default": "newest"
                   },
                   "lang": {
                     "type": "array",
                     "description": "If set, will filter clips to only show clips with these langs + all vtuber streams (provided `target` is not set to filter out streams)",
-                    "example": ["en", "ja"],
+                    "example": [
+                      "en",
+                      "ja"
+                    ],
                     "items": {
                       "type": "string"
                     }
@@ -1392,10 +1452,16 @@
                   "target": {
                     "type": "array",
                     "description": "Target types of videos",
-                    "example": ["clip", "stream"],
+                    "example": [
+                      "clip",
+                      "stream"
+                    ],
                     "items": {
                       "type": "string",
-                      "enum": ["clip", "stream"]
+                      "enum": [
+                        "clip",
+                        "stream"
+                      ]
                     }
                   },
                   "conditions": {
@@ -1415,7 +1481,10 @@
                   "topic": {
                     "type": "array",
                     "description": "Return videos that match one of the provided topics",
-                    "example": ["singing", "apex"],
+                    "example": [
+                      "singing",
+                      "apex"
+                    ],
                     "items": {
                       "type": "string"
                     }
@@ -1434,7 +1503,10 @@
                   "org": {
                     "type": "array",
                     "description": "Videos of channels in any of the specified orgs, or clips that involve a channel in the specified org.",
-                    "example": ["Hololive", "Nijisanji"],
+                    "example": [
+                      "Hololive",
+                      "Nijisanji"
+                    ],
                     "items": {
                       "type": "string"
                     }
@@ -1450,21 +1522,37 @@
                     "type": "number"
                   }
                 },
-                "required": ["sort", "comment", "offset", "limit"]
+                "required": [
+                  "sort",
+                  "comment",
+                  "offset",
+                  "limit"
+                ]
               },
               "examples": {
                 "example-1": {
                   "value": {
                     "sort": "newest",
-                    "lang": ["en", "ja"],
-                    "target": ["stream", "clip"],
+                    "lang": [
+                      "en",
+                      "ja"
+                    ],
+                    "target": [
+                      "stream",
+                      "clip"
+                    ],
                     "conditions": [],
-                    "topic": ["singing"],
+                    "topic": [
+                      "singing"
+                    ],
                     "vch": [
                       "UChAnqc_AY5_I3Px5dig3X1Q",
                       "UCvaTdHTWBGv3MKj3KVqJVCw"
                     ],
-                    "org": ["Nijisanji", "Hololive"],
+                    "org": [
+                      "Nijisanji",
+                      "Hololive"
+                    ],
                     "comment": [],
                     "paginated": true,
                     "offset": 0,
@@ -1627,14 +1715,25 @@
                 "x-examples": {
                   "example-1": {
                     "sort": "newest",
-                    "lang": ["en", "ja"],
-                    "target": ["stream", "clip"],
-                    "topic": ["singing"],
+                    "lang": [
+                      "en",
+                      "ja"
+                    ],
+                    "target": [
+                      "stream",
+                      "clip"
+                    ],
+                    "topic": [
+                      "singing"
+                    ],
                     "vch": [
                       "UChAnqc_AY5_I3Px5dig3X1Q",
                       "UCvaTdHTWBGv3MKj3KVqJVCw"
                     ],
-                    "org": ["Nijisanji", "Hololive"],
+                    "org": [
+                      "Nijisanji",
+                      "Hololive"
+                    ],
                     "comment": "Lemon",
                     "paginated": true,
                     "offset": 0,
@@ -1645,13 +1744,19 @@
                   "sort": {
                     "type": "string",
                     "minLength": 1,
-                    "enum": ["oldest", "newest"],
+                    "enum": [
+                      "oldest",
+                      "newest"
+                    ],
                     "default": "newest"
                   },
                   "lang": {
                     "type": "array",
                     "description": "If set, will filter clips to only show clips with these langs + all vtuber streams (provided `target` is not set to filter out streams)",
-                    "example": ["en", "ja"],
+                    "example": [
+                      "en",
+                      "ja"
+                    ],
                     "items": {
                       "type": "string"
                     }
@@ -1659,10 +1764,16 @@
                   "target": {
                     "type": "array",
                     "description": "Target types of videos",
-                    "example": ["clip", "stream"],
+                    "example": [
+                      "clip",
+                      "stream"
+                    ],
                     "items": {
                       "type": "string",
-                      "enum": ["clip", "stream"]
+                      "enum": [
+                        "clip",
+                        "stream"
+                      ]
                     }
                   },
                   "comment": {
@@ -1673,7 +1784,10 @@
                   "topic": {
                     "type": "array",
                     "description": "Return videos that match one of the provided topics",
-                    "example": ["singing", "apex"],
+                    "example": [
+                      "singing",
+                      "apex"
+                    ],
                     "items": {
                       "type": "string"
                     }
@@ -1692,7 +1806,10 @@
                   "org": {
                     "type": "array",
                     "description": "Videos of channels in any of the specified orgs, or clips that involve a channel in the specified org.",
-                    "example": ["Hololive", "Nijisanji"],
+                    "example": [
+                      "Hololive",
+                      "Nijisanji"
+                    ],
                     "items": {
                       "type": "string"
                     }
@@ -1708,21 +1825,37 @@
                     "type": "number"
                   }
                 },
-                "required": ["sort", "comment", "offset", "limit"]
+                "required": [
+                  "sort",
+                  "comment",
+                  "offset",
+                  "limit"
+                ]
               },
               "examples": {
                 "example-1": {
                   "value": {
                     "sort": "newest",
-                    "lang": ["en", "ja"],
-                    "target": ["stream", "clip"],
+                    "lang": [
+                      "en",
+                      "ja"
+                    ],
+                    "target": [
+                      "stream",
+                      "clip"
+                    ],
                     "conditions": [],
-                    "topic": ["singing"],
+                    "topic": [
+                      "singing"
+                    ],
                     "vch": [
                       "UChAnqc_AY5_I3Px5dig3X1Q",
                       "UCvaTdHTWBGv3MKj3KVqJVCw"
                     ],
-                    "org": ["Nijisanji", "Hololive"],
+                    "org": [
+                      "Nijisanji",
+                      "Hololive"
+                    ],
                     "comment": "Lemon",
                     "paginated": true,
                     "offset": 0,
