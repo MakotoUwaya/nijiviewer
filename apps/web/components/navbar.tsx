@@ -2,7 +2,7 @@
 
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
-import { organizations } from '@/consts/organizations';
+import { organizationMap } from '@/const/organizations';
 import type { Organization } from '@/lib/holodex';
 import {
   Link,
@@ -92,7 +92,7 @@ export function Navbar(): JSX.Element {
       >
         <div className='hidden md:flex'>
           <OrgSelector
-            items={organizations}
+            items={organizationMap}
             selectedKey={leafSegmentName}
             onChange={onChangeOrganization}
           />
@@ -115,7 +115,7 @@ export function Navbar(): JSX.Element {
 
       <NavbarMenu>
         <OrgSelector
-          items={organizations}
+          items={organizationMap}
           selectedKey={leafSegmentName}
           onChange={onChangeOrganization}
         />

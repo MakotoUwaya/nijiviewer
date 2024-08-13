@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 
-import { organizations } from "@/consts/organizations";
+import { organizationMap } from "@/const/organizations";
 
 import OrgSelector from "./org-selector";
 
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    items: organizations,
+    items: organizationMap,
     selectedKey: "Nijisanji",
     onChange: fn(),
   },

@@ -1,5 +1,5 @@
 import Videos from '@/components/videos';
-import { organizations } from '@/consts/organizations';
+import { organizationMap } from '@/const/organizations';
 import { fetchLiveVideos } from '@/lib/data';
 import type { Video } from '@/lib/holodex';
 
@@ -10,7 +10,7 @@ type Props = {
 const isValidOrganizationName = (organizationName: string): boolean => {
   return (
     !!organizationName &&
-    !!organizations.find((o) => o.id === decodeURIComponent(organizationName))
+    !!organizationMap.find((o) => o.id === decodeURIComponent(organizationName))
   );
 };
 
