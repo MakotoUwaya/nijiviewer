@@ -10,6 +10,7 @@
     "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
     "format": "biome format ./ --write",
     "test": "vitest run",
+    "coverage": "vitest run --coverage",
     "generate-schema": "openapi-typescript ./oas/openapi.json -o ./types/holodex.d.ts",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -50,6 +51,7 @@
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
     "@vitejs/plugin-react": "4.3.1",
+    "@vitest/coverage-v8": "2.0.5",
     "jsdom": "24.1.1",
     "openapi-typescript": "7.3.0",
     "storybook": "^8.2.8",
