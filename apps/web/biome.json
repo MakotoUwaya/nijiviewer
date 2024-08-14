@@ -10,8 +10,8 @@
   "javascript": {
     "formatter": {
       "arrowParentheses": "always",
-      "jsxQuoteStyle": "single",
-      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "quoteStyle": "double",
       "semicolons": "always",
       "trailingCommas": "all",
       "quoteProperties": "asNeeded",
