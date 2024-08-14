@@ -3,6 +3,9 @@
   "organizeImports": {
     "enabled": true
   },
+  "files": {
+    "ignore": ["storybook-static/**"]
+  },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2
