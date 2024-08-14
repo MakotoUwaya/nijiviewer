@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 export default function Error({
@@ -25,7 +25,7 @@ export default function Error({
             reset();
           }
         }
-        type='button'
+        type="button"
       >
         Try again
       </button>

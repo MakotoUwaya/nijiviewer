@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Button } from '@nextui-org/react';
-import { useState } from 'react';
+import { Button } from "@nextui-org/react";
+import { useState } from "react";
 
 type CounterProps = {
   /**
-  * Optional click handler
-  */
+   * Optional click handler
+   */
   onClick?: () => void;
 };
 
@@ -15,13 +15,10 @@ export function Counter(props: CounterProps): JSX.Element {
   const onPress = () => {
     setCount(count + 1);
     props.onClick?.();
-  }
+  };
 
   return (
-    <Button
-      onPress={onPress}
-      radius='full'
-    >
+    <Button onPress={onPress} radius="full">
       Count is {count}
     </Button>
   );

@@ -1,7 +1,7 @@
-import Videos from '@/components/videos';
-import { organizationMap } from '@/const/organizations';
-import { fetchLiveVideos } from '@/lib/data';
-import type { Video } from '@/lib/holodex';
+import Videos from "@/components/videos";
+import { organizationMap } from "@/const/organizations";
+import { fetchLiveVideos } from "@/lib/data";
+import type { Video } from "@/lib/holodex";
 
 type Props = {
   params: { organizationName: string };
@@ -23,7 +23,7 @@ export default async function LiveVideosPage({
   }
   const videos: Video[] = await fetchLiveVideos(organizationName);
   return (
-    <div className='flex-col w-full'>
+    <div className="flex-col w-full">
       <Videos videos={videos} />
     </div>
   );
