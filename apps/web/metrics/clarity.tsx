@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import Script from 'next/script';
+import Script from "next/script";
 
 const MicrosoftClarity = () => {
   return (
     <Script
-      id='microsoft-clarity-init'
-      strategy='afterInteractive'
+      id="microsoft-clarity-init"
+      strategy="afterInteractive"
       // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
       dangerouslySetInnerHTML={{
         __html: `

@@ -54,6 +54,6 @@ export const Small: Story = {
 export const JapaneseText: Story = {
   args: {
     primary: true,
-    label: "日本語のボタン"
-  }
+    label: "日本語のボタン",
+  },
 };

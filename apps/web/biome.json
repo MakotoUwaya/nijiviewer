@@ -3,6 +3,9 @@
   "organizeImports": {
     "enabled": true
   },
+  "files": {
+    "ignore": ["storybook-static/**"]
+  },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2
@@ -10,8 +13,8 @@
   "javascript": {
     "formatter": {
       "arrowParentheses": "always",
-      "jsxQuoteStyle": "single",
-      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "quoteStyle": "double",
       "semicolons": "always",
       "trailingCommas": "all",
       "quoteProperties": "asNeeded",

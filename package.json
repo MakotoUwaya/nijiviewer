@@ -4,7 +4,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "turbo run format"
+    "format": "turbo run format",
+    "test": "turbo run test"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
