@@ -18,15 +18,16 @@ const getStarted = (target: string | undefined): string => {
   return targetDateTime.toRelative() || "";
 };
 
-export default function VideoCardStream(video: StreamVideo): JSX.Element {
-  const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
-  }`;
+export default function VideoCardStream(video: StreamVideo & { started: boolean }): JSX.Element {
+  const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+    }`;
   const canShowViewer = video.topic_id !== "membersonly";
   const viewersCount = canShowViewer
     ? `${video.live_viewers?.toLocaleString() || ""} watching now `
     : "";
-  const videoStatusText = `${viewersCount}Started streaming ${getStarted(video.start_actual || "")}`;
+  const videoStatusText = video.started
+    ? `${viewersCount}Started streaming ${getStarted(video.start_actual || "")}`
+    : "Will probably start soon";
 
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">

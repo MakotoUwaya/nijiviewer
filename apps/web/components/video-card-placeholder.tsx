@@ -22,12 +22,13 @@ const getStarted = (target: string | undefined): string => {
 };
 
 export default function VideoCardPlaceholder(
-  video: PlaceholderVideo,
+  video: PlaceholderVideo & { started: boolean },
 ): JSX.Element {
-  const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
-  }`;
-  const videoStatusText = `Live - ${getDomain(video.link)} Started streaming ${getStarted(video.start_actual)}`;
+  const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+    }`;
+  const videoStatusText = video.started
+    ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(video.start_actual)}`
+    : "Will probably start soon";
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
