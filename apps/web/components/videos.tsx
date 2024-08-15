@@ -9,7 +9,13 @@ interface VideoProps {
   videos: Video[];
 }
 
-const hasPast = (target: string | undefined): boolean => {
+/**
+ * @private
+ * Is the current time past the streaming start time?
+ * @param target streaming start time
+ * @returns true if it is past
+ */
+export const hasPast = (target: string | undefined): boolean => {
   if (!target) {
     return false;
   }
@@ -17,8 +23,10 @@ const hasPast = (target: string | undefined): boolean => {
   return targetDateTime.diffNow().milliseconds < 0;
 };
 
-export default function Videos(props: VideoProps): JSX.Element {
-  const liveVideos = props.videos.filter((v) => hasPast(v.start_actual));
+const Videos = (props: VideoProps): JSX.Element => {
+  const liveVideos = props.videos
+    .filter((v) => hasPast(v.start_actual) || hasPast(v.start_scheduled))
+    .map(v => ({ ...v, started: hasPast(v.start_actual) }));
   if (liveVideos.length === 0) {
     return (
       <div className="flex justify-center p-10">
@@ -40,4 +48,5 @@ export default function Videos(props: VideoProps): JSX.Element {
       })}
     </div>
   );
-}
+};
+export default Videos;
