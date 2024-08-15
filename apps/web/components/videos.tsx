@@ -9,7 +9,13 @@ interface VideoProps {
   videos: Video[];
 }
 
-const hasPast = (target: string | undefined): boolean => {
+/**
+ * @private
+ * Is the current time past the streaming start time?
+ * @param target streaming start time
+ * @returns true if it is past
+ */
+export const hasPast = (target: string | undefined): boolean => {
   if (!target) {
     return false;
   }
