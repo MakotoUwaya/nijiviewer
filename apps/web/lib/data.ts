@@ -1,4 +1,6 @@
+import { type ResultAsync, fromPromise } from "neverthrow";
 import { unstable_noStore as noStore } from "next/cache";
+
 import type { Video } from "./holodex";
 
 const apiVersion = "v2";
@@ -11,10 +13,20 @@ export const fetchLiveVideos = async (org: string): Promise<Video[]> => {
     include: "mentions",
     org,
   });
-  const response = await fetch(`${baseUrl}/live?${query.toString()}`, {
-    headers: {
-      "x-apikey": process.env.HOLODEX_APIKEY || "",
-    },
-  });
-  return (await response.json()) as Video[];
+  const response = await fromPromise(
+    fetch(`${baseUrl}/live?${query.toString()}`, {
+      headers: {
+        "x-apikey": process.env.HOLODEX_APIKEY || "",
+      },
+    }),
+    (e: Error) => e
+  );
+  if (response.isErr()) {
+    return [];
+  }
+  const videos = await fromPromise<Video[], Error>(
+    response.value.json(),
+    (e: Error) => e
+  );
+  return videos.isOk() ? videos.value : [];
 };
