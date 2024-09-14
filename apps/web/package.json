@@ -28,7 +28,7 @@
     "neverthrow": "8.0.0",
     "next": "14.2.11",
     "next-themes": "^0.2.1",
-    "postcss": "8.4.45",
+    "postcss": "8.4.47",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-variants": "^0.2.0",
