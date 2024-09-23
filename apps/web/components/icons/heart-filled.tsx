@@ -11,7 +11,6 @@ export const HeartFilledIcon: FC<IconSvgProps> = ({
     aria-hidden="true"
     focusable="false"
     height={size || height}
-    role="presentation"
     viewBox="0 0 24 24"
     width={size || width}
     {...props}
