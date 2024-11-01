@@ -12,8 +12,8 @@
     "format": "biome format ./ --write"
   },
   "dependencies": {
-    "@next/third-parties": "14.2.16",
-    "next": "14.2.16",
+    "@next/third-parties": "15.0.2",
+    "next": "15.0.2",
     "nextra": "^2.12.3",
     "nextra-theme-docs": "^2.12.3",
     "react": "^18.2.0",
