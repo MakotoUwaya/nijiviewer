@@ -19,14 +19,14 @@ export const fetchLiveVideos = async (org: string): Promise<Video[]> => {
         "x-apikey": process.env.HOLODEX_APIKEY || "",
       },
     }),
-    (e: Error) => e
+    (e: Error) => e,
   );
   if (response.isErr()) {
     return [];
   }
   const videos = await fromPromise<Video[], Error>(
     response.value.json(),
-    (e: Error) => e
+    (e: Error) => e,
   );
   return videos.isOk() ? videos.value : [];
 };
