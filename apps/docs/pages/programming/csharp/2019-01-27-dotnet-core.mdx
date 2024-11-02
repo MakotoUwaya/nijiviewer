@@ -33,7 +33,7 @@ error BG1003: The project file contains a property value that is not valid.
 ```
 どうも余分な定義があるのが原因のようなので、必要最低限の定義に変更します。
 
-```xml title="*.netcore.csproj"
+```xml filename="*.netcore.csproj"
 <!-- 元々の内容は全て削除して以下だけにする -->
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
