@@ -26,7 +26,7 @@ export const hasPast = (target: string | undefined): boolean => {
 const Videos = (props: VideoProps): JSX.Element => {
   const liveVideos = props.videos
     .filter((v) => hasPast(v.start_actual) || hasPast(v.start_scheduled))
-    .map(v => ({ ...v, started: hasPast(v.start_actual) }));
+    .map((v) => ({ ...v, started: hasPast(v.start_actual) }));
   if (liveVideos.length === 0) {
     return (
       <div className="flex justify-center p-10">

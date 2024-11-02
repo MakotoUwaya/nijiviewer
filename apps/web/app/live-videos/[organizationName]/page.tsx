@@ -3,7 +3,7 @@ import { organizationMap } from "@/const/organizations";
 import { fetchLiveVideos } from "@/lib/data";
 
 type Props = {
-  params: { organizationName: string };
+  params: Promise<{ organizationName: string }>;
 };
 
 const isValidOrganizationName = (organizationName: string): boolean => {
@@ -16,7 +16,7 @@ const isValidOrganizationName = (organizationName: string): boolean => {
 export default async function LiveVideosPage({
   params,
 }: Props): Promise<JSX.Element> {
-  const organizationName = params.organizationName;
+  const { organizationName } = await params;
   if (!isValidOrganizationName(organizationName)) {
     return <>Request Error</>;
   }

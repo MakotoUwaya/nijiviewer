@@ -18,9 +18,12 @@ const getStarted = (target: string | undefined): string => {
   return targetDateTime.toRelative() || "";
 };
 
-export default function VideoCardStream(video: StreamVideo & { started: boolean }): JSX.Element {
-  const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
-    }`;
+export default function VideoCardStream(
+  video: StreamVideo & { started: boolean },
+): JSX.Element {
+  const channelDescription = `${video.channel.org}${
+    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+  }`;
   const canShowViewer = video.topic_id !== "membersonly";
   const viewersCount = canShowViewer
     ? `${video.live_viewers?.toLocaleString() || ""} watching now `

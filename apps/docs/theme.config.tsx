@@ -1,5 +1,5 @@
-import React from 'react';
 import type { DocsThemeConfig } from 'nextra-theme-docs';
+import React from 'react';
 
 const config: DocsThemeConfig = {
   logo: <span>OiChan Docs</span>,
@@ -8,7 +8,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/MakotoUwaya/nijiviewer/blob/main',
   footer: {
-    text: 'Powered by Nextra',
+    content: 'Powered by Nextra',
   },
 };
 
