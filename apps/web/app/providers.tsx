@@ -2,12 +2,12 @@
 
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import type { ThemeProviderProps } from "next-themes/dist/types";
+import type { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 
 export interface ProvidersProps {
   children: ReactNode;
-  themeProps?: ThemeProviderProps;
+  themeProps?: Parameters<typeof ThemeProvider>[0];
 }
 
 export function Providers({
