@@ -1,6 +1,7 @@
 import Videos from "@/components/videos";
 import { organizationMap } from "@/const/organizations";
 import { fetchLiveVideos } from "@/lib/data";
+import type { JSX } from "react";
 
 type Props = {
   params: Promise<{ organizationName: string }>;
