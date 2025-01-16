@@ -46,7 +46,7 @@
     "@storybook/react": "^8.2.8",
     "@storybook/test": "^8.2.8",
     "@testing-library/dom": "10.4.0",
-    "@testing-library/react": "16.1.0",
+    "@testing-library/react": "16.2.0",
     "@types/luxon": "3.4.2",
     "@types/node": "^22.0.0",
     "@types/react": "^18.0.22",
