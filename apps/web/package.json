@@ -54,7 +54,7 @@
     "@vitejs/plugin-react": "4.3.4",
     "@vitest/coverage-v8": "2.1.8",
     "jsdom": "25.0.1",
-    "openapi-typescript": "7.5.2",
+    "openapi-typescript": "7.6.0",
     "storybook": "^8.2.8",
     "tsconfig": "*",
     "typescript": "^5.0.0",
