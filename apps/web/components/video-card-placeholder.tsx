@@ -6,7 +6,7 @@ import {
   Chip,
   Image,
   User,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { DateTime } from "luxon";
 import type { JSX } from "react";
 

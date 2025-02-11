@@ -14,7 +14,7 @@ import {
   NavbarMenuToggle,
   Navbar as NextUINavbar,
   link as linkStyles,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import clsx from "clsx";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";

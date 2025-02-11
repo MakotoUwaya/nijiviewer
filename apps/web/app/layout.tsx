@@ -1,4 +1,4 @@
-import { Link } from "@nextui-org/react";
+import { Link } from "@heroui/react";
 import clsx from "clsx";
 import type { Metadata, Viewport } from "next";
 import type { JSX } from "react";

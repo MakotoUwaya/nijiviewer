@@ -7,7 +7,7 @@ import {
   Image,
   Tooltip,
   User,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { DateTime } from "luxon";
 import type { JSX } from "react";
 
