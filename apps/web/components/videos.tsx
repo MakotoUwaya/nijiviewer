@@ -1,5 +1,6 @@
 import type { Video } from "@/lib/holodex";
 import { DateTime } from "luxon";
+import type { JSX } from "react";
 import { EmptyImage } from "./images";
 import VideoCardPlaceholder from "./video-card-placeholder";
 import VideoCardSkeleton from "./video-card-skeleton";
