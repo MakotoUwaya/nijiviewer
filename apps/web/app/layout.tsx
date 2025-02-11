@@ -1,6 +1,7 @@
 import { Link } from "@nextui-org/react";
 import clsx from "clsx";
 import type { Metadata, Viewport } from "next";
+import type { JSX } from "react";
 
 import { Navbar } from "@/components/navbar";
 import { fontSans } from "@/config/fonts";

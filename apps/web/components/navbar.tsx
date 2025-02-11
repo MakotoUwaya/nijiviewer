@@ -18,7 +18,7 @@ import {
 import clsx from "clsx";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { type JSX, useState } from "react";
 
 import { GithubIcon, Logo } from "./icons";
 import { ThemeSwitch } from "./theme-switch";

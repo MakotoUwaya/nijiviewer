@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 import type { Organization } from "@/lib/holodex";
 import { Avatar, Select, SelectItem } from "@nextui-org/react";
 

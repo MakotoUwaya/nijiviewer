@@ -1,5 +1,6 @@
 import { Code, Link, Snippet, button as buttonStyles } from "@nextui-org/react";
 import NextLink from "next/link";
+import type { JSX } from "react";
 import { GithubIcon } from "../components/icons";
 import { subtitle, title } from "../components/primitives";
 import { siteConfig } from "../config/site";

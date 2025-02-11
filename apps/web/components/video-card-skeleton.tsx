@@ -1,4 +1,5 @@
 import { Card, CardFooter, Skeleton } from "@nextui-org/react";
+import type { JSX } from "react";
 
 export default function VideoCardSkeleton(): JSX.Element {
   return (
