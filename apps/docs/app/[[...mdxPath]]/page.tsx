@@ -9,6 +9,7 @@ export async function generateMetadata(props) {
   return metadata
 };
 
+// biome-ignore lint/correctness/useHookAtTopLevel: false positive, useMDXComponents are not react hooks
 const Wrapper = useMDXComponents().wrapper;
 
 export default async function Page(props) {
