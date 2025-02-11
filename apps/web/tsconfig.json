@@ -2,6 +2,8 @@
   "extends": "tsconfig/nextjs.json",
   "compilerOptions": {
     "plugins": [{ "name": "next" }],
+    "target": "ESNext",
+    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./*"]
     }
