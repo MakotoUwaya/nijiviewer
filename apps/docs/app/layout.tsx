@@ -7,7 +7,7 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://nextra.site'),
   title: {
-    template: '%s - Nextra'
+    template: '%s'
   },
   description: 'OiChan Docs',
   applicationName: 'Nextra',
