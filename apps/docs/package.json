@@ -14,11 +14,13 @@
   },
   "dependencies": {
     "@next/third-parties": "15.1.6",
+    "@tailwindcss/postcss": "^4.0.6",
     "next": "15.1.6",
     "nextra": "^4.0.0",
     "nextra-theme-docs": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tailwindcss": "^4.0.6",
     "ui": "*"
   },
   "devDependencies": {
