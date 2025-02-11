@@ -20,6 +20,7 @@
     "@react-aria/ssr": "^3.7.1",
     "@react-aria/visually-hidden": "^3.8.3",
     "@tailwindcss/line-clamp": "0.4.4",
+    "@tailwindcss/postcss": "4.0.6",
     "autoprefixer": "10.4.20",
     "clsx": "^2.0.0",
     "framer-motion": "12.4.10",
