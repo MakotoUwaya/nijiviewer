@@ -8,6 +8,7 @@ import {
   User,
 } from "@nextui-org/react";
 import { DateTime } from "luxon";
+import type { JSX } from "react";
 
 const getDomain = (url: string): string => {
   return new URL(url).hostname;
@@ -24,9 +25,8 @@ const getStarted = (target: string | undefined): string => {
 export default function VideoCardPlaceholder(
   video: PlaceholderVideo & { started: boolean },
 ): JSX.Element {
-  const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
-  }`;
+  const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+    }`;
   const videoStatusText = video.started
     ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(video.start_actual)}`
     : "Will probably start soon";
