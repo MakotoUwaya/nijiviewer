@@ -1,0 +1,53 @@
+---
+title: Code Sample
+---
+
+# Code Sample
+
+```js filename="demo.js" {3} copy
+let a = 1;
+
+console.log(a);
+```
+
+## Component
+
+Since syntax highlighting is done at build time, you can't use dynamic content
+in your code blocks. However, since MDX is very powerful there is a workaround
+via client JS. For example:
+
+import { DynamicCode } from './_dynamic-code';
+
+<DynamicCode>
+```js copy=false filename="demo.js"
+function hello() {
+  const x = 2 + 3
+  console.log(1)
+}
+```
+</DynamicCode>
+
+## External Component
+
+import { SampleCounter } from '../../../component/sample-counter';
+
+<SampleCounter>
+```js copy=false filename="sample-counter.js"
+export const SampleCounter: FC<{ children: ReactNode }> = ({ children }) => {
+  const [count, setCount] = useState(0);
+  const handleClick = (): void => {
+    setCount(count + 1);
+  };
+  return (
+    <>
+      ...
+      <div className="mt-3 flex justify-center gap-3 text-sm">
+        <Button onClick={handleClick} variant="outline">
+          Clicked {count} times
+        </Button>
+      </div>
+    </>
+  );
+};
+```
+</SampleCounter>
