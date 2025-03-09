@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+export default {
   reactStrictMode: true,
   transpilePackages: ["ui"],
   eslint: {
@@ -9,5 +9,3 @@ const nextConfig = {
     typedRoutes: true,
   },
 };
-
-module.exports = nextConfig;
