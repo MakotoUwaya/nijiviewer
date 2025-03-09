@@ -1,7 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 .video-trim {
-  object-view-box: inset(12.5% 0);
+	object-view-box: inset(12.5% 0);
 }

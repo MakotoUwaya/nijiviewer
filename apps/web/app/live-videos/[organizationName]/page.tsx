@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 import Videos from "@/components/videos";
 import { organizationMap } from "@/const/organizations";
 import { fetchLiveVideos } from "@/lib/data";

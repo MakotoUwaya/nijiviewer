@@ -1,3 +1,5 @@
+"use client";
+
 import type { StreamVideo } from "@/lib/holodex";
 import {
   Card,
@@ -7,8 +9,9 @@ import {
   Image,
   Tooltip,
   User,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { DateTime } from "luxon";
+import type { JSX } from "react";
 
 const getStarted = (target: string | undefined): string => {
   if (!target) {
@@ -21,9 +24,8 @@ const getStarted = (target: string | undefined): string => {
 export default function VideoCardStream(
   video: StreamVideo & { started: boolean },
 ): JSX.Element {
-  const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
-  }`;
+  const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+    }`;
   const canShowViewer = video.topic_id !== "membersonly";
   const viewersCount = canShowViewer
     ? `${video.live_viewers?.toLocaleString() || ""} watching now `
