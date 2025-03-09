@@ -1,3 +1,5 @@
+"use client";
+
 import type { PlaceholderVideo } from "@/lib/holodex";
 import {
   Card,

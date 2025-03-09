@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardFooter, Skeleton } from "@heroui/react";
 import type { JSX } from "react";
 

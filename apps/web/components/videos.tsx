@@ -1,3 +1,5 @@
+"use client";
+
 import type { Video } from "@/lib/holodex";
 import { DateTime } from "luxon";
 import type { JSX } from "react";

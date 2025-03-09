@@ -1,3 +1,5 @@
+"use client";
+
 import type { StreamVideo } from "@/lib/holodex";
 import {
   Card,
