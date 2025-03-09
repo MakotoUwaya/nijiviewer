@@ -34,7 +34,7 @@ export default function OrgSelector({
               alt={item.data?.name}
               className="flex-shrink-0"
               size="sm"
-              src={item.data?.logoUrl}
+              src={item.data ? `https://holodex.net/statics/channelImg/${item.data.channelId}/100.png` : undefined}
             />
             <div className="flex flex-col">
               <span>{item.data?.name}</span>
@@ -50,7 +50,7 @@ export default function OrgSelector({
               alt={organization.name}
               className="flex-shrink-0"
               size="sm"
-              src={organization.logoUrl}
+              src={`https://holodex.net/statics/channelImg/${organization.channelId}/100.png`}
             />
             <div className="flex flex-col">
               <span className="text-small">{organization.name}</span>

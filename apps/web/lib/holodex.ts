@@ -51,5 +51,5 @@ export interface Channel {
 export interface Organization {
   id: string;
   name: string;
-  logoUrl: string;
+  channelId: string;
 }
