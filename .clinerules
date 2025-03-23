@@ -1,7 +1,7 @@
 # Project Configuration
 
 ## Tech Stack
-- Next.js 14+ with App Router
+- Next.js 15+ with App Router
 - Tailwind CSS for styling
 - Supabase for backend
 - Vercel for deployment
@@ -9,21 +9,31 @@
 
 ## Project Structure
 
-/docs
-  /app         # Next.js App Router pages
-  /components  # React components
-
 /apps
-  /web
-    /src
-      /app         # Next.js App Router pages
-      /components  # React components
-      /lib         # Utility functions
-    /types           # TypeScript types
-    /public          # Static assets
+  /docs           # Documentation site
+    /app         # Next.js App Router pages
+    /components  # React components
+    /content     # Documentation content
+
+  /web           # Main application
+    /app         # Next.js App Router pages
+    /components  # React components
+    /config      # Configuration files
+    /const      # Constants
+    /lib        # Utility functions
+    /metrics    # Analytics components
+    /oas        # OpenAPI specifications
+    /stories    # Storybook stories
+    /styles     # Global styles
+    /types      # TypeScript types
+    /public     # Static assets
+
+/packages
+  /tsconfig     # Shared TypeScript configurations
+  /ui           # Shared UI components
 
 ## Database Migrations
-Noting
+Nothing
 
 ## Development Workflow
 - Cline helps write and review code changes
