@@ -37,6 +37,7 @@ const commonVideo = {
     photo: "channelPhoto",
     english_name: "channelEnglishName",
     subscriber_count: "123456",
+    published_at: "2020-01-01T00:00:00.000",
   },
 };
 
