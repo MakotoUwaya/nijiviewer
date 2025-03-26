@@ -36,6 +36,7 @@ const commonVideo = {
     type: "channelType",
     photo: "channelPhoto",
     english_name: "channelEnglishName",
+    subscriber_count: "123456",
   },
 };
 
