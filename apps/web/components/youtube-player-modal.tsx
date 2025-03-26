@@ -56,11 +56,7 @@ export default function YouTubePlayerModal({
   }, [isOpen, isApiReady, videoId]);
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      size="5xl"
-    >
+    <Modal isOpen={isOpen} onClose={onClose} size="5xl">
       <ModalContent>
         <ModalBody className="aspect-video p-0">
           <div id={playerContainerId} className="w-full h-full" />

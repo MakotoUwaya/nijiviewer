@@ -52,8 +52,7 @@ export function Search({ onSearch }: SearchProps) {
         base: "max-w-full sm:max-w-[20rem] h-10",
         mainWrapper: "h-full",
         input: "text-medium",
-        inputWrapper:
-          "h-full font-normal bg-default-100 dark:bg-default-50",
+        inputWrapper: "h-full font-normal bg-default-100 dark:bg-default-50",
       }}
       placeholder="配信者を検索..."
       size="sm"

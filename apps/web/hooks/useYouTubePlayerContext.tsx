@@ -13,9 +13,9 @@ interface YouTubePlayerContextType {
   toggleYouTubePlayer: (value: boolean) => void;
 }
 
-const YouTubePlayerContext = createContext<YouTubePlayerContextType | undefined>(
-  undefined
-);
+const YouTubePlayerContext = createContext<
+  YouTubePlayerContextType | undefined
+>(undefined);
 
 export function YouTubePlayerProvider({
   children,
@@ -41,7 +41,7 @@ export function useYouTubePlayer(): YouTubePlayerContextType {
   const context = useContext(YouTubePlayerContext);
   if (context === undefined) {
     throw new Error(
-      "useYouTubePlayer must be used within a YouTubePlayerProvider"
+      "useYouTubePlayer must be used within a YouTubePlayerProvider",
     );
   }
   return context;

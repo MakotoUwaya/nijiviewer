@@ -5,9 +5,7 @@ type Props = {
   searchParams: Promise<{ q: string }>;
 };
 
-export default async function SearchPage({
-  searchParams,
-}: Props) {
+export default async function SearchPage({ searchParams }: Props) {
   const { q } = await searchParams;
   const channels = await searchChannels(q);
   return (
@@ -15,7 +13,8 @@ export default async function SearchPage({
       {q && (
         <h1 className="text-2xl font-bold mb-4">
           「{decodeURIComponent(q)}」の検索結果
-        </h1>)}
+        </h1>
+      )}
 
       {channels.length === 0 ? (
         <div className="text-center text-default-500">

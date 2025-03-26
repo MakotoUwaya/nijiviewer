@@ -5,9 +5,11 @@ import { Search } from "./search";
 
 describe("Search", () => {
   it("検索ボックスが表示される", () => {
-    render(<Search onSearch={() => { }} />);
+    render(<Search onSearch={() => {}} />);
     // Use getAllByPlaceholderText and check that at least one exists
-    expect(screen.getAllByPlaceholderText("配信者を検索...").length).toBeGreaterThan(0);
+    expect(
+      screen.getAllByPlaceholderText("配信者を検索...").length,
+    ).toBeGreaterThan(0);
   });
 
   it("入力値が変更された時にonSearchが呼ばれる", async () => {

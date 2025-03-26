@@ -33,8 +33,9 @@ export default function VideoCardStream(
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || "");
 
-  const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
-    }`;
+  const channelDescription = `${video.channel.org}${
+    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+  }`;
   const canShowViewer = video.topic_id !== "membersonly";
   const viewersCount = canShowViewer
     ? `${video.live_viewers?.toLocaleString() || ""} watching now `
@@ -49,7 +50,7 @@ export default function VideoCardStream(
       window.open(
         `https://www.youtube.com/watch?v=${video.id}`,
         "_blank",
-        "noopener,noreferrer"
+        "noopener,noreferrer",
       );
     } else {
       setIsModalOpen(true);

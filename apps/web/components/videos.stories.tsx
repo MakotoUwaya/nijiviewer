@@ -6,13 +6,15 @@ const meta = {
   title: "Components/Video",
   component: Video,
   tags: ["autodocs"],
-  decorators: [(Story) => {
-    return (
-      <YouTubePlayerProvider>
-        <Story />
-      </YouTubePlayerProvider>
-    );
-  }]
+  decorators: [
+    (Story) => {
+      return (
+        <YouTubePlayerProvider>
+          <Story />
+        </YouTubePlayerProvider>
+      );
+    },
+  ],
 } satisfies Meta<typeof Video>;
 
 export default meta;

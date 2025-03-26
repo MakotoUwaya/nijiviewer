@@ -34,7 +34,11 @@ export default function OrgSelector({
               alt={item.data?.name}
               className="flex-shrink-0"
               size="sm"
-              src={item.data ? `https://holodex.net/statics/channelImg/${item.data.channelId}/100.png` : undefined}
+              src={
+                item.data
+                  ? `https://holodex.net/statics/channelImg/${item.data.channelId}/100.png`
+                  : undefined
+              }
             />
             <div className="flex flex-col">
               <span>{item.data?.name}</span>

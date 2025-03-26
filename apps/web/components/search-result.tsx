@@ -27,12 +27,24 @@ export function SearchResult({ channel }: { channel: Channel }) {
             <div className="flex flex-col gap-1 text-default-500 text-sm">
               <div className="flex items-center gap-1">
                 <UserGroupIcon className="w-4 h-4" />
-                <span>{Number(channel.subscriber_count).toLocaleString('ja-JP')}</span>
+                <span>
+                  {Number(channel.subscriber_count).toLocaleString("ja-JP")}
+                </span>
               </div>
-              <div>{channel.org || '未所属'} {channel.suborg ? `/ ${channel.suborg.substring(2)}` : ''}</div>
+              <div>
+                {channel.org || "未所属"}{" "}
+                {channel.suborg ? `/ ${channel.suborg.substring(2)}` : ""}
+              </div>
               <div className="flex items-center gap-1">
                 <CalendarIcon className="w-4 h-4" />
-                <span>{channel.published_at ? new Date(channel.published_at).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long' }) : '不明'}</span>
+                <span>
+                  {channel.published_at
+                    ? new Date(channel.published_at).toLocaleDateString(
+                        "ja-JP",
+                        { year: "numeric", month: "long" },
+                      )
+                    : "不明"}
+                </span>
               </div>
             </div>
           </div>

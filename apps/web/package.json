@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome lint ./ --files-ignore-unknown=true",
-    "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
+    "lint:fix": "biome check --write ./ --files-ignore-unknown=true",
     "format": "biome format ./ --write",
     "test": "vitest run",
     "coverage": "vitest run --coverage",

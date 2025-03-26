@@ -38,7 +38,7 @@ declare global {
             onStateChange?: (event: { data: number }) => void;
             onError?: (event: { data: number }) => void;
           };
-        }
+        },
       ) => YouTubePlayer;
       PlayerState: {
         UNSTARTED: -1;
