@@ -3,6 +3,7 @@
 import OrgSelector from "@/components/org-selector";
 import { siteConfig } from "@/config/site";
 import { organizationMap } from "@/const/organizations";
+import { useYouTubePlayer } from "@/hooks/useYouTubePlayerContext";
 import type { Organization } from "@/lib/holodex";
 import {
   Link,
@@ -19,9 +20,9 @@ import clsx from "clsx";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { type JSX, useState } from "react";
-
 import { GithubIcon, Logo } from "./icons";
 import { ThemeSwitch } from "./theme-switch";
+import VideoPlayerToggle from "./video-player-toggle";
 
 const getSegmentName = (path: string): string => {
   if (path === "/") {
@@ -47,6 +48,7 @@ export function Navbar(): JSX.Element {
       : "foreground";
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
   const onChangeOrganization = (organization: Organization) => {
     setIsMenuOpen(false);
     router.push(`/live-videos/${organization.id}`);
@@ -101,15 +103,21 @@ export function Navbar(): JSX.Element {
           <Link aria-label="Github" href={siteConfig.links.github} isExternal>
             <GithubIcon className="text-default-500" />
           </Link>
+          <VideoPlayerToggle
+            isYouTubePlayer={isYouTubePlayer}
+            onChange={toggleYouTubePlayer}
+          />
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link aria-label="Github" href={siteConfig.links.github} isExternal>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
+        <NavbarItem className="flex gap-2">
+          <Link aria-label="Github" href={siteConfig.links.github} isExternal>
+            <GithubIcon className="text-default-500" />
+          </Link>
+          <ThemeSwitch />
+        </NavbarItem>
         <NavbarMenuToggle />
       </NavbarContent>
 
@@ -120,6 +128,10 @@ export function Navbar(): JSX.Element {
           onChange={onChangeOrganization}
         />
         <div className="mx-4 mt-2 flex flex-col gap-2">
+          <VideoPlayerToggle
+            isYouTubePlayer={isYouTubePlayer}
+            onChange={toggleYouTubePlayer}
+          />
           {siteConfig.navMenuItems.map((item) => (
             <NavbarMenuItem key={item.href}>
               <Link color={linkColor(item.href)} href={item.href} size="lg">
