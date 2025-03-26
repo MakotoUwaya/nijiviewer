@@ -1,11 +1,18 @@
+import { YouTubePlayerProvider } from "@/hooks/useYouTubePlayerContext";
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
 import Video from "./videos";
 
 const meta = {
   title: "Components/Video",
   component: Video,
   tags: ["autodocs"],
+  decorators: [(Story) => {
+    return (
+      <YouTubePlayerProvider>
+        <Story />
+      </YouTubePlayerProvider>
+    );
+  }]
 } satisfies Meta<typeof Video>;
 
 export default meta;

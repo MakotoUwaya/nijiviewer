@@ -1,5 +1,5 @@
+import { YouTubePlayerProvider } from "@/hooks/useYouTubePlayerContext";
 import type { Meta, StoryObj } from "@storybook/react";
-import { YouTubePlayerProvider } from "../hooks/useYouTubePlayerContext";
 import { Navbar } from "./navbar";
 
 const meta = {
