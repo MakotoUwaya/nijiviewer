@@ -6,13 +6,15 @@ const meta = {
   title: "Components/Video",
   component: Video,
   tags: ["autodocs"],
-  decorators: [(Story) => {
-    return (
-      <YouTubePlayerProvider>
-        <Story />
-      </YouTubePlayerProvider>
-    );
-  }]
+  decorators: [
+    (Story) => {
+      return (
+        <YouTubePlayerProvider>
+          <Story />
+        </YouTubePlayerProvider>
+      );
+    },
+  ],
 } satisfies Meta<typeof Video>;
 
 export default meta;
@@ -36,6 +38,8 @@ const commonVideo = {
     type: "channelType",
     photo: "channelPhoto",
     english_name: "channelEnglishName",
+    subscriber_count: "123456",
+    published_at: "2020-01-01T00:00:00.000",
   },
 };
 

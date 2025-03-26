@@ -19,8 +19,9 @@ import {
 import clsx from "clsx";
 import NextLink from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { type JSX, useState } from "react";
+import { type JSX, Suspense, useState } from "react";
 import { GithubIcon, Logo } from "./icons";
+import { Search } from "./search";
 import { ThemeSwitch } from "./theme-switch";
 import VideoPlayerToggle from "./video-player-toggle";
 
@@ -49,6 +50,12 @@ export function Navbar(): JSX.Element {
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
+  const handleSearch = (value: string) => {
+    setIsMenuOpen(false);
+    const trimmedValue = value.trim();
+    if (!trimmedValue) return;
+    router.push(`/search?q=${encodeURIComponent(trimmedValue)}`);
+  };
   const onChangeOrganization = (organization: Organization) => {
     setIsMenuOpen(false);
     router.push(`/live-videos/${organization.id}`);
@@ -62,12 +69,17 @@ export function Navbar(): JSX.Element {
       position="sticky"
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
+        <NavbarBrand as="li" className="gap-3 max-w-fit mr-4">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />
             <p className="font-bold text-inherit">NijiViewer</p>
           </NextLink>
         </NavbarBrand>
+        <div className="hidden sm:flex">
+          <Suspense fallback={<div>Loading search...</div>}>
+            <Search onSearch={handleSearch} />
+          </Suspense>
+        </div>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
@@ -122,12 +134,17 @@ export function Navbar(): JSX.Element {
       </NavbarContent>
 
       <NavbarMenu>
+        <div className="sm:hidden mt-4 px-4">
+          <Suspense fallback={<div>Loading search...</div>}>
+            <Search onSearch={handleSearch} />
+          </Suspense>
+        </div>
         <OrgSelector
           items={organizationMap}
           selectedKey={leafSegmentName}
           onChange={onChangeOrganization}
         />
-        <div className="mx-4 mt-2 flex flex-col gap-2">
+        <div className="mx-4 mt-4 flex flex-col gap-2">
           <VideoPlayerToggle
             isYouTubePlayer={isYouTubePlayer}
             onChange={toggleYouTubePlayer}

@@ -1,14 +1,7 @@
 "use client";
 
 import type { PlaceholderVideo } from "@/lib/holodex";
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  Chip,
-  Image,
-  User,
-} from "@heroui/react";
+import { Card, CardFooter, CardHeader, Chip, Image, User } from "@heroui/react";
 import { DateTime } from "luxon";
 import type { JSX } from "react";
 
@@ -27,8 +20,9 @@ const getStarted = (target: string | undefined): string => {
 export default function VideoCardPlaceholder(
   video: PlaceholderVideo & { started: boolean },
 ): JSX.Element {
-  const channelDescription = `${video.channel.org}${video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
-    }`;
+  const channelDescription = `${video.channel.org}${
+    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+  }`;
   const videoStatusText = video.started
     ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(video.start_actual)}`
     : "Will probably start soon";
