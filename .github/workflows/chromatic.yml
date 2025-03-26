@@ -22,3 +22,5 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/web
           storybookBaseDir: apps/web
+          exitOnceUploaded: true
+          allowConsoleErrors: true
