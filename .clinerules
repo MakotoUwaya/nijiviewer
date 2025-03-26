@@ -272,6 +272,28 @@ class StripePaymentGateway implements PaymentGateway {
 
 ## Git作業規約
 
+### ブランチ運用
+
+1. 機能実装時のブランチ作成
+   ```bash
+   # mainブランチから新規ブランチを作成
+   git checkout main
+   git pull origin main
+   git checkout -b feature/[機能名]
+   ```
+
+2. ブランチ命名規則
+   - `feature/*`: 新機能の実装
+   - `fix/*`: バグ修正
+   - `refactor/*`: リファクタリング
+   - `docs/*`: ドキュメント更新
+   - `chore/*`: その他の変更
+
+3. プルリクエスト
+   - レビュー前に最新のmainブランチをマージ
+   - CIが全て通過していることを確認
+   - コードオーナーのレビュー承認後にマージ
+
 ### コミットメッセージ
 
 コミットメッセージの1文字目には [GitMoji](https://gitmoji.dev/) のアイコンを付加する：
