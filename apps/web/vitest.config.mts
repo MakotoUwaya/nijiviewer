@@ -17,5 +17,6 @@ export default defineConfig({
       reporter: ["text", "json", "html"],
     },
     environment: "jsdom",
+    setupFiles: ["./test/setup.ts"],
   },
 });
