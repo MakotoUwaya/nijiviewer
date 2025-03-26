@@ -46,10 +46,18 @@ export interface Channel {
   type: string;
   photo: string;
   english_name: string;
+  subscriber_count: string;
+  published_at: string;
 }
 
 export interface Organization {
   id: string;
   name: string;
   channelId: string;
+}
+
+export interface AutocompleteResponse {
+  type: "channel" | "topic";
+  value: string;
+  text: string | null;
 }

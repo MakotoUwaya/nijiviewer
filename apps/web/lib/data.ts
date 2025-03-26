@@ -1,32 +1,84 @@
-import { type ResultAsync, fromPromise } from "neverthrow";
+import { fromPromise } from "neverthrow";
 import { unstable_noStore as noStore } from "next/cache";
 
-import type { Video } from "./holodex";
+import type { AutocompleteResponse, Channel, Video } from "./holodex";
 
 const apiVersion = "v2";
 const baseUrl = `https://holodex.net/api/${apiVersion}`;
 
 export const fetchLiveVideos = async (org: string): Promise<Video[]> => {
   noStore();
-  const query = new URLSearchParams({
+  const params = new URLSearchParams({
     type: "placeholder,stream",
     include: "mentions",
     org,
   });
   const response = await fromPromise(
-    fetch(`${baseUrl}/live?${query.toString()}`, {
+    fetch(`${baseUrl}/live?${params.toString()}`, {
       headers: {
         "x-apikey": process.env.HOLODEX_APIKEY || "",
       },
     }),
-    (e: Error) => e,
+    (e: Error) => e
   );
   if (response.isErr()) {
     return [];
   }
   const videos = await fromPromise<Video[], Error>(
     response.value.json(),
-    (e: Error) => e,
+    (e: Error) => e
   );
   return videos.isOk() ? videos.value : [];
+};
+
+export const searchChannels = async (query: string): Promise<Channel[]> => {
+  if (!query) {
+    return [];
+  }
+  noStore();
+  const params = new URLSearchParams({
+    q: query,
+  });
+  const response = await fromPromise(
+    fetch(`${baseUrl}/search/autocomplete?${params.toString()}`, {
+      headers: {
+        "x-apikey": process.env.HOLODEX_APIKEY || "",
+      },
+    }),
+    (e: Error) => e
+  );
+  if (response.isErr()) {
+    return [];
+  }
+  const autoCompleteResponses = await fromPromise<
+    AutocompleteResponse[],
+    Error
+  >(response.value.json(), (e: Error) => e);
+  if (autoCompleteResponses.isErr()) {
+    return [];
+  }
+
+  const channelPromises = autoCompleteResponses.value
+    .filter((res) => res.type === "channel")
+    .map(async (res) => {
+      const response = await fromPromise(
+        fetch(`${baseUrl}/channels/${res.value}`, {
+          headers: {
+            "x-apikey": process.env.HOLODEX_APIKEY || "",
+          },
+        }),
+        (e: Error) => e
+      );
+      if (response.isErr()) {
+        return undefined;
+      }
+      const channels = await fromPromise<Channel, Error>(
+        response.value.json(),
+        (e: Error) => e
+      );
+      return channels.isOk() ? channels.value : undefined;
+    });
+
+  const results = await Promise.all(channelPromises);
+  return results.filter((channel): channel is Channel => channel !== undefined);
 };
