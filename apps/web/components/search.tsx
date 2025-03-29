@@ -25,7 +25,7 @@ export function Search({ onSearch }: SearchProps) {
       if (onSearch) {
         onSearch(query);
       } else {
-        router.push(`/search?q=${encodeURIComponent(query)}`);
+        router.push(`/liver-search?q=${encodeURIComponent(query)}`);
       }
     };
 
@@ -41,7 +41,7 @@ export function Search({ onSearch }: SearchProps) {
       if (onSearch) {
         onSearch(value);
       } else {
-        router.push(`/search?q=${encodeURIComponent(value)}`);
+        router.push(`/liver-search?q=${encodeURIComponent(value)}`);
       }
     }
   };
@@ -49,7 +49,7 @@ export function Search({ onSearch }: SearchProps) {
   return (
     <Input
       classNames={{
-        base: "max-w-full sm:max-w-[20rem] h-10",
+        base: "w-full md:w-80 sm:max-w-[20rem] h-10",
         mainWrapper: "h-full",
         input: "text-medium",
         inputWrapper: "h-full font-normal bg-default-100 dark:bg-default-50",

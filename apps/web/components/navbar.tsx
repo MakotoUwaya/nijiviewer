@@ -54,7 +54,7 @@ export function Navbar(): JSX.Element {
     setIsMenuOpen(false);
     const trimmedValue = value.trim();
     if (!trimmedValue) return;
-    router.push(`/search?q=${encodeURIComponent(trimmedValue)}`);
+    router.push(`/liver-search?q=${encodeURIComponent(trimmedValue)}`);
   };
   const onChangeOrganization = (organization: Organization) => {
     setIsMenuOpen(false);
@@ -75,11 +75,6 @@ export function Navbar(): JSX.Element {
             <p className="font-bold text-inherit">NijiViewer</p>
           </NextLink>
         </NavbarBrand>
-        <div className="hidden sm:flex">
-          <Suspense fallback={<div>Loading search...</div>}>
-            <Search onSearch={handleSearch} />
-          </Suspense>
-        </div>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
@@ -104,7 +99,12 @@ export function Navbar(): JSX.Element {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <div className="hidden md:flex">
+        <div className="hidden sm:flex">
+          <Suspense fallback={<div>Loading search...</div>}>
+            <Search onSearch={handleSearch} />
+          </Suspense>
+        </div>
+        <div className="hidden sm:flex">
           <OrgSelector
             items={organizationMap}
             selectedKey={leafSegmentName}
@@ -134,7 +134,7 @@ export function Navbar(): JSX.Element {
       </NavbarContent>
 
       <NavbarMenu>
-        <div className="sm:hidden mt-4 px-4">
+        <div className="sm:hidden">
           <Suspense fallback={<div>Loading search...</div>}>
             <Search onSearch={handleSearch} />
           </Suspense>
