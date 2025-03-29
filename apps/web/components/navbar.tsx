@@ -50,11 +50,8 @@ export function Navbar(): JSX.Element {
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
-  const handleSearch = (value: string) => {
+  const handleSearch = () => {
     setIsMenuOpen(false);
-    const trimmedValue = value.trim();
-    if (!trimmedValue) return;
-    router.push(`/liver-search?q=${encodeURIComponent(trimmedValue)}`);
   };
   const onChangeOrganization = (organization: Organization) => {
     setIsMenuOpen(false);

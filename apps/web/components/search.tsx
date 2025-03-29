@@ -20,13 +20,11 @@ export function Search({ onSearch }: SearchProps) {
 
   const debouncedSearch = useMemo(() => {
     const search = (query: string) => {
-      if (!query.trim()) return;
-
-      if (onSearch) {
-        onSearch(query);
-      } else {
-        router.push(`/liver-search?q=${encodeURIComponent(query)}`);
+      if (!query.trim()) {
+        return;
       }
+      onSearch?.(query);
+      router.push(`/liver-search?q=${encodeURIComponent(query)}`);
     };
 
     let timeoutId: NodeJS.Timeout;
@@ -37,13 +35,12 @@ export function Search({ onSearch }: SearchProps) {
   }, [onSearch, router]);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && value.trim()) {
-      if (onSearch) {
-        onSearch(value);
-      } else {
-        router.push(`/liver-search?q=${encodeURIComponent(value)}`);
-      }
+    const trimmedValue = value.trim();
+    if (e.key !== 'Enter' || !trimmedValue) {
+      return;
     }
+    onSearch?.(trimmedValue);
+    router.push(`/liver-search?q=${encodeURIComponent(trimmedValue)}`);
   };
 
   return (
