@@ -5,7 +5,9 @@ import { siteConfig } from "@/config/site";
 import { organizationMap } from "@/const/organizations";
 import { useYouTubePlayer } from "@/hooks/useYouTubePlayerContext";
 import type { Organization } from "@/lib/holodex";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import {
+  Button,
   Link,
   NavbarBrand,
   NavbarContent,
@@ -38,7 +40,11 @@ const getLeafSegmentName = (path: string): string => {
   return decodeURIComponent(path.split("/")[2]?.trim() || "");
 };
 
-export function Navbar(): JSX.Element {
+interface NavbarProps {
+  onSidebarOpen: () => void;
+}
+
+export function Navbar({ onSidebarOpen }: NavbarProps): JSX.Element {
   const router = useRouter();
   const pathName = usePathname();
   const segmentName = getSegmentName(pathName);
@@ -69,6 +75,18 @@ export function Navbar(): JSX.Element {
       position="sticky"
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+        <NavbarItem className="lg:hidden">
+          <Button
+            isIconOnly
+            aria-label="Open menu"
+            className="min-w-unit-8 min-h-unit-8"
+            onClick={onSidebarOpen}
+            size="sm"
+            variant="light"
+          >
+            <Bars3Icon className="h-6 w-6" />
+          </Button>
+        </NavbarItem>
         <NavbarBrand as="li" className="gap-3 max-w-fit mr-4">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <Logo />

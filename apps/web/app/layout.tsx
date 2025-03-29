@@ -4,7 +4,7 @@ import clsx from "clsx";
 import type { Metadata, Viewport } from "next";
 import type { JSX } from "react";
 
-import { Navbar } from "@/components/navbar";
+import { LayoutWrapper } from "@/components/layout-wrapper";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import Metrics from "@/metrics";
@@ -49,8 +49,7 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <YouTubePlayerProvider>
-            <div className="relative flex flex-col h-screen">
-              <Navbar />
+            <LayoutWrapper>
               <main className="container mx-auto max-w-full md:px-6 flex-grow">
                 {children}
               </main>
@@ -65,7 +64,7 @@ export default function RootLayout({
                   <p className="text-primary">NextUI</p>
                 </Link>
               </footer>
-            </div>
+            </LayoutWrapper>
           </YouTubePlayerProvider>
         </Providers>
         <Metrics />
