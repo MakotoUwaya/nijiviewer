@@ -14,7 +14,6 @@ import {
 import { DateTime } from "luxon";
 import { useState } from "react";
 import type { JSX, MouseEvent } from "react";
-import VideoPlayerToggle from "./video-player-toggle";
 import YouTubePlayerModal from "./youtube-player-modal";
 
 const getStarted = (target: string | undefined): string => {

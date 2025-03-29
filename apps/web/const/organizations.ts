@@ -1,3 +1,4 @@
+// cSpell:disable
 import type { Organization } from "@/lib/holodex";
 
 const organizations = {

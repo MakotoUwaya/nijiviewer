@@ -15,9 +15,7 @@ export default async function LiverSearchPage({ searchParams }: Props) {
 
       {!!q && (
         <div className="mt-8">
-          <h2 className="text-xl font-bold mb-4">
-            「{q}」の検索結果
-          </h2>
+          <h2 className="text-xl font-bold mb-4">「{q}」の検索結果</h2>
 
           {channels.length === 0 ? (
             <div className="text-center text-default-500">

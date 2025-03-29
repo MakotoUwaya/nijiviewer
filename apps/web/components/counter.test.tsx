@@ -1,5 +1,5 @@
 import { composeStories } from "@storybook/react";
-import { render, waitFor, within } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import * as stories from "./counter.stories";
 
