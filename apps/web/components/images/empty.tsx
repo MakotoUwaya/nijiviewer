@@ -1,8 +1,8 @@
-import type { ImageSvgProps } from "@/types";
-import type { FC } from "react";
+import type { ImageSvgProps } from '@/types';
+import type { FC } from 'react';
 
 export const EmptyImage: FC<ImageSvgProps> = ({
-  message = "Empty",
+  message = 'Empty',
   width = 257,
   height = 247,
   ...props

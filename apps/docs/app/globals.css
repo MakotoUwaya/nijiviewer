@@ -4,30 +4,30 @@
 @variant dark (&:where(.dark *));
 
 body {
-	font-feature-settings: "rlig" 1, "calt" 1;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
 .home-content p {
-	margin-top: 1.5em;
-	line-height: 1.75em;
+  margin-top: 1.5em;
+  line-height: 1.75em;
 }
 
 code.text-\[\.9em\] {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 1200px) {
-	.home-content .hide-medium {
-		display: none;
-	}
+  .home-content .hide-medium {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 720px) {
-	.home-content p {
-		font-size: 0.9rem;
-	}
+  .home-content p {
+    font-size: 0.9rem;
+  }
 
-	.home-content .hide-small {
-		display: none;
-	}
+  .home-content .hide-small {
+    display: none;
+  }
 }

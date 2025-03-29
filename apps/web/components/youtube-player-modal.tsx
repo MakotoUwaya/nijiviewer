@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Modal, ModalBody, ModalContent } from "@heroui/react";
-import { useEffect, useRef, useState } from "react";
-import { type YouTubePlayer, useYouTubeApi } from "../hooks/useYouTubeApi";
+import { Modal, ModalBody, ModalContent } from '@heroui/react';
+import { useEffect, useRef, useState } from 'react';
+import { type YouTubePlayer, useYouTubeApi } from '../hooks/useYouTubeApi';
 
 interface YouTubePlayerModalProps {
   isOpen: boolean;
@@ -16,7 +16,7 @@ export default function YouTubePlayerModal({
   videoId,
 }: YouTubePlayerModalProps) {
   const playerRef = useRef<YouTubePlayer | null>(null);
-  const playerContainerId = "youtube-player-container";
+  const playerContainerId = 'youtube-player-container';
   const { loadYouTubeApi } = useYouTubeApi();
   const [isApiReady, setIsApiReady] = useState(false);
 
@@ -33,8 +33,8 @@ export default function YouTubePlayerModal({
 
     playerRef.current = new window.YT.Player(playerContainerId, {
       videoId,
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
       playerVars: {
         autoplay: 1,
         modestbranding: 1,
@@ -42,7 +42,7 @@ export default function YouTubePlayerModal({
       },
       events: {
         onError: (event) => {
-          console.error("YouTube Player Error:", event.data);
+          console.error('YouTube Player Error:', event.data);
         },
       },
     });

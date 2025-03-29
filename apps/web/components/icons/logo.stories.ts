@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Logo as LogoIcon } from "./logo";
+import type { Meta, StoryObj } from '@storybook/react';
+import { Logo as LogoIcon } from './logo';
 
 const meta = {
-  title: "Components/Icons",
+  title: 'Components/Icons',
   component: LogoIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof LogoIcon>;
 
 export default meta;

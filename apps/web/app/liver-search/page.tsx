@@ -1,5 +1,5 @@
-import { SearchResultList } from "@/components/search-result";
-import { searchChannels } from "@/lib/data";
+import { SearchResultList } from '@/components/search-result';
+import { searchChannels } from '@/lib/data';
 
 type Props = {
   searchParams: Promise<{ q: string }>;

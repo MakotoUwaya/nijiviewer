@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { EmptyImage } from "./empty";
+import type { Meta, StoryObj } from '@storybook/react';
+import { EmptyImage } from './empty';
 
 const meta = {
-  title: "Components/Images",
+  title: 'Components/Images',
   component: EmptyImage,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof EmptyImage>;
 
 export default meta;
@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Empty: Story = {
   args: {
-    message: "Empty",
+    message: 'Empty',
     width: 257,
     height: 247,
   },

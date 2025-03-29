@@ -1,5 +1,5 @@
-import GoogleAnalytics from "./analytics";
-import MicrosoftClarity from "./clarity";
+import GoogleAnalytics from './analytics';
+import MicrosoftClarity from './clarity';
 
 const Metrics = () => (
   <>

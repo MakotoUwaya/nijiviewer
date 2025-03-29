@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { NextUILogo } from "./next-ui";
+import type { Meta, StoryObj } from '@storybook/react';
+import { NextUILogo } from './next-ui';
 
 const meta = {
-  title: "Components/Icons",
+  title: 'Components/Icons',
   component: NextUILogo,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof NextUILogo>;
 
 export default meta;

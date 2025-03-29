@@ -1,4 +1,4 @@
-import { Card, CardBody, Skeleton } from "@heroui/react";
+import { Card, CardBody, Skeleton } from '@heroui/react';
 
 export function SearchResultSkeleton() {
   return (

@@ -1,4 +1,4 @@
-import { unstable_noStore as noStore } from "next/cache";
+import { unstable_noStore as noStore } from 'next/cache';
 
 type LiveRequestParams = {
   organization: string;
@@ -14,7 +14,7 @@ export async function GET(
     `https://holodex.net/api/v2/live?status=live&org=${organization}`,
     {
       headers: {
-        "x-apikey": process.env.HOLODEX_APIKEY || "",
+        'x-apikey': process.env.HOLODEX_APIKEY || '',
       },
     },
   );

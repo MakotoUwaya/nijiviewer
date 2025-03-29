@@ -16,7 +16,7 @@
     "formatter": {
       "arrowParentheses": "always",
       "jsxQuoteStyle": "double",
-      "quoteStyle": "double",
+      "quoteStyle": "single",
       "semicolons": "always",
       "trailingCommas": "all",
       "quoteProperties": "asNeeded",

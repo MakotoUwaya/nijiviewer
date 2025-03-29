@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import OrgSelector from "@/components/org-selector";
-import { siteConfig } from "@/config/site";
-import { organizationMap } from "@/const/organizations";
-import { useYouTubePlayer } from "@/hooks/useYouTubePlayerContext";
-import type { Organization } from "@/lib/holodex";
+import OrgSelector from '@/components/org-selector';
+import { siteConfig } from '@/config/site';
+import { organizationMap } from '@/const/organizations';
+import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
+import type { Organization } from '@/lib/holodex';
 import {
   Link,
   NavbarBrand,
@@ -15,27 +15,27 @@ import {
   NavbarMenuToggle,
   Navbar as NextUINavbar,
   link as linkStyles,
-} from "@heroui/react";
-import clsx from "clsx";
-import NextLink from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { type JSX, Suspense, useState } from "react";
-import { GithubIcon, Logo } from "./icons";
-import { Search } from "./search";
-import { ThemeSwitch } from "./theme-switch";
-import VideoPlayerToggle from "./video-player-toggle";
+} from '@heroui/react';
+import clsx from 'clsx';
+import NextLink from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { type JSX, Suspense, useState } from 'react';
+import { GithubIcon, Logo } from './icons';
+import { Search } from './search';
+import { ThemeSwitch } from './theme-switch';
+import VideoPlayerToggle from './video-player-toggle';
 
 const getSegmentName = (path: string): string => {
-  if (path === "/") {
+  if (path === '/') {
     return path;
   }
-  return path.split("/")[1];
+  return path.split('/')[1];
 };
 const getLeafSegmentName = (path: string): string => {
-  if (path === "/") {
-    return "";
+  if (path === '/') {
+    return '';
   }
-  return decodeURIComponent(path.split("/")[2]?.trim() || "");
+  return decodeURIComponent(path.split('/')[2]?.trim() || '');
 };
 
 export function Navbar(): JSX.Element {
@@ -43,10 +43,10 @@ export function Navbar(): JSX.Element {
   const pathName = usePathname();
   const segmentName = getSegmentName(pathName);
   const leafSegmentName = getLeafSegmentName(pathName);
-  const linkColor = (href: string): "primary" | "danger" | "foreground" => {
+  const linkColor = (href: string): 'primary' | 'danger' | 'foreground' => {
     return href === `${segmentName}` || href.startsWith(`/${segmentName}/`)
-      ? "primary"
-      : "foreground";
+      ? 'primary'
+      : 'foreground';
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
@@ -80,8 +80,8 @@ export function Navbar(): JSX.Element {
             <NavbarItem key={item.href}>
               <NextLink
                 className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  linkStyles({ color: 'foreground' }),
+                  'data-[active=true]:text-primary data-[active=true]:font-medium',
                 )}
                 color="foreground"
                 href={{

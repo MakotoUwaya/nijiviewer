@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   type ReactNode,
@@ -6,7 +6,7 @@ import {
   useCallback,
   useContext,
   useState,
-} from "react";
+} from 'react';
 
 interface YouTubePlayerContextType {
   isYouTubePlayer: boolean;
@@ -41,7 +41,7 @@ export function useYouTubePlayer(): YouTubePlayerContextType {
   const context = useContext(YouTubePlayerContext);
   if (context === undefined) {
     throw new Error(
-      "useYouTubePlayer must be used within a YouTubePlayerProvider",
+      'useYouTubePlayer must be used within a YouTubePlayerProvider',
     );
   }
   return context;

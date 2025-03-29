@@ -1,22 +1,22 @@
-import { fromPromise } from "neverthrow";
-import { unstable_noStore as noStore } from "next/cache";
+import { fromPromise } from 'neverthrow';
+import { unstable_noStore as noStore } from 'next/cache';
 
-import type { AutocompleteResponse, Channel, Video } from "./holodex";
+import type { AutocompleteResponse, Channel, Video } from './holodex';
 
-const apiVersion = "v2";
+const apiVersion = 'v2';
 const baseUrl = `https://holodex.net/api/${apiVersion}`;
 
 export const fetchLiveVideos = async (org: string): Promise<Video[]> => {
   noStore();
   const params = new URLSearchParams({
-    type: "placeholder,stream",
-    include: "mentions",
+    type: 'placeholder,stream',
+    include: 'mentions',
     org,
   });
   const response = await fromPromise(
     fetch(`${baseUrl}/live?${params.toString()}`, {
       headers: {
-        "x-apikey": process.env.HOLODEX_APIKEY || "",
+        'x-apikey': process.env.HOLODEX_APIKEY || '',
       },
     }),
     (e: Error) => e,
@@ -42,7 +42,7 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
   const response = await fromPromise(
     fetch(`${baseUrl}/search/autocomplete?${params.toString()}`, {
       headers: {
-        "x-apikey": process.env.HOLODEX_APIKEY || "",
+        'x-apikey': process.env.HOLODEX_APIKEY || '',
       },
     }),
     (e: Error) => e,
@@ -59,12 +59,12 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
   }
 
   const channelPromises = autoCompleteResponses.value
-    .filter((res) => res.type === "channel")
+    .filter((res) => res.type === 'channel')
     .map(async (res) => {
       const response = await fromPromise(
         fetch(`${baseUrl}/channels/${res.value}`, {
           headers: {
-            "x-apikey": process.env.HOLODEX_APIKEY || "",
+            'x-apikey': process.env.HOLODEX_APIKEY || '',
           },
         }),
         (e: Error) => e,

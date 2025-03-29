@@ -1,5 +1,5 @@
-import type { IconSvgProps } from "@/types";
-import type { FC } from "react";
+import type { IconSvgProps } from '@/types';
+import type { FC } from 'react';
 
 export const GithubIcon: FC<IconSvgProps> = ({
   size = 24,

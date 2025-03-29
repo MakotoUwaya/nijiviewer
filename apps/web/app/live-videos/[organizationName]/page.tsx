@@ -1,8 +1,8 @@
-import type { JSX } from "react";
+import type { JSX } from 'react';
 
-import Videos from "@/components/videos";
-import { organizationMap } from "@/const/organizations";
-import { fetchLiveVideos } from "@/lib/data";
+import Videos from '@/components/videos';
+import { organizationMap } from '@/const/organizations';
+import { fetchLiveVideos } from '@/lib/data';
 
 type Props = {
   params: Promise<{ organizationName: string }>;

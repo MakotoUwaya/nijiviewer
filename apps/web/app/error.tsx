@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { type JSX, useEffect } from "react";
+import { type JSX, useEffect } from 'react';
 
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
 export default function Error({

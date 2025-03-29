@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import type { PlaceholderVideo } from "@/lib/holodex";
-import { Card, CardFooter, CardHeader, Chip, Image, User } from "@heroui/react";
-import { DateTime } from "luxon";
-import type { JSX } from "react";
+import type { PlaceholderVideo } from '@/lib/holodex';
+import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
+import { DateTime } from 'luxon';
+import type { JSX } from 'react';
 
 const getDomain = (url: string): string => {
   return new URL(url).hostname;
@@ -11,21 +11,21 @@ const getDomain = (url: string): string => {
 
 const getStarted = (target: string | undefined): string => {
   if (!target) {
-    return "";
+    return '';
   }
   const targetDateTime = DateTime.fromISO(target);
-  return targetDateTime.toRelative() || "";
+  return targetDateTime.toRelative() || '';
 };
 
 export default function VideoCardPlaceholder(
   video: PlaceholderVideo & { started: boolean },
 ): JSX.Element {
   const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
   }`;
   const videoStatusText = video.started
     ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(video.start_actual)}`
-    : "Will probably start soon";
+    : 'Will probably start soon';
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
@@ -51,12 +51,12 @@ export default function VideoCardPlaceholder(
             <User
               avatarProps={{
                 src: video.channel.photo,
-                className: "min-w-10",
+                className: 'min-w-10',
               }}
               classNames={{
-                base: "self-start",
-                name: "line-clamp-1",
-                description: "line-clamp-1",
+                base: 'self-start',
+                name: 'line-clamp-1',
+                description: 'line-clamp-1',
               }}
               description={channelDescription}
               name={video.channel.name}

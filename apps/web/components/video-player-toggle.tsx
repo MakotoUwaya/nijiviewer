@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Switch } from "@heroui/react";
-import type { ChangeEvent } from "react";
+import { Switch } from '@heroui/react';
+import type { ChangeEvent } from 'react';
 
 interface VideoPlayerToggleProps {
   isYouTubePlayer: boolean;
@@ -25,7 +25,7 @@ export default function VideoPlayerToggle({
         color="primary"
       />
       <span className="text-sm">
-        {isYouTubePlayer ? "YouTubeで再生" : "アプリ内で再生"}
+        {isYouTubePlayer ? 'YouTubeで再生' : 'アプリ内で再生'}
       </span>
     </div>
   );

@@ -1,1 +1,1 @@
-export { EmptyImage } from "./empty";
+export { EmptyImage } from './empty';

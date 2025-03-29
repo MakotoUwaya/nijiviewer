@@ -1,7 +1,7 @@
-import * as matchers from "@testing-library/jest-dom/matchers";
-import { cleanup } from "@testing-library/react";
-import { vi } from "vitest";
-import { afterEach, expect } from "vitest";
+import * as matchers from '@testing-library/jest-dom/matchers';
+import { cleanup } from '@testing-library/react';
+import { vi } from 'vitest';
+import { afterEach, expect } from 'vitest';
 
 // extends Vitest's expect method with methods from react-testing-library
 expect.extend(matchers);
@@ -12,7 +12,7 @@ afterEach(() => {
 });
 
 // Next.js の navigation モックを設定
-vi.mock("next/navigation", () => ({
+vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: vi.fn(),
     replace: vi.fn(),
@@ -21,5 +21,5 @@ vi.mock("next/navigation", () => ({
   useSearchParams: () => ({
     get: vi.fn(),
   }),
-  usePathname: () => "",
+  usePathname: () => '',
 }));

@@ -12,12 +12,12 @@ type CommonVideo = {
 };
 
 export type StreamVideo = CommonVideo & {
-  type: "stream";
+  type: 'stream';
   live_viewers: number;
 };
 
 export type PlaceholderVideo = CommonVideo & {
-  type: "placeholder";
+  type: 'placeholder';
   link: string;
   credits: {
     bot?: {
@@ -57,7 +57,7 @@ export interface Organization {
 }
 
 export interface AutocompleteResponse {
-  type: "channel" | "topic";
+  type: 'channel' | 'topic';
   value: string;
   text: string | null;
 }

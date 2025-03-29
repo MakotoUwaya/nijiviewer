@@ -1,8 +1,8 @@
-import { SearchIcon } from "@/components/icons";
-import { Input } from "@heroui/react";
-import { useRouter, useSearchParams } from "next/navigation";
-import type { ChangeEvent, KeyboardEvent } from "react";
-import { useMemo, useState } from "react";
+import { SearchIcon } from '@/components/icons';
+import { Input } from '@heroui/react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import type { ChangeEvent, KeyboardEvent } from 'react';
+import { useMemo, useState } from 'react';
 
 interface SearchProps {
   onSearch?: (value: string) => void;
@@ -11,7 +11,7 @@ interface SearchProps {
 export function Search({ onSearch }: SearchProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [value, setValue] = useState(searchParams.get("q") || "");
+  const [value, setValue] = useState(searchParams.get('q') || '');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -37,7 +37,7 @@ export function Search({ onSearch }: SearchProps) {
   }, [onSearch, router]);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && value.trim()) {
+    if (e.key === 'Enter' && value.trim()) {
       if (onSearch) {
         onSearch(value);
       } else {
@@ -49,10 +49,10 @@ export function Search({ onSearch }: SearchProps) {
   return (
     <Input
       classNames={{
-        base: "w-full md:w-80 sm:max-w-[20rem] h-10",
-        mainWrapper: "h-full",
-        input: "text-medium",
-        inputWrapper: "h-full font-normal bg-default-100 dark:bg-default-50",
+        base: 'w-full md:w-80 sm:max-w-[20rem] h-10',
+        mainWrapper: 'h-full',
+        input: 'text-medium',
+        inputWrapper: 'h-full font-normal bg-default-100 dark:bg-default-50',
       }}
       placeholder="配信者を検索..."
       size="sm"
