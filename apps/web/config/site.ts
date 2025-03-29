@@ -5,19 +5,11 @@ export const siteConfig = {
   description: "Get addicted to Nijisanji's swamp.",
   navItems: [
     {
-      label: "Home",
-      href: "/",
-    },
-    {
       label: "Live Videos",
       href: "/live-videos/Nijisanji",
     },
   ],
   navMenuItems: [
-    {
-      label: "Home",
-      href: "/",
-    },
     {
       label: "Live Videos",
       href: "/live-videos/Nijisanji",
