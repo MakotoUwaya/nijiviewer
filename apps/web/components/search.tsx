@@ -2,7 +2,7 @@ import { SearchIcon } from '@/components/icons';
 import { Input } from '@heroui/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { ChangeEvent, KeyboardEvent } from 'react';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 interface SearchProps {
   onSearch?: (value: string) => void;
@@ -15,24 +15,7 @@ export function Search({ onSearch }: SearchProps) {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    debouncedSearch(e.target.value);
   };
-
-  const debouncedSearch = useMemo(() => {
-    const search = (query: string) => {
-      if (!query.trim()) {
-        return;
-      }
-      onSearch?.(query);
-      router.push(`/liver-search?q=${encodeURIComponent(query)}`);
-    };
-
-    let timeoutId: NodeJS.Timeout;
-    return (query: string) => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => search(query), 500);
-    };
-  }, [onSearch, router]);
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     const trimmedValue = value.trim();
