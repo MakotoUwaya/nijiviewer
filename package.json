@@ -5,10 +5,12 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "turbo run format",
+    "spell-check": "cspell \"(apps|packages)/*/src/**/*.{ts,tsx,js,jsx}\" --quiet",
     "test": "turbo run test"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "cspell": "8.18.1",
     "prettier": "^3.0.3",
     "tsconfig": "*",
     "turbo": "2.4.4"
