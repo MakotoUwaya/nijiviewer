@@ -3,6 +3,23 @@ import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { Search } from './search';
 
+// AuthContextをモック
+vi.mock('@/context/auth-context', () => {
+  return {
+    useAuth: () => ({
+      user: null,
+      isLoading: false,
+      signIn: vi.fn(),
+      signUp: vi.fn(),
+      signOut: vi.fn(),
+      session: null,
+    }),
+    AuthProvider: ({ children }: { children: React.ReactNode }) => (
+      <>{children}</>
+    ),
+  };
+});
+
 describe('Search', () => {
   it('displays the search box', () => {
     render(<Search onSearch={() => {}} />);
