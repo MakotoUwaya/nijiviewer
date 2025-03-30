@@ -2,11 +2,16 @@ import { test, expect } from '@playwright/test';
 import { config } from '@/test/e2e/test-config';
 
 test.describe('ライブ配信一覧のテスト', () => {
-  test('選択した組織のライブ配信一覧に遷移すること', async ({ page, isMobile }) => {
+  test('選択した組織のライブ配信一覧に遷移すること', async ({
+    page,
+    isMobile,
+  }) => {
     await page.goto(config.baseURL);
 
     if (isMobile) {
-      const menuToggle = page.getByRole('button', { name: 'open navigation menu' });
+      const menuToggle = page.getByRole('button', {
+        name: 'open navigation menu',
+      });
       await expect(menuToggle).toBeVisible();
       await menuToggle.click();
 
