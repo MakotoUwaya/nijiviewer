@@ -3,6 +3,7 @@ import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import MicrosoftClarity from '../component/Clarity';
 import './globals.css';
 
 export const metadata = {
@@ -48,6 +49,7 @@ export default async function RootLayout({ children }) {
     <html lang="ja" dir="ltr" suppressHydrationWarning>
       <Head faviconGlyph="✦" />
       <GoogleAnalytics gaId="G-KH3DDQCG6B" />
+      <MicrosoftClarity />
       <body>
         <Layout
           navbar={navbar}

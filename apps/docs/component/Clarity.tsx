@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 const MicrosoftClarity = () => {
   useEffect(() => {
-    const clarityProjectId = process.env.NEXT_PUBLIC_MICROSOFT_CLARITY;
+    const clarityProjectId = 'qwauaog0rs';
     
     if (clarityProjectId) {
       Clarity.init(clarityProjectId);
