@@ -1,6 +1,5 @@
 import { SearchResultList } from '@/components/search-result';
-import { saveSearchHistory, searchChannels } from '@/lib/data';
-import { createCustomServerClient } from '@/lib/supabase-server';
+import { searchChannels } from '@/lib/data';
 
 type Props = {
   searchParams: Promise<{ q: string }>;
@@ -9,16 +8,6 @@ type Props = {
 export default async function LiverSearchPage({ searchParams }: Props) {
   const { q } = await searchParams;
   const channels = await searchChannels(q);
-
-  // ログインユーザーの情報を取得
-  const supabase = await createCustomServerClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-  const userId = session?.user?.id;
-
-  // 履歴を保存
-  await saveSearchHistory(q, channels.length, userId);
 
   return (
     <div className="container mx-auto px-4 py-8">
