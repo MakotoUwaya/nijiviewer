@@ -1,18 +1,18 @@
 'use client';
 
-// import Script from "next/script";
+import Script from "next/script";
 
 const GoogleAnalytics = () => {
   return (
     <>
-      {/* <Script
+      <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
       <Script
         id="google-analytics-init"
         strategy="afterInteractive"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analyticsの初期化に必要
         dangerouslySetInnerHTML={{
           __html: `
                     window.dataLayer = window.dataLayer || [];
@@ -22,7 +22,7 @@ const GoogleAnalytics = () => {
                     gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
                     `,
         }}
-      /> */}
+      />
     </>
   );
 };
