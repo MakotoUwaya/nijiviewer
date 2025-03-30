@@ -44,7 +44,7 @@ export default function Home(): JSX.Element {
 
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="flat">
-          <span>Live streams • Streamer search • Organization filtering</span>
+          <span>Live streams • Streamer search</span>
         </Snippet>
       </div>
     </section>
