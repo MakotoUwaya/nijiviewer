@@ -4,20 +4,20 @@ import Page from './page';
 
 test('heading 要素が想定通りに存在すること', () => {
   render(<Page />);
-  expect(screen.getByRole('heading', { level: 1, name: 'Make' })).toBeDefined();
+  expect(screen.getByRole('heading', { level: 1, name: 'Discover' })).toBeDefined();
   expect(
-    screen.getByRole('heading', { level: 1, name: 'beautiful' }),
+    screen.getByRole('heading', { level: 1, name: 'VTuber' }),
   ).toBeDefined();
   expect(
     screen.getByRole('heading', {
       level: 1,
-      name: 'websites regardless of your design experience.',
+      name: 'streams with ease and convenience.',
     }),
   ).toBeDefined();
   expect(
     screen.getByRole('heading', {
       level: 2,
-      name: 'Beautiful, fast and modern React UI library.',
+      name: 'Track and explore your favorite NijiSanji streamers in one place.',
     }),
   ).toBeDefined();
 });
