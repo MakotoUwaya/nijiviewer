@@ -3,6 +3,21 @@
 This is an application for displaying information on NijiSanji Libraries in an easy-to-read format, and is being created as an exercise in Next.js.  
 This project uses the Turborepo template.
 
+## 機能
+
+- ニジサンジライバーの配信情報表示
+- ライバー検索
+- 組織フィルタリング
+- YouTube動画のアプリ内再生
+- ユーザー認証機能（Supabase Authentication）
+
+### ユーザー認証
+
+このアプリケーションではSupabaseを使用してユーザー認証機能を実装しています。
+- ログインなしでも基本機能は使用可能
+- ログインすることで追加機能（お気に入りなど）が使用可能になります
+- メールアドレスとパスワードを使用した認証に対応
+
 ### Build
 
 To build all apps and packages, run the following command:
