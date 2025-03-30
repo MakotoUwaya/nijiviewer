@@ -1,5 +1,6 @@
 import { fromPromise } from 'neverthrow';
 import { unstable_noStore as noStore } from 'next/cache';
+import { supabase } from './supabase';
 
 import type { AutocompleteResponse, Channel, Video } from './holodex';
 
@@ -82,4 +83,43 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
 
   const results = await Promise.all(channelPromises);
   return results.filter((channel): channel is Channel => channel !== undefined);
+};
+
+// 検索履歴をSupabaseに保存する関数
+export const saveSearchHistory = async (
+  searchWord: string,
+  resultCount: number,
+  userId?: string,
+): Promise<boolean> => {
+  // 検索結果が0件の場合は保存しない
+  if (resultCount <= 0) {
+    return false;
+  }
+
+  // ユーザーIDがない場合（未ログイン）は保存しない
+  if (!userId) {
+    return false;
+  }
+
+  try {
+    const now = new Date().toISOString();
+    const { error } = await supabase.from('liver_search_history').insert({
+      created_at: now,
+      creator_id: userId,
+      modified_at: now,
+      modifier_id: userId,
+      search_word: searchWord,
+      result_count: resultCount,
+    });
+
+    if (error) {
+      console.error('検索履歴の保存に失敗しました:', error);
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.error('検索履歴の保存中にエラーが発生しました:', err);
+    return false;
+  }
 };
