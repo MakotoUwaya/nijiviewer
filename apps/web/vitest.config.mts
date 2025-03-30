@@ -13,10 +13,11 @@ export default defineConfig({
     coverage: {
       extension: ['.ts', '.tsx'],
       include: ['components/**', 'app/**'],
-      exclude: ['**/*.?(stories|test|spec).ts?(x)'],
+      exclude: ['**/*.?(stories|test|spec).ts?(x)', 'test/e2e/**'],
       reporter: ['text', 'json', 'html'],
     },
     environment: 'jsdom',
     setupFiles: ['./test/setup.ts'],
+    exclude: ['**/node_modules/**', '**/dist/**', 'test/e2e/**'],
   },
 });
