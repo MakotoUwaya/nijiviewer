@@ -25,7 +25,7 @@ export default function VideoPlayerToggle({
         color="primary"
       />
       <span className="text-sm">
-        {isYouTubePlayer ? 'YouTubeで再生' : 'アプリ内で再生'}
+        {isYouTubePlayer ? 'Play on YouTube' : 'Play in App'}
       </span>
     </div>
   );

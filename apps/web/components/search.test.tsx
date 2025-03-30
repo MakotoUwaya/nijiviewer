@@ -4,30 +4,30 @@ import { describe, expect, it, vi } from 'vitest';
 import { Search } from './search';
 
 describe('Search', () => {
-  it('検索ボックスが表示される', () => {
+  it('displays the search box', () => {
     render(<Search onSearch={() => {}} />);
     // Use getAllByPlaceholderText and check that at least one exists
     expect(
-      screen.getAllByPlaceholderText('配信者を検索...').length,
+      screen.getAllByPlaceholderText('Search Liver Name...').length,
     ).toBeGreaterThan(0);
   });
 
   // TODO: Fix this test
-  // it("入力値が変更された時にonSearchが呼ばれる", async () => {
+  // it("calls onSearch when input value changes", async () => {
   //   const onSearch = vi.fn((text: string) => console.log(text));
   //   render(<Search onSearch={onSearch} />);
 
-  //   const input = screen.getAllByPlaceholderText("配信者を検索...")[0];
+  //   const input = screen.getAllByPlaceholderText("Search Liver Name...")[0];
   //   await userEvent.type(input, "test");
 
   //   expect(onSearch).toHaveBeenCalledWith("test");
   // });
 
-  it('Enterキーを押した時にonSearchが呼ばれる', async () => {
+  it('calls onSearch when Enter key is pressed', async () => {
     const onSearch = vi.fn((text: string) => console.log(text));
     render(<Search onSearch={onSearch} />);
 
-    const input = screen.getAllByPlaceholderText('配信者を検索...')[0];
+    const input = screen.getAllByPlaceholderText('Search Liver Name...')[0];
     await userEvent.type(input, 'test');
     await userEvent.type(input, '{Enter}');
 

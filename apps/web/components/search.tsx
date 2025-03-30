@@ -34,7 +34,7 @@ export function Search({ onSearch }: SearchProps) {
         input: 'text-medium',
         inputWrapper: 'h-full font-normal bg-default-100 dark:bg-default-50',
       }}
-      placeholder="配信者を検索..."
+      placeholder="Search Liver Name..."
       size="sm"
       startContent={
         <SearchIcon className="text-xl text-default-400 pointer-events-none flex-shrink-0" />

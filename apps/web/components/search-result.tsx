@@ -32,7 +32,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
                 </span>
               </div>
               <div>
-                {channel.org || '未所属'}{' '}
+                {channel.org || 'Independent'}{' '}
                 {channel.suborg ? `/ ${channel.suborg.substring(2)}` : ''}
               </div>
               <div className="flex items-center gap-1">
@@ -43,7 +43,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
                         'ja-JP',
                         { year: 'numeric', month: 'long' },
                       )
-                    : '不明'}
+                    : 'Unknown'}
                 </span>
               </div>
             </div>
