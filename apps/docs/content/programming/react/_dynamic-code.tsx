@@ -13,8 +13,8 @@ export const DynamicCode: FC<{ children: ReactNode }> = ({ children }) => {
       return;
     }
     tokenRef.current = [
-      ...ref.current.querySelectorAll<HTMLSpanElement>('code > span > span')
-    ].find(el => el.textContent === '1')
+      ...ref.current.querySelectorAll<HTMLSpanElement>('code > span > span'),
+    ].find((el) => el.textContent === '1');
   }, []);
   return (
     <>
@@ -30,7 +30,7 @@ export const DynamicCode: FC<{ children: ReactNode }> = ({ children }) => {
               return;
             }
             const prev = token?.textContent || '0';
-            token.textContent = String((+prev || 0) + 1)
+            token.textContent = String((+prev || 0) + 1);
           }}
         >
           Increase the number
@@ -41,7 +41,7 @@ export const DynamicCode: FC<{ children: ReactNode }> = ({ children }) => {
             if (!tokenRef.current) {
               return;
             }
-            tokenRef.current.textContent = '1 + 1'
+            tokenRef.current.textContent = '1 + 1';
           }}
         >
           Change to `1 + 1`

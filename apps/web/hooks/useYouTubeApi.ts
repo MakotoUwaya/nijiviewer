@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export interface YouTubePlayer {
   playVideo(): void;
@@ -61,14 +61,14 @@ export const useYouTubeApi = () => {
         return;
       }
 
-      const tag = document.createElement("script");
-      tag.src = "https://www.youtube.com/iframe_api";
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
 
       window.onYouTubeIframeAPIReady = () => {
         resolve();
       };
 
-      const firstScriptTag = document.getElementsByTagName("script")[0];
+      const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
     });
   };

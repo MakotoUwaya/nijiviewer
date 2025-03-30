@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import type { SwitchProps } from "@heroui/react";
-import { useSwitch } from "@heroui/react";
-import { useIsSSR } from "@react-aria/ssr";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import clsx from "clsx";
-import { useTheme } from "next-themes";
-import type { FC } from "react";
-import { MoonFilledIcon, SunFilledIcon } from "./icons";
+import type { SwitchProps } from '@heroui/react';
+import { useSwitch } from '@heroui/react';
+import { useIsSSR } from '@react-aria/ssr';
+import { VisuallyHidden } from '@react-aria/visually-hidden';
+import clsx from 'clsx';
+import { useTheme } from 'next-themes';
+import type { FC } from 'react';
+import { MoonFilledIcon, SunFilledIcon } from './icons';
 
 export interface ThemeSwitchProps {
   className?: string;
-  classNames?: SwitchProps["classNames"];
+  classNames?: SwitchProps['classNames'];
 }
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({
@@ -22,7 +22,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const isSSR = useIsSSR();
 
   const onChange = (): void => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    theme === 'light' ? setTheme('dark') : setTheme('light');
   };
 
   const {
@@ -33,8 +33,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getInputProps,
     getWrapperProps,
   } = useSwitch({
-    isSelected: theme === "light",
-    "aria-label": `Switch to ${theme === "light" ? "dark" : "light"} mode`,
+    isSelected: theme === 'light',
+    'aria-label': `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`,
     onChange,
   });
 
@@ -42,7 +42,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     <Component
       {...getBaseProps({
         className: clsx(
-          "px-px transition-opacity hover:opacity-80 cursor-pointer",
+          'px-px transition-opacity hover:opacity-80 cursor-pointer',
           className,
           classNames?.base,
         ),
@@ -56,15 +56,15 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         className={slots.wrapper({
           class: clsx(
             [
-              "w-auto h-auto",
-              "bg-transparent",
-              "rounded-lg",
-              "flex items-center justify-center",
-              "group-data-[selected=true]:bg-transparent",
-              "!text-default-500",
-              "pt-px",
-              "px-0",
-              "mx-0",
+              'w-auto h-auto',
+              'bg-transparent',
+              'rounded-lg',
+              'flex items-center justify-center',
+              'group-data-[selected=true]:bg-transparent',
+              '!text-default-500',
+              'pt-px',
+              'px-0',
+              'mx-0',
             ],
             classNames?.wrapper,
           ),

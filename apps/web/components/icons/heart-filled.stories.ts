@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { HeartFilledIcon } from "./heart-filled";
+import type { Meta, StoryObj } from '@storybook/react';
+import { HeartFilledIcon } from './heart-filled';
 
 const meta = {
-  title: "Components/Icons",
+  title: 'Components/Icons',
   component: HeartFilledIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof HeartFilledIcon>;
 
 export default meta;

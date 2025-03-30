@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { SunFilledIcon } from "./sun-filled";
+import type { Meta, StoryObj } from '@storybook/react';
+import { SunFilledIcon } from './sun-filled';
 
 const meta = {
-  title: "Components/Icons",
+  title: 'Components/Icons',
   component: SunFilledIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof SunFilledIcon>;
 
 export default meta;

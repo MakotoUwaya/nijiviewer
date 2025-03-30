@@ -7,19 +7,19 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://nextra.site'),
   title: {
-    template: '%s'
+    template: '%s',
   },
   description: 'OiChan Docs',
   applicationName: 'Nextra',
   generator: 'Next.js',
   appleWebApp: {
-    title: 'Nextra'
+    title: 'Nextra',
   },
   other: {
     'msapplication-TileImage': '/ms-icon-144x144.png',
-    'msapplication-TileColor': '#fff'
-  }
-}
+    'msapplication-TileColor': '#fff',
+  },
+};
 
 export default async function RootLayout({ children }) {
   const navbar = (
@@ -59,5 +59,5 @@ export default async function RootLayout({ children }) {
         </Layout>
       </body>
     </html>
-  )
+  );
 }

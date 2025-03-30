@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { GithubIcon } from "./github";
+import type { Meta, StoryObj } from '@storybook/react';
+import { GithubIcon } from './github';
 
 const meta = {
-  title: "Components/Icons",
+  title: 'Components/Icons',
   component: GithubIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof GithubIcon>;
 
 export default meta;

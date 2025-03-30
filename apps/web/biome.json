@@ -1,5 +1,5 @@
 {
   "extends": [
-    "../../biome.common.json"
+    "../../biome.json"
   ]
 }

@@ -1,7 +1,7 @@
-import type { JSX } from "react";
+import type { JSX } from 'react';
 
-import type { Organization } from "@/lib/holodex";
-import { Avatar, Select, SelectItem } from "@heroui/react";
+import type { Organization } from '@/lib/holodex';
+import { Avatar, Select, SelectItem } from '@heroui/react';
 
 type OrgSelectorProps = {
   items: Organization[];

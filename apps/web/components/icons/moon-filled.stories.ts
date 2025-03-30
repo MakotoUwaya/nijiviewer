@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { MoonFilledIcon } from "./moon-filled";
+import type { Meta, StoryObj } from '@storybook/react';
+import { MoonFilledIcon } from './moon-filled';
 
 const meta = {
-  title: "Components/Icons",
+  title: 'Components/Icons',
   component: MoonFilledIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof MoonFilledIcon>;
 
 export default meta;

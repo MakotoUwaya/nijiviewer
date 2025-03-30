@@ -1,6 +1,6 @@
-import type { Channel } from "@/lib/holodex";
-import { CalendarIcon, UserGroupIcon } from "@heroicons/react/24/outline";
-import { Card, CardBody, Image, Link } from "@heroui/react";
+import type { Channel } from '@/lib/holodex';
+import { CalendarIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { Card, CardBody, Image, Link } from '@heroui/react';
 
 export function SearchResult({ channel }: { channel: Channel }) {
   return (
@@ -28,22 +28,22 @@ export function SearchResult({ channel }: { channel: Channel }) {
               <div className="flex items-center gap-1">
                 <UserGroupIcon className="w-4 h-4" />
                 <span>
-                  {Number(channel.subscriber_count).toLocaleString("ja-JP")}
+                  {Number(channel.subscriber_count).toLocaleString('ja-JP')}
                 </span>
               </div>
               <div>
-                {channel.org || "未所属"}{" "}
-                {channel.suborg ? `/ ${channel.suborg.substring(2)}` : ""}
+                {channel.org || 'Independent'}{' '}
+                {channel.suborg ? `/ ${channel.suborg.substring(2)}` : ''}
               </div>
               <div className="flex items-center gap-1">
                 <CalendarIcon className="w-4 h-4" />
                 <span>
                   {channel.published_at
                     ? new Date(channel.published_at).toLocaleDateString(
-                        "ja-JP",
-                        { year: "numeric", month: "long" },
+                        'ja-JP',
+                        { year: 'numeric', month: 'long' },
                       )
-                    : "不明"}
+                    : 'Unknown'}
                 </span>
               </div>
             </div>

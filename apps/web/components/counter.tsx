@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Button } from "@heroui/react";
-import { type JSX, useState } from "react";
+import { Button } from '@heroui/react';
+import { type JSX, useState } from 'react';
 
 type CounterProps = {
   /**

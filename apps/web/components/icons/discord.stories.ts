@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { DiscordIcon } from "./discord";
+import type { Meta, StoryObj } from '@storybook/react';
+import { DiscordIcon } from './discord';
 
 const meta = {
-  title: "Components/Icons",
+  title: 'Components/Icons',
   component: DiscordIcon,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 } satisfies Meta<typeof DiscordIcon>;
 
 export default meta;

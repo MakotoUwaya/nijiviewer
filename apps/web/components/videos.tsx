@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import type { Video } from "@/lib/holodex";
-import { DateTime } from "luxon";
-import type { JSX } from "react";
-import { EmptyImage } from "./images";
-import VideoCardPlaceholder from "./video-card-placeholder";
-import VideoCardSkeleton from "./video-card-skeleton";
-import VideoCardStream from "./video-card-stream";
+import type { Video } from '@/lib/holodex';
+import { DateTime } from 'luxon';
+import type { JSX } from 'react';
+import { EmptyImage } from './images';
+import VideoCardPlaceholder from './video-card-placeholder';
+import VideoCardSkeleton from './video-card-skeleton';
+import VideoCardStream from './video-card-stream';
 
 interface VideoProps {
   videos: Video[];
@@ -41,9 +41,9 @@ const Videos = (props: VideoProps): JSX.Element => {
     <div className="flex flex-col md:flex-row flex-wrap">
       {liveVideos.map((v) => {
         switch (v.type) {
-          case "stream":
+          case 'stream':
             return <VideoCardStream key={v.id} {...v} />;
-          case "placeholder":
+          case 'placeholder':
             return <VideoCardPlaceholder key={v.id} {...v} />;
           default:
             return <VideoCardSkeleton />;

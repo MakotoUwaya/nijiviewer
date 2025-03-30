@@ -11,9 +11,7 @@ export const SampleCounter: FC<{ children: ReactNode }> = ({ children }) => {
   };
   return (
     <>
-      <div className="mt-6">
-        {children}
-      </div>
+      <div className="mt-6">{children}</div>
       <div className="mt-3 flex justify-center gap-3 text-sm">
         <Button onClick={handleClick} variant="outline">
           Clicked {count} times

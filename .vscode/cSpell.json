@@ -29,6 +29,7 @@
     "nextui",
     "openapi",
     "rgba",
+    "Supabase",
     "tailwindcss"
   ]
 }

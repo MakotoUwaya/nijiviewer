@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useYouTubePlayer } from "@/hooks/useYouTubePlayerContext";
-import type { StreamVideo } from "@/lib/holodex";
+import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
+import type { StreamVideo } from '@/lib/holodex';
 import {
   Card,
   CardFooter,
@@ -10,18 +10,18 @@ import {
   Image,
   Tooltip,
   User,
-} from "@heroui/react";
-import { DateTime } from "luxon";
-import { useState } from "react";
-import type { JSX, MouseEvent } from "react";
-import YouTubePlayerModal from "./youtube-player-modal";
+} from '@heroui/react';
+import { DateTime } from 'luxon';
+import { useState } from 'react';
+import type { JSX, MouseEvent } from 'react';
+import YouTubePlayerModal from './youtube-player-modal';
 
 const getStarted = (target: string | undefined): string => {
   if (!target) {
-    return "";
+    return '';
   }
   const targetDateTime = DateTime.fromISO(target);
-  return targetDateTime.toRelative() || "";
+  return targetDateTime.toRelative() || '';
 };
 
 export default function VideoCardStream(
@@ -30,26 +30,26 @@ export default function VideoCardStream(
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isYouTubePlayer } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
-  const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || "");
+  const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
 
   const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ""
+    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
   }`;
-  const canShowViewer = video.topic_id !== "membersonly";
+  const canShowViewer = video.topic_id !== 'membersonly';
   const viewersCount = canShowViewer
-    ? `${video.live_viewers?.toLocaleString() || ""} watching now `
-    : "";
+    ? `${video.live_viewers?.toLocaleString() || ''} watching now `
+    : '';
   const videoStatusText = video.started
-    ? `${viewersCount}Started streaming ${getStarted(video.start_actual || "")}`
-    : "Will probably start soon";
+    ? `${viewersCount}Started streaming ${getStarted(video.start_actual || '')}`
+    : 'Will probably start soon';
 
   const handleVideoClick = (e: MouseEvent) => {
     e.preventDefault();
     if (!isYouTubeVideo || isYouTubePlayer) {
       window.open(
         `https://www.youtube.com/watch?v=${video.id}`,
-        "_blank",
-        "noopener,noreferrer",
+        '_blank',
+        'noopener,noreferrer',
       );
     } else {
       setIsModalOpen(true);
@@ -68,7 +68,7 @@ export default function VideoCardStream(
           type="button"
           onClick={handleVideoClick}
           onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
+            if (e.key === 'Enter' || e.key === ' ') {
               handleVideoClick(e as unknown as MouseEvent);
             }
           }}
@@ -76,7 +76,7 @@ export default function VideoCardStream(
         >
           <Image
             alt={video.title}
-            className={`z-0${video.type === "stream" ? " video-trim" : ""}`}
+            className={`z-0${video.type === 'stream' ? ' video-trim' : ''}`}
             removeWrapper
             radius="none"
             src={`https://i.ytimg.com/vi/${video.id}/sddefault.jpg`}
@@ -90,12 +90,12 @@ export default function VideoCardStream(
             <User
               avatarProps={{
                 src: video.channel.photo,
-                className: "min-w-10",
+                className: 'min-w-10',
               }}
               classNames={{
-                base: "self-start",
-                name: "line-clamp-1",
-                description: "line-clamp-1",
+                base: 'self-start',
+                name: 'line-clamp-1',
+                description: 'line-clamp-1',
               }}
               description={channelDescription}
               name={video.channel.name}
