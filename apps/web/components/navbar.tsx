@@ -3,10 +3,11 @@
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
 import { organizationMap } from '@/const/organizations';
-import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import { useAuth } from '@/context/auth-context';
+import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { Organization } from '@/lib/holodex';
 import {
+  Button,
   Link,
   NavbarBrand,
   NavbarContent,
@@ -15,20 +16,19 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Navbar as NextUINavbar,
-  link as linkStyles,
-  Button,
-  useDisclosure,
   Spinner,
+  link as linkStyles,
+  useDisclosure,
 } from '@heroui/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { type JSX, Suspense, useState } from 'react';
+import { AuthModal } from './auth-modal';
 import { GithubIcon, Logo } from './icons';
 import { Search } from './search';
 import { ThemeSwitch } from './theme-switch';
 import VideoPlayerToggle from './video-player-toggle';
-import { AuthModal } from './auth-modal';
 
 const getSegmentName = (path: string): string => {
   if (path === '/') {

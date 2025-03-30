@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useAuth } from '@/context/auth-context';
+import { useState } from 'react';
 
 type AuthFormProps = {
   mode: 'signIn' | 'signUp';

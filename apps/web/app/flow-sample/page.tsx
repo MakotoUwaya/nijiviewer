@@ -4,21 +4,21 @@
 // https://reactflow.dev/learn
 // https://zenn.dev/b13o/articles/tutorial-react-flow
 
-import { useCallback, useState, useEffect } from 'react';
 import {
-  ReactFlow,
   Background,
+  type Connection,
   Controls,
+  type Edge,
+  type EdgeChange,
   MiniMap,
+  type Node,
+  type NodeChange,
+  ReactFlow,
   addEdge,
   applyEdgeChanges,
   applyNodeChanges,
-  type Edge,
-  type EdgeChange,
-  type Connection,
-  type NodeChange,
-  type Node,
 } from '@xyflow/react';
+import { useCallback, useEffect, useState } from 'react';
 import '@xyflow/react/dist/style.css';
 import { useTheme } from 'next-themes';
 
