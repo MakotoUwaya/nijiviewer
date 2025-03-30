@@ -7,7 +7,7 @@ const MicrosoftClarity = () => {
   useEffect(() => {
     // cSpell:disable-next-line
     const clarityProjectId = 'qwauaog0rs';
-    
+
     if (clarityProjectId) {
       Clarity.init(clarityProjectId);
     }
