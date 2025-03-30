@@ -3,7 +3,7 @@ import { useAuth } from '@/context/auth-context';
 import { supabase } from '@/lib/supabase';
 import { Input } from '@heroui/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 interface SearchProps {
   onSearch?: (value: string) => void;
@@ -23,9 +23,9 @@ export function Search({ onSearch }: SearchProps) {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   // 検索履歴を取得する
-  const fetchSearchHistories = async () => {
+  const fetchSearchHistories = useCallback(async () => {
     if (!user) return;
-    
+
     try {
       // 検索履歴をmodified_atの降順で取得
       const { data, error } = await supabase
@@ -33,7 +33,7 @@ export function Search({ onSearch }: SearchProps) {
         .select('search_word')
         .eq('creator_id', user.id)
         .order('modified_at', { ascending: false });
-      
+
       if (error) {
         console.error('検索履歴の取得中にエラーが発生しました:', error);
         return;
@@ -42,7 +42,7 @@ export function Search({ onSearch }: SearchProps) {
       // クライアントサイドで重複を除去して10件に制限
       const uniqueHistories: SearchHistory[] = [];
       const uniqueWords = new Set<string>();
-      
+
       // 最大10件まで一意の検索ワードを抽出
       for (const item of data) {
         if (!uniqueWords.has(item.search_word) && uniqueHistories.length < 10) {
@@ -50,17 +50,17 @@ export function Search({ onSearch }: SearchProps) {
           uniqueHistories.push(item);
         }
       }
-      
+
       setSearchHistories(uniqueHistories);
     } catch (err) {
       console.error('検索履歴の取得中にエラーが発生しました:', err);
     }
-  };
+  }, [user]);
 
   // 初回ロード時と認証状態変更時に検索履歴を取得
   useEffect(() => {
     fetchSearchHistories();
-  }, [user]);
+  }, [fetchSearchHistories]);
 
   // 検索履歴を保存する関数
   const saveSearchHistory = async (searchWord: string) => {
@@ -76,7 +76,7 @@ export function Search({ onSearch }: SearchProps) {
         modifier_id: user.id,
         search_word: searchWord,
       });
-      
+
       // 検索履歴を再取得（UI更新のため）
       fetchSearchHistories();
     } catch (err) {
@@ -85,9 +85,12 @@ export function Search({ onSearch }: SearchProps) {
   };
 
   // 検索履歴を削除する関数
-  const deleteSearchHistory = async (searchWord: string, e: React.MouseEvent) => {
+  const deleteSearchHistory = async (
+    searchWord: string,
+    e: React.MouseEvent,
+  ) => {
     e.stopPropagation(); // 親要素のクリックイベントが発火するのを防止
-    
+
     if (!user) return;
 
     try {
@@ -114,7 +117,7 @@ export function Search({ onSearch }: SearchProps) {
   const executeSearch = (searchValue: string) => {
     const trimmedValue = searchValue.trim();
     if (!trimmedValue) return;
-    
+
     onSearch?.(trimmedValue);
     saveSearchHistory(trimmedValue);
     router.push(`/liver-search?q=${encodeURIComponent(trimmedValue)}`);
@@ -154,7 +157,14 @@ export function Search({ onSearch }: SearchProps) {
         placeholder="Search Liver Name..."
         size="sm"
         startContent={
-          <SearchIcon className="text-xl text-default-400 pointer-events-none flex-shrink-0" />
+          <SearchIcon
+            className="text-xl text-default-400 pointer-events-none flex-shrink-0"
+            role="img"
+            aria-labelledby="search-icon-title"
+            aria-hidden="false"
+          >
+            <title id="search-icon-title">検索</title>
+          </SearchIcon>
         }
         value={value}
         onChange={handleChange}
@@ -162,26 +172,52 @@ export function Search({ onSearch }: SearchProps) {
         onFocus={() => value && setShowSuggestions(true)}
         onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
       />
-      
+
       {/* サジェスト候補 */}
       {showSuggestions && searchHistories.length > 0 && (
         <div className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg max-h-60 overflow-auto">
-          <ul className="py-1">
+          <ul className="py-1" aria-label="検索履歴">
             {searchHistories.map((history) => (
               <li
                 key={history.search_word}
                 className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex justify-between items-center"
                 onClick={() => handleSuggestionClick(history.search_word)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleSuggestionClick(history.search_word);
+                  }
+                }}
+                aria-selected={false}
+                aria-label={`検索履歴: ${history.search_word}`}
               >
                 <span>{history.search_word}</span>
                 <button
+                  type="button"
                   className="text-gray-500 hover:text-red-500 focus:outline-none ml-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
                   onClick={(e) => deleteSearchHistory(history.search_word, e)}
                   aria-label={`${history.search_word} を削除`}
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  <svg
+                    role="img"
+                    aria-labelledby={`delete-history-${history.search_word.replace(/\s+/g, '-')}`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <title
+                      id={`delete-history-${history.search_word.replace(/\s+/g, '-')}`}
+                    >
+                      {`${history.search_word} を削除`}
+                    </title>
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
                 </button>
               </li>

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
 } from '@heroui/react';
+import { useState } from 'react';
 import { AuthForm } from './auth-form';
 
 type AuthModalProps = {
