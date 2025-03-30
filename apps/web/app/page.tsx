@@ -9,14 +9,14 @@ export default function Home(): JSX.Element {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="inline-block max-w-lg text-center justify-center">
-        <h1 className={title()}>Make&nbsp;</h1>
-        <h1 className={title({ color: 'violet' })}>beautiful&nbsp;</h1>
+        <h1 className={title()}>Discover&nbsp;</h1>
+        <h1 className={title({ color: 'violet' })}>VTuber&nbsp;</h1>
         <br />
         <h1 className={title()}>
-          websites regardless of your design experience.
+          streams with ease and convenience.
         </h1>
         <h2 className={subtitle({ class: 'mt-4' })}>
-          Beautiful, fast and modern React UI library.
+          Track and explore your favorite NijiSanji streamers in one place.
         </h2>
       </div>
 
@@ -47,7 +47,7 @@ export default function Home(): JSX.Element {
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="flat">
           <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
+            Live streams • Streamer search • Organization filtering
           </span>
         </Snippet>
       </div>
