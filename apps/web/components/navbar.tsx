@@ -18,6 +18,7 @@ import {
   link as linkStyles,
   Button,
   useDisclosure,
+  Spinner,
 } from '@heroui/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
@@ -55,7 +56,7 @@ export function Navbar(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { user, signOut } = useAuth();
+  const { user, signOut, isLoading } = useAuth();
 
   const handleSearch = () => {
     setIsMenuOpen(false);
@@ -134,7 +135,15 @@ export function Navbar(): JSX.Element {
             onChange={toggleYouTubePlayer}
           />
           <ThemeSwitch />
-          {user ? (
+          {isLoading ? (
+            <Button 
+              color="primary" 
+              size="sm" 
+              variant="flat"
+              isLoading
+              spinner={<Spinner size="sm" color="current" />}
+            />
+          ) : user ? (
             <Button
               color="danger"
               size="sm"
@@ -188,7 +197,15 @@ export function Navbar(): JSX.Element {
 
           {/* 認証関連のボタンをモバイルメニューに追加 */}
           <NavbarMenuItem>
-            {user ? (
+            {isLoading ? (
+              <Button
+                color="primary"
+                variant="flat"
+                fullWidth
+                isLoading
+                spinner={<Spinner size="sm" color="current" />}
+              />
+            ) : user ? (
               <Button
                 color="danger"
                 variant="light"
