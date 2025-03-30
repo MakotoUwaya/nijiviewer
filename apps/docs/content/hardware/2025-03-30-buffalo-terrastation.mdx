@@ -1,0 +1,54 @@
+---
+title: Windows 11 から古い TerraStation へ接続する
+---
+
+## Windows 11 から古い TerraStation へ接続する
+
+自宅に古い TerraStation が転がっている。  
+中身に何を保存していたのかあまり記憶が定かではないが、ここ数年は起動もしていないことを考えると、見返す頻度の少ない写真などのメディアデータばかりが蓄積されているのだろう。  
+
+必要無ければ処分しようと思い、ひとまずは内容確認してみるか・・・となったところから話は始まる。
+
+### 結論
+
+Buffalo のサポートページにすべて書いてある。
+
+### TerraStation のスペック
+
+TS-HTGL/R5シリーズ [TS-H1.0TGL/R5](https://www.buffalo.jp/product/detail/ts-h1.0tgl_r5.html)  
+発売時期: 2008-12(記事作成時点で16年3ヵ月経過)
+ファームウェア最終更新日: 2010-08-30(1.35)
+
+今時 1TB じゃ何もできないのと、 RAID5 モードになっているけど交換用 Disk がめちゃくちゃ割高なので、壊れたらそのままにすると思う。  
+(そもそも公式サイトではもう販売終了している)
+
+### IP アドレスの変更
+
+IP アドレスの取得方法を DHCP にしていればこの手順は不要。
+
+1. [NAS Navigator2](https://www.buffalo.jp/support/download/detail/?dl_contents_id=60819) をインストール
+2. ストレートの LAN ケーブルで、作業 PC と TerraStation を直接接続する
+    - [NAS Navigator2でLinkStation/TeraStationのIPアドレスが変更できません](https://www.buffalo.jp/support/faq/detail/15611.html)
+
+### Windows 11 からのアクセス
+
+IP アドレスの変更が終わったら、LAN ケーブルを本来のネットワークに接続し直して、TerraStation と同一ネットワーク上に存在していることを確認。
+
+1. `ping xxx.xxx.xxx.xxx` を実行して疎通確認
+2. File Explorer で IP アドレスを指定しアクセス
+    - `\\xxx.xxx.xxx.xxx`
+
+ここでエラーが発生した。詳細なトラブルシューティングは行っていないが、おそらく SMB 1.0/CIFS クライアント（サーバーとファイル共有を行うためのネットワークプロトコル）が有効になっていないことで接続プロトコルが解釈できなくなっていたのだと思う。
+
+[【Linux NAS】Windows10、Windows11のPCからNASにアクセスできない場合の対処方法](https://qa.elecom.co.jp/faq_detail.html?category=&id=7594) の手順に従い、SMB v1 クライアント機能を有効化して PC を再起動したところ、接続できるようになった。
+
+また、[Windows 11 でNAS（TeraStation、LinkStation）に接続できません](https://www.buffalo.jp/support/faq/detail/124162295.html) のユーザー追加も必要になる可能性がある。  
+（試行錯誤でどちらの設定も行ったため、最終的に両方必要だったのか、[SMB 1.0](https://ja.wikipedia.org/wiki/Server_Message_Block) の有効化だけで十分だったのかは検証していない）
+
+### 結果
+
+無事、TerraStation へアクセス成功し、ファイルを確認することができた。  
+最終更新日が5年以上前のものしかなく、内容的には家族の写真や当時よく見ていたメディアデータの山だった。  
+懐かしい気分にはなったが、画像は Google Photos にも退避済みだし、これらのメディアを今になって見返す機会があるだろうか...という感じなので、機材置き場に困ってきたら処分しようと思う。
+
+ひとまず、古い TerraStation はかなりレガシーな仕組みによって動いていることが分かり、勉強になった。
