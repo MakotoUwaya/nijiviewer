@@ -41,13 +41,18 @@ export type Video = StreamVideo | PlaceholderVideo;
 export interface Channel {
   id: string;
   name: string;
-  org: string;
-  suborg: string;
+  org?: string;
+  suborg?: string;
   type: string;
   photo: string;
-  english_name: string;
-  subscriber_count: string;
-  published_at: string;
+  english_name?: string;
+  subscriber_count?: string;
+  published_at?: string;
+  view_count?: string;
+  video_count?: string;
+  clip_count?: string;
+  twitter?: string;
+  description?: string;
 }
 
 export interface Organization {

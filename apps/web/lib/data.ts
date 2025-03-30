@@ -38,6 +38,7 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
   noStore();
   const params = new URLSearchParams({
     q: query,
+    include: 'description',
   });
   const response = await fromPromise(
     fetch(`${baseUrl}/search/autocomplete?${params.toString()}`, {
