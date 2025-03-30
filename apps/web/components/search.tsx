@@ -23,41 +23,42 @@ export function Search({ onSearch }: SearchProps) {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   // 検索履歴を取得する
-  useEffect(() => {
-    const fetchSearchHistories = async () => {
-      if (!user) return;
+  const fetchSearchHistories = async () => {
+    if (!user) return;
+    
+    try {
+      // 検索履歴をmodified_atの降順で取得
+      const { data, error } = await supabase
+        .from('liver_search_history')
+        .select('search_word')
+        .eq('creator_id', user.id)
+        .order('modified_at', { ascending: false });
       
-      try {
-        // 検索履歴をmodified_atの降順で取得し、search_wordの重複を除去して10件に制限
-        const { data, error } = await supabase
-          .from('liver_search_history')
-          .select('search_word')
-          .eq('creator_id', user.id)
-          .order('modified_at', { ascending: false })
-          .limit(10);
-        
-        if (error) {
-          console.error('検索履歴の取得中にエラーが発生しました:', error);
-          return;
-        }
-
-        // 重複を除去
-        const uniqueHistories: SearchHistory[] = [];
-        const uniqueWords = new Set<string>();
-        
-        data.forEach((item) => {
-          if (!uniqueWords.has(item.search_word)) {
-            uniqueWords.add(item.search_word);
-            uniqueHistories.push(item);
-          }
-        });
-        
-        setSearchHistories(uniqueHistories);
-      } catch (err) {
-        console.error('検索履歴の取得中にエラーが発生しました:', err);
+      if (error) {
+        console.error('検索履歴の取得中にエラーが発生しました:', error);
+        return;
       }
-    };
 
+      // クライアントサイドで重複を除去して10件に制限
+      const uniqueHistories: SearchHistory[] = [];
+      const uniqueWords = new Set<string>();
+      
+      // 最大10件まで一意の検索ワードを抽出
+      for (const item of data) {
+        if (!uniqueWords.has(item.search_word) && uniqueHistories.length < 10) {
+          uniqueWords.add(item.search_word);
+          uniqueHistories.push(item);
+        }
+      }
+      
+      setSearchHistories(uniqueHistories);
+    } catch (err) {
+      console.error('検索履歴の取得中にエラーが発生しました:', err);
+    }
+  };
+
+  // 初回ロード時と認証状態変更時に検索履歴を取得
+  useEffect(() => {
     fetchSearchHistories();
   }, [user]);
 
@@ -77,29 +78,35 @@ export function Search({ onSearch }: SearchProps) {
       });
       
       // 検索履歴を再取得（UI更新のため）
-      const { data, error } = await supabase
-        .from('liver_search_history')
-        .select('search_word')
-        .eq('creator_id', user.id)
-        .order('modified_at', { ascending: false })
-        .limit(10);
-      
-      if (!error && data) {
-        // 重複を除去
-        const uniqueHistories: SearchHistory[] = [];
-        const uniqueWords = new Set<string>();
-        
-        data.forEach((item) => {
-          if (!uniqueWords.has(item.search_word)) {
-            uniqueWords.add(item.search_word);
-            uniqueHistories.push(item);
-          }
-        });
-        
-        setSearchHistories(uniqueHistories);
-      }
+      fetchSearchHistories();
     } catch (err) {
       console.error('検索履歴の保存中にエラーが発生しました:', err);
+    }
+  };
+
+  // 検索履歴を削除する関数
+  const deleteSearchHistory = async (searchWord: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // 親要素のクリックイベントが発火するのを防止
+    
+    if (!user) return;
+
+    try {
+      // 同じsearch_wordを持つ履歴をすべて削除
+      const { error } = await supabase
+        .from('liver_search_history')
+        .delete()
+        .eq('creator_id', user.id)
+        .eq('search_word', searchWord);
+
+      if (error) {
+        console.error('検索履歴の削除中にエラーが発生しました:', error);
+        return;
+      }
+
+      // 検索履歴を再取得（UI更新のため）
+      fetchSearchHistories();
+    } catch (err) {
+      console.error('検索履歴の削除中にエラーが発生しました:', err);
     }
   };
 
@@ -163,10 +170,20 @@ export function Search({ onSearch }: SearchProps) {
             {searchHistories.map((history) => (
               <li
                 key={history.search_word}
-                className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+                className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex justify-between items-center"
                 onClick={() => handleSuggestionClick(history.search_word)}
               >
-                {history.search_word}
+                <span>{history.search_word}</span>
+                <button
+                  className="text-gray-500 hover:text-red-500 focus:outline-none ml-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
+                  onClick={(e) => deleteSearchHistory(history.search_word, e)}
+                  aria-label={`${history.search_word} を削除`}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                </button>
               </li>
             ))}
           </ul>
