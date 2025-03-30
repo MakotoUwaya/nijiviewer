@@ -17,10 +17,8 @@ export default async function LiverSearchPage({ searchParams }: Props) {
   } = await supabase.auth.getSession();
   const userId = session?.user?.id;
 
-  // 検索結果が1件以上あれば履歴を保存
-  if (q && channels.length > 0 && userId) {
-    await saveSearchHistory(q, channels.length, userId);
-  }
+  // 履歴を保存
+  await saveSearchHistory(q, channels.length, userId);
 
   return (
     <div className="container mx-auto px-4 py-8">

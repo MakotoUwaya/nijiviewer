@@ -90,15 +90,15 @@ export const saveSearchHistory = async (
   searchWord: string,
   resultCount: number,
   userId?: string,
-): Promise<boolean> => {
+): Promise<void> => {
   // 検索結果が0件の場合は保存しない
   if (resultCount <= 0) {
-    return false;
+    return;
   }
 
   // ユーザーIDがない場合（未ログイン）は保存しない
   if (!userId) {
-    return false;
+    return;
   }
 
   try {
@@ -114,12 +114,9 @@ export const saveSearchHistory = async (
 
     if (error) {
       console.error('検索履歴の保存に失敗しました:', error);
-      return false;
+      return;
     }
-
-    return true;
   } catch (err) {
     console.error('検索履歴の保存中にエラーが発生しました:', err);
-    return false;
   }
 };
