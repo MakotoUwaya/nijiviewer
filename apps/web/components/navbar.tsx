@@ -136,9 +136,9 @@ export function Navbar(): JSX.Element {
           />
           <ThemeSwitch />
           {isLoading ? (
-            <Button 
-              color="primary" 
-              size="sm" 
+            <Button
+              color="primary"
+              size="sm"
               variant="flat"
               isLoading
               spinner={<Spinner size="sm" color="current" />}
