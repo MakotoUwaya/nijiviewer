@@ -8,11 +8,19 @@ export const siteConfig = {
       label: 'Live Videos',
       href: '/live-videos/Nijisanji',
     },
+    {
+      label: 'Flow Sample',
+      href: '/flow-sample',
+    },
   ],
   navMenuItems: [
     {
       label: 'Live Videos',
       href: '/live-videos/Nijisanji',
+    },
+    {
+      label: 'Flow Sample',
+      href: '/flow-sample',
     },
   ],
   links: {

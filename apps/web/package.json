@@ -24,6 +24,7 @@
     "@react-aria/visually-hidden": "3.8.21",
     "@tailwindcss/line-clamp": "0.4.4",
     "@tailwindcss/postcss": "4.0.17",
+    "@xyflow/react": "12.5.1",
     "autoprefixer": "10.4.21",
     "clsx": "2.1.1",
     "framer-motion": "12.6.2",
