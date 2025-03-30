@@ -10,7 +10,10 @@ on:
 jobs:
   e2e-tests:
     name: Playwright E2E Tests
+    # Playwrightがプリインストールされたイメージを使用
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.51.1
     timeout-minutes: 30
 
     steps:
@@ -24,9 +27,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
 
       - name: Build application
         run: npm run build
