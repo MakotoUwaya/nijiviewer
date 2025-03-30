@@ -1,4 +1,4 @@
-import { Code, Link, Snippet, button as buttonStyles } from '@heroui/react';
+import { Link, Snippet, button as buttonStyles } from '@heroui/react';
 import NextLink from 'next/link';
 import type { JSX } from 'react';
 import { GithubIcon } from '../components/icons';
@@ -12,9 +12,7 @@ export default function Home(): JSX.Element {
         <h1 className={title()}>Discover&nbsp;</h1>
         <h1 className={title({ color: 'violet' })}>VTuber&nbsp;</h1>
         <br />
-        <h1 className={title()}>
-          streams with ease and convenience.
-        </h1>
+        <h1 className={title()}>streams with ease and convenience.</h1>
         <h2 className={subtitle({ class: 'mt-4' })}>
           Track and explore your favorite NijiSanji streamers in one place.
         </h2>
@@ -46,9 +44,7 @@ export default function Home(): JSX.Element {
 
       <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="flat">
-          <span>
-            Live streams • Streamer search • Organization filtering
-          </span>
+          <span>Live streams • Streamer search • Organization filtering</span>
         </Snippet>
       </div>
     </section>

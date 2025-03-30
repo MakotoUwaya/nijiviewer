@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
 import { config } from '@/test/e2e/test-config';
+import { expect, test } from '@playwright/test';
 
 test.describe('ホーム画面のテスト', () => {
   test('アプリタイトルが NijiViewer になっていること', async ({ page }) => {
