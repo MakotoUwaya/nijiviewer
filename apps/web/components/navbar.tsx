@@ -106,6 +106,7 @@ export function Navbar(): JSX.Element {
             items={organizationMap}
             selectedKey={leafSegmentName}
             onChange={onChangeOrganization}
+            data-testid="desktop-org-selector"
           />
         </div>
         <NavbarItem className="hidden sm:flex gap-2">
@@ -140,6 +141,7 @@ export function Navbar(): JSX.Element {
           items={organizationMap}
           selectedKey={leafSegmentName}
           onChange={onChangeOrganization}
+          data-testid="mobile-org-selector"
         />
         <div className="mx-4 mt-4 flex flex-col gap-2">
           <VideoPlayerToggle
