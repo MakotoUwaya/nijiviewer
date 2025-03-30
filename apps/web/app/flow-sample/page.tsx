@@ -4,7 +4,7 @@
 // https://reactflow.dev/learn
 // https://zenn.dev/b13o/articles/tutorial-react-flow
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import {
   ReactFlow,
   Background,
@@ -37,7 +37,14 @@ export default function FlowSamplePage() {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
   const { theme } = useTheme();
-  const isDarkMode = theme === 'dark';
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // クライアントサイドでのみテーマを適用
+  useEffect(() => {
+    setIsMounted(true);
+    setIsDarkMode(theme === 'dark');
+  }, [theme]);
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) => setNodes((ns) => applyNodeChanges(changes, ns)),
@@ -54,6 +61,18 @@ export default function FlowSamplePage() {
     [],
   );
 
+  // SSRの場合やマウント前は何もレンダリングしない安全策
+  if (!isMounted) {
+    return (
+      <div className="w-full h-screen">
+        <h1 className="text-2xl font-bold mb-4 p-4">React Flow サンプル</h1>
+        <div className="w-full h-[80vh] flex items-center justify-center">
+          <p>読み込み中...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full h-screen">
       <h1 className="text-2xl font-bold mb-4 p-4">React Flow サンプル</h1>
@@ -65,7 +84,7 @@ export default function FlowSamplePage() {
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           fitView
-          className={`${isDarkMode ? 'dark-flow' : ''}`}
+          className={isDarkMode ? 'dark-flow' : ''}
         >
           <Controls className={isDarkMode ? 'dark-flow-controls' : ''} />
           <MiniMap className={isDarkMode ? 'dark-flow-minimap' : ''} />
