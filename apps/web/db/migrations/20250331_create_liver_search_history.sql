@@ -5,8 +5,7 @@ CREATE TABLE IF NOT EXISTS liver_search_history (
   creator_id UUID NOT NULL REFERENCES auth.users(id),
   modified_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
   modifier_id UUID NOT NULL REFERENCES auth.users(id),
-  search_word TEXT NOT NULL,
-  result_count INTEGER NOT NULL
+  search_word TEXT NOT NULL
 );
 
 -- RLSポリシーの設定（Row Level Security）
