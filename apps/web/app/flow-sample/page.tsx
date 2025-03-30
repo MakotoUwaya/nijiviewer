@@ -5,7 +5,8 @@
 // https://zenn.dev/b13o/articles/tutorial-react-flow
 
 import { useCallback, useState } from 'react';
-import { ReactFlow,
+import {
+  ReactFlow,
   Background,
   Controls,
   MiniMap,
@@ -68,11 +69,7 @@ export default function FlowSamplePage() {
         >
           <Controls className={isDarkMode ? 'dark-flow-controls' : ''} />
           <MiniMap className={isDarkMode ? 'dark-flow-minimap' : ''} />
-          <Background 
-            gap={12} 
-            size={1} 
-            color={isDarkMode ? '#555' : '#ccc'} 
-          />
+          <Background gap={12} size={1} color={isDarkMode ? '#555' : '#ccc'} />
         </ReactFlow>
       </div>
       <style jsx global>{`
