@@ -19,17 +19,20 @@
   ],
   "words": [
     "apikey",
+    "clineignore",
     "clsx",
+    "gitmoji",
     "gtag",
     "heroui",
-    "Millis",
+    "millis",
     "neverthrow",
-    "nextra",
     "nextjs",
+    "nextra",
     "nextui",
     "openapi",
     "rgba",
-    "Supabase",
-    "tailwindcss"
+    "supabase",
+    "tailwindcss",
+    "vercel"
   ]
 }
