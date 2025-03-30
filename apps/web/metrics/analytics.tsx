@@ -12,7 +12,7 @@ const GoogleAnalytics = () => {
       <Script
         id="google-analytics-init"
         strategy="afterInteractive"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analyticsの初期化に必要
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analytics の初期化に必要
         dangerouslySetInnerHTML={{
           __html: `
                     window.dataLayer = window.dataLayer || [];

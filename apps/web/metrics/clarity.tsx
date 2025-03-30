@@ -7,6 +7,7 @@ const MicrosoftClarity = () => {
     <Script
       id="microsoft-clarity-init"
       strategy="afterInteractive"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: Clarity の初期化に必要
       dangerouslySetInnerHTML={{
         __html: `
                 (function(c,l,a,r,i,t,y){
