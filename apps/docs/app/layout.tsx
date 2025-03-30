@@ -48,6 +48,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="ja" dir="ltr" suppressHydrationWarning>
       <Head faviconGlyph="✦" />
+      {/* cSpell:disable-next-line */}
       <GoogleAnalytics gaId="G-KH3DDQCG6B" />
       <MicrosoftClarity />
       <body>
