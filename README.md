@@ -39,3 +39,53 @@ Next, you can link your Turborepo to your Remote Cache by running the following 
 ```
 npx turbo link
 ```
+
+## E2Eテスト (Playwright)
+
+このプロジェクトではE2Eテストに[Playwright](https://playwright.dev/)を使用しています。
+
+### セットアップ
+
+リポジトリをクローンした後、Playwrightのセットアップを行います：
+
+```bash
+# 依存関係のインストール
+npm install
+
+# Playwrightブラウザのインストール
+npx playwright install
+```
+
+### テストの実行
+
+Playwrightテストを実行するためのnpm scriptが用意されています：
+
+```bash
+# すべてのブラウザでテストを実行
+npm run test:e2e
+
+# 特定のブラウザ（Chromiumのみ）でテストを実行
+npm run test:e2e -- --project=chromium
+
+# UIモードでテストを実行（視覚的なデバッグが可能）
+npm run test:e2e:ui
+
+# デバッグモードでテストを実行
+npm run test:e2e:debug
+
+# テストレポートを表示
+npm run test:e2e:report
+```
+
+### テストの作成
+
+新しいテストを作成する場合は、次のようにコードジェネレーターを使用できます：
+
+```bash
+# Playwrightコードジェネレーターを起動
+npm run test:e2e:codegen
+```
+
+コードジェネレーターを使用すると、ブラウザ上での操作が自動的にPlaywrightのテストコードに変換されます。
+
+テストファイルは `apps/web/test/e2e/` ディレクトリに配置してください。
