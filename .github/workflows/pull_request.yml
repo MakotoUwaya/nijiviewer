@@ -15,5 +15,8 @@ jobs:
           node-version: '22.14.0'
       - run: npm ci
       - run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       - run: npm run lint
       - run: npm test
