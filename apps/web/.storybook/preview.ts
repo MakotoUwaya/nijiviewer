@@ -1,6 +1,15 @@
 import type { Preview } from '@storybook/react';
-
+import { initialize, mswDecorator } from 'msw-storybook-addon';
 import '@/styles/globals.css';
+import { handlers } from './mocks/handlers';
+
+// MSWの初期化（ハンドラーを登録）
+initialize({
+  onUnhandledRequest: 'bypass',
+  serviceWorker: {
+    url: './mockServiceWorker.js',
+  },
+});
 
 const preview: Preview = {
   parameters: {
@@ -13,7 +22,11 @@ const preview: Preview = {
     nextjs: {
       appDirectory: true,
     },
+    msw: {
+      handlers,
+    },
   },
+  decorators: [mswDecorator],
 };
 
 export default preview;
