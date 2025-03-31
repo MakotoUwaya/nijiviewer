@@ -17,7 +17,7 @@
     "@biomejs/biome": "1.9.4",
     "@playwright/test": "1.51.1",
     "cspell": "8.18.1",
-    "dotenv": "^16.4.7",
+    "dotenv": "16.4.7",
     "prettier": "3.5.3",
     "tsconfig": "*",
     "turbo": "2.4.4"
