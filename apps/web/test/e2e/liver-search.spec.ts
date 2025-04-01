@@ -16,7 +16,7 @@ test.describe('ライバー検索機能のテスト', () => {
       await menuToggle.click();
     }
 
-    const searchBox = page.getByRole('searchbox', {
+    const searchBox = page.getByRole('textbox', {
       name: 'Search Liver Name...',
     });
     await expect(searchBox).toBeVisible();
