@@ -1,5 +1,6 @@
 'use client';
 
+import { AuthProvider } from '@/context/auth-context';
 import { HeroUIProvider } from '@heroui/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { ThemeProvider } from 'next-themes';
@@ -16,7 +17,9 @@ export function Providers({
 }: ProvidersProps): JSX.Element {
   return (
     <HeroUIProvider>
-      <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+      <NextThemesProvider {...themeProps}>
+        <AuthProvider>{children}</AuthProvider>
+      </NextThemesProvider>
     </HeroUIProvider>
   );
 }

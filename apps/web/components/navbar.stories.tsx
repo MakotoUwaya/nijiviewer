@@ -1,6 +1,17 @@
+import { AuthContext, type AuthContextType } from '@/context/auth-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Navbar } from './navbar';
+
+// モックのAuthContextの値
+const mockAuthContext: AuthContextType = {
+  session: null,
+  user: null,
+  isLoading: false,
+  signIn: async () => {},
+  signUp: async () => {},
+  signOut: async () => {},
+};
 
 const meta = {
   title: 'Components/Navbar',
@@ -9,9 +20,11 @@ const meta = {
   decorators: [
     (Story) => {
       return (
-        <YouTubePlayerProvider>
-          <Story />
-        </YouTubePlayerProvider>
+        <AuthContext.Provider value={mockAuthContext}>
+          <YouTubePlayerProvider>
+            <Story />
+          </YouTubePlayerProvider>
+        </AuthContext.Provider>
       );
     },
   ],

@@ -23,3 +23,40 @@ vi.mock('next/navigation', () => ({
   }),
   usePathname: () => '',
 }));
+
+// Supabaseクライアントを直接モック
+vi.mock('@/lib/supabase', () => ({
+  supabase: {
+    from: () => ({
+      select: () => ({
+        eq: () => ({
+          order: () => ({
+            data: [],
+            error: null,
+          }),
+        }),
+      }),
+      insert: () => ({
+        data: null,
+        error: null,
+      }),
+      delete: () => ({
+        eq: () => ({
+          eq: () => ({
+            data: null,
+            error: null,
+          }),
+        }),
+      }),
+    }),
+    auth: {
+      getUser: () => Promise.resolve({ data: { user: null }, error: null }),
+      signInWithPassword: () => Promise.resolve({ data: null, error: null }),
+      signUp: () => Promise.resolve({ data: null, error: null }),
+      signOut: () => Promise.resolve({ error: null }),
+    },
+  },
+}));
+
+// NODE_ENVをtest環境に設定
+vi.stubEnv('NODE_ENV', 'test');

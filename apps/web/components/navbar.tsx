@@ -3,9 +3,11 @@
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
 import { organizationMap } from '@/const/organizations';
+import { useAuth } from '@/context/auth-context';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { Organization } from '@/lib/holodex';
 import {
+  Button,
   Link,
   NavbarBrand,
   NavbarContent,
@@ -14,12 +16,15 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Navbar as NextUINavbar,
+  Spinner,
   link as linkStyles,
+  useDisclosure,
 } from '@heroui/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { type JSX, Suspense, useState } from 'react';
+import { AuthModal } from './auth-modal';
 import { GithubIcon, Logo } from './icons';
 import { Search } from './search';
 import { ThemeSwitch } from './theme-switch';
@@ -50,12 +55,24 @@ export function Navbar(): JSX.Element {
   };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { user, signOut, isLoading } = useAuth();
+
   const handleSearch = () => {
     setIsMenuOpen(false);
   };
   const onChangeOrganization = (organization: Organization) => {
     setIsMenuOpen(false);
     router.push(`/live-videos/${organization.id}`);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      setIsMenuOpen(false);
+    } catch (error) {
+      console.error('Sign out failed', error);
+    }
   };
 
   return (
@@ -118,6 +135,28 @@ export function Navbar(): JSX.Element {
             onChange={toggleYouTubePlayer}
           />
           <ThemeSwitch />
+          {isLoading ? (
+            <Button
+              color="primary"
+              size="sm"
+              variant="flat"
+              isLoading
+              spinner={<Spinner size="sm" color="current" />}
+            />
+          ) : user ? (
+            <Button
+              color="danger"
+              size="sm"
+              variant="light"
+              onPress={handleSignOut}
+            >
+              Sign Out
+            </Button>
+          ) : (
+            <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
+              Sign In
+            </Button>
+          )}
         </NavbarItem>
       </NavbarContent>
 
@@ -155,8 +194,45 @@ export function Navbar(): JSX.Element {
               </Link>
             </NavbarMenuItem>
           ))}
+
+          {/* 認証関連のボタンをモバイルメニューに追加 */}
+          <NavbarMenuItem>
+            {isLoading ? (
+              <Button
+                color="primary"
+                variant="flat"
+                fullWidth
+                isLoading
+                spinner={<Spinner size="sm" color="current" />}
+              />
+            ) : user ? (
+              <Button
+                color="danger"
+                variant="light"
+                fullWidth
+                onPress={handleSignOut}
+              >
+                Sign Out
+              </Button>
+            ) : (
+              <Button
+                color="primary"
+                variant="flat"
+                fullWidth
+                onPress={() => {
+                  onOpen();
+                  setIsMenuOpen(false);
+                }}
+              >
+                Sign In
+              </Button>
+            )}
+          </NavbarMenuItem>
         </div>
       </NavbarMenu>
+
+      {/* 認証モーダル */}
+      <AuthModal isOpen={isOpen} onOpenChange={onOpenChange} />
     </NextUINavbar>
   );
 }

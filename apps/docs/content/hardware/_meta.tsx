@@ -1,5 +1,6 @@
 export default {
-  '2025-03-30-buffalo-terrastation': 'Windows 11 から古い TerraStation へ接続する',
+  '2025-03-30-buffalo-terrastation':
+    'Windows 11 から古い TerraStation へ接続する',
   '2024-09-03-ak750w-replace': '電源ユニットの入替',
   '2023-07-30-car-navigation-movie':
     'WIP: カーナビで再生可能な動画ファイルの生成',
