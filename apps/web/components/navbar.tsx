@@ -71,7 +71,7 @@ export function Navbar(): JSX.Element {
       await signOut();
       setIsMenuOpen(false);
     } catch (error) {
-      console.error('サインアウトに失敗しました', error);
+      console.error('Sign out failed', error);
     }
   };
 
@@ -150,11 +150,11 @@ export function Navbar(): JSX.Element {
               variant="light"
               onPress={handleSignOut}
             >
-              ログアウト
+              Sign Out
             </Button>
           ) : (
             <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
-              ログイン
+              Sign In
             </Button>
           )}
         </NavbarItem>
@@ -212,7 +212,7 @@ export function Navbar(): JSX.Element {
                 fullWidth
                 onPress={handleSignOut}
               >
-                ログアウト
+                Sign Out
               </Button>
             ) : (
               <Button
@@ -224,7 +224,7 @@ export function Navbar(): JSX.Element {
                   setIsMenuOpen(false);
                 }}
               >
-                ログイン
+                Sign In
               </Button>
             )}
           </NavbarMenuItem>

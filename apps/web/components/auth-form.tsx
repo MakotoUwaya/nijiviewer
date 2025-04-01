@@ -31,7 +31,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
         onSuccess();
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : '認証に失敗しました');
+      setError(err instanceof Error ? err.message : 'Authentication failed');
     } finally {
       setLoading(false);
     }
@@ -40,7 +40,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
   return (
     <div className="bg-card p-6 rounded-lg shadow-lg max-w-md mx-auto">
       <h2 className="text-xl font-bold mb-4">
-        {mode === 'signIn' ? 'ログイン' : '新規登録'}
+        {mode === 'signIn' ? 'Sign In' : 'Sign Up'}
       </h2>
 
       {error && (
@@ -52,7 +52,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm font-medium mb-1">
-            メールアドレス
+            Email
           </label>
           <input
             id="email"
@@ -66,7 +66,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
 
         <div className="mb-6">
           <label htmlFor="password" className="block text-sm font-medium mb-1">
-            パスワード
+            Password
           </label>
           <input
             id="password"
@@ -84,14 +84,18 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
             onClick={onCancel}
             className="px-4 py-2 text-sm border rounded-md hover:bg-muted"
           >
-            キャンセル
+            Cancel
           </button>
           <button
             type="submit"
             disabled={loading}
             className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
           >
-            {loading ? '処理中...' : mode === 'signIn' ? 'ログイン' : '登録'}
+            {loading
+              ? 'Processing...'
+              : mode === 'signIn'
+                ? 'Sign In'
+                : 'Sign Up'}
           </button>
         </div>
       </form>

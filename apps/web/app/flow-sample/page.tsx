@@ -23,9 +23,9 @@ import '@xyflow/react/dist/style.css';
 import { useTheme } from 'next-themes';
 
 const initialNodes: Node[] = [
-  { id: '1', position: { x: 0, y: 0 }, data: { label: 'ノード1' } },
-  { id: '2', position: { x: 0, y: 100 }, data: { label: 'ノード2' } },
-  { id: '3', position: { x: 200, y: 50 }, data: { label: 'ノード3' } },
+  { id: '1', position: { x: 0, y: 0 }, data: { label: 'Node_1' } },
+  { id: '2', position: { x: 0, y: 100 }, data: { label: 'Node_2' } },
+  { id: '3', position: { x: 200, y: 50 }, data: { label: 'Node_3' } },
 ];
 
 const initialEdges: Edge[] = [
@@ -65,7 +65,7 @@ export default function FlowSamplePage() {
   if (!isMounted) {
     return (
       <div className="w-full h-screen">
-        <h1 className="text-2xl font-bold mb-4 p-4">React Flow サンプル</h1>
+        <h1 className="text-2xl font-bold mb-4 p-4">React Flow Sample</h1>
         <div className="w-full h-[80vh] flex items-center justify-center">
           <p>読み込み中...</p>
         </div>
@@ -75,7 +75,7 @@ export default function FlowSamplePage() {
 
   return (
     <div className="w-full h-screen">
-      <h1 className="text-2xl font-bold mb-4 p-4">React Flow サンプル</h1>
+      <h1 className="text-2xl font-bold mb-4 p-4">React Flow Sample</h1>
       <div className="w-full h-[80vh]">
         <ReactFlow
           nodes={nodes}

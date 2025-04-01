@@ -23,7 +23,7 @@ export const AuthModal = ({ isOpen, onOpenChange }: AuthModalProps) => {
         {(onClose) => (
           <>
             <ModalHeader className="flex flex-col gap-1">
-              {mode === 'signIn' ? 'ログイン' : '新規登録'}
+              {mode === 'signIn' ? 'Sign In' : 'Sign Up'}
             </ModalHeader>
             <ModalBody>
               <AuthForm
@@ -39,8 +39,8 @@ export const AuthModal = ({ isOpen, onOpenChange }: AuthModalProps) => {
                 onPress={() => setMode(mode === 'signIn' ? 'signUp' : 'signIn')}
               >
                 {mode === 'signIn'
-                  ? 'アカウントを作成する'
-                  : 'すでにアカウントをお持ちの方'}
+                  ? 'Create Account'
+                  : 'Already have an account?'}
               </Button>
             </ModalFooter>
           </>
