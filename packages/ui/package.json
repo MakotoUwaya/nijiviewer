@@ -16,6 +16,6 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tsconfig": "*",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   }
 }
