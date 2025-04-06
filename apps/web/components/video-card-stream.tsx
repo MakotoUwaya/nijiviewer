@@ -2,6 +2,7 @@
 
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
+import { getImageUrl } from '@/lib/image-utils';
 import {
   Card,
   CardFooter,
@@ -79,7 +80,10 @@ export default function VideoCardStream(
             className={`z-0${video.type === 'stream' ? ' video-trim' : ''}`}
             removeWrapper
             radius="none"
-            src={`https://i.ytimg.com/vi/${video.id}/sddefault.jpg`}
+            src={getImageUrl(
+              `https://i.ytimg.com/vi/${video.id}/sddefault.jpg`,
+            )}
+            crossOrigin="anonymous"
           />
         </button>
         <CardFooter className="bottom-0 p-0 z-10">
