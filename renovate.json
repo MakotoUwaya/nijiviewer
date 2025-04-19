@@ -15,6 +15,14 @@
         "patch"
       ],
       "automerge": true
+    },
+    {
+      "description": "Group Playwright packages",
+      "groupName": "playwright",
+      "matchPackageNames": [
+        "mcr.microsoft.com/playwright",
+        "@playwright/test"
+      ]
     }
   ],
   "rangeStrategy": "pin"
