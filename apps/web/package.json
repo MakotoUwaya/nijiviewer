@@ -29,7 +29,7 @@
     "@xyflow/react": "12.6.0",
     "autoprefixer": "10.4.21",
     "clsx": "2.1.1",
-    "framer-motion": "12.7.4",
+    "framer-motion": "12.8.0",
     "intl-messageformat": "10.7.16",
     "luxon": "3.6.1",
     "neverthrow": "8.2.0",
