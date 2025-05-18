@@ -75,16 +75,18 @@ export default function VideoCardStream(
           }}
           className="cursor-pointer w-full bg-transparent border-none p-0"
         >
-          <Image
-            alt={video.title}
-            className={`z-0${video.type === 'stream' ? ' video-trim' : ''}`}
-            removeWrapper
-            radius="none"
-            src={getImageUrl(
-              `https://i.ytimg.com/vi/${video.id}/sddefault.jpg`,
-            )}
-            crossOrigin="anonymous"
-          />
+          <div className="relative w-full pt-[56.25%]">
+            <Image
+              alt={video.title}
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              removeWrapper
+              radius="none"
+              src={getImageUrl(
+                `https://i.ytimg.com/vi/${video.id}/sddefault.jpg`,
+              )}
+              crossOrigin="anonymous"
+            />
+          </div>
         </button>
         <CardFooter className="bottom-0 p-0 z-10">
           <div className="flex flex-col w-full px-1">
