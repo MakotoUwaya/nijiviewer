@@ -3,6 +3,7 @@
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
+import { sendVideoPlayEvent } from '@/metrics/events';
 import {
   Card,
   CardFooter,
@@ -47,12 +48,14 @@ export default function VideoCardStream(
   const handleVideoClick = (e: MouseEvent) => {
     e.preventDefault();
     if (!isYouTubeVideo || isYouTubePlayer) {
+      sendVideoPlayEvent(video, 'youtube');
       window.open(
         `https://www.youtube.com/watch?v=${video.id}`,
         '_blank',
         'noopener,noreferrer',
       );
     } else {
+      sendVideoPlayEvent(video, 'in-app');
       setIsModalOpen(true);
     }
   };
