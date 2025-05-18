@@ -1,6 +1,10 @@
 name: "Chromatic"
 
-on: push
+on:
+  pull_request:
+  push:
+    branches:
+      - "!renovate/*"
 
 jobs:
   chromatic:
