@@ -36,14 +36,16 @@ export default function VideoCardPlaceholder(
           </Chip>
         </CardHeader>
         <a href={video.link} rel="noopener noreferrer" target="_blank">
-          <Image
-            alt={video.jp_name || video.title}
-            className="z-0"
-            removeWrapper
-            radius="none"
-            src={getImageUrl(video.thumbnail)}
-            crossOrigin="anonymous"
-          />
+          <div className="relative w-full aspect-video">
+            <Image
+              alt={video.jp_name || video.title}
+              className="absolute top-0 left-0 w-full h-full object-cover"
+              removeWrapper
+              radius="none"
+              src={getImageUrl(video.thumbnail)}
+              crossOrigin="anonymous"
+            />
+          </div>
         </a>
         <CardFooter className="bottom-0 p-0 z-10">
           <div className="flex flex-col w-full px-1">

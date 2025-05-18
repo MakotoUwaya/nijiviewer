@@ -12,3 +12,11 @@
 ## セキュリティ
 
 .clineignore の定義に基づき、機密情報を含むファイルは無視してください。
+
+## ターミナル
+
+Visual Studio Code のデフォルトターミナルは PowerShell を設定しています。
+bash コマンドは利用できないので注意してください。
+
+PowerShell コマンドリファレンスは以下を参照してください。
+https://learn.microsoft.com/ja-jp/powershell/scripting/developer/windows-powershell-reference
