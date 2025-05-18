@@ -20,6 +20,7 @@
     "@heroicons/react": "2.2.0",
     "@heroui/react": "https://pkg.pr.new/@heroui/react@63afa9a",
     "@microsoft/clarity": "1.0.0",
+    "@next/third-parties": "^15.3.2",
     "@react-aria/ssr": "3.9.8",
     "@react-aria/visually-hidden": "3.8.22",
     "@supabase/ssr": "0.6.1",

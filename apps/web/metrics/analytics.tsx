@@ -1,10 +1,14 @@
 'use client';
 
+import { GoogleTagManager } from '@next/third-parties/google';
 import Script from 'next/script';
 
 const GoogleAnalytics = () => {
   return (
     <>
+      <GoogleTagManager
+        gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER}`}
+      />
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
