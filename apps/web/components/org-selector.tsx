@@ -1,6 +1,7 @@
 import type { JSX } from 'react';
 
 import type { Organization } from '@/lib/holodex';
+import { sendOrganizationChangeEvent } from '@/metrics/events';
 import { Avatar, Select, SelectItem } from '@heroui/react';
 
 type OrgSelectorProps = {
@@ -28,6 +29,7 @@ export default function OrgSelector({
         const organization = items.find((i) => i.id === e.target.value);
         if (organization) {
           onChange(organization);
+          sendOrganizationChangeEvent(organization);
         }
       }}
       renderValue={(items) => {
