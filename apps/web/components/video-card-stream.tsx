@@ -75,7 +75,7 @@ export default function VideoCardStream(
           }}
           className="cursor-pointer w-full bg-transparent border-none p-0"
         >
-          <div className="relative w-full pt-[56.25%]">
+          <div className="relative w-full aspect-video">
             <Image
               alt={video.title}
               className="absolute top-0 left-0 w-full h-full object-cover"

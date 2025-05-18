@@ -36,7 +36,7 @@ export default function VideoCardPlaceholder(
           </Chip>
         </CardHeader>
         <a href={video.link} rel="noopener noreferrer" target="_blank">
-          <div className="relative w-full pt-[56.25%]">
+          <div className="relative w-full aspect-video">
             <Image
               alt={video.jp_name || video.title}
               className="absolute top-0 left-0 w-full h-full object-cover"
