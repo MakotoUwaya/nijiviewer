@@ -6,12 +6,12 @@ const GoogleAnalytics = () => {
   return (
     <>
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
       <Script
         id="google-analytics-init"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analytics の初期化に必要
         dangerouslySetInnerHTML={{
           __html: `
