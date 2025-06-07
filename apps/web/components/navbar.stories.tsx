@@ -1,6 +1,6 @@
 import { AuthContext, type AuthContextType } from '@/context/auth-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Navbar } from './navbar';
 
 // モックのAuthContextの値
