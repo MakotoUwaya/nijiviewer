@@ -1,4 +1,4 @@
-import { composeStories } from '@storybook/react';
+import { composeStories } from '@storybook/nextjs';
 import { render, waitFor } from '@testing-library/react';
 import { describe, expect, test } from 'vitest';
 import * as stories from './counter.stories';

@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/nextjs';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 import '@/styles/globals.css';
 import { handlers } from './mocks/handlers';
