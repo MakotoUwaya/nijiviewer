@@ -14,23 +14,23 @@ describe('Counter', () => {
     test('ボタンのラベルがカウントアップすること', async () => {
       const mockOnClick = vi.fn();
       const user = userEvent.setup();
-      
-      const { getByRole, rerender } = render(
+
+      const { getByRole } = render(
         <TestWrapper>
           <Counter onClick={mockOnClick} />
-        </TestWrapper>
+        </TestWrapper>,
       );
-      
+
       // 初期状態を確認
       const initialButton = getByRole('button');
       expect(initialButton).toHaveTextContent('Count is 0');
-      
+
       // ボタンをクリック
       await user.click(initialButton);
-      
+
       // コールバックが呼ばれたことを確認
       expect(mockOnClick).toHaveBeenCalledTimes(1);
-      
+
       // 状態の更新を待つ
       expect(initialButton).toHaveTextContent('Count is 1');
     });
