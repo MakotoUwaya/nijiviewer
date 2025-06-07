@@ -19,7 +19,7 @@
     "cspell": "9.0.2",
     "dotenv": "16.5.0",
     "msw": "2.9.0",
-    "msw-storybook-addon": "2.0.4",
+    "msw-storybook-addon": "2.0.5",
     "prettier": "3.5.3",
     "tsconfig": "*",
     "turbo": "2.5.4"
