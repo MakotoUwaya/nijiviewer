@@ -17,7 +17,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@emotion/is-prop-valid": "^1.3.1",
+    "@emotion/is-prop-valid": "1.3.1",
     "@heroicons/react": "2.2.0",
     "@heroui/react": "https://pkg.pr.new/@heroui/react@63afa9a",
     "@microsoft/clarity": "1.0.0",
