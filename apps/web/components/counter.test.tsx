@@ -1,22 +1,38 @@
-import { composeStories } from '@storybook/nextjs';
-import { render, waitFor } from '@testing-library/react';
-import { describe, expect, test } from 'vitest';
-import * as stories from './counter.stories';
+import { HeroUIProvider } from '@heroui/react';
+import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, test, vi } from 'vitest';
+import { Counter } from './counter';
 
-const composedStories = composeStories(stories);
+// HeroUI コンポーネントをテストするためのラッパー
+const TestWrapper = ({ children }: { children: React.ReactNode }) => (
+  <HeroUIProvider>{children}</HeroUIProvider>
+);
 
 describe('Counter', () => {
   describe('カウンターボタンをクリックしたとき', () => {
-    const { Primary } = composedStories;
     test('ボタンのラベルがカウントアップすること', async () => {
-      const { container, getByRole } = render(<Primary />);
-      await waitFor(async () => {
-        await Primary.play?.({ canvasElement: container });
-      });
-      const buttonText = getByRole('button', { name: 'Count is 1' });
-      await waitFor(() => {
-        expect(buttonText).toBeDefined();
-      });
+      const mockOnClick = vi.fn();
+      const user = userEvent.setup();
+      
+      const { getByRole, rerender } = render(
+        <TestWrapper>
+          <Counter onClick={mockOnClick} />
+        </TestWrapper>
+      );
+      
+      // 初期状態を確認
+      const initialButton = getByRole('button');
+      expect(initialButton).toHaveTextContent('Count is 0');
+      
+      // ボタンをクリック
+      await user.click(initialButton);
+      
+      // コールバックが呼ばれたことを確認
+      expect(mockOnClick).toHaveBeenCalledTimes(1);
+      
+      // 状態の更新を待つ
+      expect(initialButton).toHaveTextContent('Count is 1');
     });
   });
 });
