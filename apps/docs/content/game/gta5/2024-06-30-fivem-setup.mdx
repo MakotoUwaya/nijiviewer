@@ -4,7 +4,6 @@ title: FiveM の初期セットアップ
 
 GTA5 をマルチプレイモードで遊ぶ場合に、 Mod 要素を追加できるサーバです。
 
-
 ## FiveM Server 初期セットアップ
 
 Windows 向けには [【GTAV】WindowsでFiveMサーバーの立て方を詳しく解説します！！](https://dareblo.com/gtav-fivem-server-setup/) の解説があるので、こちらを参考にセットアップしてください。  
@@ -20,6 +19,21 @@ FiveM Client のインストールもこちらで行います。
 
 qbcore [Windows Installation](https://docs.qbcore.org/qbcore-documentation/guides/windows-installation)
 
+#### qb-phone
+
+ゲーム内のスマートフォンで撮影した画像を保存するために、 Discord の Webhook を利用する
+https://github.com/qbcore-framework/qb-phone?tab=readme-ov-file#setup-webhook-in-servermainlua-for-photos
+
+`resources\[qb]\qb-phone\server\main.lua` を編集する
+
+```
+local WebHook = 'https://discord.com/api/webhooks/.../...'
+```
+
+#### qb-\*
+
+// TODO: 一通りのロールプレイを行うためのプラグインは導入されているので、設定内容を確認すること
+
 ### map
 
 地図表示が分かりやすく改善され、番地が表示されるようになる
@@ -27,18 +41,18 @@ qbcore [Windows Installation](https://docs.qbcore.org/qbcore-documentation/guide
 [Postal Code Map & Minimap](https://forum.cfx.re/t/release-postal-code-map-minimap-new-improved-v1-3/147458)
 
 「Download by clicking here」をクリックして、ファイルをダウンロード  
-`resource/[defaultmaps]/map` に配置する
+`resource\[defaultmaps]\map` に配置する
 
 ### VoiceRangeMarker
 
 VC の範囲を可視化する
 
 ```sh
-cd "resource/resources\[standalone]"
+cd "resource\resources\[standalone]"
 git clone https://github.com/bsrypt/errorism.voiceRangeMarker.git
 ```
 
-`resources/[standalone]/errorism.voiceRangeMarker` に配置する
+`resources\[standalone]\errorism.voiceRangeMarker` に配置する
 
 ### Dices & RPS Minigames
 
@@ -47,9 +61,11 @@ cd resources\[standalone]
 git clone https://github.com/BarBaroNN/bb-dices.git
 ```
 
-`resources/[standalone]/bb-dices` に配置する
+`resources\[standalone]\bb-dices` に配置する
 
 ### Improved Females
+
+女性キャラクターのテクスチャを改善
 
 ```sh
 cd resources
@@ -59,15 +75,55 @@ git clone https://github.com/zfbx/improved-females.git
 server.cfg に以下の指定を追加
 
 ```
+# QBCore & Extra stuff
 ensure improved-females
 ```
+
+### cd_drawtextui
+
+[UI テキスト表現を改善](https://forum.cfx.re/t/free-release-draw-text-ui/1885313)
+
+```sh
+cd resources
+git clone https://github.com/dsheedes/cd_drawtextui.git
+```
+
+server.cfg に以下の指定を追加
+
+```
+# QBCore & Extra stuff
+ensure cd_drawtextui
+```
+
+### TimeAndDateDisplay-FiveM
+
+日付時刻とプレイヤー ID を画面に表示
+
+```sh
+cd resources
+git clone https://github.com/JokeDevil/TimeAndDateDisplay-FiveM.git
+```
+
+server.cfg に以下の指定を追加
+
+```
+# QBCore & Extra stuff
+ensure TimeAndDateDisplay-FiveM
+```
+
+## その他 Mod
+
+// TODO: 未検証
+
+- 2024-06 [fivem(QBcore)のおすすめのScript](https://qiita.com/ae86jr225kei/items/d6d2f269c6e434668678)
 
 ## 起動手順
 
 1. MySQL(MariaDB) 起動
-    - xampp-control.exe を実行
-    - MySQL Start
+   - xampp-control.exe を Administrator で実行
+   - MySQL Start
 2. FiveM Server 起動
-    - Server/FXServer.exe を実行
-3. FiveM Client 起動
-    - FiveM.exe を実行
+   - Server\FXServer.exe を実行
+3. プレイヤーは各自の PC で FiveM Client 起動
+   - FiveM.exe を実行
+   - IP アドレスを入力してサーバに接続
