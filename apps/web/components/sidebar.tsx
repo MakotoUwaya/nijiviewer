@@ -89,9 +89,6 @@ export function Sidebar({
             selectedKey={leafSegmentName}
             onChange={handleOrgChange}
             className="w-full"
-            data-testid={
-              isMobile ? 'mobile-org-selector' : 'desktop-org-selector'
-            }
           />
         </div>
       </div>

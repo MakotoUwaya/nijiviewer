@@ -10,17 +10,16 @@ test.describe('ライバー検索機能のテスト', () => {
 
     if (isMobile) {
       const menuToggle = page.getByRole('button', {
-        name: 'open navigation menu',
+        name: 'Toggle sidebar',
       });
       await expect(menuToggle).toBeVisible();
       await menuToggle.click();
     }
 
-    const searchBox = page.getByRole('textbox', {
-      name: 'Search Liver Name...',
-    });
+    const searchBox = page.getByPlaceholder('Search Liver Name...');
     await expect(searchBox).toBeVisible();
     await searchBox.fill('はなび');
+
     await searchBox.press('Enter');
 
     await expect(page).toHaveURL(
