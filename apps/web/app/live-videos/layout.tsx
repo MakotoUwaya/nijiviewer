@@ -6,7 +6,7 @@ export default function LiveVideosLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <section className="flex flex-wrap items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-wrap items-start justify-center gap-4 p-4">
       {children}
     </section>
   );

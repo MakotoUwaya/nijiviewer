@@ -1,5 +1,6 @@
+import { LayoutComponent } from '@/components/layout-component';
+import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
-import { Link } from '@heroui/react';
 import clsx from 'clsx';
 import type { Metadata, Viewport } from 'next';
 import type { JSX } from 'react';
@@ -48,25 +49,14 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
-          <YouTubePlayerProvider>
-            <div className="relative flex flex-col h-screen">
-              <Navbar />
-              <main className="container mx-auto max-w-full md:px-6 flex-grow">
-                {children}
-              </main>
-              <footer className="w-full flex items-center justify-center py-3">
-                <Link
-                  className="flex items-center gap-1 text-current"
-                  href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                  isExternal
-                  title="nextui.org homepage"
-                >
-                  <span className="text-default-600">Powered by</span>
-                  <p className="text-primary">NextUI</p>
-                </Link>
-              </footer>
-            </div>
-          </YouTubePlayerProvider>
+          <SidebarProvider>
+            <YouTubePlayerProvider>
+              <div className="relative flex flex-col min-h-screen">
+                <Navbar />
+                <LayoutComponent>{children}</LayoutComponent>
+              </div>
+            </YouTubePlayerProvider>
+          </SidebarProvider>
         </Providers>
         <Metrics />
       </body>

@@ -8,20 +8,20 @@ type OrgSelectorProps = {
   items: Organization[];
   selectedKey: string;
   onChange: (organization: Organization) => void;
-  'data-testid'?: string;
+  className?: string;
 };
 
 export default function OrgSelector({
   items,
   selectedKey,
   onChange,
-  'data-testid': dataTestId = 'org-selector',
+  className = 'w-full md:w-60',
 }: OrgSelectorProps): JSX.Element {
   return (
     <Select
       aria-labelledby="Organization Selector"
-      data-testid={dataTestId}
-      className="w-full md:w-60"
+      data-testid="org-selector"
+      className={className}
       defaultSelectedKeys={[selectedKey]}
       selectedKeys={[selectedKey]}
       items={items}
