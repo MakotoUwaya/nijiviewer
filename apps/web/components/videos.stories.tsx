@@ -9,8 +9,6 @@ const meta = {
   parameters: {
     chromatic: {
       delay: 3000,
-      pauseAnimationAtEnd: true,
-      diffThreshold: 0.1,
     },
   },
   decorators: [
@@ -31,12 +29,12 @@ const commonVideo = {
   id: 'B2D3lGOrdVQ',
   title: 'videoTitle',
   topic_id: 'videoTopicId',
-  published_at: '2020-01-01T00:00:00.000Z',
-  available_at: '2020-01-01T00:00:00.000Z',
+  published_at: '2025-01-01T00:00:00.000+0900',
+  available_at: '2025-01-01T00:00:00.000+0900',
   duration: 120,
   status: 'live',
-  start_actual: '2020-01-01T00:00:00.000Z',
-  start_scheduled: '2020-01-01T00:00:00.000Z',
+  start_actual: '2025-01-01T00:00:00.000+0900',
+  start_scheduled: '2025-01-01T00:00:00.000+0900',
   channel: {
     id: 'channelId',
     name: 'channelName',
@@ -46,7 +44,7 @@ const commonVideo = {
     photo: 'channelPhoto',
     english_name: 'channelEnglishName',
     subscriber_count: '123456',
-    published_at: '2020-01-01T00:00:00.000',
+    published_at: '2025-01-01T00:00:00.000+0900',
   },
 };
 
@@ -59,17 +57,6 @@ export const Stream: Story = {
         live_viewers: 5,
       },
     ],
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    const timeElements = canvas.querySelectorAll('p');
-    for (const el of timeElements) {
-      if (el.textContent?.includes('Started streaming')) {
-        el.textContent = '5 watching now Started streaming 5 minutes ago';
-      }
-    }
   },
 };
 
@@ -84,29 +71,11 @@ export const Placeholder: Story = {
         certainty: 'PlaceholderCertainty',
         thumbnail: 'PlaceholderThumbnail',
         placeholderType: 'PlaceholderType',
-        start_actual: '2019-12-31T23:59:59.000Z',
-        start_scheduled: '2019-12-31T23:59:59.000Z',
+        start_actual: '2024-12-31T23:59:59.000+0900',
+        start_scheduled: '2024-12-31T23:59:59.000+0900',
         jp_name: 'videoTitle',
       },
     ],
-  },
-  parameters: {
-    chromatic: {
-      delay: 3000,
-      pauseAnimationAtEnd: true,
-      diffThreshold: 0.1,
-    },
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = canvasElement;
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    const timeElements = canvas.querySelectorAll('p');
-    for (const el of timeElements) {
-      if (el.textContent?.includes('Started streaming')) {
-        el.textContent = 'Live - www.twitch.tv Started streaming 5 minutes ago';
-      }
-    }
   },
 };
 
