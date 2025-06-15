@@ -1,4 +1,5 @@
 import { AuthContext, type AuthContextType } from '@/context/auth-context';
+import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Navbar } from './navbar';
@@ -21,9 +22,11 @@ const meta = {
     (Story) => {
       return (
         <AuthContext.Provider value={mockAuthContext}>
-          <YouTubePlayerProvider>
-            <Story />
-          </YouTubePlayerProvider>
+          <SidebarProvider>
+            <YouTubePlayerProvider>
+              <Story />
+            </YouTubePlayerProvider>
+          </SidebarProvider>
         </AuthContext.Provider>
       );
     },

@@ -116,7 +116,9 @@ export function Search({ onSearch }: SearchProps) {
   // 検索を実行する関数
   const executeSearch = (searchValue: string) => {
     const trimmedValue = searchValue.trim();
-    if (!trimmedValue) return;
+    if (!trimmedValue) {
+      return;
+    }
 
     onSearch?.(trimmedValue);
     saveSearchHistory(trimmedValue);
@@ -146,7 +148,7 @@ export function Search({ onSearch }: SearchProps) {
   };
 
   return (
-    <div className="relative w-full md:w-80 sm:max-w-[20rem]">
+    <div className="relative w-full max-w-full">
       <Input
         classNames={{
           base: 'w-full h-10',

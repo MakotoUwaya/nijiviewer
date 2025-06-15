@@ -2,6 +2,7 @@ export { DiscordIcon } from './discord';
 export { GithubIcon } from './github';
 export { HeartFilledIcon } from './heart-filled';
 export { Logo } from './logo';
+export { MenuIcon } from './menu';
 export { MoonFilledIcon } from './moon-filled';
 export { NextUILogo } from './next-ui';
 export { SearchIcon } from './search';

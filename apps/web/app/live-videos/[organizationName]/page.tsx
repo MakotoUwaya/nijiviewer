@@ -24,7 +24,7 @@ export default async function LiveVideosPage({
   }
   const videos = await fetchLiveVideos(organizationName);
   return (
-    <div className="flex-col w-full">
+    <div className="w-full">
       <Videos videos={videos} />
     </div>
   );
