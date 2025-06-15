@@ -23,7 +23,6 @@ export function SidebarProvider({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(320); // デフォルト320px
-
   useEffect(() => {
     // Tailwindのlgブレークポイント (1024px) を使用
     const lgMediaQuery = window.matchMedia('(min-width: 1024px)');
@@ -50,18 +49,26 @@ export function SidebarProvider({ children }: { children: ReactNode }) {
       }
     };
 
+    // debounceを使用してリサイズハンドラーを最適化
+    let timeoutId: NodeJS.Timeout;
+    const debouncedCheckMobile = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 100);
+    };
+
     // 初期チェック
     checkMobile();
 
     // メディアクエリの変更を監視
     lgMediaQuery.addEventListener('change', checkMobile);
 
-    // リサイズイベントも監視（幅の計算のため）
-    window.addEventListener('resize', checkMobile);
+    // リサイズイベントも監視（幅の計算のため）- debounced
+    window.addEventListener('resize', debouncedCheckMobile);
 
     return () => {
       lgMediaQuery.removeEventListener('change', checkMobile);
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('resize', debouncedCheckMobile);
+      clearTimeout(timeoutId);
     };
   }, []);
 
