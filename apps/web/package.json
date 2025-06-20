@@ -45,7 +45,7 @@
     "ui": "*"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "4.0.0",
+    "@chromatic-com/storybook": "4.0.1",
     "@storybook/addon-essentials": "9.0.0-alpha.12",
     "@storybook/addon-interactions": "9.0.0-alpha.10",
     "@storybook/addon-links": "9.1.0-alpha.6",
