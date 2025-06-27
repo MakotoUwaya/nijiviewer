@@ -20,7 +20,7 @@
     "dotenv": "16.5.0",
     "msw": "2.10.2",
     "msw-storybook-addon": "2.0.5",
-    "prettier": "3.6.0",
+    "prettier": "3.6.2",
     "tsconfig": "*",
     "turbo": "2.5.4"
   },
