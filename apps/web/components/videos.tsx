@@ -1,8 +1,8 @@
 'use client';
 
-import type { Video } from '@/lib/holodex';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
+import type { Video } from '@/lib/holodex';
 import { EmptyImage } from './images';
 import VideoCardPlaceholder from './video-card-placeholder';
 import VideoCardSkeleton from './video-card-skeleton';
@@ -46,7 +46,9 @@ const Videos = (props: VideoProps): JSX.Element => {
           case 'placeholder':
             return <VideoCardPlaceholder key={v.id} {...v} />;
           default:
-            return <VideoCardSkeleton />;
+            return (
+              <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />
+            );
         }
       })}
     </div>

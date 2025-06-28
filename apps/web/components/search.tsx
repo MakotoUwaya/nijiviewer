@@ -1,9 +1,9 @@
-import { SearchIcon } from '@/components/icons';
-import { useAuth } from '@/context/auth-context';
-import { supabase } from '@/lib/supabase';
 import { Input } from '@heroui/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
+import { SearchIcon } from '@/components/icons';
+import { useAuth } from '@/context/auth-context';
+import { supabase } from '@/lib/supabase';
 
 interface SearchProps {
   onSearch?: (value: string) => void;
@@ -190,7 +190,6 @@ export function Search({ onSearch }: SearchProps) {
                     handleSuggestionClick(history.search_word);
                   }
                 }}
-                aria-selected={false}
                 aria-label={`検索履歴: ${history.search_word}`}
               >
                 <span>{history.search_word}</span>
