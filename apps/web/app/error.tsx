@@ -2,7 +2,7 @@
 
 import { type JSX, useEffect } from 'react';
 
-// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+// biome-ignore lint/suspicious/noShadowRestrictedNames: Using Error as component name
 export default function Error({
   error,
   reset,

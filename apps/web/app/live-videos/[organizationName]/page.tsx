@@ -20,6 +20,7 @@ export default async function LiveVideosPage({
 }: Props): Promise<JSX.Element> {
   const { organizationName } = await params;
   if (!isValidOrganizationName(organizationName)) {
+    // biome-ignore lint/complexity/noUselessFragments: React Fragment needed for error message
     return <>Request Error</>;
   }
   const videos = await fetchLiveVideos(organizationName);
