@@ -1,3 +1,26 @@
 {
-  "extends": ["../../biome.json"]
+  "root": false,
+  "files": {
+    "includes": [
+      "**",
+      "!**/.turbo/**",
+      "!**/node_modules/**"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "style": {
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
+      }
+    }
+  }
 }
