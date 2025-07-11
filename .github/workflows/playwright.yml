@@ -13,7 +13,7 @@ jobs:
     # Playwrightがプリインストールされたイメージを使用
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.53.2
+      image: mcr.microsoft.com/playwright:v1.54.0
     timeout-minutes: 30
 
     steps:
