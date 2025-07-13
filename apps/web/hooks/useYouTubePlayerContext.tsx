@@ -21,11 +21,7 @@ const YouTubePlayerContext = createContext<
   YouTubePlayerContextType | undefined
 >(undefined);
 
-export function YouTubePlayerProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export function YouTubePlayerProvider({ children }: { children: ReactNode }) {
   // サーバーサイドレンダリング時は常にデフォルト値（true）を使用
   const [isYouTubePlayer, setIsYouTubePlayer] = useState<boolean>(true);
 
