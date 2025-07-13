@@ -4,7 +4,9 @@
 @variant dark (&:where(.dark *));
 
 body {
-  font-feature-settings: "rlig" 1, "calt" 1;
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
 }
 
 .home-content p {
