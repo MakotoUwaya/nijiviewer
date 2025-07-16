@@ -21,7 +21,7 @@
     "msw": "2.10.4",
     "msw-storybook-addon": "2.0.5",
     "tsconfig": "*",
-    "turbo": "2.5.4"
+    "turbo": "2.5.5"
   },
   "name": "nijiviewer",
   "packageManager": "npm@11.4.2",
