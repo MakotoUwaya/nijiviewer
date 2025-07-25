@@ -17,7 +17,7 @@
     "@biomejs/biome": "2.1.2",
     "@playwright/test": "1.54.1",
     "cspell": "9.2.0",
-    "dotenv": "17.2.0",
+    "dotenv": "17.2.1",
     "msw": "2.10.4",
     "msw-storybook-addon": "2.0.5",
     "tsconfig": "*",
