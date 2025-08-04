@@ -1,16 +1,16 @@
 'use client';
 
+import { Button, Divider } from '@heroui/react';
+import clsx from 'clsx';
+import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
+import { type JSX, Suspense } from 'react';
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
 import { organizationMap } from '@/const/organizations';
 import { useSidebar } from '@/context/sidebar-context';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { Organization } from '@/lib/holodex';
-import { Button, Divider } from '@heroui/react';
-import clsx from 'clsx';
-import NextLink from 'next/link';
-import { usePathname } from 'next/navigation';
-import { type JSX, Suspense } from 'react';
 import { Search } from './search';
 import VideoPlayerToggle from './video-player-toggle';
 
@@ -137,14 +137,13 @@ export function Sidebar({
     return (
       <>
         {isOpen && (
-          <div
+          <button
+            type="button"
             className="fixed inset-0 z-40 bg-black/50 lg:hidden"
             onClick={onClose}
             onKeyDown={(e) => {
               if (e.key === 'Escape') onClose();
             }}
-            role="button"
-            tabIndex={0}
             aria-label="Close sidebar"
           />
         )}
