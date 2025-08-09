@@ -12,6 +12,10 @@ export const siteConfig = {
       label: 'Flow Sample',
       href: '/flow-sample',
     },
+    {
+      label: 'おしゃべり音声モデル',
+      href: '/aivis-cloud-api',
+    },
   ],
   navMenuItems: [
     {
@@ -21,6 +25,10 @@ export const siteConfig = {
     {
       label: 'Flow Sample',
       href: '/flow-sample',
+    },
+    {
+      label: 'おしゃべり音声モデル',
+      href: '/aivis-cloud-api',
     },
   ],
   links: {
