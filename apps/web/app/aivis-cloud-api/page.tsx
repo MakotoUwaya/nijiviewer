@@ -2,6 +2,7 @@
 
 import { Button, Textarea } from '@heroui/react';
 import { useEffect, useRef, useState } from 'react';
+import { CircularAudioSpectrum } from '@/lib/circular-audio-spectrum';
 
 // MediaSource/ManagedMediaSource の型定義
 interface ManagedMediaSource extends MediaSource {}
@@ -13,113 +14,6 @@ declare global {
   }
 
   var ManagedMediaSource: (new () => ManagedMediaSource) | undefined;
-}
-
-// 円形オーディオスペクトラムビジュアライザー
-class CircularAudioSpectrum {
-  private audioElement: HTMLAudioElement;
-  private spectrumContainer: HTMLDivElement;
-  private audioContext: AudioContext | null = null;
-  private analyser: AnalyserNode | null = null;
-  private dataArray: Uint8Array<ArrayBuffer> | null = null;
-  private animationId: number | null = null;
-  private spectrumBars: HTMLDivElement[] = [];
-  private isActive = false;
-  private barCount = 64;
-
-  constructor(
-    audioElement: HTMLAudioElement,
-    spectrumContainer: HTMLDivElement,
-  ) {
-    this.audioElement = audioElement;
-    this.spectrumContainer = spectrumContainer;
-    this.createSpectrumElements();
-  }
-
-  private createSpectrumElements() {
-    // 放射状のスペクトラムバー（画像の縁から始まる）
-    for (let i = 0; i < this.barCount; i++) {
-      const bar = document.createElement('div');
-      bar.className = 'spectrum-bar';
-      const angle = (i / this.barCount) * 2 * Math.PI;
-      // 画像の半径（100px）+ ボーダー（3px）から開始
-      const imageRadius = 103;
-      const x = Math.cos(angle) * imageRadius;
-      const y = Math.sin(angle) * imageRadius;
-      // コンテナの中心（180px）から配置
-      bar.style.left = `${180 + x - 1.5}px`; // バーの幅の半分を引く
-      bar.style.top = `${180 + y}px`;
-      bar.style.height = '15px';
-      bar.style.transform = `rotate(${angle + Math.PI / 2}rad)`;
-      bar.style.transformOrigin = 'bottom center';
-      // レインボーカラーのグラデーション
-      const hue = (i / this.barCount) * 360;
-      bar.style.background = `linear-gradient(to top, hsl(${hue}, 100%, 50%), hsl(${(hue + 60) % 360}, 100%, 70%))`;
-      bar.style.boxShadow = `0 0 8px hsl(${hue}, 100%, 50%)`;
-      this.spectrumContainer.appendChild(bar);
-      this.spectrumBars.push(bar);
-    }
-  }
-
-  async initAudioContext() {
-    if (!this.audioContext) {
-      this.audioContext = new (
-        window.AudioContext ||
-        window.webkitAudioContext ||
-        AudioContext
-      )();
-      this.analyser = this.audioContext.createAnalyser();
-      this.analyser.fftSize = 256;
-      const source = this.audioContext.createMediaElementSource(
-        this.audioElement,
-      );
-      source.connect(this.analyser);
-      this.analyser.connect(this.audioContext.destination);
-      this.dataArray = new Uint8Array(
-        new ArrayBuffer(this.analyser.frequencyBinCount),
-      );
-    }
-  }
-
-  startVisualizer() {
-    if (!this.isActive) {
-      this.isActive = true;
-      this.spectrumContainer.classList.add('spectrum-active');
-      this.animate();
-    }
-  }
-
-  stopVisualizer() {
-    this.isActive = false;
-    this.spectrumContainer.classList.remove('spectrum-active');
-    if (this.animationId) {
-      cancelAnimationFrame(this.animationId);
-    }
-  }
-
-  private animate() {
-    if (!this.isActive || !this.analyser || !this.dataArray) return;
-
-    this.analyser.getByteFrequencyData(this.dataArray);
-
-    // スペクトラムバーを更新
-    this.spectrumBars.forEach((bar, index) => {
-      const dataIndex = Math.floor(
-        (index * (this.dataArray?.length ?? 0)) / this.barCount,
-      );
-      const value = this.dataArray?.[dataIndex] ?? 0;
-      const height = Math.max(15, (value / 255) * 60);
-      const intensity = value / 255;
-      bar.style.height = `${height}px`;
-      bar.style.opacity = String(0.8 + intensity * 0.2);
-      // 動的な色の変化
-      const hue = (index / this.barCount) * 360;
-      bar.style.background = `linear-gradient(to top, hsl(${hue}, 100%, ${50 + intensity * 30}%), hsl(${(hue + 60) % 360}, 100%, ${70 + intensity * 20}%))`;
-      bar.style.boxShadow = `0 0 ${8 + intensity * 15}px hsl(${hue}, 100%, 50%)`;
-    });
-
-    this.animationId = requestAnimationFrame(() => this.animate());
-  }
 }
 
 export default function AivisCloudAPIPage() {
@@ -176,6 +70,9 @@ export default function AivisCloudAPIPage() {
         audioElement.removeEventListener('play', handlePlay);
         audioElement.removeEventListener('pause', handlePause);
         audioElement.removeEventListener('ended', handleEnded);
+        if (spectrumRef.current) {
+          spectrumRef.current.cleanup();
+        }
       };
     }
   }, []);
@@ -265,22 +162,27 @@ export default function AivisCloudAPIPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-4">
-      <div className="field">
+      <div className="flex flex-col items-center p-8 border border-gray-600 rounded-xl bg-gray-800 text-center max-w-lg w-full">
         <h1 className="text-3xl font-bold text-center mb-8">
           おしゃべり音声モデル
         </h1>
 
-        <div className="image-container">
+        <div className="relative inline-block my-16 p-20">
           <div
-            className="circular-image"
+            className="w-48 h-48 rounded-full border-4 border-blue-400 transition-all duration-300 ease-in-out"
             style={{
               backgroundImage: `url('${selectedVoice.imageUrl}')`,
-              backgroundSize: '200px',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
             }}
             role="img"
             aria-label="voice model image"
           />
-          <div className="spectrum-container" ref={spectrumContainerRef} />
+          <div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-30 transition-opacity duration-300 ease-in-out spectrum-container"
+            style={{ width: '360px', height: '390px' }}
+            ref={spectrumContainerRef}
+          />
         </div>
 
         <Textarea
@@ -306,63 +208,6 @@ export default function AivisCloudAPIPage() {
           <track kind="captions" srcLang="ja" label="日本語" />
         </audio>
       </div>
-
-      <style jsx>{`
-        .field {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 2em;
-          border: solid 1px #444;
-          border-radius: 15px;
-          background: #2a2a2a;
-          text-align: center;
-          max-width: 500px;
-          width: 100%;
-        }
-        
-        .image-container {
-          position: relative;
-          display: inline-block;
-          margin: 60px 0;
-          padding: 80px;
-        }
-        
-        .circular-image {
-          width: 200px;
-          height: 200px;
-          border-radius: 50%;
-          object-fit: cover;
-          border: 3px solid #4a9eff;
-          transition: all 0.3s ease;
-        }
-        
-        .spectrum-container {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 360px;
-          height: 390px;
-          pointer-events: none;
-          opacity: 0.3;
-          transition: opacity 0.3s ease;
-        }
-        
-        .spectrum-active {
-          opacity: 1;
-        }
-        
-        :global(.spectrum-bar) {
-          position: absolute;
-          width: 3px;
-          background: linear-gradient(to top, #ff0080, #ff4000, #ffff00, #00ff40, #00ffff, #4000ff, #8000ff);
-          border-radius: 2px;
-          transform-origin: bottom center;
-          box-shadow: 0 0 10px currentColor;
-          transition: all 0.1s ease;
-        }
-      `}</style>
     </div>
   );
 }

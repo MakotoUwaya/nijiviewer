@@ -7,15 +7,56 @@ import AivisCloudAPIPage from './page';
 vi.mock('@heroui/react', () => ({
   Button: ({
     children,
+    onPress,
+    disabled,
+    color,
+    size,
+    className,
     ...props
-  }: ComponentProps<'button'> & { children: ReactNode }) => (
-    <button {...props}>{children}</button>
+  }: {
+    children: ReactNode;
+    onPress?: () => void;
+    disabled?: boolean;
+    color?: string;
+    size?: string;
+    className?: string;
+  } & ComponentProps<'button'>) => (
+    <button
+      onClick={onPress}
+      disabled={disabled}
+      className={className}
+      data-color={color}
+      data-size={size}
+      {...props}
+    >
+      {children}
+    </button>
   ),
   Textarea: ({
     placeholder,
+    value,
+    onValueChange,
+    className,
+    minRows,
+    maxRows,
     ...props
-  }: ComponentProps<'textarea'> & { placeholder?: string }) => (
-    <textarea placeholder={placeholder} {...props} />
+  }: {
+    placeholder?: string;
+    value?: string;
+    onValueChange?: (value: string) => void;
+    className?: string;
+    minRows?: number;
+    maxRows?: number;
+  } & ComponentProps<'textarea'>) => (
+    <textarea
+      placeholder={placeholder}
+      value={value}
+      onChange={(e) => onValueChange?.(e.target.value)}
+      className={className}
+      rows={minRows}
+      data-max-rows={maxRows}
+      {...props}
+    />
   ),
 }));
 
