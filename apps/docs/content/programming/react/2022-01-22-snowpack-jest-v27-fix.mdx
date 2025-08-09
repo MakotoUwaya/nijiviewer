@@ -17,9 +17,9 @@ TypeError: Cannot destructure property 'config' of 'cacheKeyOptions' as it is un
 
 ## 原因
 
-- npm で配信されている Snowpack の最新版は v3.8.8(2022-01-22現在)
+- npm で配信されている Snowpack の最新版は v3.8.8(2022-01-22 現在)
 - Jest 利用時の config として[推奨](https://www.snowpack.dev/guides/jest)されている `@snowpack/app-scripts-react` は v2.0.1 が最新で、  
-  最終リリースは2021-03頃
+  最終リリースは 2021-03 頃
 - 同一リポジトリで管理されている[@snowpack/app-scripts-react](https://github.com/withastro/snowpack/blob/97b2e94e627cab0e79162ce4ed7a3768d64b5591/create-snowpack-app/app-scripts-react/package.json#L23)は v2.0.1 時点だと babel-jest v26.2.2 を参照している
 - その後、[f77639b](https://github.com/withastro/snowpack/commit/f77639b81f61c47b69f7a5df27648f36146ab25f#diff-e5b2a9577e92c42f45ebb12756f19173200914f261c323ee12bc8f76da565261)のコミットで Jest v27 対応が行われているが、リリースが行われておらず npm が更新されない
 
@@ -29,7 +29,7 @@ TypeError: Cannot destructure property 'config' of 'cacheKeyOptions' as it is un
 
 - `@snowpack/app-scripts-react` をアンインストール
 - Jest の config ファイルから require を削除して、transform など必要な箇所のみコピー
-  - `babelTransform.js` `fileTransform.js` `importMetaBabelPlugin.js` の3ファイルをコピーした
+  - `babelTransform.js` `fileTransform.js` `importMetaBabelPlugin.js` の 3 ファイルをコピーした
 
 ### 必要なパッケージを個別にインストール
 
@@ -47,7 +47,7 @@ TypeError: Cannot destructure property 'config' of 'cacheKeyOptions' as it is un
 
 テストが成功することを確認する
 
-import { Tabs } from 'nextra/components'
+import { Tabs } from "nextra/components";
 
 <Tabs items={['npm', 'yarn']}>
   <Tabs.Tab>
@@ -68,7 +68,7 @@ yarn test
 
 ## Snowpack はもう開発してない？
 
-2021年10月以降リリースも無く、コードもほとんど動いていない
+2021 年 10 月以降リリースも無く、コードもほとんど動いていない
 
 ![snowpack_contributoers](./2022-01-22-snowpack_contributoers.png)
 
