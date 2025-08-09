@@ -1,13 +1,20 @@
 import { render, screen } from '@testing-library/react';
+import type { ComponentProps, ReactNode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import AivisCloudAPIPage from './page';
 
 // NextUIのプロバイダーをモック
 vi.mock('@heroui/react', () => ({
-  Button: ({ children, ...props }: any) => (
+  Button: ({
+    children,
+    ...props
+  }: ComponentProps<'button'> & { children: ReactNode }) => (
     <button {...props}>{children}</button>
   ),
-  Textarea: ({ placeholder, ...props }: any) => (
+  Textarea: ({
+    placeholder,
+    ...props
+  }: ComponentProps<'textarea'> & { placeholder?: string }) => (
     <textarea placeholder={placeholder} {...props} />
   ),
 }));

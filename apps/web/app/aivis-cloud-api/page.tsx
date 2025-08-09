@@ -105,9 +105,9 @@ class CircularAudioSpectrum {
     // スペクトラムバーを更新
     this.spectrumBars.forEach((bar, index) => {
       const dataIndex = Math.floor(
-        (index * this.dataArray!.length) / this.barCount,
+        (index * (this.dataArray?.length ?? 0)) / this.barCount,
       );
-      const value = this.dataArray![dataIndex];
+      const value = this.dataArray?.[dataIndex] ?? 0;
       const height = Math.max(15, (value / 255) * 60);
       const intensity = value / 255;
       bar.style.height = `${height}px`;
