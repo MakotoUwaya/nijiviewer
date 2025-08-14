@@ -1,6 +1,6 @@
 import { Input } from '@heroui/react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useId, useState } from 'react';
 import { SearchIcon } from '@/components/icons';
 import { useAuth } from '@/context/auth-context';
 import { supabase } from '@/lib/supabase';
@@ -21,6 +21,7 @@ export function Search({ onSearch }: SearchProps) {
   const { user } = useAuth(); // 認証情報を取得
   const [searchHistories, setSearchHistories] = useState<SearchHistory[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchIconId = useId();
 
   // 検索履歴を取得する
   const fetchSearchHistories = useCallback(async () => {
@@ -162,10 +163,10 @@ export function Search({ onSearch }: SearchProps) {
           <SearchIcon
             className="text-xl text-default-400 pointer-events-none flex-shrink-0"
             role="img"
-            aria-labelledby="search-icon-title"
+            aria-labelledby={searchIconId}
             aria-hidden="false"
           >
-            <title id="search-icon-title">検索</title>
+            <title id={searchIconId}>検索</title>
           </SearchIcon>
         }
         value={value}
@@ -179,50 +180,51 @@ export function Search({ onSearch }: SearchProps) {
       {showSuggestions && searchHistories.length > 0 && (
         <div className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg max-h-60 overflow-auto">
           <ul className="py-1" aria-label="検索履歴">
-            {searchHistories.map((history) => (
-              <li
-                key={history.search_word}
-                className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex justify-between items-center"
-                onClick={() => handleSuggestionClick(history.search_word)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleSuggestionClick(history.search_word);
-                  }
-                }}
-                aria-label={`検索履歴: ${history.search_word}`}
-              >
-                <span>{history.search_word}</span>
-                <button
-                  type="button"
-                  className="text-gray-500 hover:text-red-500 focus:outline-none ml-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
-                  onClick={(e) => deleteSearchHistory(history.search_word, e)}
-                  aria-label={`${history.search_word} を削除`}
+            {searchHistories.map((history, index) => {
+              const deleteIconId = `${searchIconId}-delete-${index}`;
+              return (
+                <li
+                  key={history.search_word}
+                  className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex justify-between items-center"
+                  onClick={() => handleSuggestionClick(history.search_word)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleSuggestionClick(history.search_word);
+                    }
+                  }}
+                  aria-label={`検索履歴: ${history.search_word}`}
                 >
-                  <svg
-                    role="img"
-                    aria-labelledby={`delete-history-${history.search_word.replace(/\s+/g, '-')}`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                  <span>{history.search_word}</span>
+                  <button
+                    type="button"
+                    className="text-gray-500 hover:text-red-500 focus:outline-none ml-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
+                    onClick={(e) => deleteSearchHistory(history.search_word, e)}
+                    aria-label={`${history.search_word} を削除`}
                   >
-                    <title
-                      id={`delete-history-${history.search_word.replace(/\s+/g, '-')}`}
+                    <svg
+                      role="img"
+                      aria-labelledby={deleteIconId}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     >
-                      {`${history.search_word} を削除`}
-                    </title>
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
-              </li>
-            ))}
+                      <title id={deleteIconId}>
+                        {`${history.search_word} を削除`}
+                      </title>
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

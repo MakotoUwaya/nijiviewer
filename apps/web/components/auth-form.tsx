@@ -1,5 +1,5 @@
 import { useAuth } from '@/context/auth-context';
-import { useState } from 'react';
+import { useState, useId } from 'react';
 
 type AuthFormProps = {
   mode: 'signIn' | 'signUp';
@@ -14,6 +14,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
   const [loading, setLoading] = useState(false);
 
   const { signIn, signUp } = useAuth();
+  const id = useId();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,11 +52,11 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium mb-1">
+          <label htmlFor={id} className="block text-sm font-medium mb-1">
             Email
           </label>
           <input
-            id="email"
+            id={id}
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -65,11 +66,14 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="password" className="block text-sm font-medium mb-1">
+          <label
+            htmlFor={`${id}-password`}
+            className="block text-sm font-medium mb-1"
+          >
             Password
           </label>
           <input
-            id="password"
+            id={`${id}-password`}
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
