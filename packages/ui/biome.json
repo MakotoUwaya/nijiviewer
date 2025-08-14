@@ -2,6 +2,6 @@
   "root": false,
   "extends": "//",
   "files": {
-    "includes": ["**", "!**/.turbo/**", "!**/node_modules/**"]
+    "includes": ["**", "!**/.turbo", "!**/node_modules"]
   }
 }

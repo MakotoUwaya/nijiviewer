@@ -4,12 +4,12 @@
   "files": {
     "includes": [
       "**",
-      "!**/.next/**",
-      "!**/.turbo/**",
-      "!**/coverage/**",
-      "!**/node_modules/**",
-      "!**/storybook-static/**",
-      "!**/test-results/**",
+      "!**/.next",
+      "!**/.turbo",
+      "!**/coverage",
+      "!**/node_modules",
+      "!**/storybook-static",
+      "!**/test-results",
       "!**/*.log"
     ]
   }
