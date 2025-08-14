@@ -28,7 +28,7 @@
     "@supabase/supabase-js": "2.55.0",
     "@tailwindcss/line-clamp": "0.4.4",
     "@tailwindcss/postcss": "4.1.11",
-    "@xyflow/react": "12.8.2",
+    "@xyflow/react": "12.8.3",
     "autoprefixer": "10.4.21",
     "clsx": "2.1.1",
     "framer-motion": "12.23.12",
