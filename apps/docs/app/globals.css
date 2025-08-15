@@ -1,9 +1,6 @@
 @import "tailwindcss";
 @import "nextra-theme-docs/style.css";
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: Tailwind CSS variant directive */
-@variant dark (&:where(.dark *));
-
 body {
   font-feature-settings:
     "rlig" 1,
