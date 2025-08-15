@@ -4,10 +4,10 @@
   "files": {
     "includes": [
       "**",
-      "!**/.next/**",
-      "!**/.turbo/**",
-      "!**/public/**",
-      "!**/node_modules/**"
+      "!**/.next",
+      "!**/.turbo",
+      "!**/public",
+      "!**/node_modules"
     ]
   }
 }

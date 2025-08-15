@@ -2,12 +2,14 @@
 
 import { GoogleTagManager } from '@next/third-parties/google';
 import Script from 'next/script';
+import { useId } from 'react';
 
 const GoogleAnalytics = () => {
+  const scriptId = useId();
   return (
     <>
       <Script
-        id="google-analytics-init"
+        id={scriptId}
         strategy="afterInteractive"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analytics の初期化に必要
         dangerouslySetInnerHTML={{
