@@ -25,7 +25,7 @@
     "@react-aria/ssr": "3.9.10",
     "@react-aria/visually-hidden": "3.8.26",
     "@supabase/ssr": "0.6.1",
-    "@supabase/supabase-js": "2.55.0",
+    "@supabase/supabase-js": "2.56.0",
     "@tailwindcss/line-clamp": "0.4.4",
     "@tailwindcss/postcss": "4.1.12",
     "@xyflow/react": "12.8.4",
