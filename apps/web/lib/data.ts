@@ -83,3 +83,25 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
   const results = await Promise.all(channelPromises);
   return results.filter((channel): channel is Channel => channel !== undefined);
 };
+
+export const fetchChannelInfo = async (
+  channelId: string,
+): Promise<Channel | null> => {
+  noStore();
+  const response = await fromPromise(
+    fetch(`${baseUrl}/channels/${channelId}`, {
+      headers: {
+        'x-apikey': process.env.HOLODEX_APIKEY || '',
+      },
+    }),
+    (e: Error) => e,
+  );
+  if (response.isErr()) {
+    return null;
+  }
+  const channel = await fromPromise<Channel, Error>(
+    response.value.json(),
+    (e: Error) => e,
+  );
+  return channel.isOk() ? channel.value : null;
+};
