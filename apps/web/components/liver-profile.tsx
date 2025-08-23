@@ -144,12 +144,32 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
 
             {/* 説明文 */}
             {channel.description && (
-              <div className="mt-4">
-                <h3 className="font-medium mb-2">Description</h3>
-                <p className="text-sm text-default-600 whitespace-pre-wrap">
+              <details className="mt-4 group">
+                <summary className="font-medium cursor-pointer hover:text-primary transition-colors mb-2 list-none">
+                  <div className="flex items-center gap-2">
+                    <span>Description</span>
+                    <svg
+                      className="w-4 h-4 transition-transform duration-200 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      role="img"
+                      aria-label="展開/折りたたみアイコン"
+                    >
+                      <title>展開/折りたたみアイコン</title>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
+                </summary>
+                <p className="text-sm text-default-600 whitespace-pre-wrap mt-2">
                   {channel.description}
                 </p>
-              </div>
+              </details>
             )}
           </div>
         </div>
