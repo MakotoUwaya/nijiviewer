@@ -1,23 +1,35 @@
 type CommonVideo = {
   id: string;
   title: string;
-  topic_id: string;
   published_at: string;
   available_at: string;
   duration: number;
   status: string;
-  start_scheduled: string;
-  start_actual?: string;
   channel: Channel;
 };
 
+export type VideoType =
+  | 'live'
+  | 'past'
+  | 'upcoming'
+  | 'clips'
+  | 'stream'
+  | 'placeholder'
+  | 'collabs';
+
 export type StreamVideo = CommonVideo & {
   type: 'stream';
+  topic_id: string;
+  start_scheduled: string;
+  start_actual?: string;
   live_viewers: number;
 };
 
 export type PlaceholderVideo = CommonVideo & {
   type: 'placeholder';
+  topic_id: string;
+  start_scheduled: string;
+  start_actual?: string;
   link: string;
   credits: {
     bot?: {
@@ -36,7 +48,12 @@ export type PlaceholderVideo = CommonVideo & {
   placeholderType: string;
 };
 
-export type Video = StreamVideo | PlaceholderVideo;
+export type ClipVideo = CommonVideo & {
+  type: 'clip';
+  lang: string;
+};
+
+export type Video = StreamVideo | PlaceholderVideo | ClipVideo;
 
 export interface Channel {
   id: string;
@@ -66,3 +83,6 @@ export interface AutocompleteResponse {
   value: string;
   text: string | null;
 }
+
+const apiVersion = 'v2';
+export const baseUrl = `https://holodex.net/api/${apiVersion}`;

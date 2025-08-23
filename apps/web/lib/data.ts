@@ -2,9 +2,7 @@ import { fromPromise } from 'neverthrow';
 import { unstable_noStore as noStore } from 'next/cache';
 
 import type { AutocompleteResponse, Channel, Video } from './holodex';
-
-const apiVersion = 'v2';
-const baseUrl = `https://holodex.net/api/${apiVersion}`;
+import { baseUrl } from './holodex';
 
 export const fetchLiveVideos = async (org: string): Promise<Video[]> => {
   noStore();

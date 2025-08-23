@@ -13,7 +13,7 @@ import { DateTime } from 'luxon';
 import type { JSX, MouseEvent } from 'react';
 import { useState } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
-import type { StreamVideo } from '@/lib/holodex';
+import type { ClipVideo } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 import { sendVideoPlayEvent } from '@/metrics/events';
 import YouTubePlayerModal from './youtube-player-modal';
@@ -41,8 +41,8 @@ const getStarted = (target: string | undefined): string => {
     : targetDateTime.toRelative() || '';
 };
 
-export default function VideoCardStream(
-  video: StreamVideo & { started: boolean },
+export default function VideoCardClip(
+  video: ClipVideo & { started: boolean },
 ): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isYouTubePlayer } = useYouTubePlayer();
@@ -52,16 +52,7 @@ export default function VideoCardStream(
   const channelDescription = `${video.channel.org}${
     video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
   }`;
-  const canShowViewer = video.topic_id !== 'membersonly';
-  const viewersCount = canShowViewer
-    ? `${video.live_viewers?.toLocaleString() || ''} watching now `
-    : '';
-  const isPast = video.status === 'past';
-  const videoStatusText = isPast
-    ? getStarted(video.available_at || '')
-    : video.started
-      ? `${viewersCount}Started streaming ${getStarted(video.start_actual || '')}`
-      : 'Will probably start soon';
+  const videoStatusText = getStarted(video.available_at || '');
 
   const handleVideoClick = (e: MouseEvent) => {
     e.preventDefault();
@@ -83,7 +74,7 @@ export default function VideoCardStream(
       <Card>
         <CardHeader className="absolute z-10 p-1 flex-col items-start">
           <Chip color="default" radius="sm" size="sm" variant="faded">
-            {video.topic_id || video.type}
+            {video.type}
           </Chip>
         </CardHeader>
         <button
