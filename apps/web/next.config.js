@@ -5,7 +5,4 @@ export default {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  experimental: {
-    typedRoutes: true,
-  },
 };
