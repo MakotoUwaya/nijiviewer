@@ -1,4 +1,4 @@
-import { Link, Snippet, button as buttonStyles } from '@heroui/react';
+import { button as buttonStyles, Link, Snippet } from '@heroui/react';
 import NextLink from 'next/link';
 import type { JSX } from 'react';
 import { GithubIcon } from '../components/icons';

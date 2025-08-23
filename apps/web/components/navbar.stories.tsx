@@ -1,7 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { AuthContext, type AuthContextType } from '@/context/auth-context';
 import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
-import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Navbar } from './navbar';
 
 // モックのAuthContextの値

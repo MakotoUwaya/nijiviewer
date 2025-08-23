@@ -1,4 +1,4 @@
-import { http, HttpResponse } from 'msw';
+import { HttpResponse, http } from 'msw';
 
 // Supabaseの認証APIをモックする
 export const handlers = [

@@ -1,13 +1,12 @@
-import { LayoutComponent } from '@/components/layout-component';
-import { SidebarProvider } from '@/context/sidebar-context';
-import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import clsx from 'clsx';
 import type { Metadata, Viewport } from 'next';
 import type { JSX } from 'react';
-
+import { LayoutComponent } from '@/components/layout-component';
 import { Navbar } from '@/components/navbar';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+import { SidebarProvider } from '@/context/sidebar-context';
+import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import Metrics from '@/metrics';
 import '@/styles/globals.css';
 

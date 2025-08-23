@@ -1,10 +1,10 @@
 'use client';
 
-import { AuthProvider } from '@/context/auth-context';
 import { HeroUIProvider } from '@heroui/react';
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { ThemeProvider } from 'next-themes';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { JSX, ReactNode } from 'react';
+import { AuthProvider } from '@/context/auth-context';
 
 export interface ProvidersProps {
   children: ReactNode;

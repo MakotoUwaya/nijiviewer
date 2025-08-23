@@ -1,9 +1,5 @@
 'use client';
 
-import { siteConfig } from '@/config/site';
-import { useAuth } from '@/context/auth-context';
-import { useSidebar } from '@/context/sidebar-context';
-import type { Organization } from '@/lib/holodex';
 import {
   Button,
   Link,
@@ -17,6 +13,10 @@ import {
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import type { JSX } from 'react';
+import { siteConfig } from '@/config/site';
+import { useAuth } from '@/context/auth-context';
+import { useSidebar } from '@/context/sidebar-context';
+import type { Organization } from '@/lib/holodex';
 import { AuthModal } from './auth-modal';
 import { GithubIcon, Logo, MenuIcon } from './icons';
 import { Sidebar } from './sidebar';

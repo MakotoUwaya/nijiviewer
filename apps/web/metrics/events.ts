@@ -1,5 +1,4 @@
-import type { Organization } from '@/lib/holodex';
-import type { StreamVideo } from '@/lib/holodex';
+import type { Organization, StreamVideo } from '@/lib/holodex';
 
 declare global {
   interface Window {

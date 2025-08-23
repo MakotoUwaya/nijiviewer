@@ -1,9 +1,5 @@
 'use client';
 
-import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
-import type { StreamVideo } from '@/lib/holodex';
-import { getImageUrl } from '@/lib/image-utils';
-import { sendVideoPlayEvent } from '@/metrics/events';
 import {
   Card,
   CardFooter,
@@ -14,8 +10,12 @@ import {
   User,
 } from '@heroui/react';
 import { DateTime } from 'luxon';
-import { useState } from 'react';
 import type { JSX, MouseEvent } from 'react';
+import { useState } from 'react';
+import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
+import type { StreamVideo } from '@/lib/holodex';
+import { getImageUrl } from '@/lib/image-utils';
+import { sendVideoPlayEvent } from '@/metrics/events';
 import YouTubePlayerModal from './youtube-player-modal';
 
 const getStarted = (target: string | undefined): string => {
