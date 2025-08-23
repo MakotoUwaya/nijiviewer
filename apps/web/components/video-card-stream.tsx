@@ -10,6 +10,7 @@ import {
   User,
 } from '@heroui/react';
 import { DateTime } from 'luxon';
+import { useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
 import { useState } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
@@ -44,6 +45,7 @@ const getStarted = (target: string | undefined): string => {
 export default function VideoCardStream(
   video: StreamVideo & { started: boolean },
 ): JSX.Element {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isYouTubePlayer } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
@@ -117,6 +119,10 @@ export default function VideoCardStream(
             <User
               avatarProps={{
                 src: video.channel.photo,
+                style: {
+                  cursor: 'pointer',
+                },
+                onClick: () => router.push(`/liver/${video.channel.id}`),
                 className: 'min-w-10',
               }}
               classNames={{
