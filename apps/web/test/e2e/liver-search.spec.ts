@@ -1,5 +1,5 @@
-import { config } from '@/test/e2e/test-config';
 import { expect, test } from '@playwright/test';
+import { config } from '@/test/e2e/test-config';
 
 test.describe('ライバー検索機能のテスト', () => {
   test('「はなび」という名前のライバーを検索できること', async ({

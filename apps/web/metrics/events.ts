@@ -1,5 +1,4 @@
-import type { Organization } from '@/lib/holodex';
-import type { StreamVideo } from '@/lib/holodex';
+import type { Organization, Video } from '@/lib/holodex';
 
 declare global {
   interface Window {
@@ -19,7 +18,7 @@ export const sendOrganizationChangeEvent = (organization: Organization) => {
 };
 
 export const sendVideoPlayEvent = (
-  video: StreamVideo,
+  video: Video,
   playLocation: 'youtube' | 'in-app',
 ) => {
   window.gtag?.('event', 'play_video', {

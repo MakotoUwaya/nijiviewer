@@ -5,6 +5,9 @@
 // https://zenn.dev/b13o/articles/tutorial-react-flow
 
 import {
+  addEdge,
+  applyEdgeChanges,
+  applyNodeChanges,
   Background,
   type Connection,
   Controls,
@@ -14,9 +17,6 @@ import {
   type Node,
   type NodeChange,
   ReactFlow,
-  addEdge,
-  applyEdgeChanges,
-  applyNodeChanges,
 } from '@xyflow/react';
 import { useCallback, useEffect, useState } from 'react';
 import '@xyflow/react/dist/style.css';

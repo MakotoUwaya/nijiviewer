@@ -61,8 +61,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
             <div className="flex flex-col md:flex-row md:items-center md:gap-4 mb-2">
               <Link
                 className="text-lg font-bold line-clamp-2"
-                href={`https://youtube.com/channel/${channel.id}`}
-                isExternal
+                href={`/liver/${channel.id}`}
               >
                 {channel.name}
               </Link>

@@ -1,10 +1,10 @@
 'use client';
 
-import type { PlaceholderVideo } from '@/lib/holodex';
-import { getImageUrl } from '@/lib/image-utils';
 import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
+import type { PlaceholderVideo } from '@/lib/holodex';
+import { getImageUrl } from '@/lib/image-utils';
 
 const getDomain = (url: string): string => {
   return new URL(url).hostname;
