@@ -34,8 +34,6 @@ const getStarted = (target: string | undefined): string => {
     return '';
   }
   const targetDateTime = DateTime.fromISO(target);
-
-  console.log(isPreviousDay(targetDateTime));
   return isPreviousDay(targetDateTime)
     ? targetDateTime.toFormat('yyyy-MM-dd HH:mm') || ''
     : targetDateTime.toRelative() || '';
@@ -48,10 +46,6 @@ export default function VideoCardClip(
   const { isYouTubePlayer } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
-
-  const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
-  }`;
   const videoStatusText = getStarted(video.available_at || '');
 
   const handleVideoClick = (e: MouseEvent) => {
@@ -107,7 +101,7 @@ export default function VideoCardClip(
             </p>
             <User
               avatarProps={{
-                src: video.channel.photo,
+                src: getImageUrl(video.channel.photo),
                 className: 'min-w-10',
               }}
               classNames={{
@@ -115,7 +109,6 @@ export default function VideoCardClip(
                 name: 'line-clamp-1',
                 description: 'line-clamp-1',
               }}
-              description={channelDescription}
               name={video.channel.name}
             />
             <Tooltip

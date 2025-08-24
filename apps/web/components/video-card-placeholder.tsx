@@ -54,7 +54,7 @@ export default function VideoCardPlaceholder(
             </p>
             <User
               avatarProps={{
-                src: video.channel.photo,
+                src: getImageUrl(video.channel.photo),
                 className: 'min-w-10',
               }}
               classNames={{

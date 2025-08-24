@@ -35,8 +35,6 @@ const getStarted = (target: string | undefined): string => {
     return '';
   }
   const targetDateTime = DateTime.fromISO(target);
-
-  console.log(isPreviousDay(targetDateTime));
   return isPreviousDay(targetDateTime)
     ? targetDateTime.toFormat('yyyy-MM-dd HH:mm') || ''
     : targetDateTime.toRelative() || '';
@@ -118,7 +116,7 @@ export default function VideoCardStream(
             </p>
             <User
               avatarProps={{
-                src: video.channel.photo,
+                src: getImageUrl(video.channel.photo),
                 style: {
                   cursor: 'pointer',
                 },

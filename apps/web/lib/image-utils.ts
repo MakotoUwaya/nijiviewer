@@ -15,6 +15,7 @@ export function getImageUrl(url: string): string {
       'hdslb.com', // Bilibili
       'i0.hdslb.com', // Bilibiliのサブドメイン
       'bilibili.com', // Bilibili
+      'public-web.spwn.jp', // SPWN
     ];
 
     // 指定されたドメインの場合はプロキシを使用
