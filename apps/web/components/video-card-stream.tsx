@@ -11,7 +11,7 @@ import {
   User,
 } from '@heroui/react';
 import { DateTime } from 'luxon';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
 import { useState, useTransition } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
@@ -45,6 +45,7 @@ export default function VideoCardStream(
   video: StreamVideo & { started: boolean },
 ): JSX.Element {
   const router = useRouter();
+  const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { isYouTubePlayer } = useYouTubePlayer();
@@ -62,8 +63,11 @@ export default function VideoCardStream(
   const videoStatusText = isPast
     ? getStarted(video.available_at || '')
     : video.started
-      ? `${viewersCount}Started streaming ${getStarted(video.start_actual || '')}`
+      ? `${viewersCount}Started streaming ${getStarted(
+          video.start_actual || '',
+        )}`
       : 'Will probably start soon';
+  const liverChannelPath = `/liver/${video.channel.id}`;
 
   const handleVideoClick = (e: MouseEvent) => {
     e.preventDefault();
@@ -81,14 +85,20 @@ export default function VideoCardStream(
   };
 
   const handleChannelClick = () => {
+    if (pathname === liverChannelPath) {
+      return;
+    }
     startTransition(() => {
-      router.push(`/liver/${video.channel.id}`);
+      router.push(liverChannelPath);
     });
   };
 
   const handleChannelHover = () => {
+    if (pathname === liverChannelPath) {
+      return;
+    }
     // ホバー時にページをプリフェッチして遷移を高速化
-    router.prefetch(`/liver/${video.channel.id}`);
+    router.prefetch(liverChannelPath);
   };
 
   return (
