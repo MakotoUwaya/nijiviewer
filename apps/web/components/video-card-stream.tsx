@@ -6,13 +6,14 @@ import {
   CardHeader,
   Chip,
   Image,
+  Spinner,
   Tooltip,
   User,
 } from '@heroui/react';
 import { DateTime } from 'luxon';
 import { useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
@@ -45,6 +46,7 @@ export default function VideoCardStream(
 ): JSX.Element {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const { isYouTubePlayer } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
@@ -76,6 +78,17 @@ export default function VideoCardStream(
       sendVideoPlayEvent(video, 'in-app');
       setIsModalOpen(true);
     }
+  };
+
+  const handleChannelClick = () => {
+    startTransition(() => {
+      router.push(`/liver/${video.channel.id}`);
+    });
+  };
+
+  const handleChannelHover = () => {
+    // ホバー時にページをプリフェッチして遷移を高速化
+    router.prefetch(`/liver/${video.channel.id}`);
   };
 
   return (
@@ -114,23 +127,34 @@ export default function VideoCardStream(
             <p className="text-tiny break-words line-clamp-2 h-[32px] my-1">
               {video.title}
             </p>
-            <User
-              avatarProps={{
-                src: getImageUrl(video.channel.photo),
-                style: {
-                  cursor: 'pointer',
-                },
-                onClick: () => router.push(`/liver/${video.channel.id}`),
-                className: 'min-w-10',
-              }}
-              classNames={{
-                base: 'self-start',
-                name: 'line-clamp-1',
-                description: 'line-clamp-1',
-              }}
-              description={channelDescription}
-              name={video.channel.name}
-            />
+            <div className="relative">
+              <button
+                type="button"
+                onMouseEnter={handleChannelHover}
+                onClick={handleChannelClick}
+                className="cursor-pointer bg-transparent border-none p-0 w-full text-left"
+                aria-label={`${video.channel.name}のチャンネルページに移動`}
+              >
+                <User
+                  avatarProps={{
+                    src: getImageUrl(video.channel.photo),
+                    className: 'min-w-10',
+                  }}
+                  classNames={{
+                    base: 'self-start',
+                    name: 'line-clamp-1',
+                    description: 'line-clamp-1',
+                  }}
+                  description={channelDescription}
+                  name={video.channel.name}
+                />
+              </button>
+              {isPending && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-medium">
+                  <Spinner color="primary" size="sm" />
+                </div>
+              )}
+            </div>
             <Tooltip
               content={videoStatusText}
               delay={1000}
