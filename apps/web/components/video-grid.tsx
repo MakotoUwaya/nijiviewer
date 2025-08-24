@@ -1,6 +1,6 @@
 'use client';
 
-import { Spinner } from '@heroui/react';
+import { Button, Spinner } from '@heroui/react';
 import { useEffect, useState } from 'react';
 import type { Video, VideoType } from '@/lib/holodex';
 import VideoCardClip from './video-card-clip';
@@ -36,6 +36,7 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -56,6 +57,22 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
 
     fetchVideos();
   }, [channelId, type]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 200);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   if (loading) {
     return (
@@ -93,23 +110,53 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
   }
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col md:flex-row flex-wrap">
-        {videos.map((v) => {
-          switch (v.type) {
-            case 'stream':
-              return <VideoCardStream key={v.id} {...v} started />;
-            case 'clip':
-              return <VideoCardClip key={v.id} {...v} started />;
-            case 'placeholder':
-              return <VideoCardPlaceholder key={v.id} {...v} started />;
-            default:
-              return (
-                <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />
-              );
-          }
-        })}
+    <>
+      <div className="w-full">
+        <div className="flex flex-col md:flex-row flex-wrap">
+          {videos.map((v) => {
+            switch (v.type) {
+              case 'stream':
+                return <VideoCardStream key={v.id} {...v} started />;
+              case 'clip':
+                return <VideoCardClip key={v.id} {...v} started />;
+              case 'placeholder':
+                return <VideoCardPlaceholder key={v.id} {...v} started />;
+              default:
+                return (
+                  <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />
+                );
+            }
+          })}
+        </div>
       </div>
-    </div>
+
+      {/* スクロールトップボタン */}
+      {showScrollTop && (
+        <Button
+          isIconOnly
+          size="lg"
+          color="primary"
+          className="fixed bottom-6 right-6 z-50 rounded-full shadow-lg"
+          onPress={scrollToTop}
+          aria-label="ページトップへ戻る"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <title>上矢印アイコン</title>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4.5 15.75l7.5-7.5 7.5 7.5"
+            />
+          </svg>
+        </Button>
+      )}
+    </>
   );
 }
