@@ -12,31 +12,46 @@ import {
 } from '@heroui/react';
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import type { JSX } from 'react';
+import { type JSX, useState, useEffect } from 'react';
 import { siteConfig } from '@/config/site';
 import { useAuth } from '@/context/auth-context';
 import { useSidebar } from '@/context/sidebar-context';
+import { fetchChannelInfo } from '@/lib/data';
 import type { Organization } from '@/lib/holodex';
 import { AuthModal } from './auth-modal';
 import { GithubIcon, Logo, MenuIcon } from './icons';
 import { Sidebar } from './sidebar';
 import { ThemeSwitch } from './theme-switch';
 
-const getLeafSegmentName = (path: string): string => {
-  if (path === '/') {
-    return '';
-  }
-  return decodeURIComponent(path.split('/')[2]?.trim() || '');
-};
-
 export function Navbar(): JSX.Element {
   const router = useRouter();
   const pathName = usePathname();
-  const leafSegmentName = getLeafSegmentName(pathName);
   const { isSidebarOpen, setIsSidebarOpen, isMobile, toggleSidebar } =
     useSidebar();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { user, signOut, isLoading } = useAuth();
+  const [selectedOrgId, setSelectedOrgId] = useState('');
+
+  useEffect(() => {
+    const getSelectedOrgId = async (path: string) => {
+      const parts = path.split('/');
+      if (parts[1] === 'live-videos') {
+        setSelectedOrgId(decodeURIComponent(parts[2]?.trim() || ''));
+      } else if (parts[1] === 'liver') {
+        const channelId = decodeURIComponent(parts[2]?.trim() || '');
+        if (channelId) {
+          const channel = await fetchChannelInfo(channelId);
+          if (channel?.org) {
+            setSelectedOrgId(channel.org);
+          }
+        }
+      } else {
+        setSelectedOrgId('');
+      }
+    };
+
+    getSelectedOrgId(pathName);
+  }, [pathName]);
 
   const onChangeOrganization = (organization: Organization) => {
     router.push(`/live-videos/${organization.id}`);
@@ -125,7 +140,7 @@ export function Navbar(): JSX.Element {
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
         onChangeOrganization={onChangeOrganization}
-        leafSegmentName={leafSegmentName}
+        leafSegmentName={selectedOrgId}
         isMobile={isMobile}
       />
 
