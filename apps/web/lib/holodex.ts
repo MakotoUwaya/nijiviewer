@@ -84,5 +84,24 @@ export interface AutocompleteResponse {
   text: string | null;
 }
 
+/**
+ * 動画の再生時間を適切なフォーマットで表示する関数
+ * 1時間以上: HH:MM:SS
+ * 1時間未満: MM:SS
+ */
+export function formatVideoDuration(durationInSeconds: number): string {
+  const hours = Math.floor(durationInSeconds / 3600);
+  const minutes = Math.floor((durationInSeconds % 3600) / 60);
+  const seconds = Math.floor(durationInSeconds % 60);
+
+  // 1時間以上の場合: HH:MM:SS
+  if (hours > 0) {
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+
+  // 1時間未満の場合: MM:SS
+  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
 const apiVersion = 'v2';
 export const baseUrl = `https://holodex.net/api/${apiVersion}`;

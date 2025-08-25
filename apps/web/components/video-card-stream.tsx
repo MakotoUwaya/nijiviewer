@@ -16,6 +16,7 @@ import type { JSX, MouseEvent } from 'react';
 import { useState, useTransition } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
+import { formatVideoDuration } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 import { sendVideoPlayEvent } from '@/metrics/events';
 import YouTubePlayerModal from './youtube-player-modal';
@@ -130,6 +131,11 @@ export default function VideoCardStream(
               )}
               crossOrigin="anonymous"
             />
+            {video.duration > 0 && (
+              <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
+                {formatVideoDuration(video.duration)}
+              </div>
+            )}
           </div>
         </button>
         <CardFooter className="bottom-0 p-0 z-10">

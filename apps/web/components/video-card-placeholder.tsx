@@ -4,6 +4,7 @@ import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
+import { formatVideoDuration } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 
 const getDomain = (url: string): string => {
@@ -45,6 +46,11 @@ export default function VideoCardPlaceholder(
               src={getImageUrl(video.thumbnail)}
               crossOrigin="anonymous"
             />
+            {video.duration > 0 && (
+              <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
+                {formatVideoDuration(video.duration)}
+              </div>
+            )}
           </div>
         </a>
         <CardFooter className="bottom-0 p-0 z-10">
