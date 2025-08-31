@@ -1,8 +1,9 @@
 'use client';
 
-import { Button, Spinner } from '@heroui/react';
+import { Spinner } from '@heroui/react';
 import { useCallback, useEffect, useState } from 'react';
 import type { Video, VideoType } from '@/lib/holodex';
+import ScrollToTopButton from './scroll-to-top-button';
 import VideoCardClip from './video-card-clip';
 import VideoCardPlaceholder from './video-card-placeholder';
 import VideoCardSkeleton from './video-card-skeleton';
@@ -39,7 +40,6 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [offset, setOffset] = useState(0);
 
@@ -109,8 +109,6 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 200);
-
       // スクロール位置が最下部近くに達したときに追加読み込み
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
@@ -130,13 +128,6 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasMore, loadingMore, loading, loadMoreVideos]);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   if (loading) {
     return (
@@ -209,33 +200,7 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
         )}
       </div>
 
-      {/* スクロールトップボタン */}
-      {showScrollTop && (
-        <Button
-          isIconOnly
-          size="lg"
-          color="primary"
-          className="fixed bottom-6 right-6 z-50 rounded-full shadow-lg"
-          onPress={scrollToTop}
-          aria-label="ページトップへ戻る"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <title>上矢印アイコン</title>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4.5 15.75l7.5-7.5 7.5 7.5"
-            />
-          </svg>
-        </Button>
-      )}
+      <ScrollToTopButton />
     </>
   );
 }
