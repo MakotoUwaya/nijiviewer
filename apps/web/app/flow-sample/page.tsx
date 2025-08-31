@@ -1,5 +1,8 @@
 'use client';
 
+// WebAssemblyを使用するため動的レンダリングを強制
+export const dynamic = 'force-dynamic';
+
 // NOTE: 下記の記事に従って React Flow を使ったサンプルページを作成
 // https://reactflow.dev/learn
 // https://zenn.dev/b13o/articles/tutorial-react-flow
@@ -110,7 +113,7 @@ export default function FlowSamplePage() {
               const data = loroSync.exportDocument();
               if (data) {
                 // ファイルとしてダウンロード
-                const blob = new Blob([data], {
+                const blob = new Blob([data as any], {
                   type: 'application/octet-stream',
                 });
                 const url = URL.createObjectURL(blob);

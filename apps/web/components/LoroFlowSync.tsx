@@ -1,7 +1,7 @@
 'use client';
 
 import type { Edge, Node } from '@xyflow/react';
-import { LoroDoc, type LoroList } from 'loro-crdt';
+import type { LoroDoc, LoroList } from 'loro-crdt';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface LoroFlowSyncProps {
@@ -29,72 +29,85 @@ export function LoroFlowSync({
 
   // Loro document の初期化
   useEffect(() => {
-    const doc = new LoroDoc();
-    const nodesContainer = doc.getList('nodes');
-    const edgesContainer = doc.getList('edges');
+    let doc: LoroDoc;
+    let unsubscribe: (() => void) | undefined;
 
-    docRef.current = doc;
-    nodesContainerRef.current = nodesContainer;
-    edgesContainerRef.current = edgesContainer;
+    const initLoro = async () => {
+      const { LoroDoc } = await import('loro-crdt');
+      doc = new LoroDoc();
+      const nodesContainer = doc.getList('nodes');
+      const edgesContainer = doc.getList('edges');
 
-    // 既存のデータを読み込み
-    const savedData = localStorage.getItem(`loro-flow-${roomId}`);
-    if (savedData) {
-      try {
-        const data = new Uint8Array(JSON.parse(savedData));
-        doc.import(data);
-      } catch (error) {
-        console.error('Failed to load saved data:', error);
+      docRef.current = doc;
+      nodesContainerRef.current = nodesContainer;
+      edgesContainerRef.current = edgesContainer;
+
+      // 既存のデータを読み込み
+      const savedData = localStorage.getItem(`loro-flow-${roomId}`);
+      if (savedData) {
+        try {
+          const data = new Uint8Array(JSON.parse(savedData));
+          doc.import(data);
+        } catch (error) {
+          console.error('Failed to load saved data:', error);
+          // 初期データを設定
+          initialNodes.forEach((node) => nodesContainer.push(node));
+          initialEdges.forEach((edge) => edgesContainer.push(edge));
+        }
+      } else {
         // 初期データを設定
         initialNodes.forEach((node) => nodesContainer.push(node));
         initialEdges.forEach((edge) => edgesContainer.push(edge));
       }
-    } else {
-      // 初期データを設定
-      initialNodes.forEach((node) => nodesContainer.push(node));
-      initialEdges.forEach((edge) => edgesContainer.push(edge));
-    }
 
-    // Loro からの変更を監視
-    const unsubscribe = doc.subscribe(() => {
-      if (isUpdatingFromLoroRef.current) return;
+      // Loro からの変更を監視
+      unsubscribe = doc.subscribe(() => {
+        if (isUpdatingFromLoroRef.current) return;
 
-      const updatedNodes = nodesContainer.toJSON() as Node[];
-      const updatedEdges = edgesContainer.toJSON() as Edge[];
+        const updatedNodes = nodesContainer.toJSON() as Node[];
+        const updatedEdges = edgesContainer.toJSON() as Edge[];
 
-      onNodesChange(updatedNodes);
-      onEdgesChange(updatedEdges);
+        onNodesChange(updatedNodes);
+        onEdgesChange(updatedEdges);
 
-      // 自動保存
-      const data = doc.exportSnapshot();
-      localStorage.setItem(
-        `loro-flow-${roomId}`,
-        JSON.stringify(Array.from(data)),
-      );
-    });
+        // 自動保存
+        const data = doc.exportSnapshot();
+        localStorage.setItem(
+          `loro-flow-${roomId}`,
+          JSON.stringify(Array.from(data)),
+        );
+      });
 
-    // 初期状態を通知
-    onNodesChange(nodesContainer.toJSON() as Node[]);
-    onEdgesChange(edgesContainer.toJSON() as Edge[]);
-    setIsConnected(true);
+      // 初期状態を通知
+      onNodesChange(nodesContainer.toJSON() as Node[]);
+      onEdgesChange(edgesContainer.toJSON() as Edge[]);
+      setIsConnected(true);
 
-    // 他のタブとの同期を監視
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === `loro-flow-${roomId}` && e.newValue) {
-        try {
-          const data = new Uint8Array(JSON.parse(e.newValue));
-          doc.import(data);
-        } catch (error) {
-          console.error('Failed to sync from other tab:', error);
+      // 他のタブとの同期を監視
+      const handleStorageChange = (e: StorageEvent) => {
+        if (e.key === `loro-flow-${roomId}` && e.newValue) {
+          try {
+            const data = new Uint8Array(JSON.parse(e.newValue));
+            doc.import(data);
+          } catch (error) {
+            console.error('Failed to sync from other tab:', error);
+          }
         }
-      }
+      };
+
+      window.addEventListener('storage', handleStorageChange);
+
+      return () => {
+        window.removeEventListener('storage', handleStorageChange);
+      };
     };
 
-    window.addEventListener('storage', handleStorageChange);
+    initLoro();
 
     return () => {
-      unsubscribe();
-      window.removeEventListener('storage', handleStorageChange);
+      if (unsubscribe) {
+        unsubscribe();
+      }
       docRef.current = null;
       nodesContainerRef.current = null;
       edgesContainerRef.current = null;
