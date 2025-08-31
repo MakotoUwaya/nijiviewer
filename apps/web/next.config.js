@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 export default {
+  webpack: (config) => {
+    config.experiments = {
+      layers: true,
+      asyncWebAssembly: true,
+    };
+    return config;
+  },
   reactStrictMode: true,
   transpilePackages: ['ui'],
   eslint: {
