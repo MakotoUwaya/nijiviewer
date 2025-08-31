@@ -1,8 +1,14 @@
 'use client';
 
+// WebAssemblyを使用するため動的レンダリングを強制
+export const dynamic = 'force-dynamic';
+// Loro CRDT uses WebAssembly, so we need Node.js runtime
+export const runtime = 'nodejs';
+
 // NOTE: 下記の記事に従って React Flow を使ったサンプルページを作成
 // https://reactflow.dev/learn
 // https://zenn.dev/b13o/articles/tutorial-react-flow
+// Loro CRDT を使ってリアルタイム同期機能を追加
 
 import {
   addEdge,
@@ -18,9 +24,11 @@ import {
   type NodeChange,
   ReactFlow,
 } from '@xyflow/react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useId, useState } from 'react';
 import '@xyflow/react/dist/style.css';
 import { useTheme } from 'next-themes';
+import { DebugPanel } from '../../components/DebugPanel';
+import { LoroFlowSync } from '../../components/LoroFlowSync';
 
 const initialNodes: Node[] = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'Node_1' } },
@@ -39,6 +47,16 @@ export default function FlowSamplePage() {
   const { theme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const importFileId = useId();
+
+  // Loro 同期機能
+  const loroSync = LoroFlowSync({
+    roomId: 'flow-sample-room',
+    onNodesChange: setNodes,
+    onEdgesChange: setEdges,
+    initialNodes,
+    initialEdges,
+  });
 
   // クライアントサイドでのみテーマを適用
   useEffect(() => {
@@ -47,25 +65,39 @@ export default function FlowSamplePage() {
   }, [theme]);
 
   const onNodesChange = useCallback(
-    (changes: NodeChange[]) => setNodes((ns) => applyNodeChanges(changes, ns)),
-    [],
+    (changes: NodeChange[]) => {
+      const updatedNodes = applyNodeChanges(changes, nodes);
+      setNodes(updatedNodes);
+      loroSync.updateNodes(updatedNodes);
+    },
+    [nodes, loroSync],
   );
 
   const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) => setEdges((es) => applyEdgeChanges(changes, es)),
-    [],
+    (changes: EdgeChange[]) => {
+      const updatedEdges = applyEdgeChanges(changes, edges);
+      setEdges(updatedEdges);
+      loroSync.updateEdges(updatedEdges);
+    },
+    [edges, loroSync],
   );
 
   const onConnect = useCallback(
-    (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
-    [],
+    (connection: Connection) => {
+      const updatedEdges = addEdge(connection, edges);
+      setEdges(updatedEdges);
+      loroSync.updateEdges(updatedEdges);
+    },
+    [edges, loroSync],
   );
 
   // SSRの場合やマウント前は何もレンダリングしない安全策
-  if (!isMounted) {
+  if (!isMounted || !loroSync.isConnected) {
     return (
       <div className="w-full h-screen">
-        <h1 className="text-2xl font-bold mb-4 p-4">React Flow Sample</h1>
+        <h1 className="text-2xl font-bold mb-4 p-4">
+          React Flow Sample with Loro Sync
+        </h1>
         <div className="w-full h-[80vh] flex items-center justify-center">
           <p>読み込み中...</p>
         </div>
@@ -75,8 +107,96 @@ export default function FlowSamplePage() {
 
   return (
     <div className="w-full h-screen">
-      <h1 className="text-2xl font-bold mb-4 p-4">React Flow Sample</h1>
-      <div className="w-full h-[80vh]">
+      <div className="flex justify-between items-center p-4 border-b">
+        <h1 className="text-2xl font-bold">React Flow Sample with Loro Sync</h1>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              const data = loroSync.exportDocument();
+              if (data) {
+                // ファイルとしてダウンロード
+                const arrayBuffer = new ArrayBuffer(data.length);
+                const view = new Uint8Array(arrayBuffer);
+                view.set(data);
+                const blob = new Blob([arrayBuffer], {
+                  type: 'application/octet-stream',
+                });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'flow-document.bin';
+                a.click();
+                URL.revokeObjectURL(url);
+              }
+            }}
+            className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Export
+          </button>
+          <input
+            type="file"
+            accept=".bin,.loro"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                  const data = new Uint8Array(
+                    event.target?.result as ArrayBuffer,
+                  );
+                  loroSync.importDocument(data);
+                };
+                reader.readAsArrayBuffer(file);
+              }
+            }}
+            className="hidden"
+            id={importFileId}
+          />
+          <label
+            htmlFor={importFileId}
+            className="px-3 py-1 bg-purple-500 text-white rounded hover:bg-purple-600 cursor-pointer"
+          >
+            Import
+          </label>
+          <button
+            type="button"
+            onClick={() => {
+              // デモ用: 新しいノードを追加
+              const newNode: Node = {
+                id: `node-${Date.now()}`,
+                position: { x: Math.random() * 300, y: Math.random() * 300 },
+                data: { label: `Node ${Date.now()}` },
+              };
+
+              const updatedNodes = [...nodes, newNode];
+              setNodes(updatedNodes);
+              loroSync.updateNodes(updatedNodes);
+            }}
+            className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            Add Node
+          </button>
+          <button
+            type="button"
+            onClick={loroSync.resetDocument}
+            className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+          >
+            Reset
+          </button>
+          <div className="flex items-center gap-2">
+            <div
+              className={`w-2 h-2 rounded-full ${loroSync.isConnected ? 'bg-green-500' : 'bg-red-500'}`}
+            />
+            <span className="text-sm">
+              {loroSync.isConnected
+                ? `Connected (${loroSync.peerCount})`
+                : 'Disconnected'}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div className="w-full h-[calc(100vh-80px)]">
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -127,6 +247,13 @@ export default function FlowSamplePage() {
           border-color: #555 !important;
         }
       `}</style>
+      <DebugPanel
+        nodes={nodes}
+        edges={edges}
+        isConnected={loroSync.isConnected}
+        peerCount={loroSync.peerCount}
+        lastSyncTime={loroSync.lastSyncTime}
+      />
     </div>
   );
 }
