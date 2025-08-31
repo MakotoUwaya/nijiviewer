@@ -6,6 +6,19 @@ export default {
     ignoreDuringBuilds: true,
   },
   webpack: (config, { isServer }) => {
+    // WebAssembly サポートを有効化（loro-crdt用）
+    config.experiments = {
+      ...config.experiments,
+      asyncWebAssembly: true,
+      layers: true,
+    };
+
+    // WebAssemblyファイルの処理を追加
+    config.module.rules.push({
+      test: /\.wasm$/,
+      type: 'webassembly/async',
+    });
+
     // Supabase realtime-js の Node.js API 警告を抑制
     if (!isServer) {
       config.resolve.fallback = {
