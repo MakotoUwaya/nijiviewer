@@ -16,7 +16,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.2",
     "@playwright/test": "1.55.0",
-    "cspell": "9.2.0",
+    "cspell": "9.2.1",
     "dotenv": "17.2.1",
     "msw": "2.11.0",
     "msw-storybook-addon": "2.0.5",
