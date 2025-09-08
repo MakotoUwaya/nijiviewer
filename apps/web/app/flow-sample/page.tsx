@@ -27,8 +27,8 @@ import {
 import { useCallback, useEffect, useId, useState } from 'react';
 import '@xyflow/react/dist/style.css';
 import { useTheme } from 'next-themes';
-import { DebugPanel } from '../../components/DebugPanel';
-import { LoroFlowSync } from '../../components/LoroFlowSync';
+import { DebugPanel } from '@/components/DebugPanel';
+import { LoroFlowSync } from '@/components/LoroFlowSync';
 
 const initialNodes: Node[] = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'Node_1' } },

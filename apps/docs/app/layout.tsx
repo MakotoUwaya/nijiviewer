@@ -1,9 +1,10 @@
 /* eslint-env node */
-import { Footer, Layout, Navbar } from 'nextra-theme-docs';
+
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import MicrosoftClarity from '../component/Clarity';
+import { Footer, Layout, Navbar } from 'nextra-theme-docs';
+import MicrosoftClarity from '@/component/Clarity';
 import './globals.css';
 
 export const metadata = {
