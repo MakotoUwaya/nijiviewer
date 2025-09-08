@@ -5,6 +5,7 @@ export default {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  serverExternalPackages: ['loro-crdt'],
   webpack: (config, { isServer }) => {
     // WebAssembly サポートを有効化（loro-crdt用）
     config.experiments = {
