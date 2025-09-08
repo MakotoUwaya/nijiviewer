@@ -91,8 +91,8 @@ export class CircularAudioSpectrum {
       );
       source.connect(this.analyser);
       this.analyser.connect(this.audioContext.destination);
-      const bufferLength = this.analyser.frequencyBinCount;
-      this.dataArray = new Uint8Array(new ArrayBuffer(bufferLength));
+      const buffer = new ArrayBuffer(this.analyser.frequencyBinCount);
+      this.dataArray = new Uint8Array(buffer);
     }
   }
 
@@ -115,7 +115,8 @@ export class CircularAudioSpectrum {
   private animate() {
     if (!this.isActive || !this.analyser || !this.dataArray) return;
 
-    this.analyser.getByteFrequencyData(this.dataArray as any);
+    // @ts-expect-error: Web Audio APIの型定義の問題を回避
+    this.analyser.getByteFrequencyData(this.dataArray);
 
     // シンプルな長さ変更のみのアニメーション
     this.spectrumBars.forEach((bar, index) => {

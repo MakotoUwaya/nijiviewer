@@ -12,7 +12,7 @@ import {
 } from '@heroui/react';
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { type JSX, useState, useEffect } from 'react';
+import { type JSX, useEffect, useState } from 'react';
 import { siteConfig } from '@/config/site';
 import { useAuth } from '@/context/auth-context';
 import { useSidebar } from '@/context/sidebar-context';

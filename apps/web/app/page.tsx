@@ -1,9 +1,9 @@
 import { button as buttonStyles, Link, Snippet } from '@heroui/react';
 import NextLink from 'next/link';
 import type { JSX } from 'react';
-import { GithubIcon } from '../components/icons';
-import { subtitle, title } from '../components/primitives';
-import { siteConfig } from '../config/site';
+import { GithubIcon } from '@/components/icons';
+import { subtitle, title } from '@/components/primitives';
+import { siteConfig } from '@/config/site';
 
 export default function Home(): JSX.Element {
   return (

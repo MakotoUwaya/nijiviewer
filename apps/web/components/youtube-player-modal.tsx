@@ -2,7 +2,7 @@
 
 import { Modal, ModalBody, ModalContent } from '@heroui/react';
 import { useEffect, useRef, useState } from 'react';
-import { useYouTubeApi, type YouTubePlayer } from '../hooks/useYouTubeApi';
+import { useYouTubeApi, type YouTubePlayer } from '@/hooks/useYouTubeApi';
 
 interface YouTubePlayerModalProps {
   isOpen: boolean;
