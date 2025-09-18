@@ -31,7 +31,7 @@
     "@xyflow/react": "12.8.5",
     "autoprefixer": "10.4.21",
     "clsx": "2.1.1",
-    "framer-motion": "12.23.13",
+    "framer-motion": "12.23.14",
     "intl-messageformat": "10.7.16",
     "loro-crdt": "1.7.3",
     "luxon": "3.7.2",
