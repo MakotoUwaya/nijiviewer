@@ -1,75 +1,75 @@
-# Loro Flow Sync - Multi-Window Synchronization
+# Loro Flow Sync - マルチウィンドウ同期
 
-This implementation provides real-time synchronization of React Flow diagrams across multiple browser tabs/windows using Loro CRDT.
+この実装は、Loro CRDT を使用して複数のブラウザタブ/ウィンドウ間で React Flow ダイアグラムのリアルタイム同期を提供します。
 
-## Features
+## 機能
 
-- **Real-time sync**: Changes made in one tab are instantly reflected in all other tabs
-- **Persistent storage**: Data is saved to localStorage and restored on page reload
-- **Cross-tab communication**: Uses both localStorage events and BroadcastChannel for optimal sync
-- **Peer counting**: Shows how many tabs/windows are currently connected
-- **Debug panel**: Real-time information about sync status and peer count
+- **リアルタイム同期**: 一つのタブで行った変更が、他のすべてのタブに即座に反映されます
+- **永続化ストレージ**: データは localStorage に保存され、ページリロード時に復元されます
+- **タブ間通信**: 最適な同期のために localStorage イベントと BroadcastChannel の両方を使用します
+- **ピア数カウント**: 現在接続されているタブ/ウィンドウの数を表示します
+- **デバッグパネル**: 同期ステータスとピア数に関するリアルタイム情報を表示します
 
-## How to Test Multi-Window Synchronization
+## マルチウィンドウ同期のテスト方法
 
-1. **Start the development server**:
+1. **開発サーバーを起動**:
 
    ```bash
    npm run dev
    ```
 
-2. **Open the flow sample page**:
-   Navigate to `http://localhost:3001/flow-sample`
+2. **フローサンプルページを開く**:
+   `http://localhost:3001/flow-sample` にアクセスします
 
-3. **Open multiple tabs/windows**:
+3. **複数のタブ/ウィンドウを開く**:
 
-   - Open the same URL in multiple browser tabs
-   - Or open in multiple browser windows
-   - You can even test across different browsers
+   - 同じ URL を複数のブラウザタブで開く
+   - または複数のブラウザウィンドウで開く
+   - 異なるブラウザ間でもテストできます
 
-4. **Test synchronization**:
+4. **同期をテスト**:
 
-   - **Add nodes**: Click "Add Node" in one tab, see it appear in others
-   - **Move nodes**: Drag nodes around in one tab, watch them move in others
-   - **Connect nodes**: Create edges between nodes, see connections sync
-   - **Delete elements**: Select and delete nodes/edges, see changes propagate
+   - **ノードの追加**: 一つのタブで「Add Node」をクリックし、他のタブに表示されることを確認
+   - **ノードの移動**: 一つのタブでノードをドラッグし、他のタブでも移動することを確認
+   - **ノードの接続**: ノード間にエッジを作成し、接続が同期されることを確認
+   - **要素の削除**: ノード/エッジを選択して削除し、変更が反映されることを確認
 
-5. **Monitor sync status**:
-   - Check the debug panel in the bottom-right corner
-   - Watch the peer count increase as you open more tabs
-   - See "Last Sync" timestamp update when changes occur
+5. **同期ステータスの監視**:
+   - 右下角のデバッグパネルを確認
+   - より多くのタブを開くとピア数が増加することを確認
+   - 変更が発生した際に「Last Sync」タイムスタンプが更新されることを確認
 
-## Technical Implementation
+## 技術的実装
 
-### Components
+### コンポーネント
 
-- **LoroFlowSync**: Main hook that manages Loro CRDT document and synchronization
-- **DebugPanel**: Shows real-time sync information
-- **Flow Sample Page**: Demo page with React Flow integration
+- **LoroFlowSync**: Loro CRDT ドキュメントと同期を管理するメインフック
+- **DebugPanel**: リアルタイム同期情報を表示
+- **Flow Sample Page**: React Flow 統合のデモページ
 
-### Synchronization Methods
+### 同期方法
 
-1. **Loro CRDT**: Conflict-free replicated data type for consistent state management
-2. **localStorage**: Persistent storage and cross-tab sync via storage events
-3. **BroadcastChannel**: Real-time communication between tabs for instant updates
-4. **Peer tracking**: Simple peer counting using localStorage with cleanup
+1. **Loro CRDT**: 一貫した状態管理のための競合フリー複製データ型
+2. **localStorage**: 永続化ストレージと storage イベント経由のタブ間同期
+3. **BroadcastChannel**: 即座の更新のためのタブ間リアルタイム通信
+4. **ピア追跡**: クリーンアップ機能付きの localStorage を使用したシンプルなピア数カウント
 
-### Key Features
+### 主要機能
 
-- **Conflict resolution**: Loro CRDT automatically handles concurrent edits
-- **Offline support**: Changes are saved locally and sync when tabs reconnect
-- **Performance**: Efficient updates with minimal data transfer
-- **Error handling**: Graceful fallbacks and error recovery
+- **競合解決**: Loro CRDT が同時編集を自動的に処理
+- **オフラインサポート**: 変更はローカルに保存され、タブが再接続時に同期
+- **パフォーマンス**: 最小限のデータ転送で効率的な更新
+- **エラーハンドリング**: 適切なフォールバックとエラー回復
 
-## Troubleshooting
+## トラブルシューティング
 
-- **Sync not working**: Check browser console for errors
-- **Slow sync**: BroadcastChannel provides instant sync, localStorage events as backup
-- **Data loss**: Check if localStorage is enabled and not full
-- **Peer count wrong**: Peers are cleaned up after 10 seconds of inactivity
+- **同期が機能しない**: ブラウザコンソールでエラーを確認してください
+- **同期が遅い**: BroadcastChannel が即座同期を提供し、localStorage イベントがバックアップとして機能します
+- **データ損失**: localStorage が有効で容量が満杯でないか確認してください
+- **ピア数が間違っている**: ピアは 10 秒間の非アクティブ後にクリーンアップされます
 
-## Browser Compatibility
+## ブラウザ互換性
 
-- Modern browsers with BroadcastChannel support
-- Falls back to localStorage events for older browsers
-- WebAssembly support required for Loro CRDT
+- BroadcastChannel をサポートするモダンブラウザ
+- 古いブラウザでは localStorage イベントにフォールバック
+- Loro CRDT には WebAssembly サポートが必要
