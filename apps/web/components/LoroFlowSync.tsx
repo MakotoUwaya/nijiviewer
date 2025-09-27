@@ -29,6 +29,8 @@ export function LoroFlowSync({
   const isUpdatingFromLoroRef = useRef(false);
   const unsubscribeRef = useRef<(() => void) | null>(null);
   const broadcastChannelRef = useRef<BroadcastChannel | null>(null);
+  const peerMapRef = useRef(new Map<string, number>());
+  const peerIdRef = useRef<string>('');
 
   // Loro document の初期化
   useEffect(() => {
@@ -59,34 +61,40 @@ export function LoroFlowSync({
             doc.import(data);
           } catch (error) {
             console.error('Failed to load saved data:', error);
-            // 初期データを設定
-            if (initialNodes.length > 0 || initialEdges.length > 0) {
-              isUpdatingFromLoroRef.current = true;
-              nodesContainer.clear();
-              edgesContainer.clear();
-              for (const node of initialNodes) {
-                nodesContainer.push(node);
-              }
-              for (const edge of initialEdges) {
-                edgesContainer.push(edge);
-              }
-              isUpdatingFromLoroRef.current = false;
-            }
+            localStorage.removeItem(`loro-flow-${roomId}`);
           }
-        } else if (initialNodes.length > 0 || initialEdges.length > 0) {
-          // 初期データを設定
+        }
+
+        // 初期データを設定（ドキュメントが空の場合のみ）
+        const existingNodes = nodesContainer.toJSON() as Node[];
+        if (existingNodes.length === 0 && initialNodes.length > 0) {
           isUpdatingFromLoroRef.current = true;
           for (const node of initialNodes) {
             nodesContainer.push(node);
           }
-          for (const edge of initialEdges) {
-            edgesContainer.push(edge);
-          }
+          doc.commit();
           isUpdatingFromLoroRef.current = false;
         }
 
+        const existingEdges = edgesContainer.toJSON() as Edge[];
+        if (existingEdges.length === 0 && initialEdges.length > 0) {
+          isUpdatingFromLoroRef.current = true;
+          for (const edge of initialEdges) {
+            edgesContainer.push(edge);
+          }
+          doc.commit();
+          isUpdatingFromLoroRef.current = false;
+        }
+
+        // 初期状態を通知
+        setIsConnected(true);
+        const currentNodes = nodesContainer.toJSON() as Node[];
+        const currentEdges = edgesContainer.toJSON() as Edge[];
+        onNodesChange(currentNodes);
+        onEdgesChange(currentEdges);
+
         // Loro からの変更を監視
-        const unsubscribe = doc.subscribe(() => {
+        const unsubscribe = doc.subscribe((_event) => {
           if (isUpdatingFromLoroRef.current) return;
 
           const updatedNodes = nodesContainer.toJSON() as Node[];
@@ -98,17 +106,22 @@ export function LoroFlowSync({
           // 自動保存
           try {
             const data = doc.exportSnapshot();
-            localStorage.setItem(
-              `loro-flow-${roomId}`,
-              JSON.stringify(Array.from(data)),
-            );
+            const dataString = JSON.stringify(Array.from(data));
 
-            // Broadcast to other tabs
-            if (broadcastChannelRef.current) {
-              broadcastChannelRef.current.postMessage({
-                type: 'loro-update',
-                data: Array.from(data),
-              });
+            // 現在のlocalStorageの値と比較
+            const currentSavedData = localStorage.getItem(
+              `loro-flow-${roomId}`,
+            );
+            if (currentSavedData !== dataString) {
+              localStorage.setItem(`loro-flow-${roomId}`, dataString);
+
+              // Broadcast to other tabs
+              if (broadcastChannelRef.current) {
+                broadcastChannelRef.current.postMessage({
+                  type: 'loro-update',
+                  data: Array.from(data),
+                });
+              }
             }
           } catch (error) {
             console.error('Failed to save data:', error);
@@ -117,77 +130,87 @@ export function LoroFlowSync({
 
         unsubscribeRef.current = unsubscribe;
 
-        // 初期状態を通知
-        const currentNodes = nodesContainer.toJSON() as Node[];
-        const currentEdges = edgesContainer.toJSON() as Edge[];
-        onNodesChange(currentNodes);
-        onEdgesChange(currentEdges);
-        setIsConnected(true);
+        // ピアカウント管理
+        const peerId = `${window.location.href}-${Date.now()}-${Math.random()}`;
+        peerIdRef.current = peerId;
+        const peerMap = peerMapRef.current;
+        let peerCleanupInterval: NodeJS.Timeout;
 
-        // Simulate peer counting with localStorage
         const updatePeerCount = () => {
           const now = Date.now();
-          const peers = JSON.parse(
-            localStorage.getItem(`loro-peers-${roomId}`) || '{}',
-          );
-          peers[`${window.location.href}-${now}`] = now;
+          // 自分のピア情報を更新
+          peerMap.set(peerId, now);
 
-          // Clean up old peers (older than 10 seconds)
-          for (const key of Object.keys(peers)) {
-            if (now - peers[key] > 10000) {
-              delete peers[key];
+          // 古いピア情報をクリーンアップ
+          for (const [id, timestamp] of Array.from(peerMap.entries())) {
+            if (now - timestamp > 10000) {
+              peerMap.delete(id);
             }
           }
 
-          localStorage.setItem(`loro-peers-${roomId}`, JSON.stringify(peers));
-          setPeerCount(Object.keys(peers).length);
+          setPeerCount(peerMap.size);
         };
-
-        // 他のタブとの同期を監視
-        const handleStorageChange = (e: StorageEvent) => {
-          if (e.key === `loro-flow-${roomId}` && e.newValue && docRef.current) {
-            try {
-              const data = new Uint8Array(JSON.parse(e.newValue));
-              isUpdatingFromLoroRef.current = true;
-              docRef.current.import(data);
-              isUpdatingFromLoroRef.current = false;
-            } catch (error) {
-              console.error('Failed to sync from other tab:', error);
-            }
-          }
-        };
-
-        window.addEventListener('storage', handleStorageChange);
 
         // BroadcastChannel for better cross-tab communication
         const broadcastChannel = new BroadcastChannel(`loro-flow-${roomId}`);
         broadcastChannelRef.current = broadcastChannel;
 
-        broadcastChannel.addEventListener('message', (event) => {
-          if (
-            event.data.type === 'loro-update' &&
+        // ピア管理用のメッセージハンドラ
+        const handlePeerMessage = (event: MessageEvent) => {
+          const { type, peerId: messagePeerId, timestamp } = event.data;
+          const peerMap = peerMapRef.current;
+
+          if (type === 'peer-join') {
+            peerMap.set(messagePeerId, timestamp);
+            updatePeerCount();
+          } else if (type === 'peer-leave') {
+            peerMap.delete(messagePeerId);
+            updatePeerCount();
+          } else if (
+            type === 'loro-update' &&
             event.data.data &&
             docRef.current
           ) {
             try {
               const data = new Uint8Array(event.data.data);
-              isUpdatingFromLoroRef.current = true;
-              docRef.current.import(data);
-              isUpdatingFromLoroRef.current = false;
-              setLastSyncTime(new Date());
+              // localStorage経由の更新と重複しないようにチェック
+              const currentData = docRef.current.exportSnapshot();
+              if (data.toString() !== currentData.toString()) {
+                isUpdatingFromLoroRef.current = true;
+                docRef.current.import(data);
+                isUpdatingFromLoroRef.current = false;
+                setLastSyncTime(new Date());
+              }
             } catch (error) {
               console.error('Failed to sync from broadcast:', error);
             }
           }
+        };
+
+        broadcastChannel.addEventListener('message', handlePeerMessage);
+
+        // ピア参加を通知
+        broadcastChannel.postMessage({
+          type: 'peer-join',
+          peerId,
+          timestamp: Date.now(),
         });
 
+        // ピアカウントの定期更新
         updatePeerCount();
-        const peerInterval = setInterval(updatePeerCount, 2000);
+        peerCleanupInterval = setInterval(updatePeerCount, 2000);
 
         storageCleanup = () => {
-          window.removeEventListener('storage', handleStorageChange);
+          // ピア退出を通知
+          if (broadcastChannelRef.current) {
+            broadcastChannelRef.current.postMessage({
+              type: 'peer-leave',
+              peerId: peerIdRef.current,
+              timestamp: Date.now(),
+            });
+          }
           broadcastChannel.close();
-          clearInterval(peerInterval);
+          clearInterval(peerCleanupInterval);
         };
       } catch (error) {
         console.error('Failed to initialize Loro:', error);
@@ -231,6 +254,7 @@ export function LoroFlowSync({
       for (const node of nodes) {
         nodesContainerRef.current.push(node);
       }
+      docRef.current.commit();
     } catch (error) {
       console.error('Failed to update nodes:', error);
     } finally {
@@ -248,6 +272,7 @@ export function LoroFlowSync({
       for (const edge of edges) {
         edgesContainerRef.current.push(edge);
       }
+      docRef.current.commit();
     } catch (error) {
       console.error('Failed to update edges:', error);
     } finally {
