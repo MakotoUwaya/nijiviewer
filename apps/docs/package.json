@@ -16,13 +16,13 @@
   "dependencies": {
     "@microsoft/clarity": "1.0.0",
     "@next/third-parties": "15.5.4",
-    "@tailwindcss/postcss": "4.1.13",
+    "@tailwindcss/postcss": "4.1.14",
     "next": "15.5.4",
     "nextra": "4.5.1",
     "nextra-theme-docs": "4.5.1",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "tailwindcss": "4.1.13",
+    "tailwindcss": "4.1.14",
     "ui": "*"
   },
   "devDependencies": {
