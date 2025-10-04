@@ -32,7 +32,7 @@
     "autoprefixer": "10.4.21",
     "clsx": "2.1.1",
     "framer-motion": "12.23.22",
-    "intl-messageformat": "10.7.16",
+    "intl-messageformat": "10.7.17",
     "loro-crdt": "1.8.2",
     "luxon": "3.7.2",
     "neverthrow": "8.2.0",
