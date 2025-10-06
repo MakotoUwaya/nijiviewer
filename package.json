@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.5",
-    "@playwright/test": "1.55.1",
+    "@playwright/test": "1.56.0",
     "cspell": "9.2.1",
     "dotenv": "17.2.3",
     "msw": "2.11.3",
