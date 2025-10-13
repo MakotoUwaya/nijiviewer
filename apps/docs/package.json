@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "@microsoft/clarity": "1.0.0",
-    "@next/third-parties": "15.5.4",
+    "@next/third-parties": "15.5.5",
     "@tailwindcss/postcss": "4.1.14",
-    "next": "15.5.4",
+    "next": "15.5.5",
     "nextra": "4.6.0",
     "nextra-theme-docs": "4.6.0",
     "react": "19.2.0",
