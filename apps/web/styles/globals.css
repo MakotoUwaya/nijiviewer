@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
+@source "../../node_modules/@heroui/react/dist/**/*.{js,ts,jsx,tsx}";
+@custom-variant dark (&:is(.dark *));
 
 .video-trim {
   object-view-box: inset(12.5% 0);
