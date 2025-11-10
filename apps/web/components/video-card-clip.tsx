@@ -68,7 +68,6 @@ export default function VideoCardClip(
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
         <CardHeader className="absolute z-10 p-1 flex-col items-start">
-          <Chip color="default" radius="sm" size="sm" variant="faded">
             {video.type}
           </Chip>
         </CardHeader>
@@ -87,7 +86,6 @@ export default function VideoCardClip(
               alt={video.title}
               className="absolute top-0 left-0 w-full h-full object-cover"
               removeWrapper
-              radius="none"
               src={getImageUrl(
                 `https://i.ytimg.com/vi/${video.id}/sddefault.jpg`,
               )}
@@ -121,7 +119,6 @@ export default function VideoCardClip(
               content={videoStatusText}
               delay={1000}
               placement="bottom-start"
-              size="sm"
             >
               <p className="text-tiny p-1 truncate">{videoStatusText}</p>
             </Tooltip>

@@ -34,8 +34,7 @@ export const AuthModal = ({ isOpen, onOpenChange }: AuthModalProps) => {
             </ModalBody>
             <ModalFooter className="flex justify-center">
               <Button
-                color="primary"
-                variant="light"
+                variant="ghost"
                 onPress={() => setMode(mode === 'signIn' ? 'signUp' : 'signIn')}
               >
                 {mode === 'signIn'

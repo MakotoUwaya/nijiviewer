@@ -14,7 +14,6 @@ export default function VideoTabs({ channelId }: VideoTabsProps) {
   return (
     <div className="w-full">
       <Tabs
-        aria-label="Video types"
         selectedKey={selectedTab}
         onSelectionChange={(key) => setSelectedTab(key as string)}
         className="w-full"

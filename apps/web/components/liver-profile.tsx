@@ -3,7 +3,8 @@ import {
   CalendarIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
-import { Card, CardBody, Image, Link } from '@heroui/react';
+import { Card, CardContent, Link } from "@heroui/react";
+import Image from "next/image";;
 import { useId } from 'react';
 import { getElapsedTime } from '@/components/search-result';
 import type { Channel } from '@/lib/holodex';
@@ -17,7 +18,7 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
 
   return (
     <Card>
-      <CardBody>
+      <CardContent>
         <div className="flex flex-col md:flex-row gap-6">
           {/* プロフィール画像 */}
           <div className="flex-shrink-0">
@@ -47,7 +48,6 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                       role="img"
-                      aria-label="展開/折りたたみアイコン"
                     >
                       <title>展開/折りたたみアイコン</title>
                       <path
@@ -151,7 +151,7 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                       </svg>
                       <Link
                         href={`https://x.com/${channel.twitter}`}
-                        isExternal
+                        target="_blank" rel="noopener noreferrer"
                         className="text-blue-500 hover:text-blue-600 flex items-center gap-1"
                       >
                         @{channel.twitter}
@@ -163,7 +163,7 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                   <div className="flex items-center gap-1">
                     <Link
                       href={`https://youtube.com/channel/${channel.id}`}
-                      isExternal
+                      target="_blank" rel="noopener noreferrer"
                       className="text-red-500 hover:text-red-600 flex items-center gap-1"
                     >
                       YouTube Channel
@@ -179,7 +179,7 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
             )}
           </div>
         </div>
-      </CardBody>
+      </CardContent>
     </Card>
   );
 }

@@ -78,10 +78,9 @@ export function Navbar(): JSX.Element {
         <NavbarContent justify="start">
           <NavbarItem>
             <Button
-              variant="light"
+              variant="ghost"
               isIconOnly
               onPress={toggleSidebar}
-              aria-label="Toggle sidebar"
             >
               <MenuIcon className="w-6 h-6 text-default-500" />
             </Button>
@@ -100,7 +99,6 @@ export function Navbar(): JSX.Element {
 
         <NavbarContent justify="end">
           <NavbarItem>
-            <Link aria-label="Github" href={siteConfig.links.github} isExternal>
               <GithubIcon className="text-default-500" />
             </Link>
           </NavbarItem>
@@ -112,23 +110,17 @@ export function Navbar(): JSX.Element {
           <NavbarItem>
             {isLoading ? (
               <Button
-                color="primary"
-                size="sm"
-                variant="flat"
+                variant="ghost"
                 isLoading
-                spinner={<Spinner size="sm" color="current" />}
               />
             ) : user ? (
               <Button
-                color="danger"
-                size="sm"
-                variant="light"
+                variant="ghost"
                 onPress={handleSignOut}
               >
                 Sign Out
               </Button>
             ) : (
-              <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
                 Sign In
               </Button>
             )}

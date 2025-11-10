@@ -1,6 +1,7 @@
 'use client';
 
-import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
+import { Card, CardFooter, CardHeader, Chip, User } from "@heroui/react";
+import Image from "next/image";;
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
@@ -32,7 +33,6 @@ export default function VideoCardPlaceholder(
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
         <CardHeader className="absolute z-10 p-1 flex-col items-start">
-          <Chip color="default" radius="sm" size="sm" variant="faded">
             {video.topic_id || video.type}
           </Chip>
         </CardHeader>
@@ -42,7 +42,6 @@ export default function VideoCardPlaceholder(
               alt={video.jp_name || video.title}
               className="absolute top-0 left-0 w-full h-full object-cover"
               removeWrapper
-              radius="none"
               src={getImageUrl(video.thumbnail)}
               crossOrigin="anonymous"
             />

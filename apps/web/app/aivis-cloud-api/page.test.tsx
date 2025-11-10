@@ -23,7 +23,7 @@ vi.mock('@heroui/react', () => ({
   } & ComponentProps<'button'>) => (
     <button
       onClick={onPress}
-      disabled={disabled}
+      isDisabled={disabled}
       className={className}
       data-color={color}
       data-size={size}
@@ -32,7 +32,7 @@ vi.mock('@heroui/react', () => ({
       {children}
     </button>
   ),
-  Textarea: ({
+  TextArea: ({
     placeholder,
     value,
     onValueChange,

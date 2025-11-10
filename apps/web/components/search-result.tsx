@@ -3,7 +3,8 @@ import {
   CalendarIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
-import { Card, CardBody, Image, Link } from '@heroui/react';
+import { Card, CardContent, Link } from "@heroui/react";
+import Image from "next/image";;
 import { useId } from 'react';
 import type { Channel } from '@/lib/holodex';
 
@@ -35,7 +36,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
   const twitterIconId = useId();
   return (
     <Card>
-      <CardBody>
+      <CardContent>
         <div className="flex gap-4">
           {/* モバイル表示 */}
           <div className="md:hidden w-24 h-24">
@@ -130,7 +131,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
                     </svg>
                     <Link
                       href={`https://x.com/${channel.twitter}`}
-                      isExternal
+                      target="_blank" rel="noopener noreferrer"
                       className="text-blue-500 hover:text-blue-600 flex items-center gap-1"
                     >
                       @{channel.twitter}
@@ -157,7 +158,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
             </div>
           </div>
         </div>
-      </CardBody>
+      </CardContent>
     </Card>
   );
 }

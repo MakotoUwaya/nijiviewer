@@ -132,7 +132,6 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <Spinner size="lg" />
       </div>
     );
   }

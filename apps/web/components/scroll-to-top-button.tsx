@@ -36,11 +36,8 @@ export default function ScrollToTopButton({
   return (
     <Button
       isIconOnly
-      size="lg"
-      color="primary"
       className="fixed bottom-24 right-6 z-50 rounded-full shadow-lg"
       onPress={scrollToTop}
-      aria-label="ページトップへ戻る"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

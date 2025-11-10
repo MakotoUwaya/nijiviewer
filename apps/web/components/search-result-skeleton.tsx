@@ -1,9 +1,9 @@
-import { Card, CardBody, Skeleton } from '@heroui/react';
+import { Card, CardContent, Skeleton } from '@heroui/react';
 
 export function SearchResultSkeleton() {
   return (
     <Card>
-      <CardBody>
+      <CardContent>
         <div className="flex gap-4">
           <div className="w-24 h-24">
             <Skeleton className="rounded-lg w-full h-full" />
@@ -13,7 +13,7 @@ export function SearchResultSkeleton() {
             <Skeleton className="w-1/2 h-4 rounded-lg" />
           </div>
         </div>
-      </CardBody>
+      </CardContent>
     </Card>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Divider } from '@heroui/react';
+import { Button, Separator } from '@heroui/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -77,7 +77,7 @@ export function Sidebar({
           </Suspense>
         </div>
       </div>
-      <Divider className="mb-6" />
+      <Separator className="mb-6" />
       {/* Organization セレクター */}
       <div className="mb-6 min-w-0">
         <h3 className="text-sm font-semibold text-default-600 mb-3">
@@ -92,7 +92,7 @@ export function Sidebar({
           />
         </div>
       </div>
-      <Divider className="mb-6" /> {/* ナビゲーションメニュー */}
+      <Separator className="mb-6" /> {/* ナビゲーションメニュー */}
       <div className="flex-1 min-w-0">
         <h3 className="text-sm font-semibold text-default-600 mb-3">
           Navigation
@@ -117,7 +117,7 @@ export function Sidebar({
           ))}
         </nav>
       </div>
-      <Divider className="my-4" />
+      <Separator className="my-4" />
       {/* 設定セクション */}
       <div className="min-w-0">
         <h3 className="text-sm font-semibold text-default-600 mb-3">
@@ -144,7 +144,6 @@ export function Sidebar({
             onKeyDown={(e) => {
               if (e.key === 'Escape') onClose();
             }}
-            aria-label="Close sidebar"
           />
         )}
         <div
@@ -156,7 +155,7 @@ export function Sidebar({
         >
           <div className="flex justify-between items-center p-4 flex-shrink-0">
             <h2 className="text-lg font-semibold">Menu</h2>
-            <Button variant="light" onPress={onClose} className="min-w-fit p-2">
+            <Button variant="ghost" onPress={onClose} className="min-w-fit p-2">
               ×
             </Button>
           </div>

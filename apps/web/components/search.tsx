@@ -158,7 +158,6 @@ export function Search({ onSearch }: SearchProps) {
           inputWrapper: 'h-full font-normal bg-default-100 dark:bg-default-50',
         }}
         placeholder="Search Liver Name..."
-        size="sm"
         startContent={
           <SearchIcon
             className="text-xl text-default-400 pointer-events-none flex-shrink-0"
@@ -179,7 +178,6 @@ export function Search({ onSearch }: SearchProps) {
       {/* サジェスト候補 */}
       {showSuggestions && searchHistories.length > 0 && (
         <div className="absolute z-10 w-full mt-1 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md shadow-lg max-h-60 overflow-auto">
-          <ul className="py-1" aria-label="検索履歴">
             {searchHistories.map((history, index) => {
               const deleteIconId = `${searchIconId}-delete-${index}`;
               return (
@@ -193,14 +191,12 @@ export function Search({ onSearch }: SearchProps) {
                       handleSuggestionClick(history.search_word);
                     }
                   }}
-                  aria-label={`検索履歴: ${history.search_word}`}
                 >
                   <span>{history.search_word}</span>
                   <button
                     type="button"
                     className="text-gray-500 hover:text-red-500 focus:outline-none ml-2 p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer"
                     onClick={(e) => deleteSearchHistory(history.search_word, e)}
-                    aria-label={`${history.search_word} を削除`}
                   >
                     <svg
                       role="img"

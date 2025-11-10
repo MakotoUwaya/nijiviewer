@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Textarea } from '@heroui/react';
+import { Button, TextArea } from '@heroui/react';
 import { useEffect, useRef, useState } from 'react';
 import { CircularAudioSpectrum } from '@/lib/circular-audio-spectrum';
 
@@ -176,7 +176,6 @@ export default function AivisCloudAPIPage() {
               backgroundPosition: 'center',
             }}
             role="img"
-            aria-label="voice model image"
           />
           <div
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-30 transition-opacity duration-300 ease-in-out spectrum-container"
@@ -185,27 +184,22 @@ export default function AivisCloudAPIPage() {
           />
         </div>
 
-        <Textarea
+        <TextArea
           placeholder="音声モデルに話してほしいことを入力"
           value={text}
-          onValueChange={setText}
+          onChange={(e) => setText(e.target.value)}
           className="mb-4"
-          minRows={3}
-          maxRows={5}
         />
 
         <Button
           onPress={handleSpeak}
-          disabled={isLoading}
-          color="primary"
-          size="lg"
+          isDisabled={isLoading}
           className="mb-4"
         >
           {isLoading ? '生成中...' : '話して音声モデル！'}
         </Button>
 
         <audio ref={audioRef} className="hidden">
-          <track kind="captions" srcLang="ja" label="日本語" />
         </audio>
       </div>
     </div>

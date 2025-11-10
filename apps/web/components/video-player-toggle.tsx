@@ -21,8 +21,6 @@ export default function VideoPlayerToggle({
       <Switch
         isSelected={isYouTubePlayer}
         onChange={handleChange}
-        size="sm"
-        color="primary"
       />
       <span className="text-sm">
         {isYouTubePlayer ? 'Play on YouTube' : 'Play in App'}

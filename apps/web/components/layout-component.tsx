@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from '@heroui/link';
+import { Link } from "@heroui/react";
 import type { ReactNode } from 'react';
 import { useSidebar } from '@/context/sidebar-context';
 
@@ -23,7 +23,7 @@ export function LayoutComponent({ children }: LayoutComponentProps) {
       </main>
       <footer className="w-full flex items-center justify-center py-3 mt-auto">
         <span className="text-default-600">Powered by</span>
-        <Link isExternal href="https://www.heroui.com/">
+        <Link target="_blank" rel="noopener noreferrer" href="https://www.heroui.com/">
           NextUI
         </Link>
       </footer>

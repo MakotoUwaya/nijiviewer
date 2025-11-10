@@ -37,7 +37,6 @@ export default function OrgSelector({
             <Avatar
               alt={item.data?.name}
               className="flex-shrink-0"
-              size="sm"
               src={
                 item.data
                   ? `https://holodex.net/statics/channelImg/${item.data.channelId}/100.png`
@@ -57,7 +56,6 @@ export default function OrgSelector({
             <Avatar
               alt={organization.name}
               className="flex-shrink-0"
-              size="sm"
               src={`https://holodex.net/statics/channelImg/${organization.channelId}/100.png`}
             />
             <div className="flex flex-col">

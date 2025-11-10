@@ -92,7 +92,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
           </button>
           <button
             type="submit"
-            disabled={loading}
+            isDisabled={loading}
             className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
           >
             {loading

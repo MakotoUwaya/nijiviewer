@@ -27,7 +27,7 @@ export default function Home(): JSX.Element {
             variant: 'shadow',
           })}
           href={siteConfig.links.docs}
-          isExternal
+          target="_blank" rel="noopener noreferrer"
         >
           Documentation
         </Link>
@@ -35,7 +35,7 @@ export default function Home(): JSX.Element {
           as={NextLink}
           className={buttonStyles({ variant: 'bordered', radius: 'full' })}
           href={siteConfig.links.github}
-          isExternal
+          target="_blank" rel="noopener noreferrer"
         >
           <GithubIcon size={20} />
           GitHub
@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
       </div>
 
       <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="flat">
+        <Snippet hideCopyButton hideSymbol variant="ghost">
           <span>Live streams • Streamer search</span>
         </Snippet>
       </div>

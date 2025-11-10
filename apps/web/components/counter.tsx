@@ -18,7 +18,6 @@ export function Counter(props: CounterProps): JSX.Element {
   };
 
   return (
-    <Button onPress={onPress} radius="full">
       Count is {count}
     </Button>
   );
