@@ -4,8 +4,8 @@ import { NextResponse } from 'next/server';
 // Node.jsランタイムを使用
 export const runtime = 'nodejs';
 
-export async function middleware(_request: NextRequest) {
-  // Temporarily disable middleware to avoid edge runtime issues
+export async function proxy(_request: NextRequest) {
+  // Temporarily disable proxy to avoid edge runtime issues
   return NextResponse.next();
 }
 
