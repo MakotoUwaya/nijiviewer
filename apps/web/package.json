@@ -62,7 +62,7 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.1",
     "@vitest/coverage-v8": "4.0.8",
-    "jsdom": "27.1.0",
+    "jsdom": "27.2.0",
     "openapi-typescript": "7.10.1",
     "storybook": "9.1.16",
     "tsconfig": "*",
