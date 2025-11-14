@@ -61,12 +61,12 @@
     "@types/react": "19.2.4",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.1",
-    "@vitest/coverage-v8": "4.0.8",
+    "@vitest/coverage-v8": "4.0.9",
     "jsdom": "27.2.0",
     "openapi-typescript": "7.10.1",
     "storybook": "9.1.16",
     "tsconfig": "*",
     "typescript": "5.9.3",
-    "vitest": "4.0.8"
+    "vitest": "4.0.9"
   }
 }
