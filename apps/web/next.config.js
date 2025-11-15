@@ -2,10 +2,8 @@
 export default {
   reactStrictMode: true,
   transpilePackages: ['ui'],
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   serverExternalPackages: ['loro-crdt'],
+  turbopack: {},
   webpack: (config, { isServer }) => {
     // WebAssembly サポートを有効化（loro-crdt用）
     config.experiments = {
