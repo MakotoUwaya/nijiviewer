@@ -10,13 +10,15 @@ export function getImageUrl(url: string): string {
   try {
     const urlObj = new URL(url);
 
+    // cSpell:disable
     // CORS制限があることが既知のドメインリスト
     const corsRestrictedDomains = [
       'hdslb.com', // Bilibili
-      'i0.hdslb.com', // Bilibiliのサブドメイン
       'bilibili.com', // Bilibili
       'public-web.spwn.jp', // SPWN
+      'abema-tv.com', // Abema
     ];
+    // cSpell:enable
 
     // 指定されたドメインの場合はプロキシを使用
     if (
