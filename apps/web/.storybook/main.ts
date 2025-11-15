@@ -1,6 +1,15 @@
+import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/nextjs';
 import dotenv from 'dotenv';
+
+// ESM環境で__dirnameを取得
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// ESM環境でrequire.resolveを使用
+const require = createRequire(import.meta.url);
 
 // 環境変数をロード
 dotenv.config({ path: join(__dirname, '../../../.env') });
