@@ -4,6 +4,32 @@ import type { Edge, Node } from '@xyflow/react';
 import type { LoroDoc, LoroList } from 'loro-crdt';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+function hasExportSnapshot(
+  doc: unknown,
+): doc is { exportSnapshot: () => Uint8Array } {
+  return (
+    typeof doc === 'object' &&
+    doc !== null &&
+    'exportSnapshot' in doc &&
+    // biome-ignore lint/suspicious/noExplicitAny: <>
+    typeof (doc as any).exportSnapshot === 'function'
+  );
+}
+function hasExport(doc: unknown): doc is { export: () => Uint8Array } {
+  return (
+    typeof doc === 'object' &&
+    doc !== null &&
+    'export' in doc &&
+    // biome-ignore lint/suspicious/noExplicitAny: <>
+    typeof (doc as any).export === 'function'
+  );
+}
+const getDocData = (doc: unknown): Uint8Array | null => {
+  if (hasExportSnapshot(doc)) return doc.exportSnapshot();
+  if (hasExport(doc)) return doc.export();
+  return null;
+};
+
 interface LoroFlowSyncProps {
   roomId: string;
   onNodesChange: (nodes: Node[]) => void;
@@ -105,7 +131,8 @@ export function LoroFlowSync({
 
           // 自動保存
           try {
-            const data = doc.exportSnapshot();
+            const data = getDocData(doc);
+            if (!data) throw new Error('No snapshot available');
             const dataString = JSON.stringify(Array.from(data));
 
             // 現在のlocalStorageの値と比較
@@ -174,8 +201,10 @@ export function LoroFlowSync({
             try {
               const data = new Uint8Array(event.data.data);
               // localStorage経由の更新と重複しないようにチェック
-              const currentData = docRef.current.exportSnapshot();
-              if (data.toString() !== currentData.toString()) {
+              const currentData = docRef.current
+                ? getDocData(docRef.current)
+                : null;
+              if (!currentData || data.toString() !== currentData.toString()) {
                 isUpdatingFromLoroRef.current = true;
                 docRef.current.import(data);
                 isUpdatingFromLoroRef.current = false;
@@ -283,7 +312,7 @@ export function LoroFlowSync({
   // ドキュメントをエクスポート
   const exportDocument = useCallback(() => {
     if (!docRef.current) return null;
-    return docRef.current.exportSnapshot();
+    return getDocData(docRef.current);
   }, []);
 
   // ドキュメントをインポート
