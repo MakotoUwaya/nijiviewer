@@ -14,7 +14,7 @@
     "format": "biome format ./ --write"
   },
   "dependencies": {
-    "@microsoft/clarity": "1.0.1",
+    "@microsoft/clarity": "1.0.2",
     "@next/third-parties": "16.0.5",
     "@tailwindcss/postcss": "4.1.17",
     "next": "16.0.5",
