@@ -22,6 +22,8 @@ export default function AivisCloudAPIPage() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const spectrumContainerRef = useRef<HTMLDivElement>(null);
   const spectrumRef = useRef<CircularAudioSpectrum | null>(null);
+  const audioChunksRef = useRef<Uint8Array[]>([]);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
   // モデルを指定
   // https://hub.aivis-project.com/search
@@ -77,6 +79,17 @@ export default function AivisCloudAPIPage() {
     }
   }, []);
 
+  const getFormattedDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    return `${year}${month}${day}${hours}${minutes}${seconds}`;
+  };
+
   const handleSpeak = async () => {
     if (!text.trim()) {
       alert('音声モデルに話してほしいことを入力してください！');
@@ -84,6 +97,8 @@ export default function AivisCloudAPIPage() {
     }
 
     setIsLoading(true);
+    setDownloadUrl(null);
+    audioChunksRef.current = [];
 
     try {
       const res = await fetch('/api/tts/synthesize', {
@@ -143,10 +158,18 @@ export default function AivisCloudAPIPage() {
             await waitForIdle(); // 最後の書き込みを待つ
             console.log('Streaming audio data finished.');
             mediaSource.endOfStream();
+
+            // Blobを作成してダウンロードURLを生成
+            const blob = new Blob(audioChunksRef.current as BlobPart[], { type: 'audio/mpeg' });
+            const url = URL.createObjectURL(blob);
+            setDownloadUrl(url);
             break;
           }
           await waitForIdle();
           sb.appendBuffer(value);
+          if (value) {
+            audioChunksRef.current.push(value);
+          }
           await waitForIdle();
         }
       });
@@ -194,15 +217,28 @@ export default function AivisCloudAPIPage() {
           maxRows={5}
         />
 
-        <Button
-          onPress={handleSpeak}
-          disabled={isLoading}
-          color="primary"
-          size="lg"
-          className="mb-4"
-        >
-          {isLoading ? '生成中...' : '話して音声モデル！'}
-        </Button>
+        <div className="flex gap-4 mb-4">
+          <Button
+            onPress={handleSpeak}
+            disabled={isLoading}
+            color="primary"
+            size="lg"
+          >
+            {isLoading ? '生成中...' : '話して音声モデル！'}
+          </Button>
+
+          <Button
+            as="a"
+            href={downloadUrl || undefined}
+            download={downloadUrl ? `${getFormattedDate()}.mp3` : undefined}
+            isDisabled={!downloadUrl || isLoading}
+            color="secondary"
+            size="lg"
+            variant="flat"
+          >
+            ダウンロード
+          </Button>
+        </div>
 
         <audio ref={audioRef} className="hidden">
           <track kind="captions" srcLang="ja" label="日本語" />
