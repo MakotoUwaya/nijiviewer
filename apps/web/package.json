@@ -33,7 +33,7 @@
     "clsx": "2.1.1",
     "framer-motion": "12.23.25",
     "intl-messageformat": "10.7.18",
-    "loro-crdt": "1.10.2",
+    "loro-crdt": "1.10.3",
     "luxon": "3.7.2",
     "neverthrow": "8.2.0",
     "next": "16.0.7",
