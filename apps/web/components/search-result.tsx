@@ -8,6 +8,7 @@ import {
 import { Card, CardBody, Image, Link } from '@heroui/react';
 import { useId } from 'react';
 import type { Channel } from '@/lib/holodex';
+import { FavoriteButton } from '@/components/favorite-button';
 
 export function getElapsedTime(dateString: string): string {
   const date = new Date(dateString);
@@ -61,12 +62,15 @@ export function SearchResult({ channel }: { channel: Channel }) {
           </div>
           <div className="flex-1">
             <div className="flex flex-col md:flex-row md:items-center md:gap-4 mb-2">
-              <Link
-                className="text-lg font-bold line-clamp-2"
-                href={`/liver/${channel.id}`}
-              >
-                {channel.name}
-              </Link>
+              <div className="flex items-center gap-2">
+                <Link
+                  className="text-lg font-bold line-clamp-2"
+                  href={`/liver/${channel.id}`}
+                >
+                  {channel.name}
+                </Link>
+                <FavoriteButton liverId={channel.id} mini />
+              </div>
               {channel.english_name && (
                 <span className="hidden md:block text-default-500">
                   {channel.english_name}

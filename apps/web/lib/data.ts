@@ -103,3 +103,35 @@ export const fetchChannelInfo = async (
   );
   return channel.isOk() ? channel.value : null;
 };
+
+export const fetchChannels = async (channelIds: string[]): Promise<Channel[]> => {
+  if (channelIds.length === 0) {
+    return [];
+  }
+  noStore();
+  
+  const channelPromises = channelIds.map(async (id) => {
+    const response = await fromPromise(
+      fetch(`${baseUrl}/channels/${id}`, {
+        headers: {
+          'x-apikey': process.env.HOLODEX_APIKEY || '',
+        },
+      }),
+      (e: Error) => e,
+    );
+
+    if (response.isErr()) {
+      return undefined;
+    }
+
+    const channel = await fromPromise<Channel, Error>(
+      response.value.json(),
+      (e: Error) => e,
+    );
+
+    return channel.isOk() ? channel.value : undefined;
+  });
+
+  const results = await Promise.all(channelPromises);
+  return results.filter((channel): channel is Channel => channel !== undefined);
+};

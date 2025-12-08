@@ -10,6 +10,8 @@ import { useId } from 'react';
 import { getElapsedTime } from '@/components/search-result';
 import type { Channel } from '@/lib/holodex';
 
+import { FavoriteButton } from '@/components/favorite-button';
+
 interface LiverProfileProps {
   channel: Channel;
 }
@@ -34,8 +36,9 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
 
           {/* プロフィール情報 */}
           <div className="flex-1">
-            <div className="mb-4">
-              <h2 className="text-3xl font-bold mb-2">{channel.name}</h2>
+            <div className="mb-4 flex items-center gap-4">
+              <h2 className="text-3xl font-bold mb-0">{channel.name}</h2>
+              <FavoriteButton liverId={channel.id} />
             </div>
 
             {channel.description && (
