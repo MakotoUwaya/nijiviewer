@@ -6,7 +6,7 @@ import { useIsSSR } from '@react-aria/ssr';
 import { VisuallyHidden } from '@react-aria/visually-hidden';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
-import type { FC } from 'react';
+import { type FC, useEffect, useState } from 'react';
 import { MoonFilledIcon, SunFilledIcon } from './icons';
 
 export interface ThemeSwitchProps {
@@ -18,8 +18,13 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   className,
   classNames,
 }) => {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const onChange = (): void => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
@@ -33,10 +38,12 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getInputProps,
     getWrapperProps,
   } = useSwitch({
-    isSelected: theme === 'light',
-    'aria-label': `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`,
+    isSelected: theme === 'light' || isSSR,
+    'aria-label': `Switch to ${theme === 'light' || isSSR ? 'dark' : 'light'} mode`,
     onChange,
   });
+
+  if (!mounted) return <div className="w-12 h-6" />; // Placeholder to avoid layout shift
 
   return (
     <Component

@@ -1,3 +1,5 @@
+'use client';
+
 import { Input } from '@heroui/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useId, useState } from 'react';
@@ -15,6 +17,7 @@ interface SearchHistory {
 }
 
 export function Search({ onSearch }: SearchProps) {
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const [value, setValue] = useState(searchParams.get('q') || '');
@@ -22,6 +25,10 @@ export function Search({ onSearch }: SearchProps) {
   const [searchHistories, setSearchHistories] = useState<SearchHistory[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchIconId = useId();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // 検索履歴を取得する
   const fetchSearchHistories = useCallback(async () => {
@@ -147,6 +154,10 @@ export function Search({ onSearch }: SearchProps) {
     setValue(suggestion);
     executeSearch(suggestion);
   };
+
+  if (!mounted) {
+    return <div className="w-full h-10 bg-default-100 dark:bg-default-50 rounded-medium" />;
+  }
 
   return (
     <div className="relative w-full max-w-full">
