@@ -27,7 +27,7 @@
     "@supabase/ssr": "0.8.0",
     "@supabase/supabase-js": "2.87.1",
     "@tailwindcss/line-clamp": "0.4.4",
-    "@tailwindcss/postcss": "4.1.17",
+    "@tailwindcss/postcss": "4.1.18",
     "@xyflow/react": "12.10.0",
     "autoprefixer": "10.4.22",
     "clsx": "2.1.1",
@@ -42,7 +42,7 @@
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "tailwind-variants": "3.2.2",
-    "tailwindcss": "4.1.17",
+    "tailwindcss": "4.1.18",
     "ui": "*"
   },
   "devDependencies": {
