@@ -1,0 +1,555 @@
+---
+title: PowerShell 開発者向け設定
+---
+
+import { Tabs } from "nextra/components";
+
+# PowerShell 開発者向け設定
+
+> [!WARNING]
+>
+> この記事は個人向けの設定メモです。  
+> 説明が不十分だったり、検証不足で動作しない箇所があったりします。
+
+WSL2 の Ubuntu で構築しているターミナル設定を再現するためにやっている  
+自宅開発では WSL2 使わずに動くリポジトリしか触っていないので、この対応をしないととても不便  
+色々手探りではあるが、少しずつ更新していく
+
+# 基本
+
+- Profile 設定ファイルは `$PROFILE` でパスを確認
+  - 更新した時は `. $PROFILE` を実行してプロファイルを再読込する
+  - もちろんターミナル再起動でも良い
+- CLI ツールのインストールはなるべく winget を使う
+  - 次点で mise / npm / cargo / go などのパッケージマネージャ
+  - バージョン管理が面倒なので、バイナリを直接インストールするのは極力避けた方が良い
+- ショートカットコマンドは、コマンド実行履歴に残らないようにする
+  - コマンド先頭に半角スペースを入れておくと除外される仕組みを利用する
+
+# winget
+
+Windows のパッケージマネージャ
+CLI だけでなく、様々なツールのインストールを行うことができる
+
+## 主要なコマンド
+
+```
+❯ winget --help
+v1.12.350 の Windows パッケージ マネージャー
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+WinGet コマンド ライン ユーティリティを使用すると、コマンド ラインからアプリケーションやその他のパッケージをインストールできます。
+
+使用法: winget  [<コマンド>] [<オプション>]
+
+使用できるコマンドは次のとおりです:
+  install    指定されたパッケージをインストール
+  show       パッケージに関する情報を表示します
+  source     パッケージのソースの管理
+  search     アプリの基本情報を見つけて表示
+  list       インストール済みパッケージを表示する
+  upgrade    利用可能なアップグレードの表示と実行
+  uninstall  指定されたパッケージをアンインストール
+  hash       インストーラー ファイルをハッシュするヘルパー
+  validate   マニフェスト ファイルを検証
+  settings   設定を開くか、管理者設定を設定する
+  features   試験的な機能の状態を表示
+  export     インストールされているパッケージのリストをエクスポート
+  import     ファイル中のすべてのパッケージをインストール
+  pin        パッケージ ピンの管理
+  configure  システムを適切な状態に構成します
+  download   指定されたパッケージからインストーラをダウンロードする
+  repair     選択したパッケージを修復します
+  dscv3      DSC v3 リソース コマンド
+  mcp        MCP 情報
+
+特定のコマンドの詳細については、そのコマンドにヘルプ引数を渡します。 [-?]
+
+次のオプションを使用できます。
+  -v,--version                ツールのバージョンを表示
+  --info                      ツールの一般情報を表示
+  -?,--help                   選択したコマンドに関するヘルプを表示
+  --wait                      終了する前に任意のキーを押すプロンプトをユーザーに表示します
+  --logs,--open-logs          既定のログの場所を開く
+  --verbose,--verbose-logs    WinGet の詳細ログを有効にする
+  --nowarn,--ignore-warnings  警告出力を非表示にする
+  --disable-interactivity     対話型プロンプトを無効にします
+  --proxy                     この実行に使用するプロキシを設定します
+  --no-proxy                  この実行に対するプロキシの使用を無効にする
+
+その他のヘルプについては、次を参照してください: https://aka.ms/winget-command-help
+```
+
+自分で入れた覚えのないものもかなり含まれている
+`MSIX\*` 系は OS がプリセットとしてインストールしているものがほとんど
+
+`search` を使ってインストールしたいツールを検索
+同名のツールが複数見つかった場合、ID に会社名や作者名などが含まれるのでそこから判断する
+公式に配布されているパッケージ以外をインストールすると、何をされるか分からない危険性がある
+正規のツールであったとしても、配信されるものが汚染されていないとは限らない
+
+```sh
+❯ winget search fzf
+名前          ID                 バージョン 一致     ソース
+-----------------------------------------------------------
+fzf           junegunn.fzf       0.67.0              winget
+zoxide        ajeetdsouza.zoxide 0.9.8      Tag: fzf winget
+Space Age seD ms-jpq.sad         0.4.32     Tag: fzf winget
+Monit         fzf404.Monit       0.8.1               winget
+```
+
+# Tools
+
+## mise
+
+横断的なパッケージマネージャ
+OS 問わず使える
+ツールはかなりの数 [mise registry](https://mise.jdx.dev/registry.html#tools) にもあるので、 Backend を既に使っているなら mise に寄せた方が楽に環境構築できる
+
+```sh
+winget install -e --id jdx.mise
+```
+
+```sh
+❯ mise --version
+              _                                        __
+   ____ ___  (_)_______        ___  ____        ____  / /___ _________
+  / __ `__ \/ / ___/ _ \______/ _ \/ __ \______/ __ \/ / __ `/ ___/ _ \
+ / / / / / / (__  )  __/_____/  __/ / / /_____/ /_/ / / /_/ / /__/  __/
+/_/ /_/ /_/_/____/\___/      \___/_/ /_/     / .___/_/\__,_/\___/\___/
+                                            /_/                 by @jdx
+2025.12.1 windows-x64 (2025-12-08)
+mise WARN  mise version 2025.12.2 available
+mise WARN  To update, run mise self-update
+```
+
+```sh
+mise use -g ubi:goreleaser/goreleaser
+mise use -g ubi:junegunn/fzf
+mise use -g ubi:eza-community/eza
+```
+
+<Tabs items={["PowerShell", "bash"]}>
+  <Tabs.Tab>
+
+> [!TIP]
+>
+> ```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+> # mise
+> Invoke-Expression (mise activate pwsh | Out-String)
+> ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+> [!TIP]
+>
+> ```bash filename="~/.bashrc" showLineNumbers
+> # mise
+> eval "$(mise activate bash --shims)"
+> ```
+
+  </Tabs.Tab>
+</Tabs>
+
+## Starship
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# Starship
+function Invoke-Starship-PreCommand {
+  $loc = $executionContext.SessionState.Path.CurrentLocation;
+  $prompt = "$([char]27)]9;12$([char]7)"
+  if ($loc.Provider.Name -eq "FileSystem")
+  {
+    $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)/"
+  }
+  $host.ui.Write($prompt)
+}
+
+Invoke-Expression (&starship init powershell)
+```
+
+## Scoop
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# Scoop
+$ENV:Path+=";$env:USERPROFILE\scoop\shims"
+```
+
+## GnuWin32
+
+Windows で Linux 互換コマンドを使えるようにする
+[GnuWin Packages](https://gnuwin32.sourceforge.net/packages.html) にあるユーティリティの中から必要なものを追加する
+
+```sh
+winget install -e --id GnuWin32.Grep
+winget install -e --id GnuWin32.Gzip
+winget install -e --id GnuWin32.Which
+winget install -e --id GnuWin32.Zip
+```
+
+## fd-find
+
+```sh
+winget install -e --id sharkdp.fd
+```
+
+## fzf
+
+[junegunn/fzf](https://github.com/junegunn/fzf) CLI の曖昧検索ツール
+
+```sh
+mise use -g ubi:junegunn/fzf
+```
+
+- `FZF_DEFAULT_OPTS` は fzf をデフォルトで起動した時のオプション
+- `FZF_CTRL_T_OPTS` は `ctrl + T` でのカレントディレクトリ配下のファイル検索時のオプション
+  - `fzf-preview.sh` については公式で提供されているので以下のコマンドなどで PATH が通っているディレクトリに配置
+  - `nvim` + `ctrl + T` でファイル選択が簡単に
+- `FZF_ALT_C_OPTS` は `alt + c` カレントディレクトリ配下のディレクトリ移動を可能にするオプション
+  - `eza` については[eza のインストール方法](https://zenn.dev/kabec_dev/articles/3d003fe3940b8a)を参照
+  - 選択した状態で Enter を押下すると移動できる
+
+<Tabs items={["PowerShell", "bash"]}>
+  <Tabs.Tab>
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# $env:FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
+$env:FZF_DEFAULT_OPTS="--prompt='QUERY> ' --height 60% --layout reverse --border=rounded --style full"
+$env:FZF_CTRL_T_OPTS="--preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}'"
+$env:FZF_ALT_C_OPTS="--preview 'eza {} -h -T -F  --no-user --no-time --no-filesize --no-permissions --long | head -200'"
+$env:EDITOR="nvim"
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+```bash filename="~/.bashrc" showLineNumbers
+# export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
+export FZF_DEFAULT_OPTS="--prompt='QUERY> ' --height 60% --layout reverse --border=rounded --style full"
+export FZF_CTRL_T_OPTS="--preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}'"
+export FZF_ALT_C_OPTS="--preview 'eza {} -h -T -F  --no-user --no-time --no-filesize --no-permissions --long | head -200'"
+eval "$(fzf --bash)"
+```
+
+```sh
+sudo curl -s "https://raw.githubusercontent.com/junegunn/fzf/v${FZF_VER}/bin/fzf-preview.sh" -Lo /usr/local/bin/fzf-preview.sh
+sudo chmod +x /usr/local/bin/fzf-preview.sh
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+**Add tfz command (Ctrl + f 相当)**
+
+<Tabs items={["PowerShell", "bash"]}>
+  <Tabs.Tab>
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+## Grep検索
+Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+
+    if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
+        Write-Warning "Error: 'rg' command not found."
+        [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+        return
+    }
+
+    $rgCmd = "rg --column --line-number --no-heading --color=always --smart-case --hidden --invert-match '^\s*$' ."
+    $fzfCmd = "fzf --ansi --delimiter : --height 100% --layout reverse --border rounded"
+
+    try {
+        $result = Invoke-Expression "$rgCmd | $fzfCmd"
+        if (-not [string]::IsNullOrWhiteSpace($result)) {
+            if ($result -match '^(.+?):(\d+):') {
+                $file = $Matches[1]
+                $line = $Matches[2]
+
+                # コマンドインジェクションを防ぐため、引数として安全に nvim を起動する
+                & nvim -- $file +$line
+                return
+            }
+        } else {
+            [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+        }
+    }
+    catch {
+        Write-Error $_
+        [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+    }
+}
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+```bash filename="/usr/local/bin/tfz" showLineNumbers
+#!/bin/bash
+
+grep_cmd="rg --hidden --line-number --no-heading --invert-match '^\s*$' 2>/dev/null"
+
+read -r file line <<<"$(bash -c "$grep_cmd" | fzf --select-1 --exit-0 | awk -F: '{print \$1, \$2}')"
+( [[ -z "$file" ]] || [[ -z "$line" ]] ) && exit
+"$EDITOR" -- "$file" "+$line"
+```
+
+```sh
+sudo chmod +x /usr/local/bin/tfz
+```
+
+```bash filename="~/.bashrc" showLineNumbers
+export EDITOR=nvim
+bind '"\C-f": "tfz -m"'
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+## ripgrep
+
+<Tabs items={["PowerShell", "bash"]}>
+  <Tabs.Tab>
+
+```sh
+winget install -e --id BurntSushi.ripgrep.GNU
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+```sh
+sudo apt install -y ripgrep
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+## eza
+
+<Tabs items={["PowerShell", "bash"]}>
+  <Tabs.Tab>
+
+```sh
+mise use -g ubi:eza-community/eza
+```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+```sh
+sudo apt install eza
+```
+
+  </Tabs.Tab>
+</Tabs>
+
+## ghq
+
+[x-motemen/ghq](https://github.com/x-motemen/ghq) Git のリモートリポジトリの整理ツール
+go get コマンドを参考にしている
+
+```sh
+winget install -e --id x-motemen.ghq
+```
+
+<Tabs items={["PowerShell", "bash"]}>
+  <Tabs.Tab>
+
+> [!NOTE]
+>
+> ```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+> function Set-GhqLocation {
+>     $selectedDir = ghq list -p | fzf -e
+>     if (-not [string]::IsNullOrWhiteSpace($selectedDir)) {
+>         if (Test-Path $selectedDir) {
+>            Set-Location -Path $selectedDir
+>         }
+>     }
+> }
+> Set-Alias gitdir Set-GhqLocation
+> ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+
+> [!NOTE]
+>
+> ```bash filename=".bashrc" showLineNumbers
+> gitdir() {
+>   local dir
+>   dir=$(ghq list -p | fzf -e +m) && cd "$dir"
+> }
+> ```
+
+  </Tabs.Tab>
+</Tabs>
+
+## Neovim
+
+[Neovim](https://neovim.io/) は Vim から派生したコードエディタ
+Vim と互換性が高く、新機能が多数追加されている
+プラグインを追加すると便利にコーディングできるようになっている
+
+```sh
+winget install -e --id Neovim.Neovim
+```
+
+```sh
+# コマンド名は 'nvim'
+❯ nvim -V1 -v
+NVIM v0.11.5
+Build type: Release
+LuaJIT 2.1.1741730670
+
+   system vimrc file: "$VIM/sysinit.vim"
+  fall-back for $VIM: "C:/Program Files (x86)/nvim/share/nvim"
+
+Run :checkhealth for more info
+```
+
+設定ファイルを作成して以下に配置する(ディレクトリも作る)
+
+```sh
+nvim -V1 -es -c "echo stdpath('config') . '/init.lua'" -cq
+```
+
+```sh
+$env:USERPROFILE\AppData\Local\nvim\init.lua
+```
+
+## Lua
+
+```sh
+winget install -e --id DEVCOM.Lua
+```
+
+## lazy.nvim
+
+[folke/lazy.nvim](https://github.com/folke/lazy.nvim) は Neovim 用のプラグインマネージャ
+
+setting file tree
+
+```sh
+$env:LOCALAPPDATA\nvim
+├── lua
+│ ├── config
+│ │ └── lazy.lua
+│ └── plugins
+│ ├── spec1.lua
+│ ├── **
+│ └── specN.lua
+└── init.lua
+```
+
+# Profile
+
+### Alias
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+Set-Alias -Name ll -Value Get-ChildItem
+Set-Alias -Name touch -Value New-Item
+```
+
+## Key binding
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# キーバインド
+# https://zenn.dev/microsoft/articles/powershell-linux-key-bindings
+Import-Module PSReadline
+Set-PSReadLineOption -EditMode Emacs
+```
+
+## Credential Manager
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# Credential Manager を設定(SSH ではなく HTTPS で通信したい場合)
+# git config --global credential.helper manager
+. "$HOME\.safe-chain\scripts\init-pwsh.ps1" # Safe-chain PowerShell initialization script
+```
+
+## base64
+
+`echo "text" | base64 -e` や `echo "base64-text" | base64 -d` のように使う
+`-e` は省略可能
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# base64
+function base64(){
+    Param([switch]$e=$true, [switch]$d=$false, [Parameter(Mandatory=$true,ValueFromPipeline=$true)][string]$input)
+    Begin{}
+    Process{
+        if($d){
+            $byte = [System.Convert]::FromBase64String($input)
+            $txt = [System.Text.Encoding]::Default.GetString($byte)
+            $txt
+        }
+        elseif($e){
+            $byte = ([System.Text.Encoding]::Default).GetBytes($input)
+            $b64enc = [Convert]::ToBase64String($byte)
+            $b64enc
+        }
+    }
+    End{}
+}
+```
+
+## Gemini CLI
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# Gemini CLI
+$env:GEMINI_SANDBOX="podman"
+```
+
+## File edit
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+# File edit
+function Select-EditFile {
+    $selectedFile = fzf -e
+    if (-not [string]::IsNullOrWhiteSpace($selectedFile)) {
+        if (Test-Path $selectedFile) {
+            nvim $selectedFile
+        }
+    }
+}
+Set-Alias sef Select-EditFile
+```
+
+# Tips
+
+## Alias 設定
+
+```sh
+# 確認(gal)
+Get-Alias | ft -h | fzf -e
+
+# 追加(sal)
+Set-Alias [-Name] <string> [-Value] <string> [-Description <string>]
+
+# 削除
+Remove-alias [-Name] <string>
+```
+
+## 結果表示
+
+PowerShell でヘッダ行（項目名の行）を表示しないようにするには、パイプラインで `Format-Table` コマンドレットに渡し、`-HideTableHeaders` パラメータを使用するのが一般的  
+短縮形の `ft -h` を使うと便利
+
+### 実行例
+
+```sh
+# 正式な書き方
+Get-Alias | Format-Table -HideTableHeaders
+
+# 短縮した書き方（ft は Format-Table、-h は -HideTableHeaders の略）
+Get-Alias | ft -h
+```
+
+**特定の列の値だけが欲しい場合**
+もし、表形式ではなく「中身の値だけ」をリストとして取得したい場合は、`Select-Object` の `-ExpandProperty` を使う方が扱いやすい場合がある
+
+```sh
+# 例：Aliasの名前だけを純粋な文字列のリストとして取得
+Get-Alias | Select-Object -ExpandProperty Name
+```
