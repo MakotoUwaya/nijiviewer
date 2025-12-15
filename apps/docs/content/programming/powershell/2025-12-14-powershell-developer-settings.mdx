@@ -124,9 +124,17 @@ mise WARN  To update, run mise self-update
 ```
 
 ```sh
-mise use -g ubi:goreleaser/goreleaser
-mise use -g ubi:junegunn/fzf
-mise use -g ubi:eza-community/eza
+# Rust に依存しているツールがあるので、最新化しておく
+rustup update
+```
+
+```sh
+mise use -g starship
+mise use -g fzf
+mise use -g neovim
+mise use -g fd # fd-find
+mise use -g ripgrep
+mise use -g eza
 ```
 
 <Tabs items={["PowerShell", "bash"]}>
@@ -139,6 +147,13 @@ mise use -g ubi:eza-community/eza
 > Invoke-Expression (mise activate pwsh | Out-String)
 > ```
 
+Neovim 設定ファイルの配置
+
+```sh
+New-Item "$HOME\AppData\Local\nvim\" -ItemType Directory
+New-Item "$HOME\AppData\Local\nvim\init.lua"
+```
+
   </Tabs.Tab>
   <Tabs.Tab>
 
@@ -146,7 +161,10 @@ mise use -g ubi:eza-community/eza
 >
 > ```bash filename="~/.bashrc" showLineNumbers
 > # mise
-> eval "$(mise activate bash --shims)"
+> $miseInit = (mise activate pwsh | Out-String)
+> if (-not [string]::IsNullOrWhiteSpace($miseInit)) {
+>     Invoke-Expression $miseInit
+> }
 > ```
 
   </Tabs.Tab>
@@ -161,7 +179,7 @@ function Invoke-Starship-PreCommand {
   $prompt = "$([char]27)]9;12$([char]7)"
   if ($loc.Provider.Name -eq "FileSystem")
   {
-    $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)/"
+    $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
   }
   $host.ui.Write($prompt)
 }
@@ -188,19 +206,9 @@ winget install -e --id GnuWin32.Which
 winget install -e --id GnuWin32.Zip
 ```
 
-## fd-find
-
-```sh
-winget install -e --id sharkdp.fd
-```
-
 ## fzf
 
 [junegunn/fzf](https://github.com/junegunn/fzf) CLI の曖昧検索ツール
-
-```sh
-mise use -g ubi:junegunn/fzf
-```
 
 - `FZF_DEFAULT_OPTS` は fzf をデフォルトで起動した時のオプション
 - `FZF_CTRL_T_OPTS` は `ctrl + T` でのカレントディレクトリ配下のファイル検索時のオプション
@@ -214,7 +222,6 @@ mise use -g ubi:junegunn/fzf
   <Tabs.Tab>
 
 ```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
-# $env:FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
 $env:FZF_DEFAULT_OPTS="--prompt='QUERY> ' --height 60% --layout reverse --border=rounded --style full"
 $env:FZF_CTRL_T_OPTS="--preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}'"
 $env:FZF_ALT_C_OPTS="--preview 'eza {} -h -T -F  --no-user --no-time --no-filesize --no-permissions --long | head -200'"
@@ -312,7 +319,7 @@ bind '"\C-f": "tfz -m"'
   <Tabs.Tab>
 
 ```sh
-winget install -e --id BurntSushi.ripgrep.GNU
+mise use -g ripgrep
 ```
 
   </Tabs.Tab>
@@ -331,7 +338,7 @@ sudo apt install -y ripgrep
   <Tabs.Tab>
 
 ```sh
-mise use -g ubi:eza-community/eza
+mise use -g eza
 ```
 
   </Tabs.Tab>
@@ -348,10 +355,6 @@ sudo apt install eza
 
 [x-motemen/ghq](https://github.com/x-motemen/ghq) Git のリモートリポジトリの整理ツール
 go get コマンドを参考にしている
-
-```sh
-winget install -e --id x-motemen.ghq
-```
 
 <Tabs items={["PowerShell", "bash"]}>
   <Tabs.Tab>
@@ -385,15 +388,46 @@ winget install -e --id x-motemen.ghq
   </Tabs.Tab>
 </Tabs>
 
+## Keybindings
+
+### PSFzf
+
+[kelleyma49/PSFzf](https://github.com/kelleyma49/PSFzf) をインストールして、ショートカットコマンドを設定する
+
+```sh
+Install-Module -Name PSFzf
+```
+
+```sh filename="Microsoft.PowerShell_profile.ps1" showLineNumbers
+Import-Module PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
+Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+
+Set-PSReadLineKeyHandler -Chord 'Alt+c' -ScriptBlock {
+    $command = "fd --type d --color=never"
+
+    $currentOpts = $env:FZF_DEFAULT_OPTS
+    $env:FZF_DEFAULT_OPTS = $currentOpts + " " + $env:FZF_ALT_C_OPTS
+
+    $dir = $null
+    try {
+        $dir = Invoke-Expression $command | fzf
+    } finally {
+        $env:FZF_DEFAULT_OPTS = $currentOpts
+    }
+
+    if ($dir) {
+        Set-Location $dir
+        [Microsoft.PowerShell.PSConsoleReadLine]::InvokePrompt()
+    }
+}
+```
+
 ## Neovim
 
 [Neovim](https://neovim.io/) は Vim から派生したコードエディタ
 Vim と互換性が高く、新機能が多数追加されている
 プラグインを追加すると便利にコーディングできるようになっている
-
-```sh
-winget install -e --id Neovim.Neovim
-```
 
 ```sh
 # コマンド名は 'nvim'
@@ -408,14 +442,11 @@ LuaJIT 2.1.1741730670
 Run :checkhealth for more info
 ```
 
-設定ファイルを作成して以下に配置する(ディレクトリも作る)
+設定ファイルは以下に配置されたものを編集する
 
 ```sh
 nvim -V1 -es -c "echo stdpath('config') . '/init.lua'" -cq
-```
-
-```sh
-$env:USERPROFILE\AppData\Local\nvim\init.lua
+$HOME\AppData\Local\nvim\init.lua
 ```
 
 ## Lua
