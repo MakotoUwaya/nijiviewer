@@ -17,6 +17,19 @@
       "automerge": true
     },
     {
+      "description": "Group Storybook packages",
+      "groupName": "storybook",
+      "matchPackageNames": [
+        "storybook",
+        "@storybook/nextjs",
+        "@storybook/addon-links",
+        "@storybook/addon-onboarding"
+      ],
+      "patch": {
+        "enabled": false
+      }
+    },
+    {
       "description": "Group Playwright packages",
       "groupName": "playwright",
       "matchPackageNames": [
