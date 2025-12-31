@@ -22,6 +22,16 @@ const organizations = {
     name: 'ネオポルテ',
     channelId: 'UCm5rjZAFQuRrnDCkxnwvWkg',
   },
+  '774inc': {
+    id: '774inc',
+    name: 'ななしいんく',
+    channelId: 'UCJEpkwwDiTKS5lxwFttEbIQ',
+  },
+  Varium: {
+    id: 'Varium',
+    name: 'ぶいありうむ',
+    channelId: 'UCAytwphRHoPcvLr_qRvn3Zw',
+  },
 } as const satisfies Record<string, Organization>;
 export type OrganizationId = keyof typeof organizations;
 
