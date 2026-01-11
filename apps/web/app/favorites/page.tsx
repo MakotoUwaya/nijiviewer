@@ -3,6 +3,7 @@
 import { Spinner } from '@heroui/react';
 import { useEffect, useState } from 'react';
 import { getChannelsAction } from '@/app/actions';
+import ScrollToTopButton from '@/components/scroll-to-top-button';
 import { SearchResultList } from '@/components/search-result';
 import { useAuth } from '@/context/auth-context';
 import { useFavoriteLiversList } from '@/hooks/use-favorites';
@@ -63,6 +64,7 @@ export default function FavoritesPage() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">Favorite Livers</h1>
       <SearchResultList channels={channels} />
+      <ScrollToTopButton />
     </div>
   );
 }
