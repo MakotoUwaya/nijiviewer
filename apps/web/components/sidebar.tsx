@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import { type JSX, Suspense } from 'react';
+import { ClientOnly } from '@/components/client-only';
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
 import { organizationMap } from '@/const/organizations';
@@ -84,12 +85,18 @@ export function Sidebar({
           Organization
         </h3>
         <div className="w-full min-w-0">
-          <OrgSelector
-            items={organizationMap}
-            selectedKey={leafSegmentName}
-            onChange={handleOrgChange}
-            className="w-full"
-          />
+          <ClientOnly
+            fallback={
+              <div className="h-10 w-full bg-default-100 rounded-medium animate-pulse" />
+            }
+          >
+            <OrgSelector
+              items={organizationMap}
+              selectedKey={leafSegmentName}
+              onChange={handleOrgChange}
+              className="w-full"
+            />
+          </ClientOnly>
         </div>
       </div>
       <Divider className="mb-6" /> {/* ナビゲーションメニュー */}
@@ -124,10 +131,16 @@ export function Sidebar({
           Settings
         </h3>
         <div className="px-3 py-2">
-          <VideoPlayerToggle
-            isYouTubePlayer={isYouTubePlayer}
-            onChange={toggleYouTubePlayer}
-          />
+          <ClientOnly
+            fallback={
+              <div className="h-6 w-32 bg-default-100 rounded-medium animate-pulse" />
+            }
+          >
+            <VideoPlayerToggle
+              isYouTubePlayer={isYouTubePlayer}
+              onChange={toggleYouTubePlayer}
+            />
+          </ClientOnly>
         </div>
       </div>
     </div>
