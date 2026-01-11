@@ -5,15 +5,15 @@ This project uses the Turborepo template.
 
 ## 機能
 
-- ニジサンジライバーの配信情報表示
+- VTuber の配信情報表示
 - ライバー検索
 - 組織フィルタリング
-- YouTube動画のアプリ内再生
+- YouTube 動画のアプリ内再生
 - ユーザー認証機能（Supabase Authentication）
 
 ### ユーザー認証
 
-このアプリケーションではSupabaseを使用してユーザー認証機能を実装しています。
+このアプリケーションでは Supabase を使用してユーザー認証機能を実装しています。
 - ログインなしでも基本機能は使用可能
 - ログインすることで追加機能（お気に入りなど）が使用可能になります
 - メールアドレスとパスワードを使用した認証に対応
@@ -57,29 +57,29 @@ npx turbo link
 
 ## E2Eテスト (Playwright)
 
-このプロジェクトではE2Eテストに[Playwright](https://playwright.dev/)を使用しています。
+このプロジェクトでは E2E テストに[Playwright](https://playwright.dev/)を使用しています。
 
 ### セットアップ
 
-リポジトリをクローンした後、Playwrightのセットアップを行います：
+リポジトリをクローンした後、 Playwright のセットアップを行います：
 
 ```bash
 # 依存関係のインストール
 npm install
 
-# Playwrightブラウザのインストール
+# Playwright ブラウザのインストール
 npx playwright install
 ```
 
 ### テストの実行
 
-Playwrightテストを実行するためのnpm scriptが用意されています：
+Playwright テストを実行するための npm script が用意されています：
 
 ```bash
 # すべてのブラウザでテストを実行
 npm run test:e2e
 
-# 特定のブラウザ（Chromiumのみ）でテストを実行
+# 特定のブラウザ（Chromium のみ）でテストを実行
 npm run test:e2e -- --project=chromium
 
 # UIモードでテストを実行（視覚的なデバッグが可能）
@@ -97,10 +97,10 @@ npm run test:e2e:report
 新しいテストを作成する場合は、次のようにコードジェネレーターを使用できます：
 
 ```bash
-# Playwrightコードジェネレーターを起動
+# Playwright コードジェネレーターを起動
 npm run test:e2e:codegen
 ```
 
-コードジェネレーターを使用すると、ブラウザ上での操作が自動的にPlaywrightのテストコードに変換されます。
+コードジェネレーターを使用すると、ブラウザ上での操作が自動的に Playwright のテストコードに変換されます。
 
 テストファイルは `apps/web/test/e2e/` ディレクトリに配置してください。
