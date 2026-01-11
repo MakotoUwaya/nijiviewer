@@ -38,7 +38,7 @@ export default function ScrollToTopButton({
       isIconOnly
       size="lg"
       color="primary"
-      className="fixed bottom-24 right-6 z-50 rounded-full shadow-lg"
+      className="fixed bottom-4 right-6 z-50 rounded-full shadow-lg"
       onPress={scrollToTop}
       aria-label="ページトップへ戻る"
     >
