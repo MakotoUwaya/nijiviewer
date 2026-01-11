@@ -57,8 +57,8 @@ export default function FavoritesPage() {
 
   if (favorites.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-center mb-6">
+      <section className="flex flex-col w-full gap-4 p-4">
+        <div className="flex justify-between items-center mb-2">
           <h1 className="text-2xl font-bold">Favorite Live Videos</h1>
           <Button
             as={NextLink}
@@ -77,20 +77,22 @@ export default function FavoritesPage() {
           </Link>
           から追加してください。
         </div>
-      </div>
+      </section>
     );
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-6">
+    <section className="flex flex-col w-full gap-4 p-4">
+      <div className="flex justify-between items-center mb-2">
         <h1 className="text-2xl font-bold">Favorite Live Videos</h1>
         <Button as={NextLink} href="/favorites/edit" color="primary" variant="flat">
           Manage Favorites
         </Button>
       </div>
-      <Videos videos={videos} />
+      <div className="flex flex-wrap items-start justify-center gap-4">
+        <Videos videos={videos} />
+      </div>
       <ScrollToTopButton />
-    </div>
+    </section>
   );
 }

@@ -24,11 +24,11 @@ export default async function LiverPage({
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <section className="flex flex-col w-full gap-4 p-4">
       <LiverProfile channel={channel} />
-      <div className="mt-8">
+      <div className="mt-4">
         <VideoTabs channelId={channelId} />
       </div>
-    </div>
+    </section>
   );
 }
