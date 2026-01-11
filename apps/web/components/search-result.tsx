@@ -69,7 +69,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
                 >
                   {channel.name}
                 </Link>
-                <FavoriteButton liverId={channel.id} mini />
+                <FavoriteButton liverId={channel.id} />
               </div>
               {channel.english_name && (
                 <span className="hidden md:block text-default-500">
@@ -114,9 +114,9 @@ export function SearchResult({ channel }: { channel: Channel }) {
                   <span>
                     {channel.published_at
                       ? `${new Date(channel.published_at).toLocaleDateString(
-                          'ja-JP',
-                          { year: 'numeric', month: 'long' },
-                        )}${getElapsedTime(channel.published_at)}`
+                        'ja-JP',
+                        { year: 'numeric', month: 'long' },
+                      )}${getElapsedTime(channel.published_at)}`
                       : 'Unknown'}
                   </span>
                 </div>

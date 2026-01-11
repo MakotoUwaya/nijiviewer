@@ -9,10 +9,9 @@ import { useAuth } from '@/context/auth-context';
 interface FavoriteButtonProps {
   liverId: string;
   className?: string;
-  mini?: boolean;
 }
 
-export function FavoriteButton({ liverId, className = '', mini = false }: FavoriteButtonProps) {
+export function FavoriteButton({ liverId, className = '' }: FavoriteButtonProps) {
   const { user } = useAuth();
   const { isFavorite, toggleFavorite, isLoading } = useFavoriteLiver(liverId);
 
@@ -20,7 +19,7 @@ export function FavoriteButton({ liverId, className = '', mini = false }: Favori
 
   return (
     <Button
-      isIconOnly={mini}
+      isIconOnly
       variant="light"
       color={isFavorite ? "danger" : "default"}
       onPress={toggleFavorite}
@@ -29,11 +28,10 @@ export function FavoriteButton({ liverId, className = '', mini = false }: Favori
       aria-label={isFavorite ? "お気に入り解除" : "お気に入り登録"}
     >
       {isFavorite ? (
-        <HeartIconSolid className={mini ? "w-5 h-5" : "w-6 h-6"} />
+        <HeartIconSolid className="w-5 h-5" />
       ) : (
-        <HeartIcon className={mini ? "w-5 h-5" : "w-6 h-6"} />
+        <HeartIcon className="w-5 h-5" />
       )}
-      {!mini && (isFavorite ? "お気に入り済み" : "お気に入り")}
     </Button>
   );
 }
