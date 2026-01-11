@@ -1,44 +1,45 @@
 'use client';
 
-import { Spinner } from '@heroui/react';
+import { Button, Link, Spinner } from '@heroui/react';
+import NextLink from 'next/link';
 import { useEffect, useState } from 'react';
-import { getChannelsAction } from '@/app/actions';
+import { getFavoritesLiveVideosAction } from '@/app/actions';
 import ScrollToTopButton from '@/components/scroll-to-top-button';
-import { SearchResultList } from '@/components/search-result';
+import Videos from '@/components/videos';
 import { useAuth } from '@/context/auth-context';
 import { useFavoriteLiversList } from '@/hooks/use-favorites';
-import type { Channel } from '@/lib/holodex';
+import type { Video } from '@/lib/holodex';
 
 export default function FavoritesPage() {
   const { user, isLoading: isAuthLoading } = useAuth();
   const { favorites, isLoading: isFavLoading } = useFavoriteLiversList();
-  const [channels, setChannels] = useState<Channel[]>([]);
-  const [isChannelsLoading, setIsChannelsLoading] = useState(false);
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [isVideosLoading, setIsVideosLoading] = useState(false);
 
   useEffect(() => {
-    const fetchChannels = async () => {
+    const fetchVideos = async () => {
       if (favorites.length === 0) {
-        setChannels([]);
+        setVideos([]);
         return;
       }
-      setIsChannelsLoading(true);
+      setIsVideosLoading(true);
       try {
         const ids = favorites.map((f) => f.liver_id);
-        const data = await getChannelsAction(ids);
-        setChannels(data);
+        const data = await getFavoritesLiveVideosAction(ids);
+        setVideos(data);
       } catch (e) {
         console.error(e);
       } finally {
-        setIsChannelsLoading(false);
+        setIsVideosLoading(false);
       }
     };
 
     if (!isFavLoading) {
-      fetchChannels();
+      fetchVideos();
     }
   }, [favorites, isFavLoading]);
 
-  if (isAuthLoading || isFavLoading || isChannelsLoading) {
+  if (isAuthLoading || isFavLoading || isVideosLoading) {
     return (
       <div className="flex justify-center p-8">
         <Spinner size="lg" />
@@ -56,14 +57,39 @@ export default function FavoritesPage() {
 
   if (favorites.length === 0) {
     return (
-      <div className="p-8 text-center">お気に入りのライバーがいません。</div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-bold">Favorite Live Videos</h1>
+          <Button
+            as={NextLink}
+            href="/favorites/edit"
+            color="primary"
+            variant="flat"
+          >
+            Manage Favorites
+          </Button>
+        </div>
+        <div className="p-8 text-center">
+          お気に入りのライバーがいません。
+          <br />
+          <Link as={NextLink} href="/favorites/edit" className="mt-2 text-primary">
+            Manage Favorites
+          </Link>
+          から追加してください。
+        </div>
+      </div>
     );
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">Favorite Livers</h1>
-      <SearchResultList channels={channels} />
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Favorite Live Videos</h1>
+        <Button as={NextLink} href="/favorites/edit" color="primary" variant="flat">
+          Manage Favorites
+        </Button>
+      </div>
+      <Videos videos={videos} />
       <ScrollToTopButton />
     </div>
   );

@@ -135,3 +135,36 @@ export const fetchChannels = async (channelIds: string[]): Promise<Channel[]> =>
   const results = await Promise.all(channelPromises);
   return results.filter((channel): channel is Channel => channel !== undefined);
 };
+
+export const fetchUserLiveVideos = async (channelIds: string[]): Promise<Video[]> => {
+  if (channelIds.length === 0) {
+    return [];
+  }
+  noStore();
+  const params = new URLSearchParams({
+    channels: channelIds.join(','),
+    includePlaceholder: 'true',
+  });
+
+  const url = `${baseUrl}/users/live?${params.toString()}`;
+
+  const response = await fromPromise(
+    fetch(url, {
+      headers: {
+        'x-apikey': process.env.HOLODEX_APIKEY || '',
+      },
+    }),
+    (e: Error) => e,
+  );
+
+  if (response.isErr()) {
+    return [];
+  }
+
+  const videos = await fromPromise<Video[], Error>(
+    response.value.json(),
+    (e: Error) => e,
+  );
+
+  return videos.isOk() && Array.isArray(videos.value) ? videos.value : [];
+};
