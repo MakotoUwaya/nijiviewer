@@ -93,7 +93,7 @@ export default function SettingsPage(): JSX.Element {
   }
 
   return (
-    <div className="container mx-auto max-w-2xl px-4 py-8">
+    <div className="container mx-auto max-w-2xl px-4 py-8 overflow-x-hidden">
       <h1 className="text-2xl font-bold mb-6">Settings</h1>
 
       <div className="space-y-8">

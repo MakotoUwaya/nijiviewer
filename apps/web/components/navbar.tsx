@@ -10,6 +10,7 @@ import {
   Spinner,
   useDisclosure,
 } from '@heroui/react';
+import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { type JSX, useEffect, useState } from 'react';
@@ -98,8 +99,8 @@ export function Navbar(): JSX.Element {
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent justify="end">
-          <NavbarItem>
+        <NavbarContent justify="end" className="gap-1 sm:gap-4">
+          <NavbarItem className="hidden sm:flex">
             <Link aria-label="Github" href={siteConfig.links.github} isExternal>
               <GithubIcon className="text-default-500" />
             </Link>
@@ -127,8 +128,10 @@ export function Navbar(): JSX.Element {
                   size="sm"
                   variant="light"
                   className="mr-2"
+                  isIconOnly
+                  aria-label="Settings"
                 >
-                  Settings
+                  <Cog6ToothIcon className="w-5 h-5 text-default-500" />
                 </Button>
                 <Button
                   color="danger"

@@ -4,6 +4,8 @@ import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import { Navbar } from './navbar';
 
+import { PreferencesContext } from '@/context/preferences-context'; // Added import
+
 // モックのAuthContextの値
 const mockAuthContext: AuthContextType = {
   session: null,
@@ -14,6 +16,16 @@ const mockAuthContext: AuthContextType = {
   signOut: async () => {},
 };
 
+// Mock Preferences Context
+const mockPreferencesContext = {
+  favoriteOrgIds: [],
+  organizations: [],
+  isLoading: false,
+  toggleFavorite: async () => {},
+  initializeFavorites: async () => {},
+  updateOrder: async () => {},
+};
+
 const meta = {
   title: 'Components/Navbar',
   component: Navbar,
@@ -22,11 +34,13 @@ const meta = {
     (Story) => {
       return (
         <AuthContext.Provider value={mockAuthContext}>
-          <SidebarProvider>
-            <YouTubePlayerProvider>
-              <Story />
-            </YouTubePlayerProvider>
-          </SidebarProvider>
+          <PreferencesContext.Provider value={mockPreferencesContext}>
+            <SidebarProvider>
+              <YouTubePlayerProvider>
+                <Story />
+              </YouTubePlayerProvider>
+            </SidebarProvider>
+          </PreferencesContext.Provider>
         </AuthContext.Provider>
       );
     },

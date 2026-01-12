@@ -46,7 +46,7 @@ const Videos = (props: VideoProps): JSX.Element => {
   }
   return (
     <>
-      <div className="flex flex-col md:flex-row flex-wrap">
+      <div className="flex flex-col md:flex-row flex-wrap w-full">
         {liveVideos.map((v) => {
           switch (v.type) {
             case 'stream':
@@ -64,7 +64,7 @@ const Videos = (props: VideoProps): JSX.Element => {
         <Divider className="my-4" />
       )}
       {upCommingVideos.length > 0 && (
-        <div className="flex flex-col md:flex-row flex-wrap">
+        <div className="flex flex-col md:flex-row flex-wrap w-full">
           {upCommingVideos.map((v) => {
             switch (v.type) {
               case 'stream':
