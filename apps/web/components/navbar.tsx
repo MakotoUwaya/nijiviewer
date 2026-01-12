@@ -99,55 +99,49 @@ export function Navbar(): JSX.Element {
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent justify="end" className="gap-1 sm:gap-4">
-          <NavbarItem className="hidden sm:flex">
-            <Link aria-label="Github" href={siteConfig.links.github} isExternal>
-              <GithubIcon className="text-default-500" />
-            </Link>
-          </NavbarItem>
-
-          <NavbarItem>
-            <ThemeSwitch />
-          </NavbarItem>
-
-          <NavbarItem>
-            {isLoading ? (
-              <Button
-                color="primary"
-                size="sm"
-                variant="flat"
-                isLoading
-                spinner={<Spinner size="sm" color="current" />}
-              />
-            ) : user ? (
-              <>
+        <NavbarContent justify="end" as="div" className="items-center">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <Link aria-label="Github" href={siteConfig.links.github} isExternal className="hidden sm:flex items-center text-default-500">
+                <GithubIcon />
+              </Link>
+              <ThemeSwitch />
+              {isLoading ? (
                 <Button
-                  as={NextLink}
-                  href="/settings"
-                  color="default"
+                  color="primary"
                   size="sm"
-                  variant="light"
-                  className="mr-2"
-                  isIconOnly
-                  aria-label="Settings"
-                >
-                  <Cog6ToothIcon className="w-5 h-5 text-default-500" />
+                  variant="flat"
+                  isLoading
+                  spinner={<Spinner size="sm" color="current" />}
+                />
+              ) : user ? (
+                <>
+                  <Button
+                    as={NextLink}
+                    href="/settings"
+                    color="default"
+                    size="sm"
+                    variant="light"
+                    className="w-6 h-6 min-w-6"
+                    isIconOnly
+                    aria-label="Settings"
+                  >
+                    <Cog6ToothIcon className="w-5 h-5 text-default-500" />
+                  </Button>
+                  <Button
+                    color="danger"
+                    size="sm"
+                    variant="light"
+                    onPress={handleSignOut}
+                  >
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
+                  Sign In
                 </Button>
-                <Button
-                  color="danger"
-                  size="sm"
-                  variant="light"
-                  onPress={handleSignOut}
-                >
-                  Sign Out
-                </Button>
-              </>
-            ) : (
-              <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
-                Sign In
-              </Button>
-            )}
-          </NavbarItem>
+              )}
+            </div>
         </NavbarContent>
       </NextUINavbar>
 
