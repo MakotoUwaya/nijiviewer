@@ -4,11 +4,13 @@ import { Button, Divider } from '@heroui/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
-import { type JSX, Suspense } from 'react';
+import { type JSX, Suspense, useEffect, useState } from 'react';
 import { ClientOnly } from '@/components/client-only';
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
-import { organizationMap } from '@/const/organizations';
+
+import { useAuth } from '@/context/auth-context';
+import { usePreferences } from '@/context/preferences-context'; // Added
 import { useSidebar } from '@/context/sidebar-context';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { Organization } from '@/lib/holodex';
@@ -41,6 +43,32 @@ export function Sidebar({
   const segmentName = getSegmentName(pathName);
   const { sidebarWidth } = useSidebar();
   const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
+  const { user } = useAuth();
+
+  const {
+    favoriteOrgIds,
+    organizations: allOrgs,
+  } = usePreferences();
+
+  // Local derived state
+  const [displayedOrganizations, setDisplayedOrganizations] = useState<
+    Organization[]
+  >([]);
+
+  useEffect(() => {
+    if (!user) {
+      setDisplayedOrganizations(allOrgs);
+    } else {
+      if (favoriteOrgIds.length === 0) {
+        setDisplayedOrganizations(allOrgs);
+      } else {
+        const sorted = favoriteOrgIds
+          .map((id) => allOrgs.find((o) => o.id === id))
+          .filter((o): o is Organization => !!o);
+        setDisplayedOrganizations(sorted);
+      }
+    }
+  }, [user, favoriteOrgIds, allOrgs]);
 
   const linkColor = (href: string): 'primary' | 'danger' | 'foreground' => {
     return href === `${segmentName}` || href.startsWith(`/${segmentName}/`)
@@ -91,7 +119,7 @@ export function Sidebar({
             }
           >
             <OrgSelector
-              items={organizationMap}
+              items={displayedOrganizations}
               selectedKey={leafSegmentName}
               onChange={handleOrgChange}
               className="w-full"

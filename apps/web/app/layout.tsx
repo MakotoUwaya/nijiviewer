@@ -5,6 +5,7 @@ import { LayoutComponent } from '@/components/layout-component';
 import { Navbar } from '@/components/navbar';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
+import { PreferencesProvider } from '@/context/preferences-context'; // Added
 import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import Metrics from '@/metrics';
@@ -49,12 +50,14 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
           <SidebarProvider>
-            <YouTubePlayerProvider>
-              <div className="relative flex flex-col min-h-screen">
-                <Navbar />
-                <LayoutComponent>{children}</LayoutComponent>
-              </div>
-            </YouTubePlayerProvider>
+            <PreferencesProvider>
+              <YouTubePlayerProvider>
+                <div className="relative flex flex-col min-h-screen">
+                  <Navbar />
+                  <LayoutComponent>{children}</LayoutComponent>
+                </div>
+              </YouTubePlayerProvider>
+            </PreferencesProvider>
           </SidebarProvider>
         </Providers>
         <Metrics />

@@ -1,6 +1,12 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAuth } from '@/context/auth-context';
-import { addFavoriteLiver, removeFavoriteLiver, checkIsFavorite, getFavoriteLivers, type FavoriteLiver } from '@/lib/favorites';
+import {
+  addFavoriteLiver,
+  checkIsFavorite,
+  type FavoriteLiver,
+  getFavoriteLivers,
+  removeFavoriteLiver,
+} from '@/lib/favorites';
 
 export function useFavoriteLiver(liverId: string) {
   const { user } = useAuth();
@@ -9,8 +15,8 @@ export function useFavoriteLiver(liverId: string) {
 
   useEffect(() => {
     if (!user || !liverId) {
-        setIsFavorite(false);
-        return;
+      setIsFavorite(false);
+      return;
     }
 
     const checkStatus = async () => {
@@ -49,30 +55,30 @@ export function useFavoriteLiver(liverId: string) {
 }
 
 export function useFavoriteLiversList() {
-    const { user } = useAuth();
-    const [favorites, setFavorites] = useState<FavoriteLiver[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
+  const { user } = useAuth();
+  const [favorites, setFavorites] = useState<FavoriteLiver[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-    const fetchFavorites = useCallback(async () => {
-        if (!user) {
-            setFavorites([]);
-            setIsLoading(false);
-            return;
-        }
-        setIsLoading(true);
-        try {
-            const data = await getFavoriteLivers(user.id);
-            setFavorites(data);
-        } catch (error) {
-            console.error('Failed to fetch favorite livers', error);
-        } finally {
-            setIsLoading(false);
-        }
-    }, [user]);
+  const fetchFavorites = useCallback(async () => {
+    if (!user) {
+      setFavorites([]);
+      setIsLoading(false);
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const data = await getFavoriteLivers(user.id);
+      setFavorites(data);
+    } catch (error) {
+      console.error('Failed to fetch favorite livers', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [user]);
 
-    useEffect(() => {
-        fetchFavorites();
-    }, [fetchFavorites]);
+  useEffect(() => {
+    fetchFavorites();
+  }, [fetchFavorites]);
 
-    return { favorites, isLoading, refetch: fetchFavorites };
+  return { favorites, isLoading, refetch: fetchFavorites };
 }

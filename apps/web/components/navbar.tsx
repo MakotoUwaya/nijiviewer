@@ -119,14 +119,26 @@ export function Navbar(): JSX.Element {
                 spinner={<Spinner size="sm" color="current" />}
               />
             ) : user ? (
-              <Button
-                color="danger"
-                size="sm"
-                variant="light"
-                onPress={handleSignOut}
-              >
-                Sign Out
-              </Button>
+              <>
+                <Button
+                  as={NextLink}
+                  href="/settings"
+                  color="default"
+                  size="sm"
+                  variant="light"
+                  className="mr-2"
+                >
+                  Settings
+                </Button>
+                <Button
+                  color="danger"
+                  size="sm"
+                  variant="light"
+                  onPress={handleSignOut}
+                >
+                  Sign Out
+                </Button>
+              </>
             ) : (
               <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
                 Sign In
