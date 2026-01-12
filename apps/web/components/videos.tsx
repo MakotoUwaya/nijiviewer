@@ -1,8 +1,8 @@
 'use client';
 
+import { Divider } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
-import { Divider } from "@heroui/react";
 import type { Video } from '@/lib/holodex';
 import { EmptyImage } from './images';
 import ScrollToTopButton from './scroll-to-top-button';

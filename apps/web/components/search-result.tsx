@@ -7,8 +7,8 @@ import {
 } from '@heroicons/react/24/outline';
 import { Card, CardBody, Image, Link } from '@heroui/react';
 import { useId } from 'react';
-import type { Channel } from '@/lib/holodex';
 import { FavoriteButton } from '@/components/favorite-button';
+import type { Channel } from '@/lib/holodex';
 
 export function getElapsedTime(dateString: string): string {
   const date = new Date(dateString);
@@ -114,9 +114,9 @@ export function SearchResult({ channel }: { channel: Channel }) {
                   <span>
                     {channel.published_at
                       ? `${new Date(channel.published_at).toLocaleDateString(
-                        'ja-JP',
-                        { year: 'numeric', month: 'long' },
-                      )}${getElapsedTime(channel.published_at)}`
+                          'ja-JP',
+                          { year: 'numeric', month: 'long' },
+                        )}${getElapsedTime(channel.published_at)}`
                       : 'Unknown'}
                   </span>
                 </div>

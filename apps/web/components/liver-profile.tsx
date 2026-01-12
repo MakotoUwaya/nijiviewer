@@ -7,10 +7,9 @@ import {
 } from '@heroicons/react/24/outline';
 import { Card, CardBody, Image, Link } from '@heroui/react';
 import { useId } from 'react';
+import { FavoriteButton } from '@/components/favorite-button';
 import { getElapsedTime } from '@/components/search-result';
 import type { Channel } from '@/lib/holodex';
-
-import { FavoriteButton } from '@/components/favorite-button';
 
 interface LiverProfileProps {
   channel: Channel;

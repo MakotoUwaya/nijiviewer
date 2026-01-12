@@ -72,7 +72,11 @@ export default function FavoritesPage() {
         <div className="p-8 text-center">
           お気に入りのライバーがいません。
           <br />
-          <Link as={NextLink} href="/favorites/edit" className="mt-2 text-primary">
+          <Link
+            as={NextLink}
+            href="/favorites/edit"
+            className="mt-2 text-primary"
+          >
             Manage Favorites
           </Link>
           から追加してください。
@@ -85,7 +89,12 @@ export default function FavoritesPage() {
     <section className="flex flex-col w-full gap-4 p-4">
       <div className="flex justify-between items-center mb-2">
         <h1 className="text-2xl font-bold">Favorite Live Videos</h1>
-        <Button as={NextLink} href="/favorites/edit" color="primary" variant="flat">
+        <Button
+          as={NextLink}
+          href="/favorites/edit"
+          color="primary"
+          variant="flat"
+        >
           Manage Favorites
         </Button>
       </div>

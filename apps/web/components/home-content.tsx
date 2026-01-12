@@ -1,6 +1,10 @@
 'use client';
 
-import { HeartIcon, SignalIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import {
+  HeartIcon,
+  SignalIcon,
+  SparklesIcon,
+} from '@heroicons/react/24/outline';
 import { button as buttonStyles, Link, Snippet } from '@heroui/react';
 import NextLink from 'next/link';
 import type { JSX } from 'react';
@@ -60,7 +64,8 @@ export function HomeContent(): JSX.Element {
           </div>
           <h3 className="text-xl font-bold mb-2">Catch Every Moment</h3>
           <p className="text-default-500">
-            Real-time tracking of live streams. Never miss your oshi&apos;s broadcast with instant updates.
+            Real-time tracking of live streams. Never miss your oshi&apos;s
+            broadcast with instant updates.
           </p>
         </div>
 
@@ -70,7 +75,8 @@ export function HomeContent(): JSX.Element {
           </div>
           <h3 className="text-xl font-bold mb-2">Discover New Talents</h3>
           <p className="text-default-500">
-            Explore a vast library of streamers and clips. Find your next favorite VTuber with advanced search.
+            Explore a vast library of streamers and clips. Find your next
+            favorite VTuber with advanced search.
           </p>
         </div>
 
@@ -80,7 +86,8 @@ export function HomeContent(): JSX.Element {
           </div>
           <h3 className="text-xl font-bold mb-2">Your Personal Feed</h3>
           <p className="text-default-500">
-            Mark your favorites and build a customized timeline. Focus on the content that matters to you.
+            Mark your favorites and build a customized timeline. Focus on the
+            content that matters to you.
           </p>
         </div>
       </section>

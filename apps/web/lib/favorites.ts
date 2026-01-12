@@ -7,7 +7,9 @@ export interface FavoriteLiver {
   liver_id: string;
 }
 
-export async function getFavoriteLivers(userId: string): Promise<FavoriteLiver[]> {
+export async function getFavoriteLivers(
+  userId: string,
+): Promise<FavoriteLiver[]> {
   const { data, error } = await supabase
     .from('favorite_livers')
     .select('*')
@@ -22,19 +24,20 @@ export async function getFavoriteLivers(userId: string): Promise<FavoriteLiver[]
   return data as FavoriteLiver[];
 }
 
-export async function addFavoriteLiver(userId: string, liverId: string): Promise<FavoriteLiver | null> {
+export async function addFavoriteLiver(
+  userId: string,
+  liverId: string,
+): Promise<FavoriteLiver | null> {
   const { data, error } = await supabase
     .from('favorite_livers')
-    .insert([
-      { user_id: userId, liver_id: liverId },
-    ])
+    .insert([{ user_id: userId, liver_id: liverId }])
     .select()
     .single();
 
   if (error) {
     if (error.code === '23505') {
-       // Unique violation, already exists
-       return null;
+      // Unique violation, already exists
+      return null;
     }
     console.error('Error adding favorite:', error);
     throw error;
@@ -43,7 +46,10 @@ export async function addFavoriteLiver(userId: string, liverId: string): Promise
   return data as FavoriteLiver;
 }
 
-export async function removeFavoriteLiver(userId: string, liverId: string): Promise<void> {
+export async function removeFavoriteLiver(
+  userId: string,
+  liverId: string,
+): Promise<void> {
   const { error } = await supabase
     .from('favorite_livers')
     .delete()
@@ -56,17 +62,21 @@ export async function removeFavoriteLiver(userId: string, liverId: string): Prom
   }
 }
 
-export async function checkIsFavorite(userId: string, liverId: string): Promise<boolean> {
-   const { data, error } = await supabase
+export async function checkIsFavorite(
+  userId: string,
+  liverId: string,
+): Promise<boolean> {
+  const { data, error } = await supabase
     .from('favorite_livers')
     .select('id')
     .eq('user_id', userId)
     .eq('liver_id', liverId)
     .single();
-    
-    if (error && error.code !== 'PGRST116') { // PGRST116 is "The result contains 0 rows"
-        console.error('Error checking favorite:', error);
-    }
-    
-    return !!data;
+
+  if (error && error.code !== 'PGRST116') {
+    // PGRST116 is "The result contains 0 rows"
+    console.error('Error checking favorite:', error);
+  }
+
+  return !!data;
 }

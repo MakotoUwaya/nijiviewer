@@ -156,7 +156,9 @@ export function Search({ onSearch }: SearchProps) {
   };
 
   if (!mounted) {
-    return <div className="w-full h-10 bg-default-100 dark:bg-default-50 rounded-medium" />;
+    return (
+      <div className="w-full h-10 bg-default-100 dark:bg-default-50 rounded-medium" />
+    );
   }
 
   return (

@@ -104,12 +104,14 @@ export const fetchChannelInfo = async (
   return channel.isOk() ? channel.value : null;
 };
 
-export const fetchChannels = async (channelIds: string[]): Promise<Channel[]> => {
+export const fetchChannels = async (
+  channelIds: string[],
+): Promise<Channel[]> => {
   if (channelIds.length === 0) {
     return [];
   }
   noStore();
-  
+
   const channelPromises = channelIds.map(async (id) => {
     const response = await fromPromise(
       fetch(`${baseUrl}/channels/${id}`, {
@@ -136,7 +138,9 @@ export const fetchChannels = async (channelIds: string[]): Promise<Channel[]> =>
   return results.filter((channel): channel is Channel => channel !== undefined);
 };
 
-export const fetchUserLiveVideos = async (channelIds: string[]): Promise<Video[]> => {
+export const fetchUserLiveVideos = async (
+  channelIds: string[],
+): Promise<Video[]> => {
   if (channelIds.length === 0) {
     return [];
   }

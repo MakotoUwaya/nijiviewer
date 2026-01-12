@@ -160,7 +160,9 @@ export default function AivisCloudAPIPage() {
             mediaSource.endOfStream();
 
             // Blobを作成してダウンロードURLを生成
-            const blob = new Blob(audioChunksRef.current as BlobPart[], { type: 'audio/mpeg' });
+            const blob = new Blob(audioChunksRef.current as BlobPart[], {
+              type: 'audio/mpeg',
+            });
             const url = URL.createObjectURL(blob);
             setDownloadUrl(url);
             break;
