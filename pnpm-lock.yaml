@@ -43,7 +43,7 @@ importers:
         version: 1.0.2
       '@next/third-parties':
         specifier: 16.1.3
-        version: 16.1.3(next@16.1.3(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 16.1.3(next@16.1.3(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@tailwindcss/postcss':
         specifier: 4.1.18
         version: 4.1.18
@@ -104,7 +104,7 @@ importers:
         version: 1.0.2
       '@next/third-parties':
         specifier: 16.1.3
-        version: 16.1.3(next@16.1.3(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 16.1.3(next@16.1.3(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@react-aria/ssr':
         specifier: 3.9.10
         version: 3.9.10(react@19.2.3)
@@ -164,7 +164,7 @@ importers:
         version: 19.2.3(react@19.2.3)
       tailwind-variants:
         specifier: 3.2.2
-        version: 3.2.2(tailwind-merge@3.0.1)(tailwindcss@4.1.18)
+        version: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.18)
       tailwindcss:
         specifier: 4.1.18
         version: 4.1.18
@@ -175,6 +175,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: 5.0.0
         version: 5.0.0(storybook@10.1.10(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
+      '@heroui/theme':
+        specifier: 2.4.25
+        version: 2.4.25(tailwindcss@4.1.18)
       '@storybook/addon-essentials':
         specifier: 9.0.0-alpha.12
         version: 9.0.0-alpha.12(storybook@10.1.10(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
@@ -892,24 +895,28 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-arm64@2.3.11':
     resolution: {integrity: sha512-l4xkGa9E7Uc0/05qU2lMYfN1H+fzzkHgaJoy98wO+b/7Gl78srbCRRgwYSW+BTLixTBrM6Ede5NSBwt7rd/i6g==}
     engines: {node: '>=14.21.3'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-linux-x64-musl@2.3.11':
     resolution: {integrity: sha512-vU7a8wLs5C9yJ4CB8a44r12aXYb8yYgBn+WeyzbMjaCMklzCv1oXr8x+VEyWodgJt9bDmhiaW/I0RHbn7rsNmw==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@biomejs/cli-linux-x64@2.3.11':
     resolution: {integrity: sha512-/1s9V/H3cSe0r0Mv/Z8JryF5x9ywRxywomqZVLHAoa/uN0eY7F8gEngWKNS5vbbN/BsfpCG5yeBT5ENh50Frxg==}
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@biomejs/cli-win32-arm64@2.3.11':
     resolution: {integrity: sha512-PZQ6ElCOnkYapSsysiTy0+fYX+agXPlWugh6+eQ6uPKI3vKAqNp6TnMhoM3oY2NltSB89hz59o8xIfOdyhi9Iw==}
@@ -1809,6 +1816,9 @@ packages:
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
+  '@heroui/shared-utils@2.1.12':
+    resolution: {integrity: sha512-0iCnxVAkIPtrHQo26Qa5g0UTqMTpugTbClNOrEPsrQuyRAq7Syux998cPwGlneTfB5E5xcU3LiEdA9GUyeK2cQ==}
+
   '@heroui/shared-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
     resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.6
@@ -1899,6 +1909,11 @@ packages:
       framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
       react: '>=18 || >=19.0.0-rc.0'
       react-dom: '>=18 || >=19.0.0-rc.0'
+
+  '@heroui/theme@2.4.25':
+    resolution: {integrity: sha512-nTptYhO1V9rMoh9SJDnMfaSmFuoXvbem1UuwgHcraRtqy/TIVBPqv26JEGzSoUCL194TDGOJpqrpMuab/PdXcw==}
+    peerDependencies:
+      tailwindcss: '>=4.0.0'
 
   '@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
     resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
@@ -2087,89 +2102,105 @@ packages:
     resolution: {integrity: sha512-excjX8DfsIcJ10x1Kzr4RcWe1edC9PquDRRPx3YVCvQv+U5p7Yin2s32ftzikXojb1PIFc/9Mt28/y+iRklkrw==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-arm@1.2.4':
     resolution: {integrity: sha512-bFI7xcKFELdiNCVov8e44Ia4u2byA+l3XtsAj+Q8tfCwO6BQ8iDojYdvoPMqsKDkuoOo+X6HZA0s0q11ANMQ8A==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-ppc64@1.2.4':
     resolution: {integrity: sha512-FMuvGijLDYG6lW+b/UvyilUWu5Ayu+3r2d1S8notiGCIyYU/76eig1UfMmkZ7vwgOrzKzlQbFSuQfgm7GYUPpA==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-riscv64@1.2.4':
     resolution: {integrity: sha512-oVDbcR4zUC0ce82teubSm+x6ETixtKZBh/qbREIOcI3cULzDyb18Sr/Wcyx7NRQeQzOiHTNbZFF1UwPS2scyGA==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-s390x@1.2.4':
     resolution: {integrity: sha512-qmp9VrzgPgMoGZyPvrQHqk02uyjA0/QrTO26Tqk6l4ZV0MPWIW6LTkqOIov+J1yEu7MbFQaDpwdwJKhbJvuRxQ==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linux-x64@1.2.4':
     resolution: {integrity: sha512-tJxiiLsmHc9Ax1bz3oaOYBURTXGIRDODBqhveVHonrHJ9/+k89qbLl0bcJns+e4t4rvaNBxaEZsFtSfAdquPrw==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-libvips-linuxmusl-arm64@1.2.4':
     resolution: {integrity: sha512-FVQHuwx1IIuNow9QAbYUzJ+En8KcVm9Lk5+uGUQJHaZmMECZmOlix9HnH7n1TRkXMS0pGxIJokIVB9SuqZGGXw==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-libvips-linuxmusl-x64@1.2.4':
     resolution: {integrity: sha512-+LpyBk7L44ZIXwz/VYfglaX/okxezESc6UxDSoyo2Ks6Jxc4Y7sGjpgU9s4PMgqgjj1gZCylTieNamqA1MF7Dg==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-linux-arm64@0.34.5':
     resolution: {integrity: sha512-bKQzaJRY/bkPOXyKx5EVup7qkaojECG6NLYswgktOZjaXecSAeCWiZwwiFf3/Y+O1HrauiE3FVsGxFg8c24rZg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-arm@0.34.5':
     resolution: {integrity: sha512-9dLqsvwtg1uuXBGZKsxem9595+ujv0sJ6Vi8wcTANSFpwV/GONat5eCkzQo/1O6zRIkh0m/8+5BjrRr7jDUSZw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-ppc64@0.34.5':
     resolution: {integrity: sha512-7zznwNaqW6YtsfrGGDA6BRkISKAAE1Jo0QdpNYXNMHu2+0dTrPflTLNkpc8l7MUP5M16ZJcUvysVWWrMefZquA==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-riscv64@0.34.5':
     resolution: {integrity: sha512-51gJuLPTKa7piYPaVs8GmByo7/U7/7TZOq+cnXJIHZKavIRHAP77e3N2HEl3dgiqdD/w0yUfiJnII77PuDDFdw==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-s390x@0.34.5':
     resolution: {integrity: sha512-nQtCk0PdKfho3eC5MrbQoigJ2gd1CgddUMkabUj+rBevs8tZ2cULOx46E7oyX+04WGfABgIwmMC0VqieTiR4jg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linux-x64@0.34.5':
     resolution: {integrity: sha512-MEzd8HPKxVxVenwAa+JRPwEC7QFjoPWuS5NZnBt6B3pu7EG2Ge0id1oLHZpPJdn3OQK+BQDiw9zStiHBTJQQQQ==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@img/sharp-linuxmusl-arm64@0.34.5':
     resolution: {integrity: sha512-fprJR6GtRsMt6Kyfq44IsChVZeGN97gTD331weR1ex1c1rypDEABN6Tm2xa1wE6lYb5DdEnk03NZPqA7Id21yg==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-linuxmusl-x64@0.34.5':
     resolution: {integrity: sha512-Jg8wNT1MUzIvhBFxViqrEhWDGzqymo3sV7z7ZsaWbZNDLXRJZoRGrjulp60YYtV4wfY8VIKcWidjojlLcWrd8Q==}
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@img/sharp-wasm32@0.34.5':
     resolution: {integrity: sha512-OdWTEiVkY2PHwqkbBI8frFxQQFekHaSSkUIJkwzclWZe64O1X4UlUjqqqLaPbUpMOQk6FBu/HtlGXNblIs0huw==}
@@ -2325,36 +2356,42 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/simple-git-linux-arm64-musl@0.1.22':
     resolution: {integrity: sha512-MOs7fPyJiU/wqOpKzAOmOpxJ/TZfP4JwmvPad/cXTOWYwwyppMlXFRms3i98EU3HOazI/wMU2Ksfda3+TBluWA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@napi-rs/simple-git-linux-ppc64-gnu@0.1.22':
     resolution: {integrity: sha512-L59dR30VBShRUIZ5/cQHU25upNgKS0AMQ7537J6LCIUEFwwXrKORZKJ8ceR+s3Sr/4jempWVvMdjEpFDE4HYww==}
     engines: {node: '>= 10'}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/simple-git-linux-s390x-gnu@0.1.22':
     resolution: {integrity: sha512-4FHkPlCSIZUGC6HiADffbe6NVoTBMd65pIwcd40IDbtFKOgFMBA+pWRqKiQ21FERGH16Zed7XHJJoY3jpOqtmQ==}
     engines: {node: '>= 10'}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/simple-git-linux-x64-gnu@0.1.22':
     resolution: {integrity: sha512-Ei1tM5Ho/dwknF3pOzqkNW9Iv8oFzRxE8uOhrITcdlpxRxVrBVptUF6/0WPdvd7R9747D/q61QG/AVyWsWLFKw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@napi-rs/simple-git-linux-x64-musl@0.1.22':
     resolution: {integrity: sha512-zRYxg7it0p3rLyEJYoCoL2PQJNgArVLyNavHW03TFUAYkYi5bxQ/UFNVpgxMaXohr5yu7qCBqeo9j4DWeysalg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@napi-rs/simple-git-win32-arm64-msvc@0.1.22':
     resolution: {integrity: sha512-XGFR1fj+Y9cWACcovV2Ey/R2xQOZKs8t+7KHPerYdJ4PtjVzGznI4c2EBHXtdOIYvkw7tL5rZ7FN1HJKdD5Quw==}
@@ -2401,24 +2438,28 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@next/swc-linux-arm64-musl@16.1.3':
     resolution: {integrity: sha512-UbFx69E2UP7MhzogJRMFvV9KdEn4sLGPicClwgqnLht2TEi204B71HuVfps3ymGAh0c44QRAF+ZmvZZhLLmhNg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@next/swc-linux-x64-gnu@16.1.3':
     resolution: {integrity: sha512-SzGTfTjR5e9T+sZh5zXqG/oeRQufExxBF6MssXS7HPeZFE98JDhCRZXpSyCfWrWrYrzmnw/RVhlP2AxQm+wkRQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@next/swc-linux-x64-musl@16.1.3':
     resolution: {integrity: sha512-HlrDpj0v+JBIvQex1mXHq93Mht5qQmfyci+ZNwGClnAQldSfxI6h0Vupte1dSR4ueNv4q7qp5kTnmLOBIQnGow==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@next/swc-win32-arm64-msvc@16.1.3':
     resolution: {integrity: sha512-3gFCp83/LSduZMSIa+lBREP7+5e7FxpdBoc9QrCdmp+dapmTK9I+SLpY60Z39GDmTXSZA4huGg9WwmYbr6+WRw==}
@@ -3191,66 +3232,79 @@ packages:
     resolution: {integrity: sha512-Rn3n+FUk2J5VWx+ywrG/HGPTD9jXNbicRtTM11e/uorplArnXZYsVifnPPqNNP5BsO3roI4n8332ukpY/zN7rQ==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.55.1':
     resolution: {integrity: sha512-grPNWydeKtc1aEdrJDWk4opD7nFtQbMmV7769hiAaYyUKCT1faPRm2av8CX1YJsZ4TLAZcg9gTR1KvEzoLjXkg==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.55.1':
     resolution: {integrity: sha512-a59mwd1k6x8tXKcUxSyISiquLwB5pX+fJW9TkWU46lCqD/GRDe9uDN31jrMmVP3feI3mhAdvcCClhV8V5MhJFQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.55.1':
     resolution: {integrity: sha512-puS1MEgWX5GsHSoiAsF0TYrpomdvkaXm0CofIMG5uVkP6IBV+ZO9xhC5YEN49nsgYo1DuuMquF9+7EDBVYu4uA==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loong64-gnu@4.55.1':
     resolution: {integrity: sha512-r3Wv40in+lTsULSb6nnoudVbARdOwb2u5fpeoOAZjFLznp6tDU8kd+GTHmJoqZ9lt6/Sys33KdIHUaQihFcu7g==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-loong64-musl@4.55.1':
     resolution: {integrity: sha512-MR8c0+UxAlB22Fq4R+aQSPBayvYa3+9DrwG/i1TKQXFYEaoW3B5b/rkSRIypcZDdWjWnpcvxbNaAJDcSbJU3Lw==}
     cpu: [loong64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-ppc64-gnu@4.55.1':
     resolution: {integrity: sha512-3KhoECe1BRlSYpMTeVrD4sh2Pw2xgt4jzNSZIIPLFEsnQn9gAnZagW9+VqDqAHgm1Xc77LzJOo2LdigS5qZ+gw==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-ppc64-musl@4.55.1':
     resolution: {integrity: sha512-ziR1OuZx0vdYZZ30vueNZTg73alF59DicYrPViG0NEgDVN8/Jl87zkAPu4u6VjZST2llgEUjaiNl9JM6HH1Vdw==}
     cpu: [ppc64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-riscv64-gnu@4.55.1':
     resolution: {integrity: sha512-uW0Y12ih2XJRERZ4jAfKamTyIHVMPQnTZcQjme2HMVDAHY4amf5u414OqNYC+x+LzRdRcnIG1YodLrrtA8xsxw==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.55.1':
     resolution: {integrity: sha512-u9yZ0jUkOED1BFrqu3BwMQoixvGHGZ+JhJNkNKY/hyoEgOwlqKb62qu+7UjbPSHYjiVy8kKJHvXKv5coH4wDeg==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.55.1':
     resolution: {integrity: sha512-/0PenBCmqM4ZUd0190j7J0UsQ/1nsi735iPRakO8iPciE7BQ495Y6msPzaOmvx0/pn+eJVVlZrNrSh4WSYLxNg==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.55.1':
     resolution: {integrity: sha512-a8G4wiQxQG2BAvo+gU6XrReRRqj+pLS2NGXKm8io19goR+K8lw269eTrPkSdDTALwMmJp4th2Uh0D8J9bEV1vg==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.55.1':
     resolution: {integrity: sha512-bD+zjpFrMpP/hqkfEcnjXWHMw5BIghGisOKPj+2NaNDuVT+8Ds4mPf3XcPHuat1tz89WRL+1wbcxKY3WSbiT7w==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-openbsd-x64@4.55.1':
     resolution: {integrity: sha512-eLXw0dOiqE4QmvikfQ6yjgkg/xDM+MdU9YJuP4ySTibXU0oAvnEWXt7UDJmD4UkYialMfOGFPJnIHSe/kdzPxg==}
@@ -3506,24 +3560,28 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@tailwindcss/oxide-linux-arm64-musl@4.1.18':
     resolution: {integrity: sha512-1px92582HkPQlaaCkdRcio71p8bc8i/ap5807tPRDK/uw953cauQBT8c5tVGkOwrHMfc2Yh6UuxaH4vtTjGvHg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@tailwindcss/oxide-linux-x64-gnu@4.1.18':
     resolution: {integrity: sha512-v3gyT0ivkfBLoZGF9LyHmts0Isc8jHZyVcbzio6Wpzifg/+5ZJpDiRiUhDLkcr7f/r38SWNe7ucxmGW3j3Kb/g==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@tailwindcss/oxide-linux-x64-musl@4.1.18':
     resolution: {integrity: sha512-bhJ2y2OQNlcRwwgOAGMY0xTFStt4/wyU6pvI6LSuZpRgKQwxTec0/3Scu91O8ir7qCR3AuepQKLU/kX99FouqQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@tailwindcss/oxide-wasm32-wasi@4.1.18':
     resolution: {integrity: sha512-LffYTvPjODiP6PT16oNeUQJzNVyJl1cjIebq/rWWBF+3eDst5JGEFSc5cWxyRCJ0Mxl+KyIkqRxk1XPEs9x8TA==}
@@ -5609,24 +5667,28 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-arm64-musl@1.30.2:
     resolution: {integrity: sha512-5Vh9dGeblpTxWHpOx8iauV02popZDsCYMPIgiuw97OJ5uaDsL86cnqSFs5LZkG3ghHoX5isLgWzMs+eD1YzrnA==}
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-linux-x64-gnu@1.30.2:
     resolution: {integrity: sha512-Cfd46gdmj1vQ+lR6VRTTadNHu6ALuw2pKR9lYq4FnhvgBc4zWY1EtZcAc6EffShbb1MFrIPfLDXD6Xprbnni4w==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   lightningcss-linux-x64-musl@1.30.2:
     resolution: {integrity: sha512-XJaLUUFXb6/QG2lGIW6aIk6jKdtjtcffUT0NKvIqhSBY3hh9Ch+1LCeH80dR9q9LBjG3ewbDjnumefsLsP6aiA==}
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   lightningcss-win32-arm64-msvc@1.30.2:
     resolution: {integrity: sha512-FZn+vaj7zLv//D/192WFFVA0RgHawIcHqLX9xuWiQt7P0PtdFEVaxgF9rjM/IRYHQXNnk61/H/gb2Ei+kUQ4xQ==}
@@ -6972,6 +7034,9 @@ packages:
 
   tailwind-merge@3.0.1:
     resolution: {integrity: sha512-AvzE8FmSoXC7nC+oU5GlQJbip2UO7tmOhOfQyOmPhrStOGXHU08j8mZEHZ4BmCqY5dWTCo4ClWkNyRNx1wpT0g==}
+
+  tailwind-merge@3.4.0:
+    resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
 
   tailwind-variants@0.3.0:
     resolution: {integrity: sha512-ho2k5kn+LB1fT5XdNS3Clb96zieWxbStE9wNLK7D0AV64kdZMaYzAKo0fWl6fXLPY99ffF9oBJnIj5escEl/8A==}
@@ -8878,7 +8943,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-accordion': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-accordion@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/button': 3.11.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -8898,7 +8963,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/utils': 3.27.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-stately/utils': 3.10.5(react@19.2.3)
@@ -8911,7 +8976,7 @@ snapshots:
     dependencies:
       '@heroui/react-rsc-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-rsc-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/utils': 3.27.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-stately/collections': 3.12.1(react@19.2.3)
       '@react-stately/overlays': 3.6.13(react@19.2.3)
@@ -8936,7 +9001,7 @@ snapshots:
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
       '@heroui/spinner': https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-button': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/use-safe-layout-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
@@ -8959,7 +9024,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-image': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -8972,7 +9037,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -8982,7 +9047,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/breadcrumbs': 3.5.20(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -8998,7 +9063,7 @@ snapshots:
       '@heroui/ripple': https://pkg.pr.new/heroui-inc/heroui/@heroui/ripple@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
       '@heroui/spinner': https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-button': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/button': 3.11.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9019,7 +9084,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-button': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@internationalized/date': 3.7.0
@@ -9045,7 +9110,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/ripple': https://pkg.pr.new/heroui-inc/heroui/@heroui/ripple@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-button': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/button': 3.11.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9062,7 +9127,7 @@ snapshots:
       '@heroui/form': https://pkg.pr.new/heroui-inc/heroui/@heroui/form@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-callback-ref': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-callback-ref@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/use-safe-layout-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
@@ -9083,7 +9148,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/interactions': 3.23.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9106,7 +9171,7 @@ snapshots:
       '@heroui/form': https://pkg.pr.new/heroui-inc/heroui/@heroui/form@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@internationalized/date': 3.7.0
       '@react-aria/datepicker': 3.13.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9129,7 +9194,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@internationalized/date': 3.7.0
       '@react-aria/datepicker': 3.13.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9164,7 +9229,7 @@ snapshots:
       '@heroui/modal': https://pkg.pr.new/heroui-inc/heroui/@heroui/modal@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -9178,7 +9243,7 @@ snapshots:
       '@heroui/popover': https://pkg.pr.new/heroui-inc/heroui/@heroui/popover@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/menu': 3.17.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9193,7 +9258,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/utils': 3.27.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-stately/form': 3.1.1(react@19.2.3)
@@ -9205,7 +9270,7 @@ snapshots:
   '@heroui/framer-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/use-measure': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-measure@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       framer-motion: 12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
@@ -9217,7 +9282,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-image': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       react: 19.2.3
@@ -9228,7 +9293,7 @@ snapshots:
       '@heroui/form': https://pkg.pr.new/heroui-inc/heroui/@heroui/form@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/form': 3.0.12(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9246,7 +9311,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-safe-layout-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9277,7 +9342,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-link': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-link@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9293,7 +9358,7 @@ snapshots:
       '@heroui/divider': https://pkg.pr.new/heroui-inc/heroui/@heroui/divider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-is-mobile': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9315,7 +9380,7 @@ snapshots:
       '@heroui/divider': https://pkg.pr.new/heroui-inc/heroui/@heroui/divider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-is-mobile': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9338,7 +9403,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-button': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/use-aria-modal-overlay': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-modal-overlay@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9361,7 +9426,7 @@ snapshots:
       '@heroui/framer-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-scroll-position': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-scroll-position@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/button': 3.11.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9382,7 +9447,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-safe-layout-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9405,7 +9470,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-intersection-observer': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-intersection-observer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/use-pagination': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-pagination@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9425,7 +9490,7 @@ snapshots:
       '@heroui/framer-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-button': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/use-safe-layout-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
@@ -9445,7 +9510,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-is-mounted': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mounted@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/i18n': 3.12.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9460,7 +9525,7 @@ snapshots:
       '@heroui/form': https://pkg.pr.new/heroui-inc/heroui/@heroui/form@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/interactions': 3.23.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9527,7 +9592,7 @@ snapshots:
       '@heroui/spacer': https://pkg.pr.new/heroui-inc/heroui/@heroui/spacer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/spinner': https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/switch': https://pkg.pr.new/heroui-inc/heroui/@heroui/switch@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/table': https://pkg.pr.new/heroui-inc/heroui/@heroui/table@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/tabs': https://pkg.pr.new/heroui-inc/heroui/@heroui/tabs@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
@@ -9547,7 +9612,7 @@ snapshots:
       '@heroui/dom-animation': https://pkg.pr.new/heroui-inc/heroui/@heroui/dom-animation@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       framer-motion: 12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
@@ -9557,7 +9622,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-data-scroll-overflow': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-data-scroll-overflow@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       react: 19.2.3
@@ -9574,7 +9639,7 @@ snapshots:
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
       '@heroui/spinner': https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-aria-button': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/use-aria-multiselect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-multiselect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9595,13 +9660,15 @@ snapshots:
     dependencies:
       react: 19.2.3
 
+  '@heroui/shared-utils@2.1.12': {}
+
   '@heroui/shared-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08': {}
 
   '@heroui/skeleton@https://pkg.pr.new/heroui-inc/heroui/@heroui/skeleton@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -9610,7 +9677,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/tooltip': https://pkg.pr.new/heroui-inc/heroui/@heroui/tooltip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9631,7 +9698,7 @@ snapshots:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/tooltip': https://pkg.pr.new/heroui-inc/heroui/@heroui/tooltip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/use-clipboard': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-clipboard@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
@@ -9654,7 +9721,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/system-rsc': https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       react: 19.2.3
@@ -9666,7 +9733,7 @@ snapshots:
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-safe-layout-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9679,6 +9746,13 @@ snapshots:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
+  '@heroui/system-rsc@https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(react@19.2.3)':
+    dependencies:
+      '@heroui/theme': 2.4.25(tailwindcss@4.1.18)
+      '@react-types/shared': 3.27.0(react@19.2.3)
+      clsx: 1.2.1
+      react: 19.2.3
+
   '@heroui/system-rsc@https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react@19.2.3)':
     dependencies:
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
@@ -9686,10 +9760,10 @@ snapshots:
       clsx: 1.2.1
       react: 19.2.3
 
-  '@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
-      '@heroui/system-rsc': https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react@19.2.3)
+      '@heroui/system-rsc': https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(react@19.2.3)
       '@internationalized/date': 3.7.0
       '@react-aria/i18n': 3.12.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/overlays': 3.25.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9709,7 +9783,7 @@ snapshots:
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
       '@heroui/spacer': https://pkg.pr.new/heroui-inc/heroui/@heroui/spacer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/interactions': 3.23.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9730,7 +9804,7 @@ snapshots:
       '@heroui/framer-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-is-mounted': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mounted@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/use-update-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-update-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
@@ -9745,6 +9819,17 @@ snapshots:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
       scroll-into-view-if-needed: 3.0.10
+
+  '@heroui/theme@2.4.25(tailwindcss@4.1.18)':
+    dependencies:
+      '@heroui/shared-utils': 2.1.12
+      color: 4.2.3
+      color2k: 2.0.3
+      deepmerge: 4.3.1
+      flat: 5.0.2
+      tailwind-merge: 3.4.0
+      tailwind-variants: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.18)
+      tailwindcss: 4.1.18
 
   '@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)':
     dependencies:
@@ -9764,7 +9849,7 @@ snapshots:
       '@heroui/shared-icons': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
       '@heroui/spinner': https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-is-mobile': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/interactions': 3.23.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9783,7 +9868,7 @@ snapshots:
       '@heroui/framer-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@heroui/use-safe-layout-effect': https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@react-aria/interactions': 3.23.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -9946,7 +10031,7 @@ snapshots:
       '@heroui/avatar': https://pkg.pr.new/heroui-inc/heroui/@heroui/avatar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.3)
       '@heroui/shared-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08
-      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@heroui/system': https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.25(tailwindcss@4.1.18))(framer-motion@12.27.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
       '@react-aria/focus': 3.19.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@react-aria/utils': 3.27.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -10273,7 +10358,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.1.3':
     optional: true
 
-  '@next/third-parties@16.1.3(next@16.1.3(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+  '@next/third-parties@16.1.3(next@16.1.3(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
     dependencies:
       next: 16.1.3(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
@@ -16134,16 +16219,18 @@ snapshots:
 
   tailwind-merge@3.0.1: {}
 
+  tailwind-merge@3.4.0: {}
+
   tailwind-variants@0.3.0(tailwindcss@4.1.18):
     dependencies:
       tailwind-merge: 2.6.0
       tailwindcss: 4.1.18
 
-  tailwind-variants@3.2.2(tailwind-merge@3.0.1)(tailwindcss@4.1.18):
+  tailwind-variants@3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.18):
     dependencies:
       tailwindcss: 4.1.18
     optionalDependencies:
-      tailwind-merge: 3.0.1
+      tailwind-merge: 3.4.0
 
   tailwindcss@4.1.18: {}
 

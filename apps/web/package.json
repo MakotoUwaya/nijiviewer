@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "5.0.0",
+    "@heroui/theme": "2.4.25",
     "@storybook/addon-essentials": "9.0.0-alpha.12",
     "@storybook/addon-interactions": "9.0.0-alpha.10",
     "@storybook/addon-links": "10.1.10",
