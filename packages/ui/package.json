@@ -15,7 +15,7 @@
     "@types/react-dom": "19.2.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tsconfig": "*",
+    "tsconfig": "workspace:*",
     "typescript": "5.9.3"
   }
 }
