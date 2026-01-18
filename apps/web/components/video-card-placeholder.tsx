@@ -31,11 +31,13 @@ export default function VideoCardPlaceholder(
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
-        <CardHeader className="absolute z-10 p-1 flex-col items-start">
-          <Chip color="default" radius="sm" size="sm" variant="faded">
-            {video.topic_id || video.type}
-          </Chip>
-        </CardHeader>
+        {video.topic_id && (
+          <CardHeader className="absolute z-20 p-1 flex-col items-start">
+            <Chip color="default" radius="sm" size="sm" variant="faded">
+              {video.topic_id.replace(/_/g, ' ')}
+            </Chip>
+          </CardHeader>
+        )}
         <a href={video.link} rel="noopener noreferrer" target="_blank">
           <div className="relative w-full aspect-video">
             <Image

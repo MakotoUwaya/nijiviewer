@@ -105,9 +105,9 @@ export default function VideoCardStream(
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
-        <CardHeader className="absolute z-10 p-1 flex-col items-start">
+        <CardHeader className="absolute z-20 p-1 flex-col items-start">
           <Chip color="default" radius="sm" size="sm" variant="faded">
-            {video.topic_id || video.type}
+            {video.topic_id ? video.topic_id.replace(/_/g, ' ') : video.type}
           </Chip>
         </CardHeader>
         <button
