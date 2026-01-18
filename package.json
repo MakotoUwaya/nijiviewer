@@ -20,11 +20,11 @@
     "dotenv": "17.2.3",
     "msw": "2.12.7",
     "msw-storybook-addon": "2.0.6",
-    "tsconfig": "*",
+    "tsconfig": "workspace:*",
     "turbo": "2.7.5"
   },
   "name": "nijiviewer",
-  "packageManager": "npm@11.7.0",
+  "packageManager": "pnpm@9.15.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MakotoUwaya/nijiviewer.git"
@@ -38,8 +38,9 @@
     "apps/*",
     "packages/*"
   ],
-  "volta": {
-    "node": "24.13.0",
-    "npm": "11.7.0"
+  "pnpm": {
+    "overrides": {
+      "@react-aria/selection": "3.27.0"
+    }
   }
 }

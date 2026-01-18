@@ -1,6 +1,6 @@
 'use client';
 
-import { Link } from '@heroui/link';
+import { Link } from '@heroui/react';
 import type { ReactNode } from 'react';
 import { useSidebar } from '@/context/sidebar-context';
 
