@@ -10,37 +10,19 @@ import {
   Tooltip,
   User,
 } from '@heroui/react';
-import { DateTime } from 'luxon';
 import { usePathname, useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
 import { useState, useTransition } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
-import { formatVideoDuration } from '@/lib/holodex';
+import {
+  formatVideoDuration,
+  getStarted,
+  getVideoStatusText,
+} from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 import { sendVideoPlayEvent } from '@/metrics/events';
 import YouTubePlayerModal from './youtube-player-modal';
-
-/**
- * 指定されたDateTimeが、現在の日付よりも前の日付かどうかを判定
- * @param {luxon.DateTime} targetDateTime - 判定対象のDateTimeオブジェクト
- * @returns {boolean} 前の日付ならtrue、当日以降ならfalse
- */
-const isPreviousDay = (targetDateTime: DateTime): boolean => {
-  const startOfToday = DateTime.now().startOf('day');
-  const startOfTargetDay = targetDateTime.startOf('day');
-  return startOfTargetDay < startOfToday;
-};
-
-const getStarted = (target: string | undefined): string => {
-  if (!target) {
-    return '';
-  }
-  const targetDateTime = DateTime.fromISO(target);
-  return isPreviousDay(targetDateTime)
-    ? targetDateTime.toFormat('yyyy-MM-dd HH:mm') || ''
-    : targetDateTime.toRelative() || '';
-};
 
 export default function VideoCardStream(
   video: StreamVideo & { started: boolean },
@@ -64,10 +46,8 @@ export default function VideoCardStream(
   const videoStatusText = isPast
     ? getStarted(video.available_at || '')
     : video.started
-      ? `${viewersCount}Started streaming ${getStarted(
-          video.start_actual || '',
-        )}`
-      : 'Will probably start soon';
+      ? `${viewersCount}Started streaming ${getStarted(video.start_actual)}`
+      : getVideoStatusText(video.start_scheduled);
   const liverChannelPath = `/liver/${video.channel.id}`;
 
   const handleVideoClick = (e: MouseEvent) => {

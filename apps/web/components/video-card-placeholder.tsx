@@ -1,22 +1,17 @@
 'use client';
 
 import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
-import { DateTime } from 'luxon';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
-import { formatVideoDuration } from '@/lib/holodex';
+import {
+  formatVideoDuration,
+  getStarted,
+  getVideoStatusText,
+} from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 
 const getDomain = (url: string): string => {
   return new URL(url).hostname;
-};
-
-const getStarted = (target: string | undefined): string => {
-  if (!target) {
-    return '';
-  }
-  const targetDateTime = DateTime.fromISO(target);
-  return targetDateTime.toRelative() || '';
 };
 
 export default function VideoCardPlaceholder(
@@ -26,8 +21,10 @@ export default function VideoCardPlaceholder(
     video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
   }`;
   const videoStatusText = video.started
-    ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(video.start_actual)}`
-    : 'Will probably start soon';
+    ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(
+        video.start_actual,
+      )}`
+    : getVideoStatusText(video.start_scheduled);
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>

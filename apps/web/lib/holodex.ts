@@ -17,6 +17,50 @@ export type VideoType =
   | 'placeholder'
   | 'collabs';
 
+// import { DateTime } from 'luxon'; // Need to add import at top of file, so using multi-replace or separate replace
+import { DateTime } from 'luxon';
+
+/**
+ * 指定されたDateTimeが、現在の日付よりも前の日付かどうかを判定
+ */
+const isPreviousDay = (targetDateTime: DateTime): boolean => {
+  const startOfToday = DateTime.now().startOf('day');
+  const startOfTargetDay = targetDateTime.startOf('day');
+  return startOfTargetDay < startOfToday;
+};
+
+export const getStarted = (target: string | undefined): string => {
+  if (!target) {
+    return '';
+  }
+  const targetDateTime = DateTime.fromISO(target);
+  return isPreviousDay(targetDateTime)
+    ? targetDateTime.toFormat('yyyy-MM-dd HH:mm') || ''
+    : targetDateTime.toRelative() || '';
+};
+
+export const getVideoStatusText = (
+  start_scheduled: string | undefined,
+): string => {
+  if (!start_scheduled) return 'Will probably start soon';
+  const start = DateTime.fromISO(start_scheduled);
+  const diffMap = start.diffNow(['minutes']).toObject();
+  const diffMinutes = diffMap.minutes || 0;
+  const fmt = start.toFormat('yyyy-MM-dd HH:mm');
+
+  if (diffMinutes <= 1 && diffMinutes > -60) {
+    return `Start at ${fmt} (will start soon)`;
+  }
+  if (diffMinutes <= 60 && diffMinutes > 1) {
+    return `Start at ${fmt} (starts in ${Math.floor(diffMinutes)} minutes)`;
+  }
+  const diffHours = diffMinutes / 60;
+  if (diffHours <= 24 && diffHours > 1) {
+    return `Start at ${fmt} (starts in ${Math.floor(diffHours)} hours)`;
+  }
+  return `Start at ${fmt}`;
+};
+
 export type StreamVideo = CommonVideo & {
   type: 'stream';
   topic_id: string;
