@@ -1,6 +1,7 @@
 'use client';
 
 import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
+import { SignalIcon } from '@heroicons/react/24/solid';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
 import {
@@ -45,10 +46,17 @@ export default function VideoCardPlaceholder(
               src={getImageUrl(video.thumbnail)}
               crossOrigin="anonymous"
             />
-            {video.duration > 0 && (
-              <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
-                {formatVideoDuration(video.duration)}
+            {video.status === 'live' ? (
+              <div className="absolute bottom-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded z-20 flex items-center gap-1">
+                <SignalIcon className="w-3 h-3" />
+                <span className="font-bold">LIVE</span>
               </div>
+            ) : (
+              video.duration > 0 && (
+                <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
+                  {formatVideoDuration(video.duration)}
+                </div>
+              )
             )}
           </div>
         </a>
