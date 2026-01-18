@@ -1,22 +1,18 @@
 'use client';
 
 import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
-import { DateTime } from 'luxon';
+import { SignalIcon } from '@heroicons/react/24/solid';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
-import { formatVideoDuration } from '@/lib/holodex';
+import {
+  formatVideoDuration,
+  getStarted,
+  getVideoStatusText,
+} from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 
 const getDomain = (url: string): string => {
   return new URL(url).hostname;
-};
-
-const getStarted = (target: string | undefined): string => {
-  if (!target) {
-    return '';
-  }
-  const targetDateTime = DateTime.fromISO(target);
-  return targetDateTime.toRelative() || '';
 };
 
 export default function VideoCardPlaceholder(
@@ -26,16 +22,20 @@ export default function VideoCardPlaceholder(
     video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
   }`;
   const videoStatusText = video.started
-    ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(video.start_actual)}`
-    : 'Will probably start soon';
+    ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(
+        video.start_actual,
+      )}`
+    : getVideoStatusText(video.start_scheduled);
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
-        <CardHeader className="absolute z-10 p-1 flex-col items-start">
-          <Chip color="default" radius="sm" size="sm" variant="faded">
-            {video.topic_id || video.type}
-          </Chip>
-        </CardHeader>
+        {video.topic_id && (
+          <CardHeader className="absolute z-20 p-1 flex-col items-start">
+            <Chip color="default" radius="sm" size="sm" variant="faded">
+              {video.topic_id.replace(/_/g, ' ')}
+            </Chip>
+          </CardHeader>
+        )}
         <a href={video.link} rel="noopener noreferrer" target="_blank">
           <div className="relative w-full aspect-video">
             <Image
@@ -46,10 +46,17 @@ export default function VideoCardPlaceholder(
               src={getImageUrl(video.thumbnail)}
               crossOrigin="anonymous"
             />
-            {video.duration > 0 && (
-              <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
-                {formatVideoDuration(video.duration)}
+            {video.status === 'live' ? (
+              <div className="absolute bottom-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded z-20 flex items-center gap-1">
+                <SignalIcon className="w-3 h-3" />
+                <span className="font-bold">LIVE</span>
               </div>
+            ) : (
+              video.duration > 0 && (
+                <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
+                  {formatVideoDuration(video.duration)}
+                </div>
+              )
             )}
           </div>
         </a>

@@ -17,6 +17,7 @@ export function getImageUrl(url: string): string {
       'bilibili.com', // Bilibili
       'public-web.spwn.jp', // SPWN
       'abema-tv.com', // Abema
+      'nicovideo.jp', // ニコニコ動画
     ];
     // cSpell:enable
 

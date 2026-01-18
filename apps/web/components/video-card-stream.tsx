@@ -10,37 +10,20 @@ import {
   Tooltip,
   User,
 } from '@heroui/react';
-import { DateTime } from 'luxon';
+import { SignalIcon } from '@heroicons/react/24/solid';
 import { usePathname, useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
 import { useState, useTransition } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
-import { formatVideoDuration } from '@/lib/holodex';
+import {
+  formatVideoDuration,
+  getStarted,
+  getVideoStatusText,
+} from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 import { sendVideoPlayEvent } from '@/metrics/events';
 import YouTubePlayerModal from './youtube-player-modal';
-
-/**
- * 指定されたDateTimeが、現在の日付よりも前の日付かどうかを判定
- * @param {luxon.DateTime} targetDateTime - 判定対象のDateTimeオブジェクト
- * @returns {boolean} 前の日付ならtrue、当日以降ならfalse
- */
-const isPreviousDay = (targetDateTime: DateTime): boolean => {
-  const startOfToday = DateTime.now().startOf('day');
-  const startOfTargetDay = targetDateTime.startOf('day');
-  return startOfTargetDay < startOfToday;
-};
-
-const getStarted = (target: string | undefined): string => {
-  if (!target) {
-    return '';
-  }
-  const targetDateTime = DateTime.fromISO(target);
-  return isPreviousDay(targetDateTime)
-    ? targetDateTime.toFormat('yyyy-MM-dd HH:mm') || ''
-    : targetDateTime.toRelative() || '';
-};
 
 export default function VideoCardStream(
   video: StreamVideo & { started: boolean },
@@ -64,10 +47,8 @@ export default function VideoCardStream(
   const videoStatusText = isPast
     ? getStarted(video.available_at || '')
     : video.started
-      ? `${viewersCount}Started streaming ${getStarted(
-          video.start_actual || '',
-        )}`
-      : 'Will probably start soon';
+      ? `${viewersCount}Started streaming ${getStarted(video.start_actual)}`
+      : getVideoStatusText(video.start_scheduled);
   const liverChannelPath = `/liver/${video.channel.id}`;
 
   const handleVideoClick = (e: MouseEvent) => {
@@ -105,9 +86,9 @@ export default function VideoCardStream(
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
       <Card>
-        <CardHeader className="absolute z-10 p-1 flex-col items-start">
+        <CardHeader className="absolute z-20 p-1 flex-col items-start">
           <Chip color="default" radius="sm" size="sm" variant="faded">
-            {video.topic_id || video.type}
+            {video.topic_id ? video.topic_id.replace(/_/g, ' ') : video.type}
           </Chip>
         </CardHeader>
         <button
@@ -131,10 +112,17 @@ export default function VideoCardStream(
               )}
               crossOrigin="anonymous"
             />
-            {video.duration > 0 && (
-              <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
-                {formatVideoDuration(video.duration)}
+            {video.status === 'live' ? (
+              <div className="absolute bottom-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded z-20 flex items-center gap-1">
+                <SignalIcon className="w-3 h-3" />
+                <span className="font-bold">LIVE</span>
               </div>
+            ) : (
+              video.duration > 0 && (
+                <div className="absolute bottom-1 right-1 bg-black/80 text-white text-xs px-1.5 py-0.5 rounded z-20">
+                  {formatVideoDuration(video.duration)}
+                </div>
+              )
             )}
           </div>
         </button>

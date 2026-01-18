@@ -31,6 +31,7 @@ export const hasPast = (target: string | undefined): boolean => {
 const Videos = (props: VideoProps): JSX.Element => {
   const liveVideos = props.videos
     .filter((v) => v.type !== 'clip')
+    .filter((v) => v.status === 'live')
     .filter((v) => hasPast(v.start_actual) || hasPast(v.start_scheduled))
     .map((v) => ({ ...v, started: hasPast(v.start_actual) }));
   const upCommingVideos = props.videos
