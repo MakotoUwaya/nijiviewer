@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
       'bilibili.com', // Bilibili
       'public-web.spwn.jp', // SPWN
       'abema-tv.com', // Abema
+      'nicovideo.jp', // ニコニコ動画
       'img.youtube.com',
     ];
     // cSpell:enable
