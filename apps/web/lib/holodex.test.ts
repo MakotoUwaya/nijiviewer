@@ -6,9 +6,9 @@ describe('holodex utils', () => {
   describe('getStarted', () => {
     beforeEach(() => {
       // Set a fixed "now" for reliable testing
-      // 2024-01-15 12:00:00
+      // 2024-01-15 12:00:00 JST
       vi.useFakeTimers();
-      vi.setSystemTime(new Date('2024-01-15T12:00:00'));
+      vi.setSystemTime(new Date('2024-01-15T12:00:00+09:00'));
     });
 
     afterEach(() => {
@@ -20,8 +20,8 @@ describe('holodex utils', () => {
     });
 
     it('should return relative time if target is today (same day)', () => {
-      // 2024-01-15 13:00:00 (1 hour later)
-      const target = '2024-01-15T13:00:00.000Z'; 
+      // 2024-01-15 13:00:00 JST (1 hour later)
+      const target = '2024-01-15T13:00:00.000+09:00'; 
       // Note: toRelative depends on potential timezone differences and exact implementation of luxon relative time.
       // But typically "in 1 hour" or similar.
       // Let's check if it returns a string and not the fixed format.
@@ -33,16 +33,10 @@ describe('holodex utils', () => {
     });
     
     it('should return formatted date if target is previous day', () => {
-        // 2024-01-14 23:00:00 (yesterday)
-        const target = '2024-01-14T23:00:00.000'; // ISO string without Z, treated as local in Luxon if not specified? 
-        // Note: holodex.ts uses DateTime.fromISO(target).
-        // If the string has no offset, Luxon uses local system zone.
-        // To avoid timezone confusion in tests, robust to specify ISO with offset or Z.
-        // However, isPreviousDay compares against "now" start of day.
-        
+        // 2024-01-14 10:00:00 JST (yesterday)
         // Let's explicitly use a date that is definitely "yesterday" relative to the mocked now.
-        const targetDate = DateTime.now().minus({ days: 1 }).set({ hour: 10, minute: 0 }).toISO();
-        const result = getStarted(targetDate!);
+        const targetDate = DateTime.now().setZone('Asia/Tokyo').minus({ days: 1 }).set({ hour: 10, minute: 0 }).toISO({ includeOffset: true });
+        const result = getStarted(targetDate ?? '');
         
         // Expected format: yyyy-MM-dd HH:mm
         expect(result).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/);
@@ -51,9 +45,9 @@ describe('holodex utils', () => {
 
   describe('getVideoStatusText', () => {
      beforeEach(() => {
-      // Mock time: 2024-01-15 10:00:00
+      // Mock time: 2024-01-15 10:00:00 JST
       vi.useFakeTimers();
-      vi.setSystemTime(new Date('2024-01-15T10:00:00'));
+      vi.setSystemTime(new Date('2024-01-15T10:00:00+09:00'));
     });
 
     afterEach(() => {
@@ -65,34 +59,34 @@ describe('holodex utils', () => {
     });
 
     it('should return "will start soon" if starts within 1 minute', () => {
-        // Now: 10:00
-        // Target: 10:01
-        const target = DateTime.now().plus({ seconds: 30 }).toISO();
-        const result = getVideoStatusText(target!);
+        // Now: 10:00 JST
+        // Target: 10:00:30 JST
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ seconds: 30 }).toISO({ includeOffset: true });
+        const result = getVideoStatusText(target ?? '');
         expect(result).toContain('(will start soon)');
     });
 
     it('should return "starts in X minutes" if starts between 1 and 60 minutes', () => {
-        // Now: 10:00
-        // Target: 10:30
-        const target = DateTime.now().plus({ minutes: 30 }).toISO();
-        const result = getVideoStatusText(target!);
+        // Now: 10:00 JST
+        // Target: 10:30 JST
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ minutes: 30 }).toISO({ includeOffset: true });
+        const result = getVideoStatusText(target ?? '');
         expect(result).toContain('(starts in 30 minutes)');
     });
 
     it('should return "starts in X hours" if starts between 1 and 24 hours', () => {
-        // Now: 10:00
-        // Target: 12:00 (2 hours)
-        const target = DateTime.now().plus({ hours: 2 }).toISO();
-        const result = getVideoStatusText(target!);
+        // Now: 10:00 JST
+        // Target: 12:00 JST (2 hours)
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ hours: 2 }).toISO({ includeOffset: true });
+        const result = getVideoStatusText(target ?? '');
         expect(result).toContain('(starts in 2 hours)');
     });
 
     it('should return only "Start at ..." if starts after 24 hours', () => {
-        // Now: 10:00
-        // Target: 2 days later
-        const target = DateTime.now().plus({ days: 2 }).toISO();
-        const result = getVideoStatusText(target!);
+        // Now: 10:00 JST
+        // Target: 2 days later JST
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ days: 2 }).toISO({ includeOffset: true });
+        const result = getVideoStatusText(target ?? '');
         expect(result).not.toContain('(starts in');
         expect(result).not.toContain('(will start soon)');
         expect(result).toMatch(/^Start at \d{4}-\d{2}-\d{2} \d{2}:\d{2}$/);
