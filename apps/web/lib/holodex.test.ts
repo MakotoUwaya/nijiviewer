@@ -35,9 +35,8 @@ describe('holodex utils', () => {
     it('should return formatted date if target is previous day', () => {
         // 2024-01-14 10:00:00 JST (yesterday)
         // Let's explicitly use a date that is definitely "yesterday" relative to the mocked now.
-        const targetDate = DateTime.now().setZone('Asia/Tokyo').minus({ days: 1 }).set({ hour: 10, minute: 0 }).toISO({ includeOffset: true });
-        expect(targetDate).toBeTruthy();
-        const result = getStarted(targetDate as string);
+        const targetDate = DateTime.now().setZone('Asia/Tokyo').minus({ days: 1 }).set({ hour: 10, minute: 0 }).toISO({ includeOffset: true }) as string;
+        const result = getStarted(targetDate);
         
         // Expected format: yyyy-MM-dd HH:mm
         expect(result).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/);
@@ -62,36 +61,32 @@ describe('holodex utils', () => {
     it('should return "will start soon" if starts within 1 minute', () => {
         // Now: 10:00 JST
         // Target: 10:00:30 JST
-        const target = DateTime.now().setZone('Asia/Tokyo').plus({ seconds: 30 }).toISO({ includeOffset: true });
-        expect(target).toBeTruthy();
-        const result = getVideoStatusText(target as string);
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ seconds: 30 }).toISO({ includeOffset: true }) as string;
+        const result = getVideoStatusText(target);
         expect(result).toContain('(will start soon)');
     });
 
     it('should return "starts in X minutes" if starts between 1 and 60 minutes', () => {
         // Now: 10:00 JST
         // Target: 10:30 JST
-        const target = DateTime.now().setZone('Asia/Tokyo').plus({ minutes: 30 }).toISO({ includeOffset: true });
-        expect(target).toBeTruthy();
-        const result = getVideoStatusText(target as string);
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ minutes: 30 }).toISO({ includeOffset: true }) as string;
+        const result = getVideoStatusText(target);
         expect(result).toContain('(starts in 30 minutes)');
     });
 
     it('should return "starts in X hours" if starts between 1 and 24 hours', () => {
         // Now: 10:00 JST
         // Target: 12:00 JST (2 hours)
-        const target = DateTime.now().setZone('Asia/Tokyo').plus({ hours: 2 }).toISO({ includeOffset: true });
-        expect(target).toBeTruthy();
-        const result = getVideoStatusText(target as string);
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ hours: 2 }).toISO({ includeOffset: true }) as string;
+        const result = getVideoStatusText(target);
         expect(result).toContain('(starts in 2 hours)');
     });
 
     it('should return only "Start at ..." if starts after 24 hours', () => {
         // Now: 10:00 JST
         // Target: 2 days later JST
-        const target = DateTime.now().setZone('Asia/Tokyo').plus({ days: 2 }).toISO({ includeOffset: true });
-        expect(target).toBeTruthy();
-        const result = getVideoStatusText(target as string);
+        const target = DateTime.now().setZone('Asia/Tokyo').plus({ days: 2 }).toISO({ includeOffset: true }) as string;
+        const result = getVideoStatusText(target);
         expect(result).not.toContain('(starts in');
         expect(result).not.toContain('(will start soon)');
         expect(result).toMatch(/^Start at \d{4}-\d{2}-\d{2} \d{2}:\d{2}$/);
