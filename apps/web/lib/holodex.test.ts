@@ -36,7 +36,8 @@ describe('holodex utils', () => {
         // 2024-01-14 10:00:00 JST (yesterday)
         // Let's explicitly use a date that is definitely "yesterday" relative to the mocked now.
         const targetDate = DateTime.now().setZone('Asia/Tokyo').minus({ days: 1 }).set({ hour: 10, minute: 0 }).toISO({ includeOffset: true });
-        const result = getStarted(targetDate ?? '');
+        expect(targetDate).toBeTruthy();
+        const result = getStarted(targetDate as string);
         
         // Expected format: yyyy-MM-dd HH:mm
         expect(result).toMatch(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/);
@@ -62,7 +63,8 @@ describe('holodex utils', () => {
         // Now: 10:00 JST
         // Target: 10:00:30 JST
         const target = DateTime.now().setZone('Asia/Tokyo').plus({ seconds: 30 }).toISO({ includeOffset: true });
-        const result = getVideoStatusText(target ?? '');
+        expect(target).toBeTruthy();
+        const result = getVideoStatusText(target as string);
         expect(result).toContain('(will start soon)');
     });
 
@@ -70,7 +72,8 @@ describe('holodex utils', () => {
         // Now: 10:00 JST
         // Target: 10:30 JST
         const target = DateTime.now().setZone('Asia/Tokyo').plus({ minutes: 30 }).toISO({ includeOffset: true });
-        const result = getVideoStatusText(target ?? '');
+        expect(target).toBeTruthy();
+        const result = getVideoStatusText(target as string);
         expect(result).toContain('(starts in 30 minutes)');
     });
 
@@ -78,7 +81,8 @@ describe('holodex utils', () => {
         // Now: 10:00 JST
         // Target: 12:00 JST (2 hours)
         const target = DateTime.now().setZone('Asia/Tokyo').plus({ hours: 2 }).toISO({ includeOffset: true });
-        const result = getVideoStatusText(target ?? '');
+        expect(target).toBeTruthy();
+        const result = getVideoStatusText(target as string);
         expect(result).toContain('(starts in 2 hours)');
     });
 
@@ -86,7 +90,8 @@ describe('holodex utils', () => {
         // Now: 10:00 JST
         // Target: 2 days later JST
         const target = DateTime.now().setZone('Asia/Tokyo').plus({ days: 2 }).toISO({ includeOffset: true });
-        const result = getVideoStatusText(target ?? '');
+        expect(target).toBeTruthy();
+        const result = getVideoStatusText(target as string);
         expect(result).not.toContain('(starts in');
         expect(result).not.toContain('(will start soon)');
         expect(result).toMatch(/^Start at \d{4}-\d{2}-\d{2} \d{2}:\d{2}$/);
