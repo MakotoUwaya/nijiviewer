@@ -28,11 +28,29 @@ export const hasPast = (target: string | undefined): boolean => {
   return targetDateTime.diffNow().milliseconds < 0;
 };
 
+/**
+ * @private
+ * Is the scheduled start time stale? (more than 1 hour ago)
+ * @param target streaming start time
+ * @returns true if it is stale
+ */
+export const isStale = (target: string | undefined): boolean => {
+  if (!target) {
+    return false;
+  }
+  const targetDateTime = DateTime.fromISO(target);
+  return targetDateTime.diffNow().as('hours') < -1;
+};
+
 const Videos = (props: VideoProps): JSX.Element => {
   const liveVideos = props.videos
     .filter((v) => v.type !== 'clip')
     .filter((v) => v.status === 'live')
-    .filter((v) => hasPast(v.start_actual) || hasPast(v.start_scheduled))
+    .filter((v) => {
+      // If it has technically started (start_actual exists) or if the scheduled start time passed but it's not "stale" (not more than 1h ago)
+      if (v.start_actual) return true;
+      return hasPast(v.start_scheduled) && !isStale(v.start_scheduled);
+    })
     .map((v) => ({ ...v, started: hasPast(v.start_actual) }));
   const upCommingVideos = props.videos
     .filter((v) => v.type !== 'clip')
