@@ -11,6 +11,7 @@ import {
   User,
 } from '@heroui/react';
 import { SignalIcon } from '@heroicons/react/24/solid';
+import { DateTime } from 'luxon';
 import { usePathname, useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
 import { useState, useTransition } from 'react';
@@ -47,8 +48,12 @@ export default function VideoCardStream(
   const videoStatusText = isPast
     ? getStarted(video.available_at || '')
     : video.started
-      ? `${viewersCount}Started streaming ${getStarted(video.start_actual)}`
-      : getVideoStatusText(video.start_scheduled);
+    ? `${viewersCount}Started streaming ${
+        video.start_actual
+          ? DateTime.fromISO(video.start_actual).toRelative()
+          : ''
+      }`
+    : getVideoStatusText(video.start_scheduled);
   const liverChannelPath = `/liver/${video.channel.id}`;
 
   const handleVideoClick = (e: MouseEvent) => {

@@ -2,6 +2,7 @@
 
 import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
 import { SignalIcon } from '@heroicons/react/24/solid';
+import { DateTime } from 'luxon';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
 import {
@@ -22,9 +23,11 @@ export default function VideoCardPlaceholder(
     video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
   }`;
   const videoStatusText = video.started
-    ? `Live - ${getDomain(video.link)} Started streaming ${getStarted(
-        video.start_actual,
-      )}`
+    ? `Live - ${getDomain(video.link)} Started streaming ${
+        video.start_actual
+          ? DateTime.fromISO(video.start_actual).toRelative()
+          : ''
+      }`
     : getVideoStatusText(video.start_scheduled);
   return (
     <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
