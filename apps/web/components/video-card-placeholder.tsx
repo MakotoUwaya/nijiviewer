@@ -1,15 +1,11 @@
 'use client';
 
-import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
 import { SignalIcon } from '@heroicons/react/24/solid';
+import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
-import {
-  formatVideoDuration,
-  getStarted,
-  getVideoStatusText,
-} from '@/lib/holodex';
+import { formatVideoDuration, getVideoStatusText } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 
 const getDomain = (url: string): string => {

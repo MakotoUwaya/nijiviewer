@@ -41,4 +41,3 @@ describe("isStale's test", () => {
     expect(isStale(undefined)).toBe(false);
   });
 });
-

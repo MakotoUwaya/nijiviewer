@@ -45,10 +45,7 @@ export function Sidebar({
   const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
   const { user } = useAuth();
 
-  const {
-    favoriteOrgIds,
-    organizations: allOrgs,
-  } = usePreferences();
+  const { favoriteOrgIds, organizations: allOrgs } = usePreferences();
 
   // Local derived state
   const [displayedOrganizations, setDisplayedOrganizations] = useState<

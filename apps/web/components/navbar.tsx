@@ -1,5 +1,6 @@
 'use client';
 
+import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 import {
   Button,
   Link,
@@ -10,7 +11,6 @@ import {
   Spinner,
   useDisclosure,
 } from '@heroui/react';
-import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { type JSX, useEffect, useState } from 'react';
@@ -100,48 +100,53 @@ export function Navbar(): JSX.Element {
         </NavbarContent>
 
         <NavbarContent justify="end" as="div" className="items-center">
-            <div className="flex items-center gap-2 sm:gap-4">
-              <Link aria-label="Github" href={siteConfig.links.github} isExternal className="hidden sm:flex items-center text-default-500">
-                <GithubIcon />
-              </Link>
-              <ThemeSwitch />
-              {isLoading ? (
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Link
+              aria-label="Github"
+              href={siteConfig.links.github}
+              isExternal
+              className="hidden sm:flex items-center text-default-500"
+            >
+              <GithubIcon />
+            </Link>
+            <ThemeSwitch />
+            {isLoading ? (
+              <Button
+                color="primary"
+                size="sm"
+                variant="flat"
+                isLoading
+                spinner={<Spinner size="sm" color="current" />}
+              />
+            ) : user ? (
+              <>
                 <Button
-                  color="primary"
+                  as={NextLink}
+                  href="/settings"
+                  color="default"
                   size="sm"
-                  variant="flat"
-                  isLoading
-                  spinner={<Spinner size="sm" color="current" />}
-                />
-              ) : user ? (
-                <>
-                  <Button
-                    as={NextLink}
-                    href="/settings"
-                    color="default"
-                    size="sm"
-                    variant="light"
-                    className="w-6 h-6 min-w-6"
-                    isIconOnly
-                    aria-label="Settings"
-                  >
-                    <Cog6ToothIcon className="w-5 h-5 text-default-500" />
-                  </Button>
-                  <Button
-                    color="danger"
-                    size="sm"
-                    variant="light"
-                    onPress={handleSignOut}
-                  >
-                    Sign Out
-                  </Button>
-                </>
-              ) : (
-                <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
-                  Sign In
+                  variant="light"
+                  className="w-6 h-6 min-w-6"
+                  isIconOnly
+                  aria-label="Settings"
+                >
+                  <Cog6ToothIcon className="w-5 h-5 text-default-500" />
                 </Button>
-              )}
-            </div>
+                <Button
+                  color="danger"
+                  size="sm"
+                  variant="light"
+                  onPress={handleSignOut}
+                >
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <Button color="primary" size="sm" variant="flat" onPress={onOpen}>
+                Sign In
+              </Button>
+            )}
+          </div>
         </NavbarContent>
       </NextUINavbar>
 

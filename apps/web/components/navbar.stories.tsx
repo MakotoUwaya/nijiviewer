@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { AuthContext, type AuthContextType } from '@/context/auth-context';
+import { PreferencesContext } from '@/context/preferences-context'; // Added import
 import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import { Navbar } from './navbar';
-
-import { PreferencesContext } from '@/context/preferences-context'; // Added import
 
 // モックのAuthContextの値
 const mockAuthContext: AuthContextType = {

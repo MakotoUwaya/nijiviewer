@@ -20,9 +20,9 @@ type PreferencesContextType = {
   updateOrder: (orgIds: string[]) => Promise<void>; // Added
 };
 
-export const PreferencesContext = createContext<PreferencesContextType | undefined>(
-  undefined,
-);
+export const PreferencesContext = createContext<
+  PreferencesContextType | undefined
+>(undefined);
 
 export function PreferencesProvider({
   children,
