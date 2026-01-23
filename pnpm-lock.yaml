@@ -15,8 +15,8 @@ importers:
         specifier: 2.3.11
         version: 2.3.11
       '@playwright/test':
-        specifier: 1.57.0
-        version: 1.57.0
+        specifier: 1.58.0
+        version: 1.58.0
       cspell:
         specifier: 9.6.0
         version: 9.6.0
@@ -43,19 +43,19 @@ importers:
         version: 1.0.2
       '@next/third-parties':
         specifier: 16.1.4
-        version: 16.1.4(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 16.1.4(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@tailwindcss/postcss':
         specifier: 4.1.18
         version: 4.1.18
       next:
         specifier: 16.1.4
-        version: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       nextra:
         specifier: 4.6.1
-        version: 4.6.1(next@16.1.4(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 4.6.1(next@16.1.4(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       nextra-theme-docs:
         specifier: 4.6.1
-        version: 4.6.1(@types/react@19.2.9)(next@16.1.4(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(nextra@4.6.1(next@16.1.4(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
+        version: 4.6.1(@types/react@19.2.9)(next@16.1.4(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(nextra@4.6.1(next@16.1.4(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -104,7 +104,7 @@ importers:
         version: 1.0.2
       '@next/third-parties':
         specifier: 16.1.4
-        version: 16.1.4(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 16.1.4(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@react-aria/ssr':
         specifier: 3.9.10
         version: 3.9.10(react@19.2.3)
@@ -149,7 +149,7 @@ importers:
         version: 8.2.0
       next:
         specifier: 16.1.4
-        version: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next-themes:
         specifier: 0.4.6
         version: 0.4.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -192,7 +192,7 @@ importers:
         version: 10.2.0(storybook@10.2.0(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
       '@storybook/nextjs':
         specifier: 10.2.0
-        version: 10.2.0(msw@2.12.7(@types/node@24.10.9)(typescript@5.9.3))(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@10.2.0(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(type-fest@4.41.0)(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(webpack@5.104.1)
+        version: 10.2.0(msw@2.12.7(@types/node@24.10.9)(typescript@5.9.3))(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@10.2.0(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(type-fest@4.41.0)(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(webpack@5.104.1)
       '@testing-library/dom':
         specifier: 10.4.1
         version: 10.4.1
@@ -1442,7 +1442,7 @@ packages:
       react: '>= 16 || ^19.0.0-rc'
 
   '@heroui/accordion@https://pkg.pr.new/heroui-inc/heroui/@heroui/accordion@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-CZAWx2jfNrsJvXvLxFVUviqj9wl30S7+mGJNuyhOGXoszNqGfbJWHFFrwAq0S+Nae+asWxMsO6Hfzz+v/aPCLg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/accordion@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/accordion@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1452,7 +1452,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/alert@https://pkg.pr.new/heroui-inc/heroui/@heroui/alert@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-bTMPXdxn2jQyLZ4LyDvfl+hNtlrSDB2oAwfFTXsb3TPAFp02Lf65L4W/gY5BPVobp/jb0wr7O81ZVVj02SZtVw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/alert@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/alert@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1461,14 +1461,14 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/aria-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/aria-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-zQ5F2VUpBN3z6khB8YFE+/ED2JjNhhA/WPg/93NjgZAPTwZZ7ZxFThN6GdnDUQZfrOPBtW+Z6lgKViP5gn16Rg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/aria-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/aria-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/autocomplete@https://pkg.pr.new/heroui-inc/heroui/@heroui/autocomplete@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-5CKQxHpNTVUF2LZGpolRcZBnrXmUYaTnuQRO7TYiuSaM4VXzc9W477+C4PZgZIFaJwQb108DIsJ4EfSCi2+CDA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/autocomplete@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/autocomplete@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.14
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1478,7 +1478,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/avatar@https://pkg.pr.new/heroui-inc/heroui/@heroui/avatar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-OmPDGlxp8QOM9CMp5Wlb0e2X1sAKS/gf69zxmakIK3CVL0h+FffldK37X+0I6IoLaTfppbesnhHPu1U/m0K1tg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/avatar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/avatar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1487,7 +1487,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/badge@https://pkg.pr.new/heroui-inc/heroui/@heroui/badge@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-R9+XC3Qo2UAISo83Jo0fpB6fM/m5r6Og3MCZ/l/7kGtpmmcbUaS2JljvjOJXfaHISCIB612TXQ8fIl4dvvg9Og==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/badge@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/badge@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.9
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1496,7 +1496,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/breadcrumbs@https://pkg.pr.new/heroui-inc/heroui/@heroui/breadcrumbs@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-52SObOgE8Y9u+vWrLEB1pjDjMIS/ZXJm6DwFRJdoAozLIUINkxT6+tv8f3YcaJk6gWiTJadufFZB9Yd6L5kT9w==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/breadcrumbs@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/breadcrumbs@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1505,7 +1505,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/button@https://pkg.pr.new/heroui-inc/heroui/@heroui/button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-ddOQmUnLBZ5o3L4eacEAs74IDxzYukkZcPiKT355odFIQwFsX0j6zRSWWVv5tn486mQFD2/C8Jpe2NqiQMAyBA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1515,7 +1515,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/calendar@https://pkg.pr.new/heroui-inc/heroui/@heroui/calendar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-mf8oWm6Pj3P9qQ1OMAFa15F8WK/yHHKkw6Y0r4AEeRo5lvdnnTker7RpRSOiqFXLoUlC9YRL5K7gtMP7gcpl4Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/calendar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/calendar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1525,7 +1525,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/card@https://pkg.pr.new/heroui-inc/heroui/@heroui/card@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-CXO4uGiBFIv2cq5n95CRj0GhAm6dXIBCbyyZgQ+85S6kpfffa0NT7LlZpPgXkQMBh0DGKhmn2qlOtSLKG8jJ1w==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/card@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/card@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1535,7 +1535,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/checkbox@https://pkg.pr.new/heroui-inc/heroui/@heroui/checkbox@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-0aGhIzQqnFMk7S0Bl+JwaGSfAwL/fo1NG15wMzOWQXOLCzaT0mdG2ZMiVwDbUt8x9fJHlUTI2zIS3qfujxnlSQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/checkbox@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/checkbox@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1544,7 +1544,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/chip@https://pkg.pr.new/heroui-inc/heroui/@heroui/chip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-3uuJjDmcu1+hpNhZXjRzKloHQxZiWWMphgrhd37PPwUlefKa2NUsHWY6TYYKSmLeLKwT2YLYbqPw44T60czVnw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/chip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/chip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1553,7 +1553,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/code@https://pkg.pr.new/heroui-inc/heroui/@heroui/code@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-SPw/YqgZb/+pSshPcrUYu7BoMmaUampDBcjE5oCZbXfiGxfbEF3PfaThUSiWWs2hBs44jwH/xQTMZpNnE+Pa+w==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/code@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/code@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/theme': '>=2.4.6'
@@ -1561,7 +1561,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/date-input@https://pkg.pr.new/heroui-inc/heroui/@heroui/date-input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-srPqM/OqUOiD0lYWFFeYnhVAQbwrxHQUV3C+JxrUjsMgmG/A6HOb12Q7dbTmw1k+yR3cP6YjiKs1ut4Yc8J55g==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/date-input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/date-input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1570,7 +1570,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/date-picker@https://pkg.pr.new/heroui-inc/heroui/@heroui/date-picker@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-aDldhXN6hxTvcsscHxSwNQ9W4bpPraJk8YVRE56XtwS2mdqv1+5Yc7srLZ27rXUZR4jODcZhkNsQUeHUwHYUpQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/date-picker@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/date-picker@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1580,7 +1580,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/divider@https://pkg.pr.new/heroui-inc/heroui/@heroui/divider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-ZLZcHTcc4ops6OP9bKOLP/gKAgNtFDco1dCsg05EA/DrXYcCkYoNcg7ZYDQV+lsARHaZZey8YGr65sYOUp+OLA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/divider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/divider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.9
     peerDependencies:
       '@heroui/theme': '>=2.4.6'
@@ -1588,13 +1588,13 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/dom-animation@https://pkg.pr.new/heroui-inc/heroui/@heroui/dom-animation@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-cKgwLaO0orfiO1yvQ9pruQGOyxbEJUcAaA0sD+F6jEhTePyiA4xXJA0u7pD0G84GQyO9HMB5OnYF86qsKcy0Jw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/dom-animation@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/dom-animation@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
 
   '@heroui/drawer@https://pkg.pr.new/heroui-inc/heroui/@heroui/drawer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-NvbJ0BhAfsfnO4gOLyLIHrui3vlXh+9WcxORi1tPYt4q6it+y8VVobYXMGCq58Dw60YR3t9pueoC2RDEWRDetw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/drawer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/drawer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1603,7 +1603,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/dropdown@https://pkg.pr.new/heroui-inc/heroui/@heroui/dropdown@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-5vwPO/rOkfhB9Zt4Kz8fIZLZPlxmvil5OkNOL6inXG991vDQtmofCM6TaSomscuKebgi2I1Uz86e1knC+ii8lw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/dropdown@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/dropdown@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1613,7 +1613,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/form@https://pkg.pr.new/heroui-inc/heroui/@heroui/form@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-Ch0bSJGahO68ovdPvFxaLtUg9SgYV9EX7FnVmGd+eR8qmj6Jx/iVofZcwVpwZF3x1TAefwUGwE89I8QKv8aI2Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/form@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/form@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1622,7 +1622,7 @@ packages:
       react-dom: '>=18'
 
   '@heroui/framer-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-n4+ZohrKHJRJ362ZLg7i645mNhmFCp7XodmFL4FFe711qhupEm80SWCbN6muMW4q5GlSy1Qx+9SLK8EyG2Pj/Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/framer-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.10
     peerDependencies:
       framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
@@ -1630,7 +1630,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/image@https://pkg.pr.new/heroui-inc/heroui/@heroui/image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-YkvEI3bn49hxxmD7h0Z4732KfqY7YkQdQEe/OGmjtpJwiJGAGQMR6juPAATsqvy0tGXTmrC9feEF1/Kt4AubCw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.9
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1639,7 +1639,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/input-otp@https://pkg.pr.new/heroui-inc/heroui/@heroui/input-otp@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-dV5wo7xxa6TTRrZtoUqg4UtcGOsi/QnwsO8IZoSDdFPGU5EwccDXyeiCmFusiW0Ock1V1l9+WAsXbPxg9fZPSg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/input-otp@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/input-otp@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1648,7 +1648,7 @@ packages:
       react-dom: '>=18'
 
   '@heroui/input@https://pkg.pr.new/heroui-inc/heroui/@heroui/input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-8dY3wRL0wR1BsSTqYS5mb9QCvFVkZFo6EVGY7qfN4s+9Er8XOo2t5mYvq8pcIOzdCndKWG+bBy5naWgg82GEog==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.4.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1657,7 +1657,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/kbd@https://pkg.pr.new/heroui-inc/heroui/@heroui/kbd@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-oCz3E8zXTUL1VtkOtiyK4rHevlQyAy/YeqtUFDpEE+XPKNmvt4ZcJkNAKByeHaR/CORL+GQHFjQXHoSrHsH5lQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/kbd@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/kbd@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/theme': '>=2.4.6'
@@ -1665,7 +1665,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/link@https://pkg.pr.new/heroui-inc/heroui/@heroui/link@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-nWhSOZYS1MN9KOPoAPHby51sV3c3lVyhITDePv1rJp7G5jlokcvK4HyQmG2uzobDYcaYhHvaJaxmoi8dG4UEhw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/link@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/link@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1674,7 +1674,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/listbox@https://pkg.pr.new/heroui-inc/heroui/@heroui/listbox@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-JY4aZrk51s+LFkE5oD9+6SdQP8utPDBlbQWn74dWUjuMd04INtd8eZAn5T6L0eOr2F1PSOgPOK+fg8/aNwKMIA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/listbox@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/listbox@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1683,7 +1683,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/menu@https://pkg.pr.new/heroui-inc/heroui/@heroui/menu@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-DhH2h5OGjw6+qpK0gh1gCEkox0kA+7mOHw0bLmDx69qYD7YEcdi1GFrXDNp3mMq337eY8TQbDMunqfw4f/Cy3A==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/menu@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/menu@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1692,7 +1692,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/modal@https://pkg.pr.new/heroui-inc/heroui/@heroui/modal@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-YtKXEXviDAuJO/qMt0ApLXYYZqP6/5a6VGuFnrpH9f28ToGhWk60u+P+lgD9ChGkqazViJlL1cMLc0bHMWGzvg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/modal@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/modal@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1702,7 +1702,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/navbar@https://pkg.pr.new/heroui-inc/heroui/@heroui/navbar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-oqnbY0kSICa20zXOfEpnwEX5c/IsN+T9/yVPAxcOlcZBeMkUCgA06HzM5yQkRnlSXZY9m6xBF2GvOFak3/Yuig==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/navbar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/navbar@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1712,7 +1712,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/number-input@https://pkg.pr.new/heroui-inc/heroui/@heroui/number-input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-OF/qiNslHUu4g3lOUc5aLDCadSS1VOg0+CHU+50JHIuPB5hlo6lSf2VduTUQvm8C0fCQZb6QOEuoMMy944TrWg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/number-input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/number-input@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.0.3
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1721,7 +1721,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/pagination@https://pkg.pr.new/heroui-inc/heroui/@heroui/pagination@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-dIqs3jqN2clDerz2o2t9IZbNb3Vl3EclMUcLdJiprUe5PvxOn1p02d/UenbtTN3tZj/eXICJKps+/c1Et9RWUA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/pagination@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/pagination@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1730,7 +1730,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/popover@https://pkg.pr.new/heroui-inc/heroui/@heroui/popover@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-sec7Fpfa0GTqMg0opkWO3gCKSU3q0ekm12wimJRnsa4fsFSD2v7a88TrmP1Pn7ewW/4xDxXi4V7zg+ILoUCPPw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/popover@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/popover@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1740,7 +1740,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/progress@https://pkg.pr.new/heroui-inc/heroui/@heroui/progress@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-Q8sro3Qf1dqbPjF7CVGWf46P3l1nEB3m2/hDhyp9sJayLwcqCwaYJyl36jI1kzqrZ1V3cTtjJuwCv6wu2QV1pA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/progress@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/progress@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1749,7 +1749,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/radio@https://pkg.pr.new/heroui-inc/heroui/@heroui/radio@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-FTLK5yNQhYE9FJCuQoHJOhutjK5QJX9o795PWObBo+lAO+wEd6Q+wLzwvSiQi27eqgbCQa/RAc98ltUjGEtjwQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/radio@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/radio@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1758,19 +1758,19 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/react-rsc-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/react-rsc-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-VQXn700Dn/vO2ZhxobmQqB4v9aW8bukMzktecFQBWzjrSEM5QJtpyIg1QfRxqf71tPIPdTReNB9g9sjYJE6x0Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/react-rsc-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/react-rsc-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/react-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-ouW3S68+45YUfzBryTZFGDfamLD2oMbWdjU1a1dL4t4MXkLxhZ4qIGHW/9gD8pfyUqaCwCbW//G2jmpWPu4/Ug==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.7
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/react@https://pkg.pr.new/@heroui/react@63afa9a':
-    resolution: {integrity: sha512-qzYCHJHijGh3an3AVuLZfpzsrSTKsbH5H7SuoFXkDyfZOE0cv854yPW7+FP0QFsCi5Mh89LVWkPpufbF629T+w==, tarball: https://pkg.pr.new/@heroui/react@63afa9a}
+    resolution: {tarball: https://pkg.pr.new/@heroui/react@63afa9a}
     version: 2.7.2
     peerDependencies:
       framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
@@ -1778,7 +1778,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/ripple@https://pkg.pr.new/heroui-inc/heroui/@heroui/ripple@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-KpK/AFbcAI1wZ0WwaqU2Hm+Z8Dyd16NNVkBm5YixfEZt25y1vejU/7E7Mu4758diB+NlNT8nvVXafBzrURx+Xg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/ripple@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/ripple@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1788,7 +1788,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/scroll-shadow@https://pkg.pr.new/heroui-inc/heroui/@heroui/scroll-shadow@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-CPEWPIKe66zSk1oVtGg3aS1RknBk8EpUap66OuH3JHK4JR9k7rXLiIW2Pz73wuWpXWOXqb8mZxDD9t6sPx6Wzw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/scroll-shadow@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/scroll-shadow@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.9
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1797,7 +1797,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/select@https://pkg.pr.new/heroui-inc/heroui/@heroui/select@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-UubKUoVreO+PDrCXrla+9iik6NE7WK99S3EFpcMLAOPWD9KEguiuNaFNJKmFUfPzVFsWAor5ZALjXHXYM+uIYg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/select@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/select@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.4.13
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1807,7 +1807,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/shared-icons@https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-mEQVgVqvqxGm7HvnWq8S8dPS6FPh/4N5rIdQfa9r6IJYU5AKBZAEUttPtoqaLXJnX/mfAvQ06h9uyI7K0fR39Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-icons@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
@@ -1816,11 +1816,11 @@ packages:
     resolution: {integrity: sha512-0iCnxVAkIPtrHQo26Qa5g0UTqMTpugTbClNOrEPsrQuyRAq7Syux998cPwGlneTfB5E5xcU3LiEdA9GUyeK2cQ==}
 
   '@heroui/shared-utils@https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-1KZndbd2ASlXEMxz/lK7r676kAi5G9ImBu3SLY4gP9WPNnPXr+BSdBMfiytkfCIsXed4aZSEjjYcRvJj6qkV3A==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/shared-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.6
 
   '@heroui/skeleton@https://pkg.pr.new/heroui-inc/heroui/@heroui/skeleton@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-biARmXnxThxCL3CvZnvtbc4C2ktwllg8PrxEfG/xNw1XgfvVL6iMlckOYZ0PGZYjQFx14JYtbGnDhiAEyTTf3Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/skeleton@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/skeleton@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.9
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1829,7 +1829,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/slider@https://pkg.pr.new/heroui-inc/heroui/@heroui/slider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-JxkeVwgpJ7d2via59ZGkwWaV/zM1oxmbYSEfxnknp3Tny1Xhi4KhzDQxyX8NtLjP3pmZCpYsAbPyp2rre5g6Jg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/slider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/slider@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.4.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1838,7 +1838,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/snippet@https://pkg.pr.new/heroui-inc/heroui/@heroui/snippet@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-SrbqgXkxZPDgxmokgKRyu+KoB0ydfJXzk4noMsfZLDqwaLjWlDSC3T+LyhDRLFlsRDKY6TlQNjBkzMl5hzgkcQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/snippet@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/snippet@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.14
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1848,7 +1848,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/spacer@https://pkg.pr.new/heroui-inc/heroui/@heroui/spacer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-fJXblYHOtyz9+uIQ67td+X1yrZ0dRQFTlN7wYkspe7EF0gOaaVUDiQD8AVP8sl2C/uPvG6s6a+Air3zv5pS8/g==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/spacer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/spacer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/theme': '>=2.4.6'
@@ -1856,7 +1856,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/spinner@https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-1t+7IVcUEDSiK9obBsedymJK+z1u5YZEEDT2YheTj3saLcLhZKwowEyj2/8pyOwp8KE+cCqmj0xdXFgTZjG1cg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/spinner@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/theme': '>=2.4.6'
@@ -1864,7 +1864,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/switch@https://pkg.pr.new/heroui-inc/heroui/@heroui/switch@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-1kfvr+uSh5aC4S06gdfL2FrFyvYzxouJI4tEmuZmHmyt2zAm5YgmekZNVg3F51JTXqhyuTqSc08ywW2TCFRgAg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/switch@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/switch@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1873,14 +1873,14 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/system-rsc@https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-oXhZtOR17HFS+R/bE1Y7vnMbcNRFr2g5OWAG/7dhnY9MKMnZgAOjd1UZ38DEcy55b9gIDxeE/2QwdkyOOlSLxA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.3.9
     peerDependencies:
       '@heroui/theme': '>=2.4.6'
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-d65kBDyMo/TCMBQsnnANS7ez8zEdEVy5srLZ7h7dLdqpcpyV48WbdLgpCAsLRP8zw4iPh1bGFF0C+jZi1j8jsA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.4.10
     peerDependencies:
       framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
@@ -1888,7 +1888,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/table@https://pkg.pr.new/heroui-inc/heroui/@heroui/table@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-SIREH8uw60gi1xvtvliEzhbCXGz9BCsQ4Ky/ToQnZugnQ9ItpahtgzTyk7Io/x0o1wf0bdKnz54ATgppk1KkXA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/table@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/table@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.12
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1897,7 +1897,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/tabs@https://pkg.pr.new/heroui-inc/heroui/@heroui/tabs@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-1N8KcRSlDrzeMLFrvJcAi8cv8sbF9gOY6IZhAzyiJ5bnseZllOQr1g4IgEUMjIUXHoILEEgVCrBKibIuGYnX6A==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/tabs@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/tabs@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1912,13 +1912,13 @@ packages:
       tailwindcss: '>=4.0.0'
 
   '@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-zw0j93V41EbUL/3TfTtt5t4jkD8UZh6gqpN8bD/vkwefJCSS9jmZk9EXLr0ZaVOC2c3VMZ3eARu3BSV8f2L3DQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.4.9
     peerDependencies:
       tailwindcss: '>=4.0.0'
 
   '@heroui/toast@https://pkg.pr.new/heroui-inc/heroui/@heroui/toast@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-xZhNiy+Omp9L+tJAKq7JI7pepWtdESoIXvI0deavONOUsJVA9BIX20pxSYCx222WslclnJ9QBOlF8Lh8fX/F/w==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/toast@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/toast@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.0.3
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1928,7 +1928,7 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/tooltip@https://pkg.pr.new/heroui-inc/heroui/@heroui/tooltip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-CRzscF2j2yjpIQ96pOF3gg26nH2HFmUwCD5FKAjN+3NmrYUJ6zlnLzRqGVcikfBjgUnV+kg654GCQ9zaJbE/GA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/tooltip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/tooltip@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.11
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -1938,123 +1938,123 @@ packages:
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-aria-accordion@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-accordion@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-tgvGYeYaR5QJGnlollg8VQkGOOeMFYrRQ9a2lVNv+n/Ye6fubPGRwm501HMW5LF4qcSsthQXNSiefPvdbFfu1Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-accordion@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-accordion@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-aria-button@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-+/vHl8W+YxteAQeIoy2KF13X65+ssJjNiGNbtVlSIvSWS5Pd9oVKWDn6GDs9D2DeG++zgR3wuM0UXKznrQNTrg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-button@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.8
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-aria-link@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-link@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-3W61BClPs8K/qsk4ms8dohJrYon6/HHXN4foA2/zyX+9/BP6+3+9M/+pibC2r5Tlc4GFgUEi4kLY3ugkV4NWIg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-link@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-link@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.9
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-aria-modal-overlay@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-modal-overlay@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-JCOLmG3Pi0wPemL6955/SebN1Ih5hMABbkY6VYGoDFtK4EbJO8VYi8TrUKR2vVJOIa/MaNzDLVVnkKjFoBaSWA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-modal-overlay@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-modal-overlay@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.7
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-aria-multiselect@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-multiselect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-emjFeFyezRQ/bi5AU97zmDk4YnG909sm8VMGPrpUU7xRxKx434RWx192QeMzS6HcbLOi/0NAKCRTeEQtZRUO9A==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-multiselect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-aria-multiselect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.4.7
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
       react-dom: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-callback-ref@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-callback-ref@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-7uU9ArTY0IapQ/uUYp4MPnHSS8ZxIIOv+9R/eAcW/FQLXv7dr8Joqag/a00L+YlDWQE0M//qsOaPI7RkaHdNCw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-callback-ref@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-callback-ref@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-clipboard@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-clipboard@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-TJT2wtSKOCoB+hwIQhNguR5bALTLP/1ZDpc2CbG/fkyYZeTlKPLPd6SmhgMJ2+1dl5G5Z/7rByAYPC/q9juc7A==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-clipboard@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-clipboard@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-data-scroll-overflow@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-data-scroll-overflow@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-RBQwOAQyFNfT9SMWIspeOmVcVZCYcPzE/wG8/c8M+g1ka+O+6o2H3eijiXSZxQrbd4+sRog7o5PsX1P35QYP4Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-data-scroll-overflow@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-data-scroll-overflow@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-disclosure@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-disclosure@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-tca0uZnfTwCE0BlMlVF44TUnvwRWBCtTOcQLvS3NDugdCpLBFgVGbLI3JFFYtDCgt6wLxasMbv9MF/ukemTkRw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-disclosure@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-disclosure@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-draggable@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-draggable@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-hdLIgkpBBoRKPohy0W0+yi1vbrB6hWtuL3gRNQkmlX56++BpSkAJovg2NkA2TX1zXc+sgtF6VUsI8Rheg31scQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-draggable@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-draggable@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-image@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-m8owANlHbyKEdoOlRO5Bo25F/oYD4vBsf8nC+FekeFZkt8DvPlGCRlAI5quA2sz/nAgf8N1OzUrjl0C94DKxkA==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-image@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-intersection-observer@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-intersection-observer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-ZwGcz7F/T5Bickc9ipbIv8YAFyrwwa/PXh9VnG2+ZWaE8j/W/9KnMTPGtNPihihdchKvSHROdkjRnOORlC1gVQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-intersection-observer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-intersection-observer@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-is-mobile@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-5Wnzs4WZWVpO13WsP4EB+LV35gFFkmZsG+Pjp2CtB/uJ1xw7KF0v5TuBJkOmYjnUQ+WDod+oCk3DF8fkN94o/Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mobile@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.6
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-is-mounted@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mounted@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-o6jzxBdAW1PRNED+LPE2MCxf1ws2eZlgnBwHuwZW98jk/QU6VWUpAuZhnXHFdBMA5p/aebooesqVU4z7aW4kgw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mounted@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-is-mounted@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-measure@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-measure@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-7Zmf88DBYWAhB/DuzJ4veoWyyTADw5vmKRvQOnSceoicfVY+wf+udHHR4aVAAlDEYn0KvBI9Uqj/ofL/Mhu6GQ==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-measure@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-measure@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-pagination@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-pagination@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-dmGIkJaN3lZpGPSiXBfig2bpEWXFsuE+uY0vADMUOvU2a/ZgQWxnyZFQNWcBU6vagdbqwZbrQdFHGPUW2gMs5Q==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-pagination@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-pagination@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.7
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-safe-layout-effect@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-uIOblA1BFW+RrTZ0U7bBaM96H/D9wNg8mN0eTJAC2If5bRtPynuihyvmtvLCgpUaHdMoNEQWKgUUIzMGpvPTQg==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-safe-layout-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-scroll-position@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-scroll-position@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-R/uAf0OXtwk92KRUttvHwqPQu0gb3lqMXfidQt1Ag1f7V49s+eiY7ftPGlAPxcZgaZMyDq5o+/pdMMayoJwPlw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-scroll-position@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-scroll-position@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/use-update-effect@https://pkg.pr.new/heroui-inc/heroui/@heroui/use-update-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-6uS/8fh7KqMMjSk2F8xOA24AHj2gxO6L8OIXCr55QJUHwxoRRci+0gUqh4lmn0i6FzZsgQ0yb+T7n6A5VCT1gw==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-update-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/use-update-effect@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.1.5
     peerDependencies:
       react: '>=18 || >=19.0.0-rc.0'
 
   '@heroui/user@https://pkg.pr.new/heroui-inc/heroui/@heroui/user@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08':
-    resolution: {integrity: sha512-fwHTBRehD9rxKie8zz/hxaE/D5Sf74L7PZrwA/YCDeDX7AbkpfCcVeJSRbpipw4N+o6CJWELV9oALsh+i+Sy4A==, tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/user@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
+    resolution: {tarball: https://pkg.pr.new/heroui-inc/heroui/@heroui/user@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08}
     version: 2.2.10
     peerDependencies:
       '@heroui/system': '>=2.4.7'
@@ -2500,8 +2500,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@playwright/test@1.57.0':
-    resolution: {integrity: sha512-6TyEnHgd6SArQO8UO2OMTxshln3QMWBtPGrOCgs3wVEmQmwyuNtB10IZMfmYDE0riwNR1cu4q+pPcxMVtaG3TA==}
+  '@playwright/test@1.58.0':
+    resolution: {integrity: sha512-fWza+Lpbj6SkQKCrU6si4iu+fD2dD3gxNHFhUPxsfXBPhnv3rRSQVd0NtBUT9Z/RhF/boCBcuUaMUSTRTopjZg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -6302,13 +6302,13 @@ packages:
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
 
-  playwright-core@1.57.0:
-    resolution: {integrity: sha512-agTcKlMw/mjBWOnD6kFZttAAGHgi/Nw0CZ2o6JqWSbMlI219lAFLZZCyqByTsvVAJq5XA5H8cA6PrvBRpBWEuQ==}
+  playwright-core@1.58.0:
+    resolution: {integrity: sha512-aaoB1RWrdNi3//rOeKuMiS65UCcgOVljU46At6eFcOFPFHWtd2weHRRow6z/n+Lec0Lvu0k9ZPKJSjPugikirw==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.57.0:
-    resolution: {integrity: sha512-ilYQj1s8sr2ppEJ2YVadYBN0Mb3mdo9J0wQ+UuDhzYqURwSoW4n1Xs5vs7ORwgDGmyEh33tRMeS8KhdkMoLXQw==}
+  playwright@1.58.0:
+    resolution: {integrity: sha512-2SVA0sbPktiIY/MCOPX8e86ehA/e+tDNq+e5Y8qjKYti2Z/JG7xnronT/TXTIkKbYGWlCbuucZ6dziEgkoEjQQ==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -10300,9 +10300,9 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.1.4':
     optional: true
 
-  '@next/third-parties@16.1.4(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+  '@next/third-parties@16.1.4(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)':
     dependencies:
-      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
       third-party-capital: 1.0.20
 
@@ -10345,9 +10345,9 @@ snapshots:
   '@pagefind/windows-x64@1.4.0':
     optional: true
 
-  '@playwright/test@1.57.0':
+  '@playwright/test@1.58.0':
     dependencies:
-      playwright: 1.57.0
+      playwright: 1.58.0
 
   '@pmmmwh/react-refresh-webpack-plugin@0.5.17(react-refresh@0.14.2)(type-fest@4.41.0)(webpack-hot-middleware@2.26.1)(webpack@5.104.1)':
     dependencies:
@@ -11650,7 +11650,7 @@ snapshots:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  '@storybook/nextjs@10.2.0(msw@2.12.7(@types/node@24.10.9)(typescript@5.9.3))(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@10.2.0(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(type-fest@4.41.0)(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(webpack@5.104.1)':
+  '@storybook/nextjs@10.2.0(msw@2.12.7(@types/node@24.10.9)(typescript@5.9.3))(next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(storybook@10.2.0(@testing-library/dom@10.4.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(type-fest@4.41.0)(typescript@5.9.3)(vite@7.3.1(@types/node@24.10.9)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.46.0)(yaml@2.8.2))(webpack-hot-middleware@2.26.1)(webpack@5.104.1)':
     dependencies:
       '@babel/core': 7.28.6
       '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.28.6)
@@ -11674,7 +11674,7 @@ snapshots:
       css-loader: 6.11.0(webpack@5.104.1)
       image-size: 2.0.2
       loader-utils: 3.3.1
-      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       node-polyfill-webpack-plugin: 2.0.1(webpack@5.104.1)
       postcss: 8.5.6
       postcss-loader: 8.2.0(postcss@8.5.6)(typescript@5.9.3)(webpack@5.104.1)
@@ -14967,7 +14967,7 @@ snapshots:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
 
-  next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next@16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@next/env': 16.1.4
       '@swc/helpers': 0.5.15
@@ -14986,19 +14986,19 @@ snapshots:
       '@next/swc-linux-x64-musl': 16.1.4
       '@next/swc-win32-arm64-msvc': 16.1.4
       '@next/swc-win32-x64-msvc': 16.1.4
-      '@playwright/test': 1.57.0
+      '@playwright/test': 1.58.0
       sharp: 0.34.5
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextra-theme-docs@4.6.1(@types/react@19.2.9)(next@16.1.4(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(nextra@4.6.1(next@16.1.4(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3)):
+  nextra-theme-docs@4.6.1(@types/react@19.2.9)(next@16.1.4(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(nextra@4.6.1(next@16.1.4(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3)):
     dependencies:
       '@headlessui/react': 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       clsx: 2.1.1
-      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       next-themes: 0.4.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      nextra: 4.6.1(next@16.1.4(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      nextra: 4.6.1(next@16.1.4(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       react: 19.2.3
       react-compiler-runtime: 19.1.0-rc.3(react@19.2.3)
       react-dom: 19.2.3(react@19.2.3)
@@ -15010,7 +15010,7 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  nextra@4.6.1(next@16.1.4(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3):
+  nextra@4.6.1(next@16.1.4(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.2
       '@headlessui/react': 2.2.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -15031,7 +15031,7 @@ snapshots:
       mdast-util-gfm: 3.1.0
       mdast-util-to-hast: 13.2.1
       negotiator: 1.0.0
-      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.57.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      next: 16.1.4(@babel/core@7.28.6)(@playwright/test@1.58.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react: 19.2.3
       react-compiler-runtime: 19.1.0-rc.3(react@19.2.3)
       react-dom: 19.2.3(react@19.2.3)
@@ -15321,11 +15321,11 @@ snapshots:
       mlly: 1.8.0
       pathe: 2.0.3
 
-  playwright-core@1.57.0: {}
+  playwright-core@1.58.0: {}
 
-  playwright@1.57.0:
+  playwright@1.58.0:
     dependencies:
-      playwright-core: 1.57.0
+      playwright-core: 1.58.0
     optionalDependencies:
       fsevents: 2.3.2
 
