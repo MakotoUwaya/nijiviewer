@@ -24,7 +24,7 @@
     "turbo": "2.7.6"
   },
   "name": "nijiviewer",
-  "packageManager": "pnpm@10.28.1",
+  "packageManager": "pnpm@10.28.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MakotoUwaya/nijiviewer.git"
