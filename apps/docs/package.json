@@ -20,14 +20,14 @@
     "next": "16.1.5",
     "nextra": "4.6.1",
     "nextra-theme-docs": "4.6.1",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "tailwindcss": "4.1.18",
     "ui": "*"
   },
   "devDependencies": {
     "@types/node": "24.10.9",
-    "@types/react": "19.2.9",
+    "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3",
     "pagefind": "1.4.0",
     "tsconfig": "workspace:*",
