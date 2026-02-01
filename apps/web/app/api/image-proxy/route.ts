@@ -26,6 +26,8 @@ export async function GET(request: NextRequest) {
       'abema-tv.com', // Abema
       'nicovideo.jp', // ニコニコ動画
       'img.youtube.com',
+      'nijisanji.jp',
+      '4gamer.net',
     ];
     // cSpell:enable
 

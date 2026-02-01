@@ -18,6 +18,8 @@ export function getImageUrl(url: string): string {
       'public-web.spwn.jp', // SPWN
       'abema-tv.com', // Abema
       'nicovideo.jp', // ニコニコ動画
+      'nijisanji.jp',
+      '4gamer.net',
     ];
     // cSpell:enable
 
