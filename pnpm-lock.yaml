@@ -139,8 +139,8 @@ importers:
         specifier: 11.1.2
         version: 11.1.2
       loro-crdt:
-        specifier: 1.10.5
-        version: 1.10.5
+        specifier: 1.10.6
+        version: 1.10.6
       luxon:
         specifier: 3.7.2
         version: 3.7.2
@@ -5811,8 +5811,8 @@ packages:
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
 
-  loro-crdt@1.10.5:
-    resolution: {integrity: sha512-ZUCCiI0FbMWDI1dNhpmvjSyKQVZd7oD9JifRqcO+B2Kx+bDRBgd4QFf2SetHd9efQmnzJAGapHRVM2anTTrTuw==}
+  loro-crdt@1.10.6:
+    resolution: {integrity: sha512-ije6m7wrSRtzdyEd7n+rjgA+UCzfvz2PkjLk5Lf86zf1LgcbWY3g2nE3+7TDADiiX/ziYTovHnGRBiylPt2ipw==}
 
   loupe@3.2.1:
     resolution: {integrity: sha512-CdzqowRJCeLU72bHvWqwRBBlLcMEtIvGrlvef74kMnV2AolS9Y8xUv1I0U/MNAWMhBlKIoyuEgoJ0t/bbwHbLQ==}
@@ -14539,7 +14539,7 @@ snapshots:
 
   longest-streak@3.1.0: {}
 
-  loro-crdt@1.10.5: {}
+  loro-crdt@1.10.6: {}
 
   loupe@3.2.1: {}
 
