@@ -7,6 +7,8 @@
     "renovate"
   ],
   "dependencyDashboard": true,
+  "schedule": ["before 4am on Saturday"],
+  "timezone": "Asia/Tokyo",
   "packageRules": [
     {
       "description": "Automerge non-major updates",
@@ -23,7 +25,11 @@
         "storybook",
         "@storybook/nextjs",
         "@storybook/addon-links",
-        "@storybook/addon-onboarding"
+        "@storybook/addon-onboarding",
+        "@storybook/addon-essentials",
+        "@storybook/addon-interactions",
+        "msw-storybook-addon",
+        "@chromatic-com/storybook"
       ],
       "patch": {
         "enabled": false
