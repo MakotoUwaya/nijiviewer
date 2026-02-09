@@ -52,6 +52,11 @@
    - Biome の導入
    - Vitest への移行
    - Storybook の設定
+   - **CI/CD の最適化 (2026-02-10)**
+     - Renovate の実行スケジュールを毎週土曜早朝に制限し、PR 作成頻度を抑制
+     - Storybook 関連パッケージのグループ化
+     - Chromatic VRT の実行条件にパスフィルターを追加し、UI 関連ファイルの変更時のみ実行するように改善
+     - Chromatic の手動実行 (workflow_dispatch) に対応
 
 ## 次のステップ
 

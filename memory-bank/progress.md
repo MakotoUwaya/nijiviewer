@@ -15,6 +15,7 @@
    - ✅ Vitest 設定
    - ✅ Storybook 設定
    - ✅ CI/CD 設定
+   - ✅ Renovate/Chromatic の実行最適化
 
 3. アプリケーション機能
    - ✅ ベーシックレイアウト
