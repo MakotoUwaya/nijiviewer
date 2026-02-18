@@ -14,27 +14,11 @@ export async function GET(request: NextRequest) {
   try {
     const url = new URL(imageUrl);
 
-    // cSpell:disable
-    // 許可されたドメインのみをホワイトリストに追加
-    const allowedDomains = [
-      'i.ytimg.com',
-      'yt3.ggpht.com',
-      'yt3.googleusercontent.com',
-      'hdslb.com', // Bilibili
-      'bilibili.com', // Bilibili
-      'public-web.spwn.jp', // SPWN
-      'abema-tv.com', // Abema
-      'nicovideo.jp', // ニコニコ動画
-      'img.youtube.com',
-      'nijisanji.jp',
-      '4gamer.net',
-    ];
-    // cSpell:enable
-
-    if (!allowedDomains.some((domain) => url.hostname.endsWith(domain))) {
+    // セキュリティ上の理由から、http/https 以外は拒否
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') {
       return NextResponse.json(
-        { error: 'Domain not allowed' },
-        { status: 403 },
+        { error: 'Invalid protocol' },
+        { status: 400 },
       );
     }
 
@@ -45,7 +29,7 @@ export async function GET(request: NextRequest) {
         'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
     };
 
-    // Referer が必要なドメイン（例: Bilibili）は Referer を付与する
+    // Referer が必要なドメイン（例: Bilibili）は引き続き個別対応
     if (
       url.hostname.endsWith('hdslb.com') ||
       url.hostname.endsWith('bilibili.com')
@@ -53,7 +37,11 @@ export async function GET(request: NextRequest) {
       fetchHeaders.Referer = 'https://www.bilibili.com/';
     }
 
-    const response = await fetch(imageUrl, { headers: fetchHeaders });
+    const response = await fetch(imageUrl, {
+      headers: fetchHeaders,
+      // タイムアウト設定（必要に応じて）
+      signal: AbortSignal.timeout(10000),
+    });
 
     if (!response.ok) {
       return NextResponse.json(
@@ -62,12 +50,21 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const contentType = response.headers.get('Content-Type') || '';
+    
+    // 取得したコンテンツが画像でない場合はエラーを返す（SSRF対策の一環）
+    if (!contentType.startsWith('image/') && contentType !== 'application/octet-stream') {
+      return NextResponse.json(
+        { error: 'URL did not return an image' },
+        { status: 400 },
+      );
+    }
+
     const imageBuffer = await response.arrayBuffer();
-    const contentType = response.headers.get('Content-Type') || 'image/jpeg';
 
     return new NextResponse(imageBuffer, {
       headers: {
-        'Content-Type': contentType,
+        'Content-Type': contentType || 'image/jpeg',
         'Cache-Control': 'public, max-age=3600, s-maxage=3600',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',

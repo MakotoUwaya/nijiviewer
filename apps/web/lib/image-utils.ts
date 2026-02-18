@@ -1,39 +1,34 @@
 /**
  * 必要に応じて画像URLをプロキシURLに変換する関数
- * CORS制限のあるドメインの画像は自動的にプロキシを通す
+ * すべての外部URLに対して自動的にプロキシを通すことで、ドメインごとのCORS制限管理を不要にする
  */
 export function getImageUrl(url: string): string {
   if (!url) {
     return '';
   }
 
+  // データURIや既にプロキシ済みのURL、相対パスはそのまま返す
+  if (
+    url.startsWith('data:') ||
+    url.startsWith('/api/image-proxy') ||
+    url.startsWith('/') ||
+    url.startsWith('./') ||
+    url.startsWith('../')
+  ) {
+    return url;
+  }
+
   try {
     const urlObj = new URL(url);
 
-    // cSpell:disable
-    // CORS制限があることが既知のドメインリスト
-    const corsRestrictedDomains = [
-      'hdslb.com', // Bilibili
-      'bilibili.com', // Bilibili
-      'public-web.spwn.jp', // SPWN
-      'abema-tv.com', // Abema
-      'nicovideo.jp', // ニコニコ動画
-      'nijisanji.jp',
-      '4gamer.net',
-    ];
-    // cSpell:enable
-
-    // 指定されたドメインの場合はプロキシを使用
-    if (
-      corsRestrictedDomains.some((domain) => urlObj.hostname.includes(domain))
-    ) {
+    // http または https で始まる外部URLはすべてプロキシを使用
+    if (urlObj.protocol === 'http:' || urlObj.protocol === 'https:') {
       return `/api/image-proxy?url=${encodeURIComponent(url)}`;
     }
 
-    // その他のドメインはそのままのURLを使用
     return url;
   } catch (_e) {
-    // URLでない場合や解析エラーの場合は元のURLを返す
+    // URLでない場合はそのまま返す
     return url;
   }
 }
