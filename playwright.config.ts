@@ -9,7 +9,7 @@ dotenv.config();
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './apps/web/test/e2e',
+  testDir: './apps/nijiviewer/test/e2e',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,

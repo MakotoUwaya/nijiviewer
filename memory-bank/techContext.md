@@ -104,9 +104,9 @@
   ```bash
   npm install -E [パッケージ名] -w [ワークスペース名]
   ```
-  例: apps/web に開発用パッケージをインストールする場合
+  例: apps/nijiviewer に開発用パッケージをインストールする場合
   ```bash
-  npm install -DE [パッケージ名] -w apps/web
+  npm install -DE [パッケージ名] -w apps/nijiviewer
   ```
 
 ## 開発プロセス

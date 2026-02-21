@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - "apps/web/**"
+      - "apps/nijiviewer/**"
       - "packages/ui/**"
       - ".github/workflows/chromatic.yml"
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install
-          cd apps/web && npx msw init public/
+          cd apps/nijiviewer && npx msw init public/
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
@@ -38,8 +38,8 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          workingDir: apps/web
-          storybookBaseDir: apps/web
+          workingDir: apps/nijiviewer
+          storybookBaseDir: apps/nijiviewer
           exitOnceUploaded: true
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}

@@ -103,4 +103,4 @@ npm run test:e2e:codegen
 
 コードジェネレーターを使用すると、ブラウザ上での操作が自動的に Playwright のテストコードに変換されます。
 
-テストファイルは `apps/web/test/e2e/` ディレクトリに配置してください。
+テストファイルは `apps/nijiviewer/test/e2e/` ディレクトリに配置してください。

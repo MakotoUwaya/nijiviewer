@@ -12,14 +12,6 @@ export const siteConfig = {
       label: 'Live Videos',
       href: '/live-videos/Nijisanji',
     },
-    {
-      label: 'Flow Sample',
-      href: '/flow-sample',
-    },
-    {
-      label: 'おしゃべり音声モデル',
-      href: '/aivis-cloud-api',
-    },
   ],
   navMenuItems: [
     {
@@ -29,14 +21,6 @@ export const siteConfig = {
     {
       label: 'Live Videos',
       href: '/live-videos/Nijisanji',
-    },
-    {
-      label: 'Flow Sample',
-      href: '/flow-sample',
-    },
-    {
-      label: 'おしゃべり音声モデル',
-      href: '/aivis-cloud-api',
     },
   ],
   links: {

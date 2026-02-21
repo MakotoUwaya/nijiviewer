@@ -1,6 +1,10 @@
 {
   "private": true,
   "scripts": {
+    "viewer": "pnpm --filter @oichan/nijiviewer",
+    "voice": "pnpm --filter @oichan/voice-generator",
+    "board": "pnpm --filter @oichan/sync-board",
+    "doc": "pnpm --filter nextra-docs",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

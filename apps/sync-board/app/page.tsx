@@ -5,11 +5,6 @@ export const dynamic = 'force-dynamic';
 // Loro CRDT uses WebAssembly, so we need Node.js runtime
 export const runtime = 'nodejs';
 
-// NOTE: 下記の記事に従って React Flow を使ったサンプルページを作成
-// https://reactflow.dev/learn
-// https://zenn.dev/b13o/articles/tutorial-react-flow
-// Loro CRDT を使ってリアルタイム同期機能を追加
-
 import {
   addEdge,
   applyEdgeChanges,
@@ -96,7 +91,7 @@ export default function FlowSamplePage() {
     return (
       <div className="w-full h-screen">
         <h1 className="text-2xl font-bold mb-4 p-4">
-          React Flow Sample with Loro Sync
+          Sync Board (Loro + React Flow)
         </h1>
         <div className="w-full h-[80vh] flex items-center justify-center">
           <p>読み込み中...</p>
@@ -108,7 +103,7 @@ export default function FlowSamplePage() {
   return (
     <div className="w-full h-screen">
       <div className="flex justify-between items-center p-4 border-b">
-        <h1 className="text-2xl font-bold">React Flow Sample with Loro Sync</h1>
+        <h1 className="text-2xl font-bold">Sync Board</h1>
         <div className="flex gap-2">
           <button
             type="button"
