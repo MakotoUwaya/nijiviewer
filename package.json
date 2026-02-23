@@ -4,6 +4,7 @@
     "viewer": "pnpm --filter @oichan/nijiviewer",
     "voice": "pnpm --filter @oichan/voice-generator",
     "board": "pnpm --filter @oichan/sync-board",
+    "board:server": "pnpm --filter @oichan/sync-board-server",
     "doc": "pnpm --filter nextra-docs",
     "build": "turbo run build",
     "dev": "turbo run dev",
