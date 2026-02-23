@@ -42,3 +42,10 @@ storybook-static/
 # playwright
 test-results/
 playwright-report/
+
+# local settings
+**/*.local.*
+
+# gemini
+.gemini/.env
+
