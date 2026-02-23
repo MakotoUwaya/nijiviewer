@@ -1,0 +1,14 @@
+{
+  "root": false,
+  "extends": ["../../biome.json"],
+  "files": {
+    "includes": [
+      "**",
+      "!**/.next",
+      "!**/.turbo",
+      "!**/coverage",
+      "!**/node_modules",
+      "!**/*.log"
+    ]
+  }
+}
