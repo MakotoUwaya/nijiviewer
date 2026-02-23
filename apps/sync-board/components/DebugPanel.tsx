@@ -38,9 +38,9 @@ export function DebugPanel({
         )}
         <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
           <div className="text-xs text-gray-500">
-            <div>• Open multiple tabs/windows</div>
-            <div>• Add/move nodes in one tab</div>
-            <div>• Watch changes sync in real-time</div>
+            <div>• Open in multiple browsers/devices</div>
+            <div>• Add/move nodes in one browser</div>
+            <div>• Watch changes sync via WebSocket</div>
           </div>
         </div>
       </div>
