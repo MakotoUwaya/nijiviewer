@@ -42,6 +42,7 @@ storybook-static/
 # playwright
 test-results/
 playwright-report/
+.playwright-mcp/
 
 # local settings
 **/*.local.*
