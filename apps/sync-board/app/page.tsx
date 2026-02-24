@@ -171,11 +171,12 @@ export default function FlowSamplePage() {
             <button
               type="button"
               onClick={() => {
+                const [rx, ry] = crypto.getRandomValues(new Uint32Array(2));
                 const newNode: Node = {
                   id: `node-${Date.now()}`,
                   position: {
-                    x: Math.random() * 300,
-                    y: Math.random() * 300,
+                    x: (rx / 0xffffffff) * 300,
+                    y: (ry / 0xffffffff) * 300,
                   },
                   data: { label: `Node ${Date.now()}` },
                 };
