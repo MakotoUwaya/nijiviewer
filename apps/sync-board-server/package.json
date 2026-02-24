@@ -1,0 +1,22 @@
+{
+  "name": "@oichan/sync-board-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "biome lint ./",
+    "format": "biome format ./ --write"
+  },
+  "dependencies": {
+    "loro-crdt": "1.10.6",
+    "ws": "8.18.2"
+  },
+  "devDependencies": {
+    "@types/ws": "8.18.1",
+    "tsx": "4.19.4",
+    "typescript": "5.9.3"
+  }
+}

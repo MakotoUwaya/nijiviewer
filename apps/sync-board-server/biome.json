@@ -1,0 +1,12 @@
+{
+  "root": false,
+  "extends": ["../../biome.json"],
+  "files": {
+    "includes": [
+      "**",
+      "!**/dist",
+      "!**/node_modules",
+      "!**/*.log"
+    ]
+  }
+}

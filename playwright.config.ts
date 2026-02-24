@@ -38,7 +38,7 @@ export default defineConfig({
 
   // ローカル開発サーバーの設定
   webServer: {
-    command: 'npm run dev',
+    command: 'pnpm viewer dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000, // 2分
