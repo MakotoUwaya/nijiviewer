@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@heroui/react": "https://pkg.pr.new/@heroui/react@63afa9a",
-    "@xyflow/react": "12.10.0",
+    "@xyflow/react": "12.10.1",
     "clsx": "2.1.1",
     "framer-motion": "12.34.0",
     "loro-crdt": "1.10.6",
