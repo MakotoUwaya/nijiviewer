@@ -43,7 +43,7 @@ importers:
         version: 1.0.2
       '@next/third-parties':
         specifier: 16.1.6
-        version: 16.1.6(next@16.1.6(@babel/core@7.29.0)(@playwright/test@1.58.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
+        version: 16.1.6(next@16.1.6(@playwright/test@1.58.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       '@tailwindcss/postcss':
         specifier: 4.1.18
         version: 4.1.18
@@ -104,7 +104,7 @@ importers:
         version: 1.0.2
       '@next/third-parties':
         specifier: 16.1.6
-        version: 16.1.6(next@16.1.6(@babel/core@7.29.0)(@playwright/test@1.58.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
+        version: 16.1.6(next@16.1.6(@playwright/test@1.58.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       '@react-aria/ssr':
         specifier: 3.9.10
         version: 3.9.10(react@19.2.4)
@@ -124,8 +124,8 @@ importers:
         specifier: 4.1.18
         version: 4.1.18
       autoprefixer:
-        specifier: 10.4.24
-        version: 10.4.24(postcss@8.5.6)
+        specifier: 10.4.27
+        version: 10.4.27(postcss@8.5.6)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -282,8 +282,8 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       autoprefixer:
-        specifier: 10.4.24
-        version: 10.4.24(postcss@8.5.6)
+        specifier: 10.4.27
+        version: 10.4.27(postcss@8.5.6)
       postcss:
         specifier: 8.5.6
         version: 8.5.6
@@ -350,8 +350,8 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       autoprefixer:
-        specifier: 10.4.24
-        version: 10.4.24(postcss@8.5.6)
+        specifier: 10.4.27
+        version: 10.4.27(postcss@8.5.6)
       postcss:
         specifier: 8.5.6
         version: 8.5.6
@@ -4436,8 +4436,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  autoprefixer@10.4.24:
-    resolution: {integrity: sha512-uHZg7N9ULTVbutaIsDRoUkoS8/h3bdsmVJYZ5l3wv8Cp/6UIIoRDm90hZ+BwxUj/hGBEzLxdHNSKuFpn8WOyZw==}
+  autoprefixer@10.4.27:
+    resolution: {integrity: sha512-NP9APE+tO+LuJGn7/9+cohklunJsXWiaWEfV3si4Gi/XHDwVNgkwr1J3RQYFIvPy76GmJ9/bW8vyoU1LcxwKHA==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -4578,8 +4578,8 @@ packages:
   caniuse-lite@1.0.30001764:
     resolution: {integrity: sha512-9JGuzl2M+vPL+pz70gtMF9sHdMFbY9FJaQBi186cHKH3pSzDvzoUJUPV6fqiKIMyXbud9ZLg4F3Yza1vJ1+93g==}
 
-  caniuse-lite@1.0.30001766:
-    resolution: {integrity: sha512-4C0lfJ0/YPjJQHagaE9x2Elb69CIqEPZeG0anQt9SIvIoOH4a4uaRl73IavyO+0qZh6MDLH//DrXThEYKHkmYA==}
+  caniuse-lite@1.0.30001777:
+    resolution: {integrity: sha512-tmN+fJxroPndC74efCdp12j+0rk0RHwV5Jwa1zWaFVyw2ZxAuPeG8ZgWC3Wz7uSjT3qMRQ5XHZ4COgQmsCMJAQ==}
 
   case-sensitive-paths-webpack-plugin@2.4.0:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
@@ -10171,6 +10171,13 @@ snapshots:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
 
+  '@heroui/system-rsc@https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.26(tailwindcss@4.1.18))(react@19.2.4)':
+    dependencies:
+      '@heroui/theme': 2.4.26(tailwindcss@4.1.18)
+      '@react-types/shared': 3.27.0(react@19.2.4)
+      clsx: 1.2.1
+      react: 19.2.4
+
   '@heroui/system-rsc@https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react@19.2.4)':
     dependencies:
       '@heroui/theme': https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18)
@@ -10181,7 +10188,7 @@ snapshots:
   '@heroui/system@https://pkg.pr.new/heroui-inc/heroui/@heroui/system@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.26(tailwindcss@4.1.18))(framer-motion@12.34.0(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@heroui/react-utils': https://pkg.pr.new/heroui-inc/heroui/@heroui/react-utils@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(react@19.2.4)
-      '@heroui/system-rsc': https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@https://pkg.pr.new/heroui-inc/heroui/@heroui/theme@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(tailwindcss@4.1.18))(react@19.2.4)
+      '@heroui/system-rsc': https://pkg.pr.new/heroui-inc/heroui/@heroui/system-rsc@63afa9a2be7b9ed9fc448f80bcd4b03345a5de08(@heroui/theme@2.4.26(tailwindcss@4.1.18))(react@19.2.4)
       '@internationalized/date': 3.7.0
       '@react-aria/i18n': 3.12.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@react-aria/overlays': 3.25.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -10775,7 +10782,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@16.1.6':
     optional: true
 
-  '@next/third-parties@16.1.6(next@16.1.6(@babel/core@7.29.0)(@playwright/test@1.58.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)':
+  '@next/third-parties@16.1.6(next@16.1.6(@playwright/test@1.58.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)':
     dependencies:
       next: 16.1.6(@babel/core@7.29.0)(@playwright/test@1.58.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react: 19.2.4
@@ -13003,10 +13010,10 @@ snapshots:
 
   astring@1.9.0: {}
 
-  autoprefixer@10.4.24(postcss@8.5.6):
+  autoprefixer@10.4.27(postcss@8.5.6):
     dependencies:
       browserslist: 4.28.1
-      caniuse-lite: 1.0.30001766
+      caniuse-lite: 1.0.30001777
       fraction.js: 5.3.4
       picocolors: 1.1.1
       postcss: 8.5.6
@@ -13134,7 +13141,7 @@ snapshots:
   browserslist@4.28.1:
     dependencies:
       baseline-browser-mapping: 2.9.15
-      caniuse-lite: 1.0.30001766
+      caniuse-lite: 1.0.30001777
       electron-to-chromium: 1.5.267
       node-releases: 2.0.27
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
@@ -13180,7 +13187,7 @@ snapshots:
 
   caniuse-lite@1.0.30001764: {}
 
-  caniuse-lite@1.0.30001766: {}
+  caniuse-lite@1.0.30001777: {}
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
