@@ -23,7 +23,7 @@
     "@microsoft/clarity": "1.0.2",
     "@next/third-parties": "16.1.6",
     "@react-aria/ssr": "3.9.10",
-    "@react-aria/visually-hidden": "3.8.30",
+    "@react-aria/visually-hidden": "3.8.31",
     "@supabase/ssr": "0.8.0",
     "@supabase/supabase-js": "2.98.0",
     "@tailwindcss/line-clamp": "0.4.4",
