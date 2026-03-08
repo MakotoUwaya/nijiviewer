@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "loro-crdt": "1.10.6",
-    "ws": "8.18.2"
+    "ws": "8.19.0"
   },
   "devDependencies": {
     "@types/ws": "8.18.1",
