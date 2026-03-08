@@ -30,7 +30,7 @@
     "@tailwindcss/postcss": "4.1.18",
     "autoprefixer": "10.4.27",
     "clsx": "2.1.1",
-    "framer-motion": "12.34.0",
+    "framer-motion": "12.35.1",
     "intl-messageformat": "11.1.2",
     "luxon": "3.7.2",
     "neverthrow": "8.2.0",
