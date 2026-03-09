@@ -14,7 +14,7 @@ import {
   Spinner,
   useDisclosure,
 } from '@heroui/react';
-import { Reorder } from 'framer-motion';
+import { Reorder } from 'motion/react';
 import { type JSX, useEffect, useMemo } from 'react';
 
 import { useAuth } from '@/context/auth-context';
