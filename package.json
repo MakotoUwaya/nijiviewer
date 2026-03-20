@@ -23,7 +23,7 @@
     "@playwright/test": "1.58.2",
     "cspell": "9.7.0",
     "dotenv": "17.3.1",
-    "msw": "2.12.10",
+    "msw": "2.12.13",
     "msw-storybook-addon": "2.0.6",
     "tsconfig": "workspace:*",
     "turbo": "2.8.14"
