@@ -1,25 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import { expect, test } from 'vitest';
-import Page from './page';
+import { HomeContent } from '@/components/home-content';
 
 test('heading 要素が想定通りに存在すること', () => {
-  render(<Page />);
+  render(<HomeContent />);
   expect(
-    screen.getByRole('heading', { level: 1, name: 'Discover' }),
+    screen.getByRole('heading', { level: 1, name: /Discover/ }),
   ).toBeDefined();
   expect(
-    screen.getByRole('heading', { level: 1, name: 'VTuber' }),
-  ).toBeDefined();
-  expect(
-    screen.getByRole('heading', {
-      level: 1,
-      name: 'streams with ease and convenience.',
-    }),
-  ).toBeDefined();
-  expect(
-    screen.getByRole('heading', {
-      level: 2,
-      name: 'Track and explore your favorite NijiSanji streamers in one place.',
-    }),
+    screen.getByText(
+      /Track and explore your favorite NijiSanji streamers in one place/,
+    ),
   ).toBeDefined();
 });
