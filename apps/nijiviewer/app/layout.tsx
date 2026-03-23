@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import type { Metadata, Viewport } from 'next';
 import type { JSX } from 'react';
 import { LayoutComponent } from '@/components/layout-component';
+import { MobileBottomNav } from '@/components/mobile-bottom-nav';
 import { Navbar } from '@/components/navbar';
 import { fontSans } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
@@ -55,6 +56,7 @@ export default function RootLayout({
                 <div className="relative flex flex-col min-h-screen">
                   <Navbar />
                   <LayoutComponent>{children}</LayoutComponent>
+                  <MobileBottomNav />
                 </div>
               </YouTubePlayerProvider>
             </PreferencesProvider>

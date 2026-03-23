@@ -16,10 +16,7 @@ export async function GET(request: NextRequest) {
 
     // セキュリティ上の理由から、http/https 以外は拒否
     if (url.protocol !== 'http:' && url.protocol !== 'https:') {
-      return NextResponse.json(
-        { error: 'Invalid protocol' },
-        { status: 400 },
-      );
+      return NextResponse.json({ error: 'Invalid protocol' }, { status: 400 });
     }
 
     const fetchHeaders: Record<string, string> = {
@@ -51,9 +48,12 @@ export async function GET(request: NextRequest) {
     }
 
     const contentType = response.headers.get('Content-Type') || '';
-    
+
     // 取得したコンテンツが画像でない場合はエラーを返す（SSRF対策の一環）
-    if (!contentType.startsWith('image/') && contentType !== 'application/octet-stream') {
+    if (
+      !contentType.startsWith('image/') &&
+      contentType !== 'application/octet-stream'
+    ) {
       return NextResponse.json(
         { error: 'URL did not return an image' },
         { status: 400 },

@@ -27,7 +27,7 @@ import { sendVideoPlayEvent } from '@/metrics/events';
 import YouTubePlayerModal from './youtube-player-modal';
 
 export default function VideoCardStream(
-  video: StreamVideo & { started: boolean },
+  video: StreamVideo & { started: boolean; className?: string },
 ): JSX.Element {
   const router = useRouter();
   const pathname = usePathname();
@@ -89,8 +89,8 @@ export default function VideoCardStream(
   };
 
   return (
-    <div className="p-2 w-full md:w-[33%] xl:w-[20%]">
-      <Card>
+    <div className={video.className || 'p-2 w-full md:w-[33%] xl:w-[20%]'}>
+      <Card className="h-full flex flex-col">
         <CardHeader className="absolute z-20 p-1 flex-col items-start">
           <Chip color="default" radius="sm" size="sm" variant="faded">
             {video.topic_id ? video.topic_id.replace(/_/g, ' ') : video.type}
@@ -104,7 +104,7 @@ export default function VideoCardStream(
               handleVideoClick(e as unknown as MouseEvent);
             }
           }}
-          className="cursor-pointer w-full bg-transparent border-none p-0"
+          className="cursor-pointer w-full bg-transparent border-none p-0 flex-shrink-0"
         >
           <div className="relative w-full aspect-video">
             <Image
@@ -131,7 +131,7 @@ export default function VideoCardStream(
             )}
           </div>
         </button>
-        <CardFooter className="bottom-0 p-0 z-10">
+        <CardFooter className="mt-auto p-0 z-10 w-full">
           <div className="flex flex-col w-full px-1">
             <p className="text-tiny break-words line-clamp-2 h-[32px] my-1">
               {video.title}
