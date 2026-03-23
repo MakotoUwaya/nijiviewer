@@ -72,7 +72,7 @@ const nextConfig = {
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
-      process.env.NODE_ENV === 'development' ? '' : "upgrade-insecure-requests",
+      process.env.NODE_ENV === 'development' ? '' : 'upgrade-insecure-requests',
     ].join('; ');
 
     return [
@@ -101,7 +101,8 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=(), fullscreen=(self), payment=()',
+            value:
+              'camera=(), microphone=(), geolocation=(), interest-cohort=(), fullscreen=(self), payment=()',
           },
           {
             key: 'X-XSS-Protection',

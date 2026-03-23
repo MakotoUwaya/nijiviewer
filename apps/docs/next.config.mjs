@@ -31,7 +31,7 @@ export default withNextra({
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
-      "upgrade-insecure-requests",
+      'upgrade-insecure-requests',
     ].join('; ');
 
     return [
@@ -60,7 +60,8 @@ export default withNextra({
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=(), fullscreen=(self), payment=()',
+            value:
+              'camera=(), microphone=(), geolocation=(), interest-cohort=(), fullscreen=(self), payment=()',
           },
           {
             key: 'X-XSS-Protection',

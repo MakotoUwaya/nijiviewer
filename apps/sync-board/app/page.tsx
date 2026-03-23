@@ -90,7 +90,11 @@ export default function FlowSamplePage() {
           Sync Board (Loro + React Flow)
         </h1>
         <div className="w-full h-[80vh] flex items-center justify-center">
-          <p>{connectionState === 'connecting' ? 'サーバーに接続中...' : '読み込み中...'}</p>
+          <p>
+            {connectionState === 'connecting'
+              ? 'サーバーに接続中...'
+              : '読み込み中...'}
+          </p>
         </div>
       </div>
     );
@@ -105,7 +109,8 @@ export default function FlowSamplePage() {
         <div className="w-full h-[80vh] flex items-center justify-center flex-col gap-4">
           <p>WebSocket サーバーに接続できません</p>
           <p className="text-sm text-gray-500">
-            {WS_URL} に接続を試みています。サーバーが起動しているか確認してください。
+            {WS_URL}{' '}
+            に接続を試みています。サーバーが起動しているか確認してください。
           </p>
           <button
             type="button"
@@ -204,9 +209,7 @@ export default function FlowSamplePage() {
                 }`}
               />
               <span className="text-sm">
-                {connectionState === 'connected'
-                  ? 'Connected'
-                  : 'Disconnected'}
+                {connectionState === 'connected' ? 'Connected' : 'Disconnected'}
               </span>
             </div>
           </div>
