@@ -16,13 +16,15 @@ export default function OrgSelector({
   onChange,
   className = 'w-full md:w-60',
 }: OrgSelectorProps): JSX.Element {
+  const isKeyInCollection = items.some((item) => item.id === selectedKey);
+
   return (
     <Select
       aria-labelledby="Organization Selector"
       data-testid="org-selector"
       className={className}
-      defaultSelectedKeys={[selectedKey]}
-      selectedKeys={[selectedKey]}
+      defaultSelectedKeys={isKeyInCollection ? [selectedKey] : []}
+      selectedKeys={isKeyInCollection ? [selectedKey] : []}
       items={items}
       onChange={(e) => {
         const organization = items.find((i) => i.id === e.target.value);
