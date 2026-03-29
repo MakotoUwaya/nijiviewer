@@ -6,7 +6,7 @@ import {
   SignalIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline';
-import { button as buttonStyles, Link, Snippet, Image } from '@heroui/react';
+import { button as buttonStyles, Image, Link, Snippet } from '@heroui/react';
 import NextLink from 'next/link';
 import { type JSX, useEffect, useMemo, useState } from 'react';
 import { getChannelsAction } from '@/app/actions';

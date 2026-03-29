@@ -5,7 +5,6 @@ import {
   type ReactNode,
   useCallback,
   useContext,
-  useEffect,
   useState,
 } from 'react';
 import type { Video } from '@/lib/holodex';
