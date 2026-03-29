@@ -21,7 +21,7 @@ declare global {
   interface Window {
     YT: {
       Player: new (
-        elementId: string,
+        elementId: string | HTMLElement,
         options: {
           videoId?: string;
           width?: number | string;

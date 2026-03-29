@@ -12,10 +12,8 @@ import { siteConfig } from '@/config/site';
 import { useAuth } from '@/context/auth-context';
 import { usePreferences } from '@/context/preferences-context'; // Added
 import { useSidebar } from '@/context/sidebar-context';
-import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { Organization } from '@/lib/holodex';
 import { Search } from './search';
-import VideoPlayerToggle from './video-player-toggle';
 
 type SidebarProps = {
   isOpen: boolean;
@@ -42,7 +40,6 @@ export function Sidebar({
   const pathName = usePathname();
   const segmentName = getSegmentName(pathName);
   const { sidebarWidth } = useSidebar();
-  const { isYouTubePlayer, toggleYouTubePlayer } = useYouTubePlayer();
   const { user } = useAuth();
 
   const { favoriteOrgIds, organizations: allOrgs } = usePreferences();
@@ -150,24 +147,6 @@ export function Sidebar({
         </nav>
       </div>
       <Divider className="my-4" />
-      {/* 設定セクション */}
-      <div className="min-w-0">
-        <h3 className="text-sm font-semibold text-default-600 mb-3">
-          Settings
-        </h3>
-        <div className="px-3 py-2">
-          <ClientOnly
-            fallback={
-              <div className="h-6 w-32 bg-default-100 rounded-medium animate-pulse" />
-            }
-          >
-            <VideoPlayerToggle
-              isYouTubePlayer={isYouTubePlayer}
-              onChange={toggleYouTubePlayer}
-            />
-          </ClientOnly>
-        </div>
-      </div>
     </div>
   );
 

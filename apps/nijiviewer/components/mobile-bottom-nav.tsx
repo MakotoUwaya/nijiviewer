@@ -1,14 +1,14 @@
 'use client';
 
 import {
-  SignalIcon,
-  HeartIcon,
   Cog8ToothIcon,
+  HeartIcon,
+  SignalIcon,
 } from '@heroicons/react/24/outline';
 import {
-  SignalIcon as SignalIconSolid,
-  HeartIcon as HeartIconSolid,
   Cog8ToothIcon as Cog8ToothIconSolid,
+  HeartIcon as HeartIconSolid,
+  SignalIcon as SignalIconSolid,
 } from '@heroicons/react/24/solid';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
