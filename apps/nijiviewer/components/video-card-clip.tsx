@@ -41,14 +41,14 @@ const getStarted = (target: string | undefined): string => {
 export default function VideoCardClip(
   video: ClipVideo & { started: boolean },
 ): JSX.Element {
-  const { isYouTubePlayer, playVideo } = useYouTubePlayer();
+  const { playVideo } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
   const videoStatusText = getStarted(video.available_at || '');
 
   const handleVideoClick = (e: MouseEvent) => {
     e.preventDefault();
-    if (!isYouTubeVideo || isYouTubePlayer) {
+    if (!isYouTubeVideo) {
       sendVideoPlayEvent(video, 'youtube');
       window.open(
         `https://www.youtube.com/watch?v=${video.id}`,

@@ -14,7 +14,7 @@ import {
 import { DateTime } from 'luxon';
 import { usePathname, useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
-import { useState, useTransition } from 'react';
+import { useTransition } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
 import {
@@ -31,7 +31,7 @@ export default function VideoCardStream(
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
-  const { isYouTubePlayer, playVideo } = useYouTubePlayer();
+  const { playVideo } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
 
@@ -56,7 +56,7 @@ export default function VideoCardStream(
 
   const handleVideoClick = (e: MouseEvent) => {
     e.preventDefault();
-    if (!isYouTubeVideo || isYouTubePlayer) {
+    if (!isYouTubeVideo) {
       sendVideoPlayEvent(video, 'youtube');
       window.open(
         `https://www.youtube.com/watch?v=${video.id}`,
