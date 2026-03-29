@@ -37,6 +37,7 @@ export default function InAppYouTubePlayer() {
         modestbranding: 1,
         rel: 0,
         controls: 1,
+        fs: 1,
       },
       events: {
         onError: (event) => console.error('YouTube Player Error:', event.data),
@@ -68,9 +69,12 @@ export default function InAppYouTubePlayer() {
       <ModalContent className="flex-col !m-0 h-auto w-full max-w-[1280px] bg-black">
         <ModalBody className="p-0 flex-col overflow-hidden">
           <div className="w-full aspect-video relative flex-shrink-0 group">
-            <div
+            <iframe
+              title="YouTube Player"
               id={playerContainerId}
-              className="w-full h-full absolute inset-0"
+              className="w-full h-full absolute inset-0 border-none"
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
             />
           </div>
         </ModalBody>
