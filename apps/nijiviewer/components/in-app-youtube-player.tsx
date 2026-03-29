@@ -79,7 +79,6 @@ export default function InAppYouTubePlayer() {
             id={playerContainerId}
             src={`https://www.youtube.com/embed/${currentVideo.id}?enablejsapi=1&autoplay=0&controls=1&fs=1&modestbranding=1&rel=0`}
             className="w-full h-full absolute inset-0 border-none"
-            allowFullScreen
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
           />
         </div>
