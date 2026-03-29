@@ -1,6 +1,6 @@
 'use client';
 
-import { Modal, ModalBody, ModalContent } from '@heroui/react';
+
 import { useEffect, useRef, useState } from 'react';
 import { usePlayerHistory } from '@/hooks/usePlayerHistory';
 import { useYouTubeApi, type YouTubePlayer } from '@/hooks/useYouTubeApi';
@@ -46,32 +46,28 @@ export default function InAppYouTubePlayer() {
   if (!currentVideo) return null;
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={closePlayer}
-      hideCloseButton
-      // モバイルでは上部配置、MD以上ではダイアログ
-      size="5xl"
-      classNames={{
-        base: 'm-0 sm:m-4 max-h-screen md:max-h-[calc(100vh-2rem)] h-auto md:h-auto rounded-none md:rounded-large overflow-hidden bg-black',
-        wrapper: 'items-start md:items-center',
-      }}
+    <div
+      className="fixed inset-0 z-[100] flex items-start md:items-center justify-center bg-black/60 backdrop-blur-sm sm:p-4"
+      onClick={closePlayer}
+      role="dialog"
+      aria-modal="true"
     >
-      <ModalContent className="flex-col !m-0 h-auto w-full max-w-[1280px] bg-black">
-        <ModalBody className="p-0 flex-col overflow-hidden">
-          <div className="w-full aspect-video relative flex-shrink-0 group">
-            <iframe
-              ref={iframeRef}
-              title="YouTube Player"
-              id={playerContainerId}
-              src={`https://www.youtube.com/embed/${currentVideo.id}?enablejsapi=1&autoplay=0&controls=1&fs=1&modestbranding=1&rel=0`}
-              className="w-full h-full absolute inset-0 border-none"
-              allowFullScreen
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-            />
-          </div>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+      <div
+        className="relative w-full h-auto max-h-screen md:max-h-[calc(100vh-2rem)] max-w-[1280px] bg-black rounded-none md:rounded-large overflow-hidden flex flex-col m-0 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="w-full aspect-video relative flex-shrink-0 group">
+          <iframe
+            ref={iframeRef}
+            title="YouTube Player"
+            id={playerContainerId}
+            src={`https://www.youtube.com/embed/${currentVideo.id}?enablejsapi=1&autoplay=0&controls=1&fs=1&modestbranding=1&rel=0`}
+            className="w-full h-full absolute inset-0 border-none"
+            allowFullScreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+          />
+        </div>
+      </div>
+    </div>
   );
 }
