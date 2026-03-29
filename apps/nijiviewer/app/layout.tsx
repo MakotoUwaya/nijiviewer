@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { Metadata, Viewport } from 'next';
 import type { JSX } from 'react';
+import InAppYouTubePlayer from '@/components/in-app-youtube-player';
 import { LayoutComponent } from '@/components/layout-component';
 import { MobileBottomNav } from '@/components/mobile-bottom-nav';
 import { Navbar } from '@/components/navbar';
@@ -57,6 +58,7 @@ export default function RootLayout({
                   <Navbar />
                   <LayoutComponent>{children}</LayoutComponent>
                   <MobileBottomNav />
+                  <InAppYouTubePlayer />
                 </div>
               </YouTubePlayerProvider>
             </PreferencesProvider>
