@@ -6,7 +6,6 @@ import {
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
 import { Card, CardBody, Image, Link } from '@heroui/react';
-import { useId } from 'react';
 import { FavoriteButton } from '@/components/favorite-button';
 import { getElapsedTime } from '@/components/search-result';
 import type { Channel } from '@/lib/holodex';
@@ -16,8 +15,6 @@ interface LiverProfileProps {
 }
 
 export default function LiverProfile({ channel }: LiverProfileProps) {
-  const twitterIconId = useId();
-
   return (
     <Card>
       <CardBody>
@@ -148,9 +145,9 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                         viewBox="0 0 24 24"
                         className="w-4 h-4 fill-current"
                         role="img"
-                        aria-labelledby={twitterIconId}
+                        aria-label="Twitter/X"
                       >
-                        <title id={twitterIconId}>Twitter/X アイコン</title>
+                        <title>Twitter/X</title>
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                       </svg>
                       <Link
