@@ -11,13 +11,11 @@ import {
 } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX, MouseEvent } from 'react';
-import { useState } from 'react';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { ClipVideo } from '@/lib/holodex';
 import { formatVideoDuration } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 import { sendVideoPlayEvent } from '@/metrics/events';
-import YouTubePlayerModal from './youtube-player-modal';
 
 /**
  * 指定されたDateTimeが、現在の日付よりも前の日付かどうかを判定
@@ -43,8 +41,7 @@ const getStarted = (target: string | undefined): string => {
 export default function VideoCardClip(
   video: ClipVideo & { started: boolean },
 ): JSX.Element {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { isYouTubePlayer } = useYouTubePlayer();
+  const { isYouTubePlayer, playVideo } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
   const videoStatusText = getStarted(video.available_at || '');
@@ -60,7 +57,7 @@ export default function VideoCardClip(
       );
     } else {
       sendVideoPlayEvent(video, 'in-app');
-      setIsModalOpen(true);
+      playVideo(video);
     }
   };
 
@@ -128,13 +125,6 @@ export default function VideoCardClip(
           </div>
         </CardFooter>
       </Card>
-      {isYouTubeVideo && (
-        <YouTubePlayerModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          videoId={video.id}
-        />
-      )}
     </div>
   );
 }

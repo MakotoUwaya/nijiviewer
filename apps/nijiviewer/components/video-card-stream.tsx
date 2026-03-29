@@ -24,16 +24,14 @@ import {
 } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 import { sendVideoPlayEvent } from '@/metrics/events';
-import YouTubePlayerModal from './youtube-player-modal';
 
 export default function VideoCardStream(
   video: StreamVideo & { started: boolean; className?: string },
 ): JSX.Element {
   const router = useRouter();
   const pathname = usePathname();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
-  const { isYouTubePlayer } = useYouTubePlayer();
+  const { isYouTubePlayer, playVideo } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
 
@@ -67,7 +65,7 @@ export default function VideoCardStream(
       );
     } else {
       sendVideoPlayEvent(video, 'in-app');
-      setIsModalOpen(true);
+      playVideo(video);
     }
   };
 
@@ -175,13 +173,6 @@ export default function VideoCardStream(
           </div>
         </CardFooter>
       </Card>
-      {isYouTubeVideo && (
-        <YouTubePlayerModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          videoId={video.id}
-        />
-      )}
     </div>
   );
 }
