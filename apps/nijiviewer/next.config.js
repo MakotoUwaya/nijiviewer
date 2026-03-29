@@ -102,7 +102,7 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value:
-              'camera=(), microphone=(), geolocation=(), interest-cohort=(), fullscreen=(self), payment=()',
+              'camera=(), microphone=(), geolocation=(), interest-cohort=(), fullscreen=(self "https://www.youtube.com" "https://www.youtube-nocookie.com"), payment=()',
           },
           {
             key: 'X-XSS-Protection',
