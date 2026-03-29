@@ -14,6 +14,7 @@ export default function InAppYouTubePlayer() {
   usePlayerHistory(isOpen, closePlayer);
 
   const playerRef = useRef<YouTubePlayer | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const playerContainerId = 'youtube-player-container-in-app';
   const { loadYouTubeApi } = useYouTubeApi();
   const [isApiReady, setIsApiReady] = useState(false);
@@ -26,9 +27,9 @@ export default function InAppYouTubePlayer() {
 
   // IFrame の初期化 (autoplay なしでロード)
   useEffect(() => {
-    if (!isOpen || !isApiReady || playerRef.current || !currentVideo) return;
+    if (!isOpen || !isApiReady || playerRef.current || !currentVideo || !iframeRef.current) return;
 
-    playerRef.current = new window.YT.Player(playerContainerId, {
+    playerRef.current = new window.YT.Player(iframeRef.current, {
       events: {
         onError: (event) => console.error('YouTube Player Error:', event.data),
       },
@@ -60,6 +61,7 @@ export default function InAppYouTubePlayer() {
         <ModalBody className="p-0 flex-col overflow-hidden">
           <div className="w-full aspect-video relative flex-shrink-0 group">
             <iframe
+              ref={iframeRef}
               title="YouTube Player"
               id={playerContainerId}
               src={`https://www.youtube.com/embed/${currentVideo.id}?enablejsapi=1&autoplay=0&controls=1&fs=1&modestbranding=1&rel=0`}
