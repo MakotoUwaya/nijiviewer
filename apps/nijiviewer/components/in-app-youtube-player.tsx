@@ -1,7 +1,6 @@
 'use client';
 
-
-import { useEffect, useRef, useState } from 'react';
+import { type MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { usePlayerHistory } from '@/hooks/usePlayerHistory';
 import { useYouTubeApi, type YouTubePlayer } from '@/hooks/useYouTubeApi';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
@@ -15,6 +14,7 @@ export default function InAppYouTubePlayer() {
 
   const playerRef = useRef<YouTubePlayer | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
   const playerContainerId = 'youtube-player-container-in-app';
   const { loadYouTubeApi } = useYouTubeApi();
   const [isApiReady, setIsApiReady] = useState(false);
@@ -27,7 +27,14 @@ export default function InAppYouTubePlayer() {
 
   // IFrame の初期化 (autoplay なしでロード)
   useEffect(() => {
-    if (!isOpen || !isApiReady || playerRef.current || !currentVideo || !iframeRef.current) return;
+    if (
+      !isOpen ||
+      !isApiReady ||
+      playerRef.current ||
+      !currentVideo ||
+      !iframeRef.current
+    )
+      return;
 
     playerRef.current = new window.YT.Player(iframeRef.current, {
       events: {
@@ -43,19 +50,28 @@ export default function InAppYouTubePlayer() {
     };
   }, [isOpen, isApiReady, currentVideo]);
 
+  // 背景クリック時のみプレーヤーを閉じる（内側コンテンツのクリックは無視）
+  const handleBackdropClick = useCallback(
+    (e: MouseEvent<HTMLDivElement>) => {
+      if (e.target === backdropRef.current) closePlayer();
+    },
+    [closePlayer],
+  );
+
   if (!currentVideo) return null;
 
   return (
     <div
+      ref={backdropRef}
       className="fixed inset-0 z-[100] flex items-start md:items-center justify-center bg-black/60 backdrop-blur-sm sm:p-4"
-      onClick={closePlayer}
+      onClick={handleBackdropClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') closePlayer();
+      }}
       role="dialog"
       aria-modal="true"
     >
-      <div
-        className="relative w-full h-auto max-h-screen md:max-h-[calc(100vh-2rem)] max-w-[1280px] bg-black rounded-none md:rounded-large overflow-hidden flex flex-col m-0 shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="relative w-full h-auto max-h-screen md:max-h-[calc(100vh-2rem)] max-w-[1280px] bg-black rounded-none md:rounded-large overflow-hidden flex flex-col m-0 shadow-2xl">
         <div className="w-full aspect-video relative flex-shrink-0 group">
           <iframe
             ref={iframeRef}
