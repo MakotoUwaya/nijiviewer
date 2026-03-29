@@ -50,6 +50,38 @@ export default function InAppYouTubePlayer() {
     };
   }, [isOpen, isApiReady, currentVideo]);
 
+  // 全画面時に横画面にロックする
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const orientation = screen.orientation as ScreenOrientation & {
+      lock?: (orientation: string) => Promise<void>;
+      unlock?: () => void;
+    };
+
+    const handleFullscreenChange = async () => {
+      if (document.fullscreenElement) {
+        try {
+          await orientation.lock?.('landscape');
+        } catch {
+          // 画面回転ロック非対応のブラウザでは無視
+        }
+      } else {
+        try {
+          orientation.unlock?.();
+        } catch {
+          // unlock 非対応のブラウザでは無視
+        }
+      }
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
   // 背景クリック時のみプレーヤーを閉じる（内側コンテンツのクリックは無視）
   const handleBackdropClick = useCallback(
     (e: MouseEvent<HTMLDivElement>) => {
@@ -63,7 +95,7 @@ export default function InAppYouTubePlayer() {
   return (
     <div
       ref={backdropRef}
-      className="fixed inset-0 z-[100] flex items-start md:items-center justify-center bg-black/60 backdrop-blur-sm sm:p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm sm:p-4"
       onClick={handleBackdropClick}
       onKeyDown={(e) => {
         if (e.key === 'Escape') closePlayer();
