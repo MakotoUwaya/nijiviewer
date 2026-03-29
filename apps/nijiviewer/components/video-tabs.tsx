@@ -9,7 +9,7 @@ interface VideoTabsProps {
 }
 
 export default function VideoTabs({ channelId }: VideoTabsProps) {
-  const [selectedTab, setSelectedTab] = useState('live');
+  const [selectedTab, setSelectedTab] = useState('videos');
 
   return (
     <div className="w-full">
