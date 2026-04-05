@@ -1,0 +1,34 @@
+---
+title: NijiViewer とは
+---
+
+# NijiViewer とは
+
+**NijiViewer** は、にじさんじをはじめとする VTuber グループのライブ配信・動画情報をリアルタイムで確認できる Web アプリケーションです。
+
+[Holodex API](https://docs.holodex.net/) を利用して動画情報を取得し、シンプルで使いやすいインターフェースで配信状況を把握できます。
+
+## 主な機能
+
+| 機能 | 説明 |
+|------|------|
+| [ホーム](/nijiviewer/home) | 現在配信中の動画をピックアップ表示 |
+| [ライブ動画](/nijiviewer/live-videos) | 組織別にライブ・アーカイブ動画を一覧表示 |
+| [ライバー詳細](/nijiviewer/liver) | 個別ライバーのプロフィールと動画一覧 |
+| [ライバー検索](/nijiviewer/liver-search) | 名前でライバーを検索 |
+| [お気に入り](/nijiviewer/favorites) | お気に入り登録したライバーの配信をまとめて確認（要ログイン） |
+| [設定](/nijiviewer/settings) | サイドバーに表示する組織の管理・並べ替え（要ログイン） |
+
+## 技術スタック
+
+- **フレームワーク**: Next.js 15 (App Router)
+- **UI**: HeroUI + Tailwind CSS
+- **認証 / DB**: Supabase
+- **動画データ**: [Holodex API](https://docs.holodex.net/)
+
+## リンク
+
+- [GitHub リポジトリ](https://github.com/MakotoUwaya/nijiviewer)
+- [NijiViewer アプリを開く](https://nijiviewer.mukwty.com)
+- [Holodex](https://holodex.net/) — 動画データの提供元
+- [Holodex API ドキュメント](https://docs.holodex.net/)

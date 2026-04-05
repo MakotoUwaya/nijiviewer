@@ -25,6 +25,6 @@ export const siteConfig = {
   ],
   links: {
     github: 'https://github.com/MakotoUwaya/nijiviewer',
-    docs: 'https://docs.mukwty.com',
+    docs: 'https://docs.mukwty.com/nijiviewer',
   },
 };
