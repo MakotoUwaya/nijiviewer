@@ -1,7 +1,7 @@
 import { LoroDoc } from 'loro-crdt';
 import { WebSocketServer, type WebSocket } from 'ws';
 
-const PORT = Number(process.env.PORT || 3001);
+const PORT = Number(process.env.PORT || 3004);
 const doc = new LoroDoc();
 doc.setPeerId(0n);
 

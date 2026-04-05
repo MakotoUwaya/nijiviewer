@@ -7,7 +7,7 @@ import { DebugPanel } from '@/components/DebugPanel';
 import { FlowPanel } from '@/components/FlowPanel';
 import { type SyncedDoc, createSyncedDoc } from '@/lib/loro-sync';
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? 'ws://localhost:3001';
+const WS_URL = process.env.NEXT_PUBLIC_WS_URL ?? 'ws://localhost:3004';
 
 const initialNodes: Node[] = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'Node_1' } },
