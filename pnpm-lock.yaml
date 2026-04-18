@@ -251,8 +251,8 @@ importers:
         specifier: 2.1.1
         version: 2.1.1
       loro-crdt:
-        specifier: 1.10.6
-        version: 1.10.6
+        specifier: 1.11.0
+        version: 1.11.0
       motion:
         specifier: 12.35.1
         version: 12.35.1(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -300,8 +300,8 @@ importers:
   apps/sync-board-server:
     dependencies:
       loro-crdt:
-        specifier: 1.10.6
-        version: 1.10.6
+        specifier: 1.11.0
+        version: 1.11.0
       ws:
         specifier: 8.19.0
         version: 8.19.0
@@ -5688,8 +5688,8 @@ packages:
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
 
-  loro-crdt@1.10.6:
-    resolution: {integrity: sha512-ije6m7wrSRtzdyEd7n+rjgA+UCzfvz2PkjLk5Lf86zf1LgcbWY3g2nE3+7TDADiiX/ziYTovHnGRBiylPt2ipw==}
+  loro-crdt@1.11.0:
+    resolution: {integrity: sha512-dGdyYycSekFC3elAE0qCJMK7Ls6U+bS5p0skApbH3+RkpDpjHxzToj+uqbeFh+iSmIgmpl5VFaUMOcrGa4GRtA==}
 
   loupe@3.2.1:
     resolution: {integrity: sha512-CdzqowRJCeLU72bHvWqwRBBlLcMEtIvGrlvef74kMnV2AolS9Y8xUv1I0U/MNAWMhBlKIoyuEgoJ0t/bbwHbLQ==}
@@ -13996,7 +13996,7 @@ snapshots:
 
   longest-streak@3.1.0: {}
 
-  loro-crdt@1.10.6: {}
+  loro-crdt@1.11.0: {}
 
   loupe@3.2.1: {}
 
