@@ -29,7 +29,7 @@
     "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "pagefind": "1.4.0",
+    "pagefind": "1.5.2",
     "tsconfig": "workspace:*",
     "typescript": "5.9.3"
   }
