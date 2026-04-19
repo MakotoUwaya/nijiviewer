@@ -205,7 +205,7 @@ export default function AivisCloudAPIPage() {
           />
           <div
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-30 transition-opacity duration-300 ease-in-out spectrum-container"
-            style={{ width: '360px', height: '390px' }}
+            style={{ width: '360px', height: '360px' }}
             ref={spectrumContainerRef}
           />
         </div>
@@ -215,6 +215,7 @@ export default function AivisCloudAPIPage() {
           value={text}
           onValueChange={setText}
           className="mb-4"
+          variant="faded"
           minRows={3}
           maxRows={5}
         />

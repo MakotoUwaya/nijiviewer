@@ -4,7 +4,8 @@
     "**/.env.*local"
   ],
   "globalEnv": [
-    "HOLODEX_APIKEY"
+    "HOLODEX_APIKEY",
+    "AIVIS_API_TOKEN"
   ],
   "tasks": {
     "build": {
