@@ -83,11 +83,11 @@ export class CircularAudioSpectrum {
   }
 
   private resetToInitialState() {
-    this.spectrumBars.forEach((bar, index) => {
+    this.spectrumBars.forEach((bar, _index) => {
       bar.style.height = '15px';
       bar.style.opacity = '0.8';
       const hue = bar.dataset.hue || '0';
-      bar.style.background = `linear-gradient(to top, hsl(${hue}, 100%, 50%), hsl(${(parseFloat(hue) + 60) % 360}, 100%, 70%))`;
+      bar.style.background = `linear-gradient(to top, hsl(${hue}, 100%, 50%), hsl(${(Number.parseFloat(hue) + 60) % 360}, 100%, 70%))`;
       bar.style.boxShadow = `0 0 8px hsl(${hue}, 100%, 50%)`;
     });
   }
@@ -96,8 +96,8 @@ export class CircularAudioSpectrum {
     if (!this.audioContext) {
       this.audioContext = new (
         window.AudioContext ||
-        window.webkitAudioContext ||
-        (window as any).AudioContext
+        (window as unknown as { webkitAudioContext: typeof AudioContext })
+          .webkitAudioContext
       )();
       this.analyser = this.audioContext.createAnalyser();
       this.analyser.fftSize = 512; // 分解能を上げる
@@ -165,7 +165,7 @@ export class CircularAudioSpectrum {
       const normalizedValue = Math.min(1, (value / 255) * 2.0);
       
       // パワーの強調（非線形スケーリングでメリハリをつける）
-      const power = Math.pow(normalizedValue, 1.2);
+      const power = normalizedValue ** 1.2;
       
       // 高さを決定（最小15px、最大120pxなど）
       const height = 15 + power * 105;
