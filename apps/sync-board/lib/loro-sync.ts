@@ -106,7 +106,7 @@ export async function createSyncedDoc(
 
         unsubLocal = doc.subscribeLocalUpdates((bytes) => {
           if (!suppressLocalUpdates && ws.readyState === WebSocket.OPEN) {
-            ws.send(bytes);
+            ws.send(new Uint8Array(bytes));
           }
         });
 

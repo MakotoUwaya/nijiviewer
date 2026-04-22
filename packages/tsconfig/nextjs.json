@@ -22,7 +22,8 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "strict": false,
-    "target": "es2020"
+    "target": "es2020",
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "src",
