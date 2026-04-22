@@ -11,7 +11,7 @@
     "format": "biome format --css-parse-tailwind-directives=true ./ --write --files-ignore-unknown=true"
   },
   "dependencies": {
-    "@heroui/react": "2.8.10",
+    "@heroui/react": "3.0.3",
     "clsx": "2.1.1",
     "motion": "12.38.0",
     "next": "16.2.4",

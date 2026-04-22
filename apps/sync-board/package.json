@@ -11,7 +11,7 @@
     "format": "biome format ./ --write"
   },
   "dependencies": {
-    "@heroui/react": "2.8.10",
+    "@heroui/react": "3.0.3",
     "@xyflow/react": "12.10.2",
     "clsx": "2.1.1",
     "loro-crdt": "1.11.0",
