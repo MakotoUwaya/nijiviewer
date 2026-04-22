@@ -25,7 +25,7 @@
     "@react-aria/ssr": "3.9.10",
     "@react-aria/visually-hidden": "3.8.31",
     "@supabase/ssr": "0.10.2",
-    "@supabase/supabase-js": "2.98.0",
+    "@supabase/supabase-js": "2.104.0",
     "@tailwindcss/line-clamp": "0.4.4",
     "@tailwindcss/postcss": "4.2.4",
     "autoprefixer": "10.5.0",
