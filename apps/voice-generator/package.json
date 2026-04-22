@@ -21,7 +21,7 @@
     "tailwind-variants": "3.2.2"
   },
   "devDependencies": {
-    "@heroui/theme": "^2.4.26",
+    "@heroui/theme": "2.4.26",
     "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
