@@ -5,6 +5,10 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Storybook テストは @storybook/addon-vitest 経由で Playwright のブラウザモードを使うため、
+    # Chromium プリインストール済みの公式イメージを利用する（playwright.yml と同じイメージ）
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1
 
     steps:
       - uses: actions/checkout@v6
