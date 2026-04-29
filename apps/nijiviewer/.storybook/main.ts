@@ -1,7 +1,7 @@
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { StorybookConfig } from '@storybook/nextjs';
+import type { StorybookConfig } from '@storybook/nextjs-vite';
 import dotenv from 'dotenv';
 
 // ESM環境で__dirnameを取得
@@ -25,12 +25,10 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath('@storybook/addon-onboarding'),
     getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@chromatic-com/storybook'),
-    getAbsolutePath('@storybook/addon-interactions'),
   ],
   framework: {
-    name: getAbsolutePath('@storybook/nextjs'),
+    name: getAbsolutePath('@storybook/nextjs-vite'),
     options: {},
   },
   staticDirs: ['../public'],
