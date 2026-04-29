@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/nextjs-vite';
+import type { Meta, StoryObj } from '@storybook/react';
 import type { Edge, Node } from '@xyflow/react';
 import type { SyncedDoc } from '@/lib/loro-sync';
 import { FlowPanel } from './FlowPanel';
