@@ -5,14 +5,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Storybook テストは @storybook/addon-vitest 経由で Playwright のブラウザモードを使うため、
-    # Chromium プリインストール済みの公式イメージを利用する（playwright.yml と同じイメージ）
-    container:
-      image: mcr.microsoft.com/playwright:v1.59.1
-    env:
-      # 公式イメージは /ms-playwright にブラウザを置くが、GitHub Actions の container では
-      # HOME が /github/home に書き換わるため、明示しないと ~/.cache/ms-playwright を探して失敗する
-      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
 
     steps:
       - uses: actions/checkout@v6
@@ -28,4 +20,18 @@ jobs:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
       - run: pnpm lint
+      # Storybook テストは @storybook/addon-vitest 経由で Playwright のブラウザモードを使う
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install Playwright (with deps on cache miss, deps only on hit)
+        run: |
+          if [ "${{ steps.playwright-cache.outputs.cache-hit }}" = "true" ]; then
+            pnpm exec playwright install-deps chromium
+          else
+            pnpm exec playwright install --with-deps chromium
+          fi
       - run: pnpm test
