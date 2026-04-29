@@ -1,16 +1,51 @@
 import * as matchers from '@testing-library/jest-dom/matchers';
 import { cleanup } from '@testing-library/react';
-import { afterEach, expect, vi } from 'vitest';
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  expect,
+  vi,
+} from 'vitest';
+import { resetSupabaseMock } from './helpers/supabase-mock';
+import { server } from './msw/server';
 
-// extends Vitest's expect method with methods from react-testing-library
 expect.extend(matchers);
 
-// runs a cleanup after each test case (e.g. clearing jsdom)
+if (typeof window !== 'undefined' && !window.matchMedia) {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: (query: string): MediaQueryList => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      addListener: () => {},
+      removeListener: () => {},
+      dispatchEvent: () => false,
+    }),
+  });
+}
+
+beforeAll(() => {
+  server.listen({ onUnhandledRequest: 'error' });
+});
+
+beforeEach(() => {
+  resetSupabaseMock();
+});
+
 afterEach(() => {
+  server.resetHandlers();
   cleanup();
 });
 
-// Next.js の navigation モックを設定
+afterAll(() => {
+  server.close();
+});
+
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: vi.fn(),
@@ -23,39 +58,9 @@ vi.mock('next/navigation', () => ({
   usePathname: () => '',
 }));
 
-// Supabaseクライアントを直接モック
-vi.mock('@/lib/supabase', () => ({
-  supabase: {
-    from: () => ({
-      select: () => ({
-        eq: () => ({
-          order: () => ({
-            data: [],
-            error: null,
-          }),
-        }),
-      }),
-      insert: () => ({
-        data: null,
-        error: null,
-      }),
-      delete: () => ({
-        eq: () => ({
-          eq: () => ({
-            data: null,
-            error: null,
-          }),
-        }),
-      }),
-    }),
-    auth: {
-      getUser: () => Promise.resolve({ data: { user: null }, error: null }),
-      signInWithPassword: () => Promise.resolve({ data: null, error: null }),
-      signUp: () => Promise.resolve({ data: null, error: null }),
-      signOut: () => Promise.resolve({ error: null }),
-    },
-  },
-}));
+vi.mock('@/lib/supabase', async () => {
+  const { supabaseMock } = await import('./helpers/supabase-mock');
+  return { supabase: supabaseMock };
+});
 
-// NODE_ENVをtest環境に設定
 vi.stubEnv('NODE_ENV', 'test');
