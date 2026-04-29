@@ -26,6 +26,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-onboarding'),
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@chromatic-com/storybook'),
+    getAbsolutePath('@storybook/addon-vitest'),
   ],
   framework: {
     name: getAbsolutePath('@storybook/nextjs-vite'),
