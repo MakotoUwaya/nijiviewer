@@ -9,6 +9,10 @@ jobs:
     # Chromium プリインストール済みの公式イメージを利用する（playwright.yml と同じイメージ）
     container:
       image: mcr.microsoft.com/playwright:v1.59.1
+    env:
+      # 公式イメージは /ms-playwright にブラウザを置くが、GitHub Actions の container では
+      # HOME が /github/home に書き換わるため、明示しないと ~/.cache/ms-playwright を探して失敗する
+      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
 
     steps:
       - uses: actions/checkout@v6
