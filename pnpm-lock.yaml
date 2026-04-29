@@ -256,6 +256,9 @@ importers:
       vitest:
         specifier: 4.1.5
         version: 4.1.5(@types/node@24.12.2)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(jsdom@29.0.2)(msw@2.13.4(@types/node@24.12.2)(typescript@6.0.3))(vite@8.0.9(@types/node@24.12.2)(esbuild@0.27.2)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))
+      vitest-config:
+        specifier: workspace:*
+        version: link:../../packages/vitest-config
 
   apps/sync-board:
     dependencies:
@@ -359,6 +362,9 @@ importers:
       vitest:
         specifier: 4.1.5
         version: 4.1.5(@types/node@24.12.2)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(jsdom@29.0.2)(msw@2.13.4(@types/node@24.12.2)(typescript@6.0.3))(vite@8.0.9(@types/node@24.12.2)(esbuild@0.27.2)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))
+      vitest-config:
+        specifier: workspace:*
+        version: link:../../packages/vitest-config
 
   apps/sync-board-server:
     dependencies:
@@ -478,6 +484,9 @@ importers:
       vitest:
         specifier: 4.1.5
         version: 4.1.5(@types/node@24.12.2)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(jsdom@29.0.2)(msw@2.13.4(@types/node@24.12.2)(typescript@6.0.3))(vite@8.0.9(@types/node@24.12.2)(esbuild@0.27.2)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))
+      vitest-config:
+        specifier: workspace:*
+        version: link:../../packages/vitest-config
 
   packages/tsconfig: {}
 
@@ -498,6 +507,31 @@ importers:
       react-dom:
         specifier: 19.2.5
         version: 19.2.5(react@19.2.5)
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
+
+  packages/vitest-config:
+    dependencies:
+      '@storybook/addon-vitest':
+        specifier: ^10.3.5
+        version: 10.3.5(@vitest/browser-playwright@4.1.5)(@vitest/browser@4.1.5)(@vitest/runner@4.1.5)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)(storybook@10.3.5(@testing-library/dom@10.4.1)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(vitest@4.1.5)
+      '@vitejs/plugin-react':
+        specifier: ^6.0.0
+        version: 6.0.1(vite@8.0.9(@types/node@24.12.2)(esbuild@0.27.2)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))
+      '@vitest/browser-playwright':
+        specifier: ^4.0.0
+        version: 4.1.5(msw@2.13.4(@types/node@24.12.2)(typescript@6.0.3))(playwright@1.59.1)(vite@8.0.9(@types/node@24.12.2)(esbuild@0.27.2)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))(vitest@4.1.5)
+      vitest:
+        specifier: ^4.0.0
+        version: 4.1.5(@types/node@24.12.2)(@vitest/browser-playwright@4.1.5)(@vitest/coverage-v8@4.1.5)(jsdom@29.0.2)(msw@2.13.4(@types/node@24.12.2)(typescript@6.0.3))(vite@8.0.9(@types/node@24.12.2)(esbuild@0.27.2)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.3))
+    devDependencies:
+      '@types/node':
+        specifier: 24.12.2
+        version: 24.12.2
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
