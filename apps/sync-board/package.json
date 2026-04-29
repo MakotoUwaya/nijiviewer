@@ -8,7 +8,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome lint ./",
-    "format": "biome format ./ --write"
+    "format": "biome format ./ --write",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "storybook": "storybook dev -p 6008",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@heroui/react": "2.8.10",
@@ -23,13 +27,30 @@
     "tailwind-variants": "3.2.2"
   },
   "devDependencies": {
+    "@storybook/addon-vitest": "10.3.5",
+    "@storybook/nextjs-vite": "10.3.5",
+    "@storybook/react": "10.3.5",
     "@tailwindcss/postcss": "4.2.4",
+    "@testing-library/dom": "10.4.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.1",
     "@types/node": "24.12.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.1",
+    "@vitest/browser": "4.1.5",
+    "@vitest/browser-playwright": "4.1.5",
+    "@vitest/coverage-v8": "4.1.5",
     "autoprefixer": "10.5.0",
+    "jsdom": "29.0.2",
+    "playwright": "1.59.1",
     "postcss": "8.5.10",
+    "storybook": "10.3.5",
     "tailwindcss": "4.2.4",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vite": "8.0.9",
+    "vitest": "4.1.5",
+    "vitest-config": "workspace:*"
   }
 }

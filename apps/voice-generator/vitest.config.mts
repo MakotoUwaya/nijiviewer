@@ -5,11 +5,6 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig(
   defineAppVitestConfig({
     appDir: fileURLToPath(new URL('.', import.meta.url)),
-    coverageInclude: [
-      'app/**/*.{ts,tsx}',
-      'components/**/*.{ts,tsx}',
-      'hooks/**/*.{ts,tsx}',
-      'lib/**/*.{ts,tsx}',
-    ],
+    coverageInclude: ['app/**/*.{ts,tsx}', 'lib/**/*.{ts,tsx}'],
   }),
 );

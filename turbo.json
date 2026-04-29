@@ -24,6 +24,9 @@
       "persistent": true
     },
     "format": {},
-    "test": {}
+    "test": {},
+    "test:coverage": {
+      "outputs": ["coverage/**"]
+    }
   }
 }

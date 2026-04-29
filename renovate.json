@@ -25,11 +25,11 @@
       "groupName": "storybook",
       "matchPackageNames": [
         "storybook",
-        "@storybook/nextjs",
+        "@storybook/nextjs-vite",
+        "@storybook/react",
         "@storybook/addon-links",
         "@storybook/addon-onboarding",
-        "@storybook/addon-essentials",
-        "@storybook/addon-interactions",
+        "@storybook/addon-vitest",
         "msw-storybook-addon",
         "@chromatic-com/storybook"
       ],
@@ -42,7 +42,18 @@
       "groupName": "playwright",
       "matchPackageNames": [
         "mcr.microsoft.com/playwright",
-        "@playwright/test"
+        "@playwright/test",
+        "playwright"
+      ]
+    },
+    {
+      "description": "Group Vitest packages (vitest core + @vitest/* must move together due to peer constraints)",
+      "groupName": "vitest",
+      "matchPackageNames": [
+        "vitest",
+        "@vitest/browser",
+        "@vitest/browser-playwright",
+        "@vitest/coverage-v8"
       ]
     }
   ],

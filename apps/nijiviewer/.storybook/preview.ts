@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/nextjs';
+import type { Preview } from '@storybook/nextjs-vite';
 import { DateTime, Settings } from 'luxon';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 import '@/styles/globals.css';

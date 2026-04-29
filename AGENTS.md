@@ -5,14 +5,16 @@
 Turborepo によるモノレポ構成。メインアプリ「Nijiviewer」（にじさんじ VTuber 配信情報ビューア）を中心に、関連アプリを収録。
 
 **アプリ (`apps/`):**
-- `nijiviewer` (`@oichan/nijiviewer`) — メインビューア。Next.js 15 App Router、Supabase 認証/DB、Holodex API を使用。
+- `nijiviewer` (`@oichan/nijiviewer`) — メインビューア。Next.js 16 App Router、Supabase 認証/DB、Holodex API を使用。
 - `voice-generator` (`@oichan/voice-generator`) — Aivis Cloud API を使った音声合成アプリ。
 - `sync-board` (`@oichan/sync-board`) — Loro CRDT + React Flow を使った多人数同時編集ホワイトボード。
+- `sync-board-server` (`@oichan/sync-board-server`) — sync-board 用の WebSocket バックエンド。
 - `docs` (`nextra-docs`) — Nextra + pagefind による静的ドキュメントサイト。
 
 **パッケージ (`packages/`):**
 - `ui` — 共有 React コンポーネント。
 - `tsconfig` — 共有 TypeScript 設定 (`base.json`, `nextjs.json`, `react-library.json`)。
+- `vitest-config` — 各アプリ共通の Vitest projects 設定（`defineAppVitestConfig`）。
 
 ---
 
@@ -27,6 +29,7 @@ pnpm build         # 全アプリのビルド
 pnpm lint          # Biome リンター実行（全アプリ）
 pnpm format        # Biome フォーマッター実行（全アプリ）
 pnpm test          # Vitest ユニットテスト実行（全アプリ）
+pnpm test:coverage # 各アプリでカバレッジ計測 → ルートに集約レポートを生成
 pnpm test:e2e      # Playwright E2E テスト実行
 pnpm test:e2e:ui   # Playwright インタラクティブ UI モード
 pnpm test:e2e:debug
@@ -110,9 +113,21 @@ pnpm test:e2e --grep "テスト名"
 
 ### コード品質
 
-- **Biome** がリンティングとフォーマットの唯一のツール（ESLint・Prettier は使用しない）。コミット前に `pnpm lint` と `pnpm format` を必ず実行すること。
+- **Biome** がリンティングとフォーマットの唯一のツール（ESLint・Prettier は使用しない）。
 - Biome 設定: インデント 2 スペース、シングルクォート、末尾カンマあり、セミコロンあり、アロー括弧あり、JSX はダブルクォート。
 - 強制ルール: `noUnusedImports`, `noUnusedVariables`, `useHookAtTopLevel`, `noParameterAssign`, `useSelfClosingElements`, `noUselessElse`。
+
+### セルフチェック（コミット・push 前必須）
+
+実装が一段落した時点で、以下をすべて green にすること。CI で初めてエラーに気付くのを避ける。
+
+```bash
+pnpm build   # Next.js の型チェック含むため省略不可
+pnpm lint    # Biome
+pnpm test    # Vitest（unit + Storybook の両プロジェクト）
+```
+
+`pnpm format` は変更を入れた直後に適宜実行。Storybook テストの初回は `pnpm exec playwright install chromium` が必要。
 
 ### TypeScript
 
@@ -122,8 +137,11 @@ pnpm test:e2e --grep "テスト名"
 
 ### テスト
 
-- **ユニットテスト**（Vitest + jsdom）: `apps/nijiviewer/test/`（`e2e/` を除く）。カバレッジ対象は `components/**` と `app/**`。
-- `test/setup.ts` でモック設定済み: `next/navigation`（useRouter, useSearchParams, usePathname）、Supabase クライアント（チェーン可能モック API）、認証コンテキスト。
+- **ユニットテスト**（Vitest + jsdom）と **Storybook テスト**（`@storybook/addon-vitest` 経由の Playwright ブラウザモード）の 2 プロジェクト構成。共通設定は `packages/vitest-config` の `defineAppVitestConfig` で集約。
+- カバレッジ対象は `app/`, `components/`, `hooks/`, `lib/` のホワイトリスト方式（`**/*.{ts,tsx}`）。`types/`, `.next/`, `*.d.ts`, stories/test/設定は exclude。
+- Storybook テストの初回実行前に `pnpm exec playwright install chromium` が必要。
+- Storybook フレームワークは `@storybook/nextjs-vite`（addon-vitest が Vite 前提のため）。ストーリーの `Meta` / `StoryObj` は `@storybook/react` から import すること（`nextjs-vite` 経由ではワイルドカード再エクスポートで型解決できない）。
+- `apps/nijiviewer/test/setup.ts` でモック設定済み: `next/navigation`（useRouter, useSearchParams, usePathname）、Supabase クライアント（チェーン可能モック API）、認証コンテキスト。
 - **E2E テスト**（Playwright）: `apps/nijiviewer/test/e2e/`。Chromium + Mobile Safari（iPhone 13）対象。実行時に開発サーバーを自動起動。
 
 ### 命名・パッケージ構成

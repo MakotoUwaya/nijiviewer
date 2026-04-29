@@ -1,0 +1,24 @@
+{
+  "name": "vitest-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {
+    "lint": "biome lint ./ --files-ignore-unknown=true",
+    "format": "biome format ./ --write"
+  },
+  "peerDependencies": {
+    "@storybook/addon-vitest": "^10.3.5",
+    "@vitejs/plugin-react": "^6.0.0",
+    "@vitest/browser-playwright": "^4.0.0",
+    "vitest": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.2",
+    "tsconfig": "workspace:*",
+    "typescript": "6.0.3"
+  }
+}
