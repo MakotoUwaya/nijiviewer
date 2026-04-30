@@ -14,6 +14,28 @@ const buildRequest = (params?: Record<string, string>): NextRequest => {
   return new NextRequest(url);
 };
 
+interface UpstreamCapture {
+  referer: string | null;
+}
+
+const arrangeUpstreamImage = (
+  url: string,
+  options: { contentType?: string; bytes?: Uint8Array } = {},
+): UpstreamCapture => {
+  const captured: UpstreamCapture = { referer: null };
+  const bytes = options.bytes ?? new Uint8Array([1]);
+  const contentType = options.contentType ?? 'image/png';
+  server.use(
+    http.get(url, ({ request }) => {
+      captured.referer = request.headers.get('Referer');
+      return HttpResponse.arrayBuffer(bytes.buffer, {
+        headers: { 'Content-Type': contentType },
+      });
+    }),
+  );
+  return captured;
+};
+
 describe('GET /api/image-proxy', () => {
   beforeEach(() => {
     vi.spyOn(console, 'error').mockImplementation(() => {});
@@ -31,9 +53,7 @@ describe('GET /api/image-proxy', () => {
   });
 
   it('returns 400 for non-http(s) protocols', async () => {
-    const res = await GET(
-      buildRequest({ url: 'file:///etc/passwd' }),
-    );
+    const res = await GET(buildRequest({ url: 'file:///etc/passwd' }));
     expect(res.status).toBe(400);
     await expect(res.json()).resolves.toEqual({ error: 'Invalid protocol' });
   });
@@ -50,13 +70,7 @@ describe('GET /api/image-proxy', () => {
   it('proxies an image successfully and forwards Content-Type', async () => {
     const upstreamUrl = 'https://example.com/cat.png';
     const bytes = new Uint8Array([1, 2, 3, 4]);
-    server.use(
-      http.get(upstreamUrl, () =>
-        HttpResponse.arrayBuffer(bytes.buffer, {
-          headers: { 'Content-Type': 'image/png' },
-        }),
-      ),
-    );
+    arrangeUpstreamImage(upstreamUrl, { bytes });
 
     const res = await GET(buildRequest({ url: upstreamUrl }));
     expect(res.status).toBe(200);
@@ -67,15 +81,9 @@ describe('GET /api/image-proxy', () => {
     expect(new Uint8Array(buf)).toEqual(bytes);
   });
 
-  it('falls back to image/jpeg when upstream omits Content-Type', async () => {
+  it('passes through application/octet-stream as-is', async () => {
     const upstreamUrl = 'https://example.com/no-type.bin';
-    server.use(
-      http.get(upstreamUrl, () =>
-        HttpResponse.arrayBuffer(new Uint8Array([0]).buffer, {
-          headers: { 'Content-Type': 'application/octet-stream' },
-        }),
-      ),
-    );
+    arrangeUpstreamImage(upstreamUrl, { contentType: 'application/octet-stream' });
 
     const res = await GET(buildRequest({ url: upstreamUrl }));
     expect(res.status).toBe(200);
@@ -99,53 +107,24 @@ describe('GET /api/image-proxy', () => {
     });
   });
 
-  it('forwards Bilibili Referer for hdslb.com hostnames', async () => {
-    const upstreamUrl = 'https://i0.hdslb.com/cat.png';
-    let receivedReferer: string | null = null;
-    server.use(
-      http.get(upstreamUrl, ({ request }) => {
-        receivedReferer = request.headers.get('Referer');
-        return HttpResponse.arrayBuffer(new Uint8Array([1]).buffer, {
-          headers: { 'Content-Type': 'image/png' },
-        });
-      }),
-    );
+  it.each([
+    ['hdslb.com', 'https://i0.hdslb.com/cat.png', 'https://www.bilibili.com/'],
+    [
+      'bilibili.com',
+      'https://www.bilibili.com/cat.png',
+      'https://www.bilibili.com/',
+    ],
+    ['unrelated host', 'https://example.com/cat.png', null],
+  ])(
+    'sets Bilibili Referer only for Bilibili-family hostnames (%s)',
+    async (_label, upstreamUrl, expectedReferer) => {
+      const captured = arrangeUpstreamImage(upstreamUrl);
 
-    await GET(buildRequest({ url: upstreamUrl }));
-    expect(receivedReferer).toBe('https://www.bilibili.com/');
-  });
+      await GET(buildRequest({ url: upstreamUrl }));
 
-  it('forwards Bilibili Referer for bilibili.com hostnames', async () => {
-    const upstreamUrl = 'https://www.bilibili.com/cat.png';
-    let receivedReferer: string | null = null;
-    server.use(
-      http.get(upstreamUrl, ({ request }) => {
-        receivedReferer = request.headers.get('Referer');
-        return HttpResponse.arrayBuffer(new Uint8Array([1]).buffer, {
-          headers: { 'Content-Type': 'image/png' },
-        });
-      }),
-    );
-
-    await GET(buildRequest({ url: upstreamUrl }));
-    expect(receivedReferer).toBe('https://www.bilibili.com/');
-  });
-
-  it('does not forward Bilibili Referer for unrelated hostnames', async () => {
-    const upstreamUrl = 'https://example.com/cat.png';
-    let receivedReferer: string | null = null;
-    server.use(
-      http.get(upstreamUrl, ({ request }) => {
-        receivedReferer = request.headers.get('Referer');
-        return HttpResponse.arrayBuffer(new Uint8Array([1]).buffer, {
-          headers: { 'Content-Type': 'image/png' },
-        });
-      }),
-    );
-
-    await GET(buildRequest({ url: upstreamUrl }));
-    expect(receivedReferer).toBeNull();
-  });
+      expect(captured.referer).toBe(expectedReferer);
+    },
+  );
 
   it('returns the upstream status when fetch responds with a non-OK status', async () => {
     const upstreamUrl = 'https://example.com/missing.png';
