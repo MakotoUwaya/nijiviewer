@@ -157,9 +157,7 @@ describe('organizations', () => {
 
   describe('initializeUserFavorites', () => {
     it('returns early when orgIds is empty', async () => {
-      await expect(
-        initializeUserFavorites('u1', []),
-      ).resolves.toBeUndefined();
+      await expect(initializeUserFavorites('u1', [])).resolves.toBeUndefined();
     });
 
     it('inserts rows on success', async () => {

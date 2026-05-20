@@ -17,7 +17,9 @@ describe('Error page', () => {
     expect(
       screen.getByRole('heading', { level: 2, name: 'Something went wrong!' }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Try again' }),
+    ).toBeInTheDocument();
     expect(console.error).toHaveBeenCalledWith(error);
   });
 

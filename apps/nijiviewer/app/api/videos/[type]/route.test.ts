@@ -39,10 +39,7 @@ describe('GET /api/videos/[type]', () => {
   });
 
   it('returns 400 when type does not match a known route', async () => {
-    const res = await GET(
-      buildRequest({ channel_id: 'C' }),
-      ctx('upcoming'),
-    );
+    const res = await GET(buildRequest({ channel_id: 'C' }), ctx('upcoming'));
     expect(res.status).toBe(400);
   });
 
@@ -78,10 +75,7 @@ describe('GET /api/videos/[type]', () => {
       }),
     );
 
-    const res = await GET(
-      buildRequest({ channel_id: 'C-2' }),
-      ctx('clips'),
-    );
+    const res = await GET(buildRequest({ channel_id: 'C-2' }), ctx('clips'));
     expect(res.status).toBe(200);
     expect(receivedUrl?.pathname).toBe('/api/v2/channels/C-2/clips');
     expect(receivedUrl?.searchParams.get('status')).toBe('past');
@@ -96,10 +90,7 @@ describe('GET /api/videos/[type]', () => {
       }),
     );
 
-    const res = await GET(
-      buildRequest({ channel_id: 'C-3' }),
-      ctx('collabs'),
-    );
+    const res = await GET(buildRequest({ channel_id: 'C-3' }), ctx('collabs'));
     expect(res.status).toBe(200);
     expect(receivedUrl?.pathname).toBe('/api/v2/channels/C-3/collabs');
     expect(receivedUrl?.searchParams.get('status')).toBe('past');
@@ -112,10 +103,7 @@ describe('GET /api/videos/[type]', () => {
       ),
     );
 
-    const res = await GET(
-      buildRequest({ channel_id: 'C' }),
-      ctx('past'),
-    );
+    const res = await GET(buildRequest({ channel_id: 'C' }), ctx('past'));
     expect(res.status).toBe(500);
     await expect(res.json()).resolves.toEqual({
       error: 'Failed to fetch from Holodex API',
@@ -130,10 +118,7 @@ describe('GET /api/videos/[type]', () => {
       ),
     );
 
-    const res = await GET(
-      buildRequest({ channel_id: 'C' }),
-      ctx('past'),
-    );
+    const res = await GET(buildRequest({ channel_id: 'C' }), ctx('past'));
     expect(res.status).toBe(500);
     const body = (await res.json()) as { error: string };
     expect(body.error).toBe('Failed to parse Holodex API response');
@@ -141,16 +126,11 @@ describe('GET /api/videos/[type]', () => {
   });
 
   it('returns 500 from the catch block when fetch throws synchronously', async () => {
-    const fetchSpy = vi
-      .spyOn(globalThis, 'fetch')
-      .mockImplementation(() => {
-        throw new Error('sync boom');
-      });
+    const fetchSpy = vi.spyOn(globalThis, 'fetch').mockImplementation(() => {
+      throw new Error('sync boom');
+    });
 
-    const res = await GET(
-      buildRequest({ channel_id: 'C' }),
-      ctx('past'),
-    );
+    const res = await GET(buildRequest({ channel_id: 'C' }), ctx('past'));
     expect(res.status).toBe(500);
     await expect(res.json()).resolves.toEqual({
       error: 'Internal server error',

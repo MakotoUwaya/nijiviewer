@@ -90,9 +90,7 @@ export function resetSupabaseMock(): void {
   });
 }
 
-export function mockSupabaseFromOnce<T = unknown>(
-  result: MockResult<T>,
-): void {
+export function mockSupabaseFromOnce<T = unknown>(result: MockResult<T>): void {
   supabaseMock.from.mockReturnValueOnce(createMockChain(result));
 }
 

@@ -20,8 +20,7 @@ describe('usePlayerHistory', () => {
   it('pushes state when opened, only once for repeat opens', () => {
     const onClose = vi.fn();
     const { rerender } = renderHook(
-      ({ isOpen }: { isOpen: boolean }) =>
-        usePlayerHistory(isOpen, onClose),
+      ({ isOpen }: { isOpen: boolean }) => usePlayerHistory(isOpen, onClose),
       { initialProps: { isOpen: false } },
     );
 
@@ -37,8 +36,7 @@ describe('usePlayerHistory', () => {
   it('navigates back when closed programmatically while inAppPlayer state is current', () => {
     const onClose = vi.fn();
     const { rerender } = renderHook(
-      ({ isOpen }: { isOpen: boolean }) =>
-        usePlayerHistory(isOpen, onClose),
+      ({ isOpen }: { isOpen: boolean }) => usePlayerHistory(isOpen, onClose),
       { initialProps: { isOpen: false } },
     );
 
@@ -51,8 +49,7 @@ describe('usePlayerHistory', () => {
   it('does not call back when current history state lacks inAppPlayer', () => {
     const onClose = vi.fn();
     const { rerender } = renderHook(
-      ({ isOpen }: { isOpen: boolean }) =>
-        usePlayerHistory(isOpen, onClose),
+      ({ isOpen }: { isOpen: boolean }) => usePlayerHistory(isOpen, onClose),
       { initialProps: { isOpen: false } },
     );
 
@@ -68,8 +65,7 @@ describe('usePlayerHistory', () => {
   it('calls onClose when popstate fires without inAppPlayer state while open', () => {
     const onClose = vi.fn();
     const { rerender } = renderHook(
-      ({ isOpen }: { isOpen: boolean }) =>
-        usePlayerHistory(isOpen, onClose),
+      ({ isOpen }: { isOpen: boolean }) => usePlayerHistory(isOpen, onClose),
       { initialProps: { isOpen: false } },
     );
 
@@ -85,8 +81,7 @@ describe('usePlayerHistory', () => {
   it('does not call onClose when popstate fires with inAppPlayer state', () => {
     const onClose = vi.fn();
     const { rerender } = renderHook(
-      ({ isOpen }: { isOpen: boolean }) =>
-        usePlayerHistory(isOpen, onClose),
+      ({ isOpen }: { isOpen: boolean }) => usePlayerHistory(isOpen, onClose),
       { initialProps: { isOpen: false } },
     );
 

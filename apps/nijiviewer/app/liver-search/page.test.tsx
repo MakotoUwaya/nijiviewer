@@ -30,10 +30,14 @@ describe('LiverSearchPage', () => {
   it('renders only the title when q is empty', async () => {
     searchChannelsMock.mockResolvedValue([]);
 
-    const tree = await LiverSearchPage(ctx() as Parameters<typeof LiverSearchPage>[0]);
+    const tree = await LiverSearchPage(
+      ctx() as Parameters<typeof LiverSearchPage>[0],
+    );
     render(tree);
 
-    expect(screen.getByRole('heading', { name: 'Liver List' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Liver List' }),
+    ).toBeInTheDocument();
     expect(screen.queryByText(/Search Results for/)).not.toBeInTheDocument();
     expect(searchResultListMock).not.toHaveBeenCalled();
   });
@@ -58,6 +62,8 @@ describe('LiverSearchPage', () => {
     render(tree);
 
     expect(searchResultListMock).toHaveBeenCalled();
-    expect(searchResultListMock.mock.calls[0][0]).toEqual({ channels: [channel] });
+    expect(searchResultListMock.mock.calls[0][0]).toEqual({
+      channels: [channel],
+    });
   });
 });

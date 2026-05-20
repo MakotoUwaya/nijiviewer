@@ -1,6 +1,12 @@
 'use client';
 
-import { type MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  type MouseEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { usePlayerHistory } from '@/hooks/usePlayerHistory';
 import { useYouTubeApi, type YouTubePlayer } from '@/hooks/useYouTubeApi';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';

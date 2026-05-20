@@ -175,9 +175,7 @@ describe('useFavoriteLiversList', () => {
   });
 
   it('returns empty list and stops loading when user is missing', async () => {
-    const { result } = renderHookWithProviders(() =>
-      useFavoriteLiversList(),
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiversList());
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -192,10 +190,9 @@ describe('useFavoriteLiversList', () => {
     ];
     mockSupabaseFromOnce({ data: rows, error: null });
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiversList(),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiversList(), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -209,10 +206,9 @@ describe('useFavoriteLiversList', () => {
       throw new Error('db error');
     });
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiversList(),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiversList(), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(result.current.isLoading).toBe(false);
@@ -231,10 +227,9 @@ describe('useFavoriteLiversList', () => {
       { data: refreshed, error: null },
     ]);
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiversList(),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiversList(), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(result.current.favorites).toEqual(initial);

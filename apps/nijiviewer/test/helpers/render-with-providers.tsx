@@ -9,9 +9,7 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { ReactElement, ReactNode } from 'react';
 import { vi } from 'vitest';
 import { AuthContext, type AuthContextType } from '@/context/auth-context';
-import {
-  PreferencesContext,
-} from '@/context/preferences-context';
+import { PreferencesContext } from '@/context/preferences-context';
 import type { Organization } from '@/lib/holodex';
 
 type PreferencesValue = {
@@ -75,9 +73,7 @@ export function buildWrapper(options: ProviderOptions = {}) {
         signOut: vi.fn(defaultAuth.signOut),
         ...options.authState,
       };
-      tree = (
-        <AuthContext.Provider value={value}>{tree}</AuthContext.Provider>
-      );
+      tree = <AuthContext.Provider value={value}>{tree}</AuthContext.Provider>;
     }
 
     return (

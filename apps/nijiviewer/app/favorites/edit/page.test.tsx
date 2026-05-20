@@ -1,12 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockUser } from '@/test/fixtures/auth';
 import { mockFavoriteLiver } from '@/test/fixtures/favorites';
 import { mockChannel } from '@/test/fixtures/holodex';

@@ -90,9 +90,7 @@ describe('lib/data', () => {
     });
 
     it('returns empty array on autocomplete network error', async () => {
-      server.use(
-        http.get(HOLODEX_AUTOCOMPLETE, () => HttpResponse.error()),
-      );
+      server.use(http.get(HOLODEX_AUTOCOMPLETE, () => HttpResponse.error()));
       expect(await searchChannels('q')).toEqual([]);
     });
 
@@ -152,9 +150,7 @@ describe('lib/data', () => {
     });
 
     it('returns null on network error', async () => {
-      server.use(
-        http.get(holodexChannelUrl('C'), () => HttpResponse.error()),
-      );
+      server.use(http.get(holodexChannelUrl('C'), () => HttpResponse.error()));
       expect(await fetchChannelInfo('C')).toBeNull();
     });
 
@@ -236,7 +232,9 @@ describe('lib/data', () => {
 
     it('returns empty array when response is not an array', async () => {
       server.use(
-        http.get(HOLODEX_USERS_LIVE, () => HttpResponse.json({ message: 'ok' })),
+        http.get(HOLODEX_USERS_LIVE, () =>
+          HttpResponse.json({ message: 'ok' }),
+        ),
       );
       expect(await fetchUserLiveVideos(['A'])).toEqual([]);
     });

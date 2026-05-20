@@ -1,12 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  vi,
-} from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockUser } from '@/test/fixtures/auth';
 import { mockFavoriteLiver } from '@/test/fixtures/favorites';
 import { mockStreamVideo } from '@/test/fixtures/holodex';
@@ -119,7 +112,9 @@ describe('FavoritesPage', () => {
     render(wrapWithHeroUI(<FavoritesPage />));
 
     await waitFor(() => {
-      expect(getFavoritesLiveVideosActionMock).toHaveBeenCalledWith(['liver-1']);
+      expect(getFavoritesLiveVideosActionMock).toHaveBeenCalledWith([
+        'liver-1',
+      ]);
     });
     await waitFor(() => {
       expect(videosMock).toHaveBeenCalled();
