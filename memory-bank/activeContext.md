@@ -57,6 +57,13 @@
      - Storybook 関連パッケージのグループ化
      - Chromatic VRT の実行条件にパスフィルターを追加し、UI 関連ファイルの変更時のみ実行するように改善
      - Chromatic の手動実行 (workflow_dispatch) に対応
+   - **テストカバレッジ拡充 (2026-05-20)**
+     - `packages/vitest-config/index.ts` に `coverageThresholds` オプションを追加し、アプリ別に threshold を設定可能に
+     - 初期値はアプリ別の現状値 -5pt（nijiviewer L62/S62/F58/B48、sync-board L53/S53/F51/B47）
+     - `apps/sync-board/lib/loro-sync.test.ts` を新規追加し、CRDT 同期ロジックを 16 ケースで網羅（lines 0% → 98%、functions 0% → 100%）
+     - `apps/nijiviewer/components/in-app-youtube-player.test.tsx` を新規追加（lines 0% → 87%、functions 0% → 91%）
+     - `test/helpers/youtube-mock.ts` の `vi.fn(arrow)` を named function に変更（vitest 4.x で `new YT.Player()` を扱うために必要）
+     - 合算カバレッジは Lines 23% → 57% に上昇（古い計測キャッシュアーティファクトによる誤表示も解消）
 
 ## 次のステップ
 

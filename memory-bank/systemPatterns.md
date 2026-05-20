@@ -75,6 +75,25 @@ graph LR
    - デバッグ情報のログ記録
    - エラー回復の提案
 
+## テスト戦略
+
+1. カバレッジ管理
+
+   - `defineAppVitestConfig` の `coverageThresholds` でアプリ別に lines/statements/functions/branches のしきい値を設定
+   - 初期値は「現状値 -5pt」で設定し、テスト追加に合わせて段階的に引き上げる
+   - 全アプリ共通の固定値ではなく、アプリの成熟度に応じた個別値とする（voice-generator のように極端に低いアプリは未設定）
+
+2. 外部依存のモック方針
+
+   - Holodex API などの HTTP 依存は MSW (`test/msw/handlers.ts`, `factories.ts`) でモック
+   - Supabase は `test/helpers/supabase-mock.ts` のチェーン可能モックを `setup.ts` でグローバル適用
+   - YouTube IFrame API は `test/helpers/youtube-mock.ts` の `setupYouTubeApi` で `window.YT.Player` を named function ベースの `vi.fn()` として用意（`new` 呼び出しに対応）
+   - WebSocket 依存（loro-sync 等）はテスト内で `vi.stubGlobal('WebSocket', MockWebSocket)` する
+
+3. テスト容易性のためのコード設計
+
+   - サーバー Route Handler は `NextRequest` を受け取って `NextResponse` を返す純粋関数として扱い、`new NextRequest(new URL(...))` で直接呼び出せる形を維持
+
 ## パフォーマンス最適化
 
 1. ビルド時最適化

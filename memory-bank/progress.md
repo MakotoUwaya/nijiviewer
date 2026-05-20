@@ -16,6 +16,9 @@
    - ✅ Storybook 設定
    - ✅ CI/CD 設定
    - ✅ Renovate/Chromatic の実行最適化
+   - ✅ アプリ別カバレッジ threshold の導入（退行検知）
+   - ✅ sync-board の loro-sync テスト追加
+   - ✅ nijiviewer の in-app-youtube-player テスト追加
 
 3. アプリケーション機能
    - ✅ ベーシックレイアウト

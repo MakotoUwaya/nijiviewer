@@ -4,9 +4,9 @@
 
 1. フレームワーク
 
-   - Next.js 15+ (App Router)
-   - React 18+
-   - TypeScript 5+
+   - Next.js 16+ (App Router)
+   - React 19+
+   - TypeScript 6+
 
 2. スタイリング
 
@@ -21,9 +21,12 @@
    - React Query
 
 4. テスト
-   - Vitest
+   - Vitest 4.x（unit + Storybook の 2 プロジェクト構成）
    - Testing Library
-   - Storybook
+   - Storybook（`@storybook/nextjs-vite`）
+   - Playwright（E2E + Storybook ブラウザモード）
+   - MSW（HTTP モック）
+   - アプリ別カバレッジ threshold（`packages/vitest-config` の `defineAppVitestConfig`）
 
 ## 外部サービス
 
@@ -62,9 +65,8 @@
 
 1. コード品質
 
-   - ESLint
-   - Prettier
-   - Biome
+   - Biome（リンター・フォーマッター。ESLint / Prettier は使用しない）
+   - cspell（スペルチェック）
 
 2. CI/CD
 
@@ -81,32 +83,34 @@
 
 1. パッケージマネージャー
 
-   - npm
-   - Turborepo (モノレポ管理)
+   - pnpm（バージョンは `.mise.toml` で pin、現状 10.33.4）
+   - Turborepo（モノレポ管理）
+   - mise（Node.js LTS と pnpm のランタイム pin）
 
 2. 主要依存パッケージ
    ```json
    {
-     "@nextui-org/react": "latest",
-     "next": "^15.0.0",
-     "react": "19.1.0",
-     "react-dom": "19.1.0",
-     "tailwindcss": "^3.0.0",
-     "typescript": "^5.0.0",
+     "@heroui/react": "latest",
+     "next": "^16.0.0",
+     "react": "^19.0.0",
+     "react-dom": "^19.0.0",
+     "tailwindcss": "^4.0.0",
+     "typescript": "^6.0.0",
      "@supabase/ssr": "latest",
-     "@supabase/supabase-js": "latest"
+     "@supabase/supabase-js": "latest",
+     "neverthrow": "^8.0.0"
    }
    ```
 
 ### パッケージ管理
 
-- npm workspaces を使用しているため、パッケージのインストールは以下のコマンドで行う
+- pnpm workspaces を使用しているため、パッケージのインストールは以下のコマンドで行う
   ```bash
-  npm install -E [パッケージ名] -w [ワークスペース名]
+  pnpm add -E [パッケージ名] --filter [ワークスペース名]
   ```
   例: apps/nijiviewer に開発用パッケージをインストールする場合
   ```bash
-  npm install -DE [パッケージ名] -w apps/nijiviewer
+  pnpm add -DE [パッケージ名] --filter @oichan/nijiviewer
   ```
 
 ## 開発プロセス
@@ -114,10 +118,12 @@
 1. ローカル開発
 
    ```bash
-   npm install       # 依存関係のインストール
-   npm run dev       # 開発サーバー起動
-   npm run test      # テスト実行
-   npm run build     # プロダクションビルド
+   mise install       # Node.js / pnpm のランタイムを揃える
+   pnpm install       # 依存関係のインストール
+   pnpm dev           # 開発サーバー起動（nijiviewer は http://localhost:3000）
+   pnpm test          # ユニットテスト実行
+   pnpm test:coverage # カバレッジ計測（threshold 検証含む）
+   pnpm build         # プロダクションビルド
    ```
 
 2. デプロイメント
@@ -138,6 +144,9 @@
 1. 年月計算のような日付処理は、エッジケース（年末年始）の考慮が重要
 2. システム時刻に依存するテストは、vi.setSystemTime でモック化
 3. 各条件分岐のテストケースは、コメントで期待値を明記すると意図が伝わりやすい
+4. カバレッジ閾値はアプリ別に「現状値 -5pt」で初期設定し、CI で退行検知。テスト追加に合わせて段階的に引き上げる
+5. `pnpm test:coverage` の集約は `scripts/merge-coverage.mjs` で行う。古い `coverage/` が残っていると 0% など誤表示の原因になるため、信頼性を確認したい時は `rm -rf coverage apps/*/coverage` してから再計測する
+6. `new` を伴うコンストラクタモック（例: `window.YT.Player`）は、vitest 4.x で `vi.fn(arrow)` が "is not a constructor" になる。`vi.fn(function NamedCtor(){...})` で named function を使う
 
 ### コミット管理
 
