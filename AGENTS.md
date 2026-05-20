@@ -24,12 +24,12 @@ Turborepo によるモノレポ構成。メインアプリ「Nijiviewer」（に
 
 ```bash
 pnpm install       # 依存関係のインストール
-pnpm dev           # 全アプリの開発サーバー起動
+pnpm dev           # 全アプリの開発サーバー起動（nijiviewer は http://localhost:3000）
 pnpm build         # 全アプリのビルド
 pnpm lint          # Biome リンター実行（全アプリ）
 pnpm format        # Biome フォーマッター実行（全アプリ）
 pnpm test          # Vitest ユニットテスト実行（全アプリ）
-pnpm test:coverage # 各アプリでカバレッジ計測 → ルートに集約レポートを生成
+pnpm test:coverage # 各アプリでカバレッジ計測 → scripts/merge-coverage.mjs でルートに集約レポートを生成
 pnpm test:e2e      # Playwright E2E テスト実行
 pnpm test:e2e:ui   # Playwright インタラクティブ UI モード
 pnpm test:e2e:debug
@@ -163,3 +163,9 @@ HOLODEX_APIKEY=
 ```
 
 Supabase 関連変数はビルド時にも必要。`lib/supabase.ts` は未設定時にエラーをスローする（CI ではダミー値でガード）。
+
+---
+
+## ツールチェーン
+
+`.mise.toml` で Node.js (LTS) と pnpm (10.33.4) を pin している。[mise](https://mise.jdx.dev/) がインストールされていれば `mise install` でランタイムを揃えられる。`pnpm` コマンドが見つからない場合は、まず `mise doctor` で解決状況を確認すること（Windows 環境で過去に aqua registry 経由の pnpm 解決が壊れたため、pnpm は v10 固定）。
