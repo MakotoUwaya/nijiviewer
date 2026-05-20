@@ -11,5 +11,11 @@ export default defineConfig(
       'hooks/**/*.{ts,tsx}',
       'lib/**/*.{ts,tsx}',
     ],
+    coverageThresholds: {
+      lines: 62,
+      statements: 62,
+      functions: 58,
+      branches: 48,
+    },
   }),
 );

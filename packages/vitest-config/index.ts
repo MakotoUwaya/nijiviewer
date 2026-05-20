@@ -4,11 +4,20 @@ import { playwright } from '@vitest/browser-playwright';
 import react from '@vitejs/plugin-react';
 import type { UserConfig } from 'vitest/config';
 
+interface CoverageThresholds {
+  lines?: number;
+  statements?: number;
+  functions?: number;
+  branches?: number;
+}
+
 interface AppVitestConfigOptions {
   /** アプリのルート絶対パス。`fileURLToPath(new URL('.', import.meta.url))` を渡す。 */
   appDir: string;
   /** カバレッジ計測対象のディレクトリ glob（例: `app/**\/*.{ts,tsx}`）。 */
   coverageInclude: string[];
+  /** カバレッジしきい値。アプリごとに退行検知の基準を設定する（省略時は thresholds なし）。 */
+  coverageThresholds?: CoverageThresholds;
 }
 
 const COVERAGE_EXCLUDE = [
@@ -25,6 +34,7 @@ const COVERAGE_EXCLUDE = [
 export function defineAppVitestConfig({
   appDir,
   coverageInclude,
+  coverageThresholds,
 }: AppVitestConfigOptions): UserConfig {
   const alias = { '@': appDir };
 
@@ -49,7 +59,9 @@ export function defineAppVitestConfig({
           },
         },
         {
-          plugins: [storybookTest({ configDir: resolve(appDir, '.storybook') })],
+          plugins: [
+            storybookTest({ configDir: resolve(appDir, '.storybook') }),
+          ],
           resolve: { alias },
           test: {
             name: 'storybook',
@@ -69,6 +81,7 @@ export function defineAppVitestConfig({
         reportsDirectory: resolve(appDir, 'coverage'),
         include: coverageInclude,
         exclude: COVERAGE_EXCLUDE,
+        ...(coverageThresholds ? { thresholds: coverageThresholds } : {}),
       },
     },
   };

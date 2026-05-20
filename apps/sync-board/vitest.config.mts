@@ -10,5 +10,11 @@ export default defineConfig(
       'components/**/*.{ts,tsx}',
       'lib/**/*.{ts,tsx}',
     ],
+    coverageThresholds: {
+      lines: 53,
+      statements: 53,
+      functions: 51,
+      branches: 47,
+    },
   }),
 );
