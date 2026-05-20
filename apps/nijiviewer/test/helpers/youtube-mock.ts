@@ -42,19 +42,19 @@ export function setupYouTubeApi(
   overrides: Partial<YouTubePlayerMock> = {},
 ): YouTubeApiMock {
   const player = createYouTubePlayerMock(overrides);
-  const Player = vi.fn(
-    (
-      _el: unknown,
-      options?: {
-        events?: { onReady?: (e: { target: YouTubePlayer }) => void };
-      },
-    ) => {
-      queueMicrotask(() => {
-        options?.events?.onReady?.({ target: player as unknown as YouTubePlayer });
-      });
-      return player;
+  const Player = vi.fn(function PlayerCtor(
+    _el: unknown,
+    options?: {
+      events?: { onReady?: (e: { target: YouTubePlayer }) => void };
     },
-  );
+  ) {
+    queueMicrotask(() => {
+      options?.events?.onReady?.({
+        target: player as unknown as YouTubePlayer,
+      });
+    });
+    return player;
+  });
   const PlayerState = {
     UNSTARTED: -1,
     ENDED: 0,
