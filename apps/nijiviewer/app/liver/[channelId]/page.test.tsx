@@ -39,6 +39,11 @@ const ctx = (channelId: string) => ({
   params: Promise.resolve({ channelId }),
 });
 
+const ctxWithCategory = (channelId: string, category: string) => ({
+  params: Promise.resolve({ channelId }),
+  searchParams: Promise.resolve({ category }),
+});
+
 describe('LiverPage', () => {
   beforeEach(() => {
     fetchChannelInfoMock.mockReset();
@@ -58,8 +63,24 @@ describe('LiverPage', () => {
     expect(liverProfileMock).toHaveBeenCalled();
     expect(liverProfileMock.mock.calls[0][0]).toEqual({ channel });
     expect(videoTabsMock).toHaveBeenCalled();
-    expect(videoTabsMock.mock.calls[0][0]).toEqual({ channelId: 'C-1' });
+    expect(videoTabsMock.mock.calls[0][0]).toEqual({
+      channelId: 'C-1',
+      initialCategory: 'videos',
+    });
     expect(notFoundMock).not.toHaveBeenCalled();
+  });
+
+  it('passes the selected video category from search params', async () => {
+    const channel = mockChannel({ id: 'C-1' });
+    fetchChannelInfoMock.mockResolvedValue(channel);
+
+    const tree = await LiverPage(ctxWithCategory('C-1', 'clips'));
+    render(tree);
+
+    expect(videoTabsMock.mock.calls[0][0]).toEqual({
+      channelId: 'C-1',
+      initialCategory: 'clips',
+    });
   });
 
   it('calls notFound when channelId is empty', async () => {
