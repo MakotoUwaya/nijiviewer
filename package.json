@@ -22,7 +22,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.16",
     "@playwright/test": "1.59.1",
-    "cspell": "10.0.0",
+    "cspell": "10.0.1",
     "dotenv": "17.4.2",
     "istanbul-lib-coverage": "3.2.2",
     "istanbul-lib-report": "3.0.1",
