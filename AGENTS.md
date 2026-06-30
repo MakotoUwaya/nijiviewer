@@ -103,6 +103,12 @@ pnpm test:e2e --grep "テスト名"
 
 `lib/data.ts` 内の Holodex API 呼び出しはすべて `neverthrow` の `Result` 型を返す。呼び出し元は `Ok`/`Err` を明示的にハンドルすること。
 
+### Supabase マイグレーション
+
+- `public` スキーマにテーブル、シーケンス、関数を追加するときは、Data API で必要な操作だけを `anon` / `authenticated` / `service_role` に明示的に `GRANT` すること。デフォルト権限に依存しない。
+- Data API に公開するテーブルは RLS を有効化し、`GRANT` と対応するポリシーを同じマイグレーションに含めること。
+- ID 採番でシーケンスを使用する場合は、対象ロールへの `USAGE` / `SELECT` も明示すること。
+
 ### 画像ルーティング
 
 外部画像はすべて `lib/image-utils.ts` の `getImageUrl()` → `/api/image-proxy` を経由する（data URI・相対パスはそのまま通過）。
