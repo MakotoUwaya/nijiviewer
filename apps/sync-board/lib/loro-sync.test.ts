@@ -52,11 +52,11 @@ const makeEdge = (id: string, source: string, target: string): Edge => ({
   target,
 });
 
-async function waitForWebSocket(): Promise<MockWebSocket> {
-  const before = MockWebSocket.instances.length;
-  for (let i = 0; i < 100; i += 1) {
-    if (MockWebSocket.instances.length > before) {
-      const ws = MockWebSocket.instances[before];
+async function waitForWebSocket(index: number): Promise<MockWebSocket> {
+  const deadline = Date.now() + 3000;
+  while (Date.now() < deadline) {
+    if (MockWebSocket.instances.length > index) {
+      const ws = MockWebSocket.instances[index];
       // Handlers are attached after the dynamic `await import('loro-crdt')`
       // resolves; wait one extra microtask so onmessage is wired up before we
       // emit anything.
@@ -65,7 +65,7 @@ async function waitForWebSocket(): Promise<MockWebSocket> {
         return ws;
       }
     }
-    await new Promise((r) => setTimeout(r, 0));
+    await new Promise((r) => setTimeout(r, 10));
   }
   throw new Error('Timed out waiting for WebSocket constructor');
 }
@@ -75,8 +75,9 @@ async function initialize(
   initialEdges: Edge[],
   initialSnapshot: Uint8Array = new Uint8Array(0),
 ): Promise<{ synced: SyncedDoc; ws: MockWebSocket }> {
+  const wsIndex = MockWebSocket.instances.length;
   const promise = createSyncedDoc('ws://test', initialNodes, initialEdges);
-  const ws = await waitForWebSocket();
+  const ws = await waitForWebSocket(wsIndex);
   ws.emit(initialSnapshot);
   const synced = await promise;
   return { synced, ws };
@@ -110,8 +111,9 @@ describe('createSyncedDoc', () => {
   });
 
   it('skips populating the doc when an existing snapshot is received', async () => {
+    const seedWsIndex = MockWebSocket.instances.length;
     const seedPromise = createSyncedDoc('ws://seed', [makeNode('seed')], []);
-    const seedWs = await waitForWebSocket();
+    const seedWs = await waitForWebSocket(seedWsIndex);
     seedWs.emit(new Uint8Array(0));
     const seedDoc = await seedPromise;
     const snapshot = seedDoc.exportDocument();
@@ -286,16 +288,18 @@ describe('createSyncedDoc', () => {
   });
 
   it('rejects when the WebSocket closes before initialization', async () => {
+    const wsIndex = MockWebSocket.instances.length;
     const promise = createSyncedDoc('ws://failing', [], []);
-    const ws = await waitForWebSocket();
+    const ws = await waitForWebSocket(wsIndex);
     ws.onclose?.({} as Event);
 
     await expect(promise).rejects.toThrow(/closed before init/);
   });
 
   it('rejects when the WebSocket errors before initialization', async () => {
+    const wsIndex = MockWebSocket.instances.length;
     const promise = createSyncedDoc('ws://failing', [], []);
-    const ws = await waitForWebSocket();
+    const ws = await waitForWebSocket(wsIndex);
     const err = new Event('error');
     ws.onerror?.(err);
 
