@@ -1,4 +1,9 @@
 import nextra from 'nextra';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const workspaceRoot = path.resolve(__dirname, '../..');
 
 const withNextra = nextra({
   latex: true,
@@ -12,6 +17,7 @@ const withNextra = nextra({
 export default withNextra({
   reactStrictMode: true,
   turbopack: {
+    root: workspaceRoot,
     resolveAlias: {
       'next-mdx-import-source-file': './mdx-components.tsx',
     },
