@@ -29,7 +29,7 @@
     "@supabase/supabase-js": "2.104.0",
     "@tailwindcss/line-clamp": "0.4.4",
     "@tailwindcss/postcss": "4.2.4",
-    "autoprefixer": "10.5.2",
+    "autoprefixer": "10.5.4",
     "clsx": "2.1.1",
     "intl-messageformat": "11.2.11",
     "luxon": "3.7.2",
