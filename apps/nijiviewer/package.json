@@ -72,8 +72,8 @@
     "playwright": "1.59.1",
     "storybook": "10.3.5",
     "tsconfig": "workspace:*",
-    "@typescript/native": "npm:typescript@^7.0.2",
-    "typescript": "npm:@typescript/typescript6@^6.0.0",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
     "vitest": "4.1.10",
     "vitest-config": "workspace:*"
   }

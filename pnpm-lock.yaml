@@ -88,7 +88,7 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       pagefind:
         specifier: 1.5.2
@@ -97,7 +97,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.0
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
 
   apps/nijiviewer:
@@ -224,7 +224,7 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       '@vitejs/plugin-react':
         specifier: 6.0.3
@@ -260,7 +260,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/tsconfig
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.0
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
       vite:
         specifier: 8.0.16
@@ -339,7 +339,7 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       '@vitejs/plugin-react':
         specifier: 6.0.3
@@ -372,7 +372,7 @@ importers:
         specifier: 4.2.4
         version: 4.2.4
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.0
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
       vite:
         specifier: 8.0.16
@@ -397,13 +397,13 @@ importers:
         specifier: 8.18.1
         version: 8.18.1
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       tsx:
         specifier: 4.21.0
         version: 4.21.0
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.0
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
 
   apps/voice-generator:
@@ -470,7 +470,7 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       '@vitejs/plugin-react':
         specifier: 6.0.3
@@ -503,7 +503,7 @@ importers:
         specifier: 4.2.4
         version: 4.2.4
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.0
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
       vite:
         specifier: 8.0.16
@@ -529,7 +529,7 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.14)
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       react:
         specifier: 19.2.5
@@ -541,7 +541,7 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.0
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
 
   packages/vitest-config:
@@ -563,13 +563,13 @@ importers:
         specifier: 24.12.2
         version: 24.12.2
       '@typescript/native':
-        specifier: npm:typescript@^7.0.2
+        specifier: npm:typescript@7.0.2
         version: typescript@7.0.2
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
       typescript:
-        specifier: npm:@typescript/typescript6@^6.0.0
+        specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
 
 packages:
