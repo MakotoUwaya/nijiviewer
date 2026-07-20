@@ -2,21 +2,20 @@ import { expect, test } from '@playwright/test';
 import { config } from '@/test/e2e/test-config';
 
 test.describe('Passkeys 認証機能のテスト', () => {
-  test.describe('サインインページ', () => {
-    test('サインインフォームの基本要素が表示されること', async ({ page }) => {
-      await page.goto(config.baseURL);
+  test.describe('設定ページの Passkey UI', () => {
+    test('設定ページにPasskey管理セクションが表示されること', async ({
+      page,
+    }) => {
+      await page.goto(`${config.baseURL}settings`);
 
-      // メールアドレス入力欄
-      const emailInput = page.getByPlaceholder(/email/i);
-      await expect(emailInput).toBeVisible();
+      // ページタイトルを確認
+      await expect(page).toHaveTitle(/Settings|設定/);
 
-      // パスワード入力欄
-      const passwordInput = page.getByPlaceholder(/password/i);
-      await expect(passwordInput).toBeVisible();
-
-      // サインインボタン
-      const signInButton = page.getByRole('button', { name: /sign in/i });
-      await expect(signInButton).toBeVisible();
+      // Passkey セクションの見出しが表示されること
+      const passkeyHeading = page.getByRole('heading', {
+        name: /passkey|パスキー/i,
+      });
+      await expect(passkeyHeading).toBeVisible();
     });
   });
 
@@ -32,8 +31,8 @@ test.describe('Passkeys 認証機能のテスト', () => {
 });
 
 test.describe('Passkeys セキュリティチェック', () => {
-  test('ページが正常にロードされること', async ({ page }) => {
-    const response = await page.goto(config.baseURL);
+  test('設定ページが正常にロードされること', async ({ page }) => {
+    const response = await page.goto(`${config.baseURL}settings`);
 
     expect(response).not.toBeNull();
     if (response) {
