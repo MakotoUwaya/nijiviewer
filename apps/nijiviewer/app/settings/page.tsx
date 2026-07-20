@@ -20,6 +20,10 @@ import { type JSX, useEffect, useMemo, useState } from 'react';
 
 import { useAuth } from '@/context/auth-context';
 import type { PasskeyInfo } from '@/context/auth-context';
+import {
+  getPasskeyErrorMessage,
+  isWebAuthnSupported,
+} from '@/lib/passkey-utils';
 import { usePreferences } from '@/context/preferences-context';
 
 export default function SettingsPage(): JSX.Element {
@@ -41,11 +45,16 @@ export default function SettingsPage(): JSX.Element {
   } = usePreferences();
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const deleteConfirmModal = useDisclosure();
   const [passkeys, setPasskeys] = useState<PasskeyInfo[]>([]);
   const [passkeysLoading, setPasskeysLoading] = useState(false);
   const [passkeyError, setPasskeyError] = useState<string | null>(null);
   const [editingPasskeyId, setEditingPasskeyId] = useState<string | null>(null);
   const [newFriendlyName, setNewFriendlyName] = useState('');
+  const [deletingPasskeyId, setDeletingPasskeyId] = useState<string | null>(
+    null,
+  );
+  const [isPasskeyAvailable, setIsPasskeyAvailable] = useState(false);
 
   useEffect(() => {
     const initIfNeeded = async () => {
@@ -60,23 +69,25 @@ export default function SettingsPage(): JSX.Element {
   }, [user, isPrefLoading, organizations, favoriteOrgIds, initializeFavorites]);
 
   useEffect(() => {
+    setIsPasskeyAvailable(isWebAuthnSupported());
+  }, []);
+
+  useEffect(() => {
     const loadPasskeys = async () => {
-      if (!user) return;
+      if (!user || !isPasskeyAvailable) return;
       setPasskeysLoading(true);
       setPasskeyError(null);
       try {
         const result = await listPasskeys();
         setPasskeys(result);
       } catch (err) {
-        setPasskeyError(
-          err instanceof Error ? err.message : 'Failed to load passkeys',
-        );
+        setPasskeyError(getPasskeyErrorMessage(err));
       } finally {
         setPasskeysLoading(false);
       }
     };
     loadPasskeys();
-  }, [user, listPasskeys]);
+  }, [user, isPasskeyAvailable, listPasskeys]);
 
   const enabledOrgs = useMemo(() => {
     return favoriteOrgIds
@@ -111,9 +122,7 @@ export default function SettingsPage(): JSX.Element {
       const result = await listPasskeys();
       setPasskeys(result);
     } catch (err) {
-      setPasskeyError(
-        err instanceof Error ? err.message : 'Failed to register passkey',
-      );
+      setPasskeyError(getPasskeyErrorMessage(err));
     } finally {
       setPasskeysLoading(false);
     }
@@ -128,23 +137,28 @@ export default function SettingsPage(): JSX.Element {
       setEditingPasskeyId(null);
       setNewFriendlyName('');
     } catch (err) {
-      setPasskeyError(
-        err instanceof Error ? err.message : 'Failed to update passkey',
-      );
+      setPasskeyError(getPasskeyErrorMessage(err));
     }
   };
 
-  const handleDeletePasskey = async (passkeyId: string) => {
+  const handleDeleteClick = (passkeyId: string) => {
+    setDeletingPasskeyId(passkeyId);
+    deleteConfirmModal.onOpen();
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!deletingPasskeyId) return;
+
     setPasskeyError(null);
     setPasskeysLoading(true);
     try {
-      await deletePasskey(passkeyId);
+      await deletePasskey(deletingPasskeyId);
       const result = await listPasskeys();
       setPasskeys(result);
+      deleteConfirmModal.onClose();
+      setDeletingPasskeyId(null);
     } catch (err) {
-      setPasskeyError(
-        err instanceof Error ? err.message : 'Failed to delete passkey',
-      );
+      setPasskeyError(getPasskeyErrorMessage(err));
     } finally {
       setPasskeysLoading(false);
     }
@@ -178,114 +192,139 @@ export default function SettingsPage(): JSX.Element {
 
       <div className="space-y-8">
         {/* Passkey Management */}
-        <section>
-          <h2 className="text-lg font-bold mb-2 flex items-center gap-2">
-            <KeyIcon className="h-5 w-5" />
-            Passkeys
-          </h2>
-          <p className="text-small text-default-500 mb-4">
-            Manage your passkeys for secure, passwordless authentication.
-          </p>
+        {isPasskeyAvailable ? (
+          <section>
+            <h2 className="text-lg font-bold mb-2 flex items-center gap-2">
+              <KeyIcon className="h-5 w-5" />
+              Passkeys
+            </h2>
+            <p className="text-small text-default-500 mb-4">
+              Manage your passkeys for secure, passwordless authentication.
+            </p>
 
-          {passkeyError && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-              {passkeyError}
+            {passkeyError && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                {passkeyError}
+              </div>
+            )}
+
+            <div className="mb-4">
+              <Button
+                color="primary"
+                onPress={handleRegisterPasskey}
+                isDisabled={passkeysLoading}
+                isLoading={passkeysLoading}
+                startContent={
+                  !passkeysLoading && <KeyIcon className="h-4 w-4" />
+                }
+              >
+                Register New Passkey
+              </Button>
             </div>
-          )}
 
-          <div className="mb-4">
-            <Button
-              color="primary"
-              onPress={handleRegisterPasskey}
-              isDisabled={passkeysLoading}
-              startContent={<KeyIcon className="h-4 w-4" />}
-            >
-              Register New Passkey
-            </Button>
-          </div>
-
-          {passkeysLoading && passkeys.length === 0 ? (
-            <div className="flex justify-center py-4">
-              <Spinner size="sm" />
-            </div>
-          ) : passkeys.length === 0 ? (
-            <Card>
-              <CardBody className="text-center py-6 text-default-500">
-                No passkeys registered yet. Click "Register New Passkey" to get
-                started.
-              </CardBody>
-            </Card>
-          ) : (
-            <div className="space-y-2">
-              {passkeys.map((passkey) => (
-                <Card key={passkey.id} className="overflow-hidden w-full">
-                  <CardBody className="p-4">
-                    {editingPasskeyId === passkey.id ? (
-                      <div className="flex items-center gap-2">
-                        <Input
-                          value={newFriendlyName}
-                          onChange={(e) => setNewFriendlyName(e.target.value)}
-                          placeholder="Enter a name for this passkey"
-                          size="sm"
-                        />
-                        <Button
-                          size="sm"
-                          color="primary"
-                          onPress={() => handleUpdatePasskey(passkey.id)}
-                        >
-                          Save
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="flat"
-                          onPress={() => {
-                            setEditingPasskeyId(null);
-                            setNewFriendlyName('');
-                          }}
-                        >
-                          Cancel
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1 min-w-0">
-                          <div className="font-medium truncate">
-                            {passkey.friendly_name || 'Unnamed Passkey'}
-                          </div>
-                          <div className="text-small text-default-500">
-                            Created:{' '}
-                            {new Date(passkey.created_at).toLocaleDateString()}
-                          </div>
-                        </div>
-                        <div className="flex gap-2">
+            {passkeysLoading && passkeys.length === 0 ? (
+              <div className="flex justify-center py-4">
+                <Spinner size="sm" />
+              </div>
+            ) : passkeys.length === 0 ? (
+              <Card>
+                <CardBody className="text-center py-6 text-default-500">
+                  No passkeys registered yet. Click "Register New Passkey" to
+                  get started.
+                </CardBody>
+              </Card>
+            ) : (
+              <div className="space-y-2">
+                {passkeys.map((passkey) => (
+                  <Card key={passkey.id} className="overflow-hidden w-full">
+                    <CardBody className="p-4">
+                      {editingPasskeyId === passkey.id ? (
+                        <div className="flex items-center gap-2">
+                          <Input
+                            value={newFriendlyName}
+                            onChange={(e) => setNewFriendlyName(e.target.value)}
+                            placeholder="Enter a name for this passkey"
+                            size="sm"
+                          />
+                          <Button
+                            size="sm"
+                            color="primary"
+                            onPress={() => handleUpdatePasskey(passkey.id)}
+                          >
+                            Save
+                          </Button>
                           <Button
                             size="sm"
                             variant="flat"
                             onPress={() => {
-                              setEditingPasskeyId(passkey.id);
-                              setNewFriendlyName(passkey.friendly_name || '');
+                              setEditingPasskeyId(null);
+                              setNewFriendlyName('');
                             }}
                           >
-                            Rename
-                          </Button>
-                          <Button
-                            size="sm"
-                            color="danger"
-                            variant="flat"
-                            onPress={() => handleDeletePasskey(passkey.id)}
-                            isDisabled={passkeysLoading}
-                          >
-                            Delete
+                            Cancel
                           </Button>
                         </div>
-                      </div>
-                    )}
-                  </CardBody>
-                </Card>
-              ))}
-            </div>
-          )}
-        </section>
+                      ) : (
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1 min-w-0">
+                            <div className="font-medium truncate">
+                              {passkey.friendly_name || 'Unnamed Passkey'}
+                            </div>
+                            <div className="text-small text-default-500">
+                              Created:{' '}
+                              {new Date(
+                                passkey.created_at,
+                              ).toLocaleDateString()}
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button
+                              size="sm"
+                              variant="flat"
+                              onPress={() => {
+                                setEditingPasskeyId(passkey.id);
+                                setNewFriendlyName(passkey.friendly_name || '');
+                              }}
+                            >
+                              Rename
+                            </Button>
+                            <Button
+                              size="sm"
+                              color="danger"
+                              variant="flat"
+                              onPress={() => handleDeleteClick(passkey.id)}
+                              isDisabled={passkeysLoading}
+                            >
+                              Delete
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                    </CardBody>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </section>
+        ) : (
+          <section>
+            <h2 className="text-lg font-bold mb-2 flex items-center gap-2">
+              <KeyIcon className="h-5 w-5" />
+              Passkeys
+            </h2>
+            <Card>
+              <CardBody className="text-center py-6">
+                <p className="text-default-500 mb-2">
+                  Your browser does not support Passkeys.
+                </p>
+                <p className="text-small text-default-400">
+                  Please use a modern browser like Chrome, Edge, Safari, or
+                  Firefox to use Passkeys.
+                </p>
+              </CardBody>
+            </Card>
+          </section>
+        )}
 
         {/* Active Organizations (Reorderable) */}
         <section>
@@ -360,6 +399,49 @@ export default function SettingsPage(): JSX.Element {
               <ModalFooter>
                 <Button color="primary" onPress={onClose}>
                   OK
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+
+      <Modal
+        isOpen={deleteConfirmModal.isOpen}
+        onOpenChange={deleteConfirmModal.onOpenChange}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Delete Passkey
+              </ModalHeader>
+              <ModalBody>
+                <p>
+                  Are you sure you want to delete this Passkey? This action
+                  cannot be undone.
+                </p>
+                <p className="text-small text-default-500 mt-2">
+                  You will need to register a new Passkey if you want to use
+                  passwordless sign-in again.
+                </p>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  variant="flat"
+                  onPress={() => {
+                    onClose();
+                    setDeletingPasskeyId(null);
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  color="danger"
+                  onPress={handleDeleteConfirm}
+                  isLoading={passkeysLoading}
+                >
+                  Delete
                 </Button>
               </ModalFooter>
             </>
