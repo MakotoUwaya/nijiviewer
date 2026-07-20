@@ -1,5 +1,9 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { useAuth } from '@/context/auth-context';
+import {
+  getPasskeyErrorMessage,
+  isWebAuthnSupported,
+} from '@/lib/passkey-utils';
 
 type AuthFormProps = {
   mode: 'signIn' | 'signUp';
@@ -12,9 +16,14 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isPasskeyAvailable, setIsPasskeyAvailable] = useState(false);
 
   const { signIn, signUp, signInWithPasskey } = useAuth();
   const id = useId();
+
+  useEffect(() => {
+    setIsPasskeyAvailable(isWebAuthnSupported());
+  }, []);
 
   const handlePasskeySignIn = async () => {
     setError(null);
@@ -27,7 +36,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
         onSuccess();
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Passkey sign-in failed');
+      setError(getPasskeyErrorMessage(err));
     } finally {
       setLoading(false);
     }
@@ -67,7 +76,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
         </div>
       )}
 
-      {mode === 'signIn' && (
+      {mode === 'signIn' && isPasskeyAvailable && (
         <>
           <button
             type="button"
