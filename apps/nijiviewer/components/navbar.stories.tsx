@@ -13,6 +13,11 @@ const mockAuthContext: AuthContextType = {
   signIn: async () => {},
   signUp: async () => {},
   signOut: async () => {},
+  signInWithPasskey: async () => {},
+  registerPasskey: async () => ({ id: '', friendly_name: '', created_at: '' }),
+  listPasskeys: async () => [],
+  updatePasskey: async () => {},
+  deletePasskey: async () => {},
 };
 
 // Mock Preferences Context

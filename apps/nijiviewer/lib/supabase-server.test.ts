@@ -29,7 +29,12 @@ describe('createCustomServerClient', () => {
     expect(createServerClientMock).toHaveBeenCalledWith(
       'https://real.supabase.co',
       'real-anon-key',
-      { cookies: cookieStore },
+      {
+        cookies: cookieStore,
+        auth: {
+          experimental: { passkey: true },
+        },
+      },
     );
 
     vi.unstubAllEnvs();
@@ -47,7 +52,12 @@ describe('createCustomServerClient', () => {
     expect(createServerClientMock).toHaveBeenCalledWith(
       'https://placeholder.supabase.co',
       'placeholder',
-      { cookies: cookieStore },
+      {
+        cookies: cookieStore,
+        auth: {
+          experimental: { passkey: true },
+        },
+      },
     );
 
     vi.unstubAllEnvs();
@@ -65,7 +75,12 @@ describe('createCustomServerClient', () => {
     expect(createServerClientMock).toHaveBeenCalledWith(
       'https://placeholder.supabase.co',
       'placeholder',
-      { cookies: cookieStore },
+      {
+        cookies: cookieStore,
+        auth: {
+          experimental: { passkey: true },
+        },
+      },
     );
 
     vi.unstubAllEnvs();

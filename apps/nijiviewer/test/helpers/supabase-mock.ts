@@ -8,6 +8,13 @@ export interface SupabaseAuthMock {
   getSession: Mock;
   onAuthStateChange: Mock;
   exchangeCodeForSession: Mock;
+  signInWithPasskey: Mock;
+  registerPasskey: Mock;
+  passkey: {
+    list: Mock;
+    update: Mock;
+    delete: Mock;
+  };
 }
 
 export interface SupabaseClientMock {
@@ -25,6 +32,13 @@ export const supabaseMock: SupabaseClientMock = {
     getSession: vi.fn(),
     onAuthStateChange: vi.fn(),
     exchangeCodeForSession: vi.fn(),
+    signInWithPasskey: vi.fn(),
+    registerPasskey: vi.fn(),
+    passkey: {
+      list: vi.fn(),
+      update: vi.fn(),
+      delete: vi.fn(),
+    },
   },
 };
 
@@ -88,6 +102,31 @@ export function resetSupabaseMock(): void {
     data: { session: null, user: null },
     error: null,
   });
+
+  supabaseMock.auth.signInWithPasskey.mockReset();
+  supabaseMock.auth.signInWithPasskey.mockResolvedValue({
+    data: null,
+    error: null,
+  });
+
+  supabaseMock.auth.registerPasskey.mockReset();
+  supabaseMock.auth.registerPasskey.mockResolvedValue({
+    data: {
+      id: 'test-passkey-id',
+      friendly_name: 'Test Device',
+      created_at: new Date().toISOString(),
+    },
+    error: null,
+  });
+
+  supabaseMock.auth.passkey.list.mockReset();
+  supabaseMock.auth.passkey.list.mockResolvedValue({ data: [], error: null });
+
+  supabaseMock.auth.passkey.update.mockReset();
+  supabaseMock.auth.passkey.update.mockResolvedValue({ error: null });
+
+  supabaseMock.auth.passkey.delete.mockReset();
+  supabaseMock.auth.passkey.delete.mockResolvedValue({ error: null });
 }
 
 export function mockSupabaseFromOnce<T = unknown>(result: MockResult<T>): void {
