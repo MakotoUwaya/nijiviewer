@@ -29,7 +29,7 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: |
-          pnpm install
+          pnpm install --ignore-scripts
           cd apps/nijiviewer && npx msw init public/
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
