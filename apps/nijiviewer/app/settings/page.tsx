@@ -1,11 +1,12 @@
 'use client';
 
-import { Bars3Icon } from '@heroicons/react/24/outline';
+import { Bars3Icon, KeyIcon } from '@heroicons/react/24/outline';
 import {
   Button,
   Card,
   CardBody,
   Checkbox,
+  Input,
   Modal,
   ModalBody,
   ModalContent,
@@ -15,13 +16,21 @@ import {
   useDisclosure,
 } from '@heroui/react';
 import { Reorder } from 'motion/react';
-import { type JSX, useEffect, useMemo } from 'react';
+import { type JSX, useEffect, useMemo, useState } from 'react';
 
 import { useAuth } from '@/context/auth-context';
+import type { PasskeyInfo } from '@/context/auth-context';
 import { usePreferences } from '@/context/preferences-context';
 
 export default function SettingsPage(): JSX.Element {
-  const { user, isLoading: isAuthLoading } = useAuth();
+  const {
+    user,
+    isLoading: isAuthLoading,
+    listPasskeys,
+    registerPasskey,
+    updatePasskey,
+    deletePasskey,
+  } = useAuth();
   const {
     organizations,
     favoriteOrgIds,
@@ -32,6 +41,11 @@ export default function SettingsPage(): JSX.Element {
   } = usePreferences();
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [passkeys, setPasskeys] = useState<PasskeyInfo[]>([]);
+  const [passkeysLoading, setPasskeysLoading] = useState(false);
+  const [passkeyError, setPasskeyError] = useState<string | null>(null);
+  const [editingPasskeyId, setEditingPasskeyId] = useState<string | null>(null);
+  const [newFriendlyName, setNewFriendlyName] = useState('');
 
   useEffect(() => {
     const initIfNeeded = async () => {
@@ -44,6 +58,25 @@ export default function SettingsPage(): JSX.Element {
     };
     initIfNeeded();
   }, [user, isPrefLoading, organizations, favoriteOrgIds, initializeFavorites]);
+
+  useEffect(() => {
+    const loadPasskeys = async () => {
+      if (!user) return;
+      setPasskeysLoading(true);
+      setPasskeyError(null);
+      try {
+        const result = await listPasskeys();
+        setPasskeys(result);
+      } catch (err) {
+        setPasskeyError(
+          err instanceof Error ? err.message : 'Failed to load passkeys',
+        );
+      } finally {
+        setPasskeysLoading(false);
+      }
+    };
+    loadPasskeys();
+  }, [user, listPasskeys]);
 
   const enabledOrgs = useMemo(() => {
     return favoriteOrgIds
@@ -68,6 +101,53 @@ export default function SettingsPage(): JSX.Element {
       }
     }
     await toggleFavorite(orgId, isFavorite);
+  };
+
+  const handleRegisterPasskey = async () => {
+    setPasskeyError(null);
+    setPasskeysLoading(true);
+    try {
+      await registerPasskey();
+      const result = await listPasskeys();
+      setPasskeys(result);
+    } catch (err) {
+      setPasskeyError(
+        err instanceof Error ? err.message : 'Failed to register passkey',
+      );
+    } finally {
+      setPasskeysLoading(false);
+    }
+  };
+
+  const handleUpdatePasskey = async (passkeyId: string) => {
+    setPasskeyError(null);
+    try {
+      await updatePasskey(passkeyId, newFriendlyName);
+      const result = await listPasskeys();
+      setPasskeys(result);
+      setEditingPasskeyId(null);
+      setNewFriendlyName('');
+    } catch (err) {
+      setPasskeyError(
+        err instanceof Error ? err.message : 'Failed to update passkey',
+      );
+    }
+  };
+
+  const handleDeletePasskey = async (passkeyId: string) => {
+    setPasskeyError(null);
+    setPasskeysLoading(true);
+    try {
+      await deletePasskey(passkeyId);
+      const result = await listPasskeys();
+      setPasskeys(result);
+    } catch (err) {
+      setPasskeyError(
+        err instanceof Error ? err.message : 'Failed to delete passkey',
+      );
+    } finally {
+      setPasskeysLoading(false);
+    }
   };
 
   if (isAuthLoading || isPrefLoading) {
@@ -97,6 +177,116 @@ export default function SettingsPage(): JSX.Element {
       <h1 className="text-2xl font-bold mb-6">Settings</h1>
 
       <div className="space-y-8">
+        {/* Passkey Management */}
+        <section>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2">
+            <KeyIcon className="h-5 w-5" />
+            Passkeys
+          </h2>
+          <p className="text-small text-default-500 mb-4">
+            Manage your passkeys for secure, passwordless authentication.
+          </p>
+
+          {passkeyError && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              {passkeyError}
+            </div>
+          )}
+
+          <div className="mb-4">
+            <Button
+              color="primary"
+              onPress={handleRegisterPasskey}
+              isDisabled={passkeysLoading}
+              startContent={<KeyIcon className="h-4 w-4" />}
+            >
+              Register New Passkey
+            </Button>
+          </div>
+
+          {passkeysLoading && passkeys.length === 0 ? (
+            <div className="flex justify-center py-4">
+              <Spinner size="sm" />
+            </div>
+          ) : passkeys.length === 0 ? (
+            <Card>
+              <CardBody className="text-center py-6 text-default-500">
+                No passkeys registered yet. Click "Register New Passkey" to get
+                started.
+              </CardBody>
+            </Card>
+          ) : (
+            <div className="space-y-2">
+              {passkeys.map((passkey) => (
+                <Card key={passkey.id} className="overflow-hidden w-full">
+                  <CardBody className="p-4">
+                    {editingPasskeyId === passkey.id ? (
+                      <div className="flex items-center gap-2">
+                        <Input
+                          value={newFriendlyName}
+                          onChange={(e) => setNewFriendlyName(e.target.value)}
+                          placeholder="Enter a name for this passkey"
+                          size="sm"
+                        />
+                        <Button
+                          size="sm"
+                          color="primary"
+                          onPress={() => handleUpdatePasskey(passkey.id)}
+                        >
+                          Save
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="flat"
+                          onPress={() => {
+                            setEditingPasskeyId(null);
+                            setNewFriendlyName('');
+                          }}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1 min-w-0">
+                          <div className="font-medium truncate">
+                            {passkey.friendly_name || 'Unnamed Passkey'}
+                          </div>
+                          <div className="text-small text-default-500">
+                            Created:{' '}
+                            {new Date(passkey.created_at).toLocaleDateString()}
+                          </div>
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="flat"
+                            onPress={() => {
+                              setEditingPasskeyId(passkey.id);
+                              setNewFriendlyName(passkey.friendly_name || '');
+                            }}
+                          >
+                            Rename
+                          </Button>
+                          <Button
+                            size="sm"
+                            color="danger"
+                            variant="flat"
+                            onPress={() => handleDeletePasskey(passkey.id)}
+                            isDisabled={passkeysLoading}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          )}
+        </section>
+
         {/* Active Organizations (Reorderable) */}
         <section>
           <h2 className="text-lg font-bold mb-2">Favorite Organizations</h2>
