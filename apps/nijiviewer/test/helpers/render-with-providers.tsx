@@ -35,6 +35,11 @@ const defaultAuth: AuthContextType = {
   signIn: async () => {},
   signUp: async () => {},
   signOut: async () => {},
+  signInWithPasskey: async () => {},
+  registerPasskey: async () => ({ id: '', friendly_name: '', created_at: '' }),
+  listPasskeys: async () => [],
+  updatePasskey: async () => {},
+  deletePasskey: async () => {},
 };
 
 const defaultPreferences: PreferencesValue = {
@@ -71,6 +76,11 @@ export function buildWrapper(options: ProviderOptions = {}) {
         signIn: vi.fn(defaultAuth.signIn),
         signUp: vi.fn(defaultAuth.signUp),
         signOut: vi.fn(defaultAuth.signOut),
+        signInWithPasskey: vi.fn(defaultAuth.signInWithPasskey),
+        registerPasskey: vi.fn(defaultAuth.registerPasskey),
+        listPasskeys: vi.fn(defaultAuth.listPasskeys),
+        updatePasskey: vi.fn(defaultAuth.updatePasskey),
+        deletePasskey: vi.fn(defaultAuth.deletePasskey),
         ...options.authState,
       };
       tree = <AuthContext.Provider value={value}>{tree}</AuthContext.Provider>;

@@ -2,6 +2,12 @@ import type { Session, User } from '@supabase/supabase-js';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 
+export type PasskeyInfo = {
+  id: string;
+  friendly_name?: string;
+  created_at: string;
+};
+
 export type AuthContextType = {
   user: User | null;
   session: Session | null;
@@ -9,6 +15,12 @@ export type AuthContextType = {
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  // Passkey methods
+  signInWithPasskey: () => Promise<void>;
+  registerPasskey: () => Promise<PasskeyInfo>;
+  listPasskeys: () => Promise<PasskeyInfo[]>;
+  updatePasskey: (id: string, friendlyName: string) => Promise<void>;
+  deletePasskey: (id: string) => Promise<void>;
 };
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -72,6 +84,41 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     if (error) throw error;
   };
 
+  // Passkey でサインイン
+  const signInWithPasskey = async () => {
+    const { error } = await supabase.auth.signInWithPasskey();
+    if (error) throw error;
+  };
+
+  // Passkey を登録
+  const registerPasskey = async (): Promise<PasskeyInfo> => {
+    const { data, error } = await supabase.auth.registerPasskey();
+    if (error) throw error;
+    return data;
+  };
+
+  // 登録済み Passkeys 一覧を取得
+  const listPasskeys = async (): Promise<PasskeyInfo[]> => {
+    const { data, error } = await supabase.auth.passkey.list();
+    if (error) throw error;
+    return data ?? [];
+  };
+
+  // Passkey のフレンドリー名を更新
+  const updatePasskey = async (id: string, friendlyName: string) => {
+    const { error } = await supabase.auth.passkey.update({
+      passkeyId: id,
+      friendlyName: friendlyName,
+    });
+    if (error) throw error;
+  };
+
+  // Passkey を削除
+  const deletePasskey = async (id: string) => {
+    const { error } = await supabase.auth.passkey.delete({ passkeyId: id });
+    if (error) throw error;
+  };
+
   const value = {
     user,
     session,
@@ -79,6 +126,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     signIn,
     signUp,
     signOut,
+    signInWithPasskey,
+    registerPasskey,
+    listPasskeys,
+    updatePasskey,
+    deletePasskey,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
@@ -96,6 +148,15 @@ export const useAuth = () => {
       signIn: async () => {},
       signUp: async () => {},
       signOut: async () => {},
+      signInWithPasskey: async () => {},
+      registerPasskey: async () => ({
+        id: '',
+        friendly_name: '',
+        created_at: '',
+      }),
+      listPasskeys: async () => [],
+      updatePasskey: async () => {},
+      deletePasskey: async () => {},
     };
   }
   return context;

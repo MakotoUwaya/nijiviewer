@@ -11,6 +11,17 @@ type AuthValue = {
   signIn: () => Promise<void>;
   signUp: () => Promise<void>;
   signOut: () => Promise<void>;
+  signInWithPasskey: () => Promise<void>;
+  registerPasskey: () => Promise<{
+    id: string;
+    friendly_name: string;
+    created_at: string;
+  }>;
+  listPasskeys: () => Promise<
+    Array<{ id: string; friendly_name: string; created_at: string }>
+  >;
+  updatePasskey: () => Promise<void>;
+  deletePasskey: () => Promise<void>;
 };
 
 type FavoritesValue = {
@@ -34,6 +45,13 @@ export const stubAuth = (
     signIn: vi.fn(),
     signUp: vi.fn(),
     signOut: vi.fn(),
+    signInWithPasskey: vi.fn(),
+    registerPasskey: vi
+      .fn()
+      .mockResolvedValue({ id: '', friendly_name: '', created_at: '' }),
+    listPasskeys: vi.fn().mockResolvedValue([]),
+    updatePasskey: vi.fn(),
+    deletePasskey: vi.fn(),
     ...overrides,
   });
 };

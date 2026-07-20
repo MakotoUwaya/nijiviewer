@@ -18,5 +18,8 @@ export const createCustomServerClient = async () => {
 
   return createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: cookieStore,
+    auth: {
+      experimental: { passkey: true },
+    },
   });
 };
