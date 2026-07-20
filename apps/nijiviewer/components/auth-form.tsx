@@ -13,8 +13,25 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, signInWithPasskey } = useAuth();
   const id = useId();
+
+  const handlePasskeySignIn = async () => {
+    setError(null);
+    setLoading(true);
+
+    try {
+      await signInWithPasskey();
+
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Passkey sign-in failed');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +65,31 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
           {error}
         </div>
+      )}
+
+      {mode === 'signIn' && (
+        <>
+          <button
+            type="button"
+            onClick={handlePasskeySignIn}
+            disabled={loading}
+            className="w-full mb-4 px-4 py-2 text-sm bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/90 disabled:opacity-50 flex items-center justify-center gap-2"
+          >
+            <span>🔑</span>
+            {loading ? 'Signing in...' : 'Sign in with Passkey'}
+          </button>
+
+          <div className="relative mb-4">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-muted" />
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-2 bg-card text-muted-foreground">
+                Or continue with email
+              </span>
+            </div>
+          </div>
+        </>
       )}
 
       <form onSubmit={handleSubmit}>
