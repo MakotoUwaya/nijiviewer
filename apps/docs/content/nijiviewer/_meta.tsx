@@ -6,4 +6,5 @@ export default {
   'liver-search': 'ライバー検索',
   favorites: 'お気に入り',
   settings: '設定',
+  passkeys: 'Passkeys 認証',
 };

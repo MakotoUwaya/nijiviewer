@@ -27,12 +27,13 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       - name: Build application
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          HOLODEX_APIKEY: ${{ secrets.HOLODEX_APIKEY }}
         run: pnpm build
 
       - name: Run Playwright tests
@@ -41,6 +42,7 @@ jobs:
           CI: true
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          HOLODEX_APIKEY: ${{ secrets.HOLODEX_APIKEY }}
 
       - name: Upload test results
         uses: actions/upload-artifact@v7.0.1
