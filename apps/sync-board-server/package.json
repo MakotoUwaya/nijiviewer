@@ -11,13 +11,13 @@
     "format": "biome format ./ --write"
   },
   "dependencies": {
-    "loro-crdt": "1.11.1",
-    "ws": "8.20.0"
+    "loro-crdt": "1.13.9",
+    "ws": "8.21.1"
   },
   "devDependencies": {
     "@types/ws": "8.18.1",
-    "tsx": "4.21.0",
     "@typescript/native": "npm:typescript@7.0.2",
+    "tsx": "4.23.1",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   }
 }
