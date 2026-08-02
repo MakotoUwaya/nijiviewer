@@ -20,17 +20,17 @@
     "test:e2e:codegen": "playwright codegen http://localhost:3000"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.16",
-    "@playwright/test": "1.59.1",
+    "@biomejs/biome": "2.5.6",
+    "@playwright/test": "1.62.1",
     "cspell": "10.0.1",
     "dotenv": "17.4.2",
     "istanbul-lib-coverage": "3.2.2",
     "istanbul-lib-report": "3.0.1",
-    "istanbul-reports": "3.1.7",
-    "msw": "2.13.4",
-    "msw-storybook-addon": "2.0.7",
+    "istanbul-reports": "3.2.0",
+    "msw": "2.15.0",
+    "msw-storybook-addon": "3.0.0",
     "tsconfig": "workspace:*",
-    "turbo": "2.9.18"
+    "turbo": "2.10.8"
   },
   "name": "nijiviewer",
   "packageManager": "pnpm@10.33.0",
