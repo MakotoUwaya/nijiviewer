@@ -34,8 +34,6 @@ jobs:
           else
             pnpm exec playwright install --with-deps chromium
           fi
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
       - run: pnpm test
         env:
           PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
