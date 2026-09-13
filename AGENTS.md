@@ -174,4 +174,4 @@ Supabase 関連変数はビルド時にも必要。`lib/supabase.ts` は未設�
 
 ## ツールチェーン
 
-`.mise.toml` で Node.js (LTS) と pnpm (10.33.4) を pin している。[mise](https://mise.jdx.dev/) がインストールされていれば `mise install` でランタイムを揃えられる。`pnpm` コマンドが見つからない場合は、まず `mise doctor` で解決状況を確認すること（Windows 環境で過去に aqua registry 経由の pnpm 解決が壊れたため、pnpm は v10 固定）。
+`.mise.toml` で Node.js (LTS) と pnpm (12.4.1) を pin している。[mise](https://mise.jdx.dev/) がインストールされていれば `mise install` でランタイムを揃えられる。`pnpm` コマンドが見つからない場合は、まず `mise doctor` で解決状況を確認すること。

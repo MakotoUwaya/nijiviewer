@@ -13,10 +13,9 @@
   "timezone": "Asia/Tokyo",
   "packageRules": [
     {
-      "description": "Automerge non-major updates",
+      "description": "Automerge minor updates",
       "matchUpdateTypes": [
-        "minor",
-        "patch"
+        "minor"
       ],
       "automerge": true
     },
@@ -32,10 +31,7 @@
         "@storybook/addon-vitest",
         "msw-storybook-addon",
         "@chromatic-com/storybook"
-      ],
-      "patch": {
-        "enabled": false
-      }
+      ]
     },
     {
       "description": "Group Playwright packages",
@@ -55,7 +51,17 @@
         "@vitest/browser-playwright",
         "@vitest/coverage-v8"
       ]
+    },
+    {
+      "description": "Group pnpm updates across .mise.toml and package.json",
+      "groupName": "pnpm",
+      "matchPackageNames": [
+        "pnpm"
+      ]
     }
   ],
+  "patch": {
+    "enabled": false
+  },
   "rangeStrategy": "pin"
 }

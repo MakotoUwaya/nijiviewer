@@ -33,7 +33,7 @@
     "turbo": "2.10.12"
   },
   "name": "nijiviewer",
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@12.4.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MakotoUwaya/nijiviewer.git"
@@ -46,11 +46,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "pnpm": {
-    "overrides": {
-      "@react-aria/selection": "3.28.1",
-      "storybook": "10.3.5"
-    }
-  }
+  ]
 }
