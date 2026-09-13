@@ -10,6 +10,7 @@
       "!**/node_modules",
       "!**/storybook-static",
       "!**/test-results",
+      "!**/public/mockServiceWorker.js",
       "!**/*.log"
     ]
   }

@@ -13,8 +13,8 @@
   "peerDependencies": {
     "@storybook/addon-vitest": "10.6.0",
     "@vitejs/plugin-react": "6.1.1",
-    "@vitest/browser-playwright": "4.1.11",
-    "vitest": "4.1.11"
+    "@vitest/browser-playwright": "5.0.0",
+    "vitest": "5.0.0"
   },
   "devDependencies": {
     "@types/node": "24.13.4",
