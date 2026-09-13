@@ -117,13 +117,16 @@ describe('GET /api/image-proxy', () => {
       'https://www.bilibili.com/',
     ],
     ['unrelated host', 'https://example.com/cat.png', null],
-  ])('sets Bilibili Referer only for Bilibili-family hostnames (%s)', async (_label, upstreamUrl, expectedReferer) => {
-    const captured = arrangeUpstreamImage(upstreamUrl);
+  ])(
+    'sets Bilibili Referer only for Bilibili-family hostnames (%s)',
+    async (_label, upstreamUrl, expectedReferer) => {
+      const captured = arrangeUpstreamImage(upstreamUrl);
 
-    await GET(buildRequest({ url: upstreamUrl }));
+      await GET(buildRequest({ url: upstreamUrl }));
 
-    expect(captured.referer).toBe(expectedReferer);
-  });
+      expect(captured.referer).toBe(expectedReferer);
+    },
+  );
 
   it('returns the upstream status when fetch responds with a non-OK status', async () => {
     const upstreamUrl = 'https://example.com/missing.png';

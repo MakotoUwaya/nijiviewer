@@ -65,7 +65,7 @@ const mockVideo = (overrides: Partial<Video> = {}): Video =>
       lang: null,
     },
     ...overrides,
-  }) as Video;
+  }) as unknown as Video;
 
 describe('InAppYouTubePlayer', () => {
   let closePlayer: Mock;

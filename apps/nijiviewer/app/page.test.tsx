@@ -1,9 +1,11 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockPlaceholderVideo, mockStreamVideo } from '@/test/fixtures/holodex';
 
+import type { Video } from '@/lib/holodex';
+
 const { fetchLiveVideosMock, homeContentMock } = vi.hoisted(() => ({
   fetchLiveVideosMock: vi.fn(),
-  homeContentMock: vi.fn(() => null),
+  homeContentMock: vi.fn((_props: { liveVideos: Video[] }) => null),
 }));
 
 vi.mock('@/lib/data', () => ({

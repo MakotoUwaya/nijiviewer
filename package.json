@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.13",
-    "@playwright/test": "1.62.1",
-    "cspell": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "cspell": "10.3.0",
     "dotenv": "17.4.2",
     "istanbul-lib-coverage": "3.2.2",
     "istanbul-lib-report": "3.0.1",

@@ -4,9 +4,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mockStreamVideo } from '@/test/fixtures/holodex';
 import { HOLODEX_BASE } from '@/test/msw/factories';
 import { server } from '@/test/msw/server';
+import type { VideoType } from '@/lib/holodex';
 import { GET } from './route';
 
-type RouteContext = { params: Promise<{ type: string }> };
+type RouteContext = Parameters<typeof GET>[1];
 
 const buildRequest = (params?: Record<string, string>): NextRequest => {
   const url = new URL('http://localhost/api/videos/test');
@@ -19,7 +20,7 @@ const buildRequest = (params?: Record<string, string>): NextRequest => {
 };
 
 const ctx = (type: string): RouteContext => ({
-  params: Promise.resolve({ type }),
+  params: Promise.resolve({ type: type as VideoType }),
 });
 
 describe('GET /api/videos/[type]', () => {

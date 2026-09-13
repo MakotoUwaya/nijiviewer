@@ -4,7 +4,7 @@ import { mockStreamVideo } from '@/test/fixtures/holodex';
 
 const { fetchLiveVideosMock, videosMock } = vi.hoisted(() => ({
   fetchLiveVideosMock: vi.fn(),
-  videosMock: vi.fn(() => null),
+  videosMock: vi.fn((..._args: unknown[]) => null),
 }));
 
 vi.mock('@/lib/data', () => ({

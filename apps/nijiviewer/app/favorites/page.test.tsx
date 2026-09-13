@@ -19,8 +19,8 @@ const {
   useAuthMock: vi.fn(),
   useFavoriteLiversListMock: vi.fn(),
   getFavoritesLiveVideosActionMock: vi.fn(),
-  videosMock: vi.fn(() => null),
-  scrollToTopMock: vi.fn(() => null),
+  videosMock: vi.fn((..._args: unknown[]) => null),
+  scrollToTopMock: vi.fn((..._args: unknown[]) => null),
 }));
 
 vi.mock('@/context/auth-context', () => ({ useAuth: useAuthMock }));

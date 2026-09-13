@@ -8,8 +8,8 @@ const { fetchChannelInfoMock, notFoundMock, liverProfileMock, videoTabsMock } =
     notFoundMock: vi.fn(() => {
       throw new Error('NEXT_NOT_FOUND');
     }),
-    liverProfileMock: vi.fn(() => null),
-    videoTabsMock: vi.fn(() => null),
+    liverProfileMock: vi.fn((..._args: unknown[]) => null),
+    videoTabsMock: vi.fn((..._args: unknown[]) => null),
   }));
 
 vi.mock('@/lib/data', () => ({

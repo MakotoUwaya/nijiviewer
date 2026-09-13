@@ -4,7 +4,7 @@ import { mockChannel } from '@/test/fixtures/holodex';
 
 const { searchChannelsMock, searchResultListMock } = vi.hoisted(() => ({
   searchChannelsMock: vi.fn(),
-  searchResultListMock: vi.fn(() => null),
+  searchResultListMock: vi.fn((..._args: unknown[]) => null),
 }));
 
 vi.mock('@/lib/data', () => ({

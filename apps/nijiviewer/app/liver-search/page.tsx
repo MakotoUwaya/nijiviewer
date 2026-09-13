@@ -2,12 +2,12 @@ import { SearchResultList } from '@/components/search-result';
 import { searchChannels } from '@/lib/data';
 
 type Props = {
-  searchParams: Promise<{ q: string }>;
+  searchParams: Promise<{ q?: string }>;
 };
 
 export default async function LiverSearchPage({ searchParams }: Props) {
   const { q } = await searchParams;
-  const channels = await searchChannels(q);
+  const channels = q ? await searchChannels(q) : [];
 
   return (
     <div className="container mx-auto px-4 py-8">

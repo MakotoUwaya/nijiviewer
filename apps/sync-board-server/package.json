@@ -11,8 +11,8 @@
     "format": "biome format ./ --write"
   },
   "dependencies": {
-    "loro-crdt": "1.13.9",
-    "ws": "8.21.1"
+    "loro-crdt": "1.16.1",
+    "ws": "8.21.3"
   },
   "devDependencies": {
     "@types/ws": "8.18.1",

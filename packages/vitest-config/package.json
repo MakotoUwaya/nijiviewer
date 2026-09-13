@@ -11,13 +11,13 @@
     "format": "biome format ./ --write"
   },
   "peerDependencies": {
-    "@storybook/addon-vitest": "10.3.6",
-    "@vitejs/plugin-react": "6.0.4",
-    "@vitest/browser-playwright": "4.1.10",
-    "vitest": "4.1.10"
+    "@storybook/addon-vitest": "10.6.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "@vitest/browser-playwright": "4.1.11",
+    "vitest": "4.1.11"
   },
   "devDependencies": {
-    "@types/node": "24.12.2",
+    "@types/node": "24.13.4",
     "tsconfig": "workspace:*",
     "@typescript/native": "npm:typescript@7.0.2",
     "typescript": "npm:@typescript/typescript6@6.0.2"
