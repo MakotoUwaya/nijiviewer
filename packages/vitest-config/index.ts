@@ -1,4 +1,5 @@
 import { resolve } from 'node:path';
+import { chromaticPlugin } from '@chromatic-com/vitest/plugin';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
 import react from '@vitejs/plugin-react';
@@ -18,6 +19,8 @@ interface AppVitestConfigOptions {
   coverageInclude: string[];
   /** カバレッジしきい値。アプリごとに退行検知の基準を設定する（省略時は thresholds なし）。 */
   coverageThresholds?: CoverageThresholds;
+  /** Chromatic Visual Testing プラグインを有効化するかどうか（デフォルト: false）。 */
+  chromatic?: boolean;
 }
 
 const COVERAGE_EXCLUDE = [
@@ -28,6 +31,7 @@ const COVERAGE_EXCLUDE = [
   '**/test/**',
   '**/.next/**',
   '**/coverage/**',
+  '**/.vitest/**',
   '**/*.config.{ts,mts,js,mjs,cjs}',
 ];
 
@@ -35,6 +39,7 @@ export function defineAppVitestConfig({
   appDir,
   coverageInclude,
   coverageThresholds,
+  chromatic = false,
 }: AppVitestConfigOptions): UserConfig {
   const alias = { '@': appDir };
 
@@ -61,6 +66,7 @@ export function defineAppVitestConfig({
         {
           plugins: [
             storybookTest({ configDir: resolve(appDir, '.storybook') }),
+            ...(chromatic ? [chromaticPlugin()] : []),
           ],
           resolve: { alias },
           test: {

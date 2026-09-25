@@ -14,12 +14,14 @@
     "@storybook/addon-vitest": "10.6.0",
     "@vitejs/plugin-react": "6.1.1",
     "@vitest/browser-playwright": "5.0.0",
-    "vitest": "5.0.0"
+    "vitest": "5.0.0",
+    "@chromatic-com/vitest": "^1.0.1"
   },
   "devDependencies": {
+    "@chromatic-com/vitest": "^1.0.1",
     "@types/node": "24.13.4",
-    "tsconfig": "workspace:*",
     "@typescript/native": "npm:typescript@7.0.2",
+    "tsconfig": "workspace:*",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   }
 }
