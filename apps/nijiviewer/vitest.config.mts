@@ -17,5 +17,6 @@ export default defineConfig(
       functions: 58,
       branches: 48,
     },
+    chromatic: true,
   }),
 );
