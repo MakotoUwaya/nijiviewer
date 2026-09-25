@@ -1,10 +1,6 @@
 @./AGENTS.md
 
-## Gemini CLI 日本語入力の既知の問題
-
-- VSCode の統合ターミナルで Gemini CLI を使用すると、IME の未変換文字列がある状態で入力欄がスライドしていく不具合がある
-- 原因: Gemini CLI が依存する ink ライブラリが IME の composition イベントを適切に処理できず、VSCode のターミナルレンダラーとの相性で発生する
-- **Windows Terminal では問題なく日本語入力が可能**
-- 回避策:
-  - Gemini CLI は Windows Terminal で使用する
-  - VSCode 内で使う場合はコピー&ペーストで日本語を入力する
+### Gemini CLI (ink) の VSCode 日本語入力不具合
+- **事実**: VSCode 統合ターミナルで Gemini CLI を利用すると、IME 入力中に未変換文字列がスライド・乱れる現象が発生する（Windows Terminal では正常）。
+- **理由**: ink ライブラリが IME composition イベントを正しく処理できず、VSCode ターミナルレンダラーと競合するため。
+- **適用**: 対話入力は Windows Terminal を利用するか、VSCode 内ではクリップボード経由でペースト入力すること。
