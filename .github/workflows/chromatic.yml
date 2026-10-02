@@ -47,6 +47,7 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: apps/nijiviewer
+          storybookBaseDir: apps/nijiviewer
           vitest: true
           exitOnceUploaded: true
         env:
