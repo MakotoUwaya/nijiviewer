@@ -66,7 +66,7 @@ export function defineAppVitestConfig({
         {
           plugins: [
             storybookTest({ configDir: resolve(appDir, '.storybook') }),
-            ...(chromatic ? [chromaticPlugin()] : []),
+            ...(chromatic ? [chromaticPlugin({ turboSnap: true })] : []),
           ],
           resolve: { alias },
           test: {

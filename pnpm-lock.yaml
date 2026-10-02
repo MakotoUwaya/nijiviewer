@@ -341,7 +341,7 @@ importers:
         specifier: 5.4.0
         version: 5.4.0(@chromatic-com/vitest@1.0.1(@types/react@19.3.0)(react@19.3.0)(vitest@5.0.0))(storybook@10.6.0(@types/react@19.3.0)(react@19.3.0))
       '@chromatic-com/vitest':
-        specifier: ^1.0.1
+        specifier: 1.0.1
         version: 1.0.1(@types/react@19.3.0)(react@19.3.0)(vitest@5.0.0)
       '@heroui/theme':
         specifier: 2.4.26
@@ -401,7 +401,7 @@ importers:
         specifier: 5.0.0
         version: 5.0.0(@vitest/browser@5.0.0)(vitest@5.0.0)
       chromatic:
-        specifier: ^18.9.5
+        specifier: 18.9.5
         version: 18.9.5(@chromatic-com/vitest@1.0.1(@types/react@19.3.0)(react@19.3.0)(vitest@5.0.0))
       cross-env:
         specifier: 10.1.0
@@ -722,7 +722,7 @@ importers:
         version: 5.0.0(@types/node@24.13.4)(@vitest/browser-playwright@5.0.0)(@vitest/coverage-v8@5.0.0)(@vitest/ui@5.0.0)(jsdom@29.0.2)(msw@2.15.0(@types/node@24.13.4)(@typescript/typescript6@6.0.2))(vite@8.3.0(@types/node@24.13.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.46.0)(tsx@4.23.13)(yaml@2.9.0))
     devDependencies:
       '@chromatic-com/vitest':
-        specifier: ^1.0.1
+        specifier: 1.0.1
         version: 1.0.1(@types/react@19.3.0)(react@19.3.0)(vitest@5.0.0)
       '@types/node':
         specifier: 24.13.4
