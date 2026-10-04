@@ -33,7 +33,7 @@ describe('getLiverExternalLinks', () => {
 });
 
 describe('getInuiFansMusicUrl', () => {
-  it('returns music link for Inui Toko', () => {
+  it('returns music link with channel ID for any valid channel', () => {
     const url = getInuiFansMusicUrl(
       mockChannel({
         id: 'UCXRlIK3Cw_TJIQC5kSJJQMg',
@@ -41,14 +41,14 @@ describe('getInuiFansMusicUrl', () => {
     );
 
     expect(url).toBe(
-      `https://inui-fansite.mukwty.com/singing-streams?singer=${encodeURIComponent('戌亥とこ')}`,
+      `https://inui-fansite.mukwty.com/singing-streams?channel=${encodeURIComponent('UCXRlIK3Cw_TJIQC5kSJJQMg')}`,
     );
   });
 
-  it('returns null for unmapped channel', () => {
+  it('returns null when channel has no ID', () => {
     const url = getInuiFansMusicUrl(
       mockChannel({
-        id: 'unknown-channel',
+        id: '',
       }),
     );
 
