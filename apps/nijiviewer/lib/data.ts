@@ -138,6 +138,45 @@ export const fetchChannels = async (
   return results.filter((channel): channel is Channel => channel !== undefined);
 };
 
+/**
+ * 指定組織（org）のチャンネル一覧を一括取得する（1+N問題回避用）
+ */
+export const fetchChannelsByOrg = async (
+  org: string,
+  options: { limit?: number; offset?: number; type?: string } = {},
+): Promise<Channel[]> => {
+  const { limit = 100, offset = 0, type = 'vtuber' } = options;
+  const params = new URLSearchParams({
+    limit: limit.toString(),
+    offset: offset.toString(),
+    type,
+    org,
+    sort: 'suborg',
+    order: 'asc',
+  });
+
+  const response = await fromPromise(
+    fetch(`${baseUrl}/channels?${params.toString()}`, {
+      headers: {
+        'x-apikey': process.env.HOLODEX_APIKEY || '',
+      },
+      next: { revalidate: 3600 },
+    }),
+    (e: Error) => e,
+  );
+
+  if (response.isErr()) {
+    return [];
+  }
+
+  const channels = await fromPromise<Channel[], Error>(
+    response.value.json(),
+    (e: Error) => e,
+  );
+
+  return channels.isOk() && Array.isArray(channels.value) ? channels.value : [];
+};
+
 export const fetchUserLiveVideos = async (
   channelIds: string[],
 ): Promise<Video[]> => {
