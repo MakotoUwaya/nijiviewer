@@ -5,7 +5,11 @@ import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
 import type { PlaceholderVideo } from '@/lib/holodex';
-import { formatVideoDuration, getVideoStatusText } from '@/lib/holodex';
+import {
+  formatVideoDuration,
+  getChannelGroup,
+  getVideoStatusText,
+} from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 
 const getDomain = (url: string): string => {
@@ -15,8 +19,9 @@ const getDomain = (url: string): string => {
 export default function VideoCardPlaceholder(
   video: PlaceholderVideo & { started: boolean },
 ): JSX.Element {
+  const channelGroup = getChannelGroup(video.channel);
   const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
+    channelGroup ? ` / ${channelGroup}` : ''
   }`;
   const videoStatusText = video.started
     ? `Live - ${getDomain(video.link)} Started streaming ${

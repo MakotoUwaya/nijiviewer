@@ -104,6 +104,7 @@ export interface Channel {
   name: string;
   org?: string;
   suborg?: string;
+  group?: string;
   type: string;
   photo: string;
   english_name?: string;
@@ -145,6 +146,26 @@ export function formatVideoDuration(durationInSeconds: number): string {
 
   // 1時間未満の場合: MM:SS
   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+/**
+ * ライバーの所属グループ・ユニット名を取得する
+ * group プロパティ（例: "Sanbaka"）を優先し、
+ * なければ suborg の先頭2文字カットをフォールバックとして使用する
+ */
+export function getChannelGroup(
+  channel?: { group?: string | null; suborg?: string | null } | null,
+): string {
+  if (!channel) return '';
+  const trimmedGroup = channel.group?.trim();
+  if (trimmedGroup) {
+    return trimmedGroup;
+  }
+  const trimmedSuborg = channel.suborg?.trim();
+  if (trimmedSuborg && trimmedSuborg.length > 2) {
+    return trimmedSuborg.substring(2);
+  }
+  return trimmedSuborg || '';
 }
 
 const apiVersion = 'v2';

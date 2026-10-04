@@ -1,6 +1,11 @@
 import { DateTime } from 'luxon';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { formatVideoDuration, getStarted, getVideoStatusText } from './holodex';
+import {
+  formatVideoDuration,
+  getChannelGroup,
+  getStarted,
+  getVideoStatusText,
+} from './holodex';
 
 describe('holodex utils', () => {
   describe('getStarted', () => {
@@ -127,6 +132,32 @@ describe('holodex utils', () => {
 
     it('should handle 0 seconds', () => {
       expect(formatVideoDuration(0)).toBe('00:00');
+    });
+  });
+
+  describe('getChannelGroup', () => {
+    it('returns group when group property is present', () => {
+      expect(
+        getChannelGroup({
+          group: 'Sanbaka',
+          suborg: '0iSanbaka',
+        }),
+      ).toBe('Sanbaka');
+    });
+
+    it('falls back to suborg with first 2 characters removed when group is missing', () => {
+      expect(
+        getChannelGroup({
+          group: null,
+          suborg: '0301期生',
+        }),
+      ).toBe('01期生');
+    });
+
+    it('handles empty or missing values gracefully', () => {
+      expect(getChannelGroup(null)).toBe('');
+      expect(getChannelGroup({})).toBe('');
+      expect(getChannelGroup({ group: '  ' })).toBe('');
     });
   });
 });

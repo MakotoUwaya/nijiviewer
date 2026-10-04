@@ -8,7 +8,7 @@ import {
 import { Card, CardBody, Image, Link } from '@heroui/react';
 import { useId } from 'react';
 import { FavoriteButton } from '@/components/favorite-button';
-import type { Channel } from '@/lib/holodex';
+import { getChannelGroup, type Channel } from '@/lib/holodex';
 
 export function getElapsedTime(dateString: string): string {
   const date = new Date(dateString);
@@ -107,7 +107,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
               <div className="flex flex-col md:flex-row md:gap-6 mt-1">
                 <div>
                   {channel.org || 'Independent'}{' '}
-                  {channel.suborg ? `/ ${channel.suborg.substring(2)}` : ''}
+                  {getChannelGroup(channel) ? `/ ${getChannelGroup(channel)}` : ''}
                 </div>
                 <div className="flex items-center gap-1">
                   <CalendarIcon className="w-4 h-4" />

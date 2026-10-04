@@ -14,6 +14,7 @@ import type { ReactNode } from 'react';
 import { FavoriteButton } from '@/components/favorite-button';
 import { getElapsedTime } from '@/components/search-result';
 import type { Channel } from '@/lib/holodex';
+import { getChannelGroup } from '@/lib/holodex';
 import { getInuiFansMusicUrl, getLiverExternalLinks } from '@/lib/liver-links';
 
 interface LiverProfileProps {
@@ -84,9 +85,9 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                   <Chip size="sm" variant="flat">
                     {channel.org || 'Independent'}
                   </Chip>
-                  {channel.suborg && (
+                  {getChannelGroup(channel) && (
                     <Chip size="sm" variant="flat">
-                      {channel.suborg.substring(2)}
+                      {getChannelGroup(channel)}
                     </Chip>
                   )}
                 </div>

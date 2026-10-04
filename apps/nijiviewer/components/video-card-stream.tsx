@@ -19,6 +19,7 @@ import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
 import {
   formatVideoDuration,
+  getChannelGroup,
   getStarted,
   getVideoStatusText,
 } from '@/lib/holodex';
@@ -35,8 +36,9 @@ export default function VideoCardStream(
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
 
+  const channelGroup = getChannelGroup(video.channel);
   const channelDescription = `${video.channel.org}${
-    video.channel.suborg ? ` / ${video.channel.suborg.substring(2)}` : ''
+    channelGroup ? ` / ${channelGroup}` : ''
   }`;
   const canShowViewer = video.topic_id !== 'membersonly';
   const viewersCount = canShowViewer
