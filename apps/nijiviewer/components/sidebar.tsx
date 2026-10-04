@@ -1,5 +1,6 @@
 'use client';
 
+import { UserGroupIcon } from '@heroicons/react/24/outline';
 import { Button, Divider } from '@heroui/react';
 import clsx from 'clsx';
 import NextLink from 'next/link';
@@ -106,7 +107,7 @@ export function Sidebar({
         <h3 className="text-sm font-semibold text-default-600 mb-3">
           Organization
         </h3>
-        <div className="w-full min-w-0">
+        <div className="w-full min-w-0 space-y-2">
           <ClientOnly
             fallback={
               <div className="h-10 w-full bg-default-100 rounded-medium animate-pulse" />
@@ -119,6 +120,26 @@ export function Sidebar({
               className="w-full"
             />
           </ClientOnly>
+          <Button
+            as={leafSegmentName ? NextLink : 'button'}
+            href={
+              leafSegmentName
+                ? `/channels/${encodeURIComponent(leafSegmentName)}`
+                : undefined
+            }
+            isDisabled={!leafSegmentName}
+            variant="flat"
+            color={pathName.startsWith('/channels') ? 'primary' : 'default'}
+            className={clsx(
+              'w-full justify-start font-medium text-sm',
+              pathName.startsWith('/channels') &&
+                'bg-primary/10 text-primary font-semibold',
+            )}
+            onClick={handleLinkClick}
+            startContent={<UserGroupIcon className="w-4 h-4 flex-shrink-0" />}
+          >
+            Channel List
+          </Button>
         </div>
       </div>
       <Divider className="mb-6" /> {/* ナビゲーションメニュー */}

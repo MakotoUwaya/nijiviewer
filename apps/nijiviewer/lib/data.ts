@@ -177,6 +177,37 @@ export const fetchChannelsByOrg = async (
   return channels.isOk() && Array.isArray(channels.value) ? channels.value : [];
 };
 
+/**
+ * 指定組織（org）の全チャンネル一覧を取得する（ページネーションを全件巡回）
+ */
+export const fetchAllChannelsByOrg = async (
+  org: string,
+  type = 'vtuber',
+): Promise<Channel[]> => {
+  const limit = 100;
+  let offset = 0;
+  const allChannels: Channel[] = [];
+  const maxPages = 20;
+
+  for (let page = 0; page < maxPages; page++) {
+    const channels = await fetchChannelsByOrg(org, {
+      limit,
+      offset,
+      type,
+    });
+    if (channels.length === 0) {
+      break;
+    }
+    allChannels.push(...channels);
+    if (channels.length < limit) {
+      break;
+    }
+    offset += limit;
+  }
+
+  return allChannels;
+};
+
 export const fetchUserLiveVideos = async (
   channelIds: string[],
 ): Promise<Video[]> => {

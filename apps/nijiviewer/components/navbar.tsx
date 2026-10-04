@@ -36,7 +36,7 @@ export function Navbar(): JSX.Element {
   useEffect(() => {
     const getSelectedOrgId = async (path: string) => {
       const parts = path.split('/');
-      if (parts[1] === 'live-videos') {
+      if (parts[1] === 'live-videos' || parts[1] === 'channels') {
         setSelectedOrgId(decodeURIComponent(parts[2]?.trim() || ''));
       } else if (parts[1] === 'liver') {
         const channelId = decodeURIComponent(parts[2]?.trim() || '');
@@ -55,7 +55,11 @@ export function Navbar(): JSX.Element {
   }, [pathName]);
 
   const onChangeOrganization = (organization: Organization) => {
-    router.push(`/live-videos/${organization.id}`);
+    if (pathName.startsWith('/channels')) {
+      router.push(`/channels/${encodeURIComponent(organization.id)}`);
+    } else {
+      router.push(`/live-videos/${encodeURIComponent(organization.id)}`);
+    }
   };
 
   const handleSignOut = async () => {

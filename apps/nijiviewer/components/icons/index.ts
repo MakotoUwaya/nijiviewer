@@ -8,3 +8,4 @@ export { NextUILogo } from './next-ui';
 export { SearchIcon } from './search';
 export { SunFilledIcon } from './sun-filled';
 export { TwitterIcon } from './twitter';
+export { YoutubeIcon } from './youtube';

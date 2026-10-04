@@ -13,8 +13,10 @@ import {
 } from '@/test/msw/factories';
 import { server } from '@/test/msw/server';
 import {
+  fetchAllChannelsByOrg,
   fetchChannelInfo,
   fetchChannels,
+  fetchChannelsByOrg,
   fetchLiveVideos,
   fetchUserLiveVideos,
   searchChannels,
@@ -237,6 +239,65 @@ describe('lib/data', () => {
         ),
       );
       expect(await fetchUserLiveVideos(['A'])).toEqual([]);
+    });
+  });
+
+  describe('fetchChannelsByOrg', () => {
+    it('returns channels for the given organization', async () => {
+      const channel = mockChannel({ id: 'org-channel', org: 'Nijisanji' });
+      server.use(
+        http.get('https://holodex.net/api/v2/channels', ({ request }) => {
+          const url = new URL(request.url);
+          expect(url.searchParams.get('org')).toBe('Nijisanji');
+          expect(url.searchParams.get('sort')).toBe('suborg');
+          return HttpResponse.json([channel]);
+        }),
+      );
+
+      const result = await fetchChannelsByOrg('Nijisanji');
+      expect(result).toEqual([channel]);
+    });
+
+    it('returns empty array on error', async () => {
+      server.use(
+        http.get('https://holodex.net/api/v2/channels', () =>
+          HttpResponse.error(),
+        ),
+      );
+
+      const result = await fetchChannelsByOrg('Nijisanji');
+      expect(result).toEqual([]);
+    });
+  });
+
+  describe('fetchAllChannelsByOrg', () => {
+    it('paginates and aggregates all channels', async () => {
+      const channel2 = mockChannel({ id: 'c2', org: 'Nijisanji' });
+
+      // Return 100 items on page 1, 1 item on page 2
+      const page1 = Array.from({ length: 100 }, (_, i) =>
+        mockChannel({ id: `c-p1-${i}`, org: 'Nijisanji' }),
+      );
+      const page2 = [channel2];
+
+      server.use(
+        http.get('https://holodex.net/api/v2/channels', ({ request }) => {
+          const url = new URL(request.url);
+          const offset = url.searchParams.get('offset');
+          if (offset === '0') {
+            return HttpResponse.json(page1);
+          }
+          if (offset === '100') {
+            return HttpResponse.json(page2);
+          }
+          return HttpResponse.json([]);
+        }),
+      );
+
+      const result = await fetchAllChannelsByOrg('Nijisanji');
+      expect(result.length).toBe(101);
+      expect(result[0].id).toBe('c-p1-0');
+      expect(result[100].id).toBe('c2');
     });
   });
 });
