@@ -5,6 +5,7 @@ import {
   CalendarIcon,
   ChevronDownIcon,
   LinkIcon,
+  MusicalNoteIcon,
   ShoppingBagIcon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
@@ -13,7 +14,7 @@ import type { ReactNode } from 'react';
 import { FavoriteButton } from '@/components/favorite-button';
 import { getElapsedTime } from '@/components/search-result';
 import type { Channel } from '@/lib/holodex';
-import { getLiverExternalLinks } from '@/lib/liver-links';
+import { getInuiFansMusicUrl, getLiverExternalLinks } from '@/lib/liver-links';
 
 interface LiverProfileProps {
   channel: Channel;
@@ -60,6 +61,7 @@ function renderLinkedText(text: string): ReactNode[] {
 
 export default function LiverProfile({ channel }: LiverProfileProps) {
   const externalLinks = getLiverExternalLinks(channel);
+  const musicUrl = getInuiFansMusicUrl(channel);
 
   return (
     <Card className="border border-default-100 shadow-sm">
@@ -159,6 +161,18 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                   isExternal
                 >
                   @{channel.twitter}
+                  <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
+                </Link>
+              )}
+
+              {musicUrl && (
+                <Link
+                  className="inline-flex items-center gap-1 rounded-md bg-secondary-50 px-3 py-2 text-sm text-secondary"
+                  href={musicUrl}
+                  isExternal
+                >
+                  <MusicalNoteIcon className="h-4 w-4" />
+                  Music
                   <ArrowTopRightOnSquareIcon className="h-3.5 w-3.5" />
                 </Link>
               )}
