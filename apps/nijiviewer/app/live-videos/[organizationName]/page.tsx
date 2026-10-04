@@ -19,10 +19,11 @@ export default async function LiveVideosPage({
   params,
 }: Props): Promise<JSX.Element> {
   const { organizationName } = await params;
-  if (!isValidOrganizationName(organizationName)) {
+  const decodedOrg = decodeURIComponent(organizationName);
+  if (!isValidOrganizationName(decodedOrg)) {
     return <>Request Error</>;
   }
-  const videos = await fetchLiveVideos(organizationName);
+  const videos = await fetchLiveVideos(decodedOrg);
   return (
     <div className="w-full">
       <Videos videos={videos} />

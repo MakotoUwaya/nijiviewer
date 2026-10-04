@@ -32,6 +32,11 @@ const organizations = {
     name: 'ぶいありうむ',
     channelId: 'UCAytwphRHoPcvLr_qRvn3Zw',
   },
+  'Uniraid!': {
+    id: 'Uniraid!',
+    name: 'ゆにれいど',
+    channelId: 'UCKofJjNEmQ3LwERp3pRVxtw',
+  },
 } as const satisfies Record<string, Organization>;
 export type OrganizationId = keyof typeof organizations;
 
