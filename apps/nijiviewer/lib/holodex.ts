@@ -158,14 +158,21 @@ export function getChannelGroup(
 ): string {
   if (!channel) return '';
   const trimmedGroup = channel.group?.trim();
-  if (trimmedGroup) {
+  if (trimmedGroup && trimmedGroup.toUpperCase() !== 'ZZ') {
     return trimmedGroup;
   }
   const trimmedSuborg = channel.suborg?.trim();
   if (trimmedSuborg && trimmedSuborg.length > 2) {
-    return trimmedSuborg.substring(2);
+    const formatted = trimmedSuborg.substring(2);
+    if (formatted.toUpperCase() !== 'ZZ') {
+      return formatted;
+    }
+    return '';
   }
-  return trimmedSuborg || '';
+  if (trimmedSuborg && trimmedSuborg.toUpperCase() !== 'ZZ') {
+    return trimmedSuborg;
+  }
+  return '';
 }
 
 const apiVersion = 'v2';

@@ -158,6 +158,9 @@ describe('holodex utils', () => {
       expect(getChannelGroup(null)).toBe('');
       expect(getChannelGroup({})).toBe('');
       expect(getChannelGroup({ group: '  ' })).toBe('');
+      expect(getChannelGroup({ group: 'ZZ' })).toBe('');
+      expect(getChannelGroup({ suborg: 'ZZ' })).toBe('');
+      expect(getChannelGroup({ suborg: '0iZZ' })).toBe('');
     });
   });
 });
