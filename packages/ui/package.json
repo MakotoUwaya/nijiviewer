@@ -10,7 +10,7 @@
     "format": "biome format ./ --write"
   },
   "devDependencies": {
-    "@types/node": "24.13.4",
+    "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@typescript/native": "npm:typescript@7.0.2",
