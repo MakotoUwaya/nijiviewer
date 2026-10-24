@@ -42,7 +42,7 @@ export function setupYouTubeApi(
   overrides: Partial<YouTubePlayerMock> = {},
 ): YouTubeApiMock {
   const player = createYouTubePlayerMock(overrides);
-  const Player = vi.fn(function PlayerCtor(
+  const Player = vi.fn(function playerCtor(
     _el: unknown,
     options?: {
       events?: { onReady?: (e: { target: YouTubePlayer }) => void };
