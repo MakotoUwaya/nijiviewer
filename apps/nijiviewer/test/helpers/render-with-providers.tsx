@@ -52,6 +52,7 @@ const defaultPreferences: PreferencesValue = {
 };
 
 export function buildWrapper(options: ProviderOptions = {}) {
+  // biome-ignore lint/correctness/noComponentHookFactories: helper to create custom wrapper for test rendering
   return function Wrapper({ children }: { children: ReactNode }) {
     let tree: ReactNode = children;
 
