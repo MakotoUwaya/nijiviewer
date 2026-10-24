@@ -77,6 +77,11 @@ export function defineAppVitestConfig({
               headless: true,
               instances: [{ browser: 'chromium' }],
             },
+            api: {
+              port: 51300,
+              strictPort: false,
+              host: '127.0.0.1',
+            },
           },
         },
       ],
