@@ -20,7 +20,7 @@
     "test:e2e:codegen": "playwright codegen http://localhost:3000"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.13",
+    "@biomejs/biome": "2.6.3",
     "@playwright/test": "1.63.0",
     "cspell": "10.3.0",
     "dotenv": "17.4.2",
