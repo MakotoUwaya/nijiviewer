@@ -99,4 +99,4 @@ HOLODEX_APIKEY=
 ```
 ※ Supabase 変数はビルド時にも必要（未設定時はエラー、CI ではダミー値ガード）。
 
-- Node.js (LTS) & pnpm (12.4.1) は `.mise.toml` で管理（`mise install`）。
+- Node.js (LTS) & pnpm (12.15.0) は `.mise.toml` で管理（`mise install`）。
