@@ -1,11 +1,11 @@
-## Getting Started
+# OiChan Docs
 
-First, run the development server:
+Powered by [Fumadocs](https://fumadocs.dev).
+
+## Development
 
 ```bash
-npm run dev
+pnpm dev      # 開発サーバー起動
+pnpm build    # プロダクションビルド
+pnpm lint     # リンター実行
 ```
-
-## Learn More
-
-This is a template for creating documentation with [Nextra](https://nextra.site).

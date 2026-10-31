@@ -5,7 +5,7 @@
     "voice": "pnpm --filter @oichan/voice-generator",
     "board": "pnpm --filter @oichan/sync-board",
     "board:server": "pnpm --filter @oichan/sync-board-server",
-    "doc": "pnpm --filter nextra-docs",
+    "doc": "pnpm --filter docs",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

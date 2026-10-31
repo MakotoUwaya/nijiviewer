@@ -1,0 +1,13 @@
+{
+  "title": "NijiViewer",
+  "pages": [
+    "index",
+    "home",
+    "live-videos",
+    "liver",
+    "liver-search",
+    "favorites",
+    "settings",
+    "passkeys"
+  ]
+}

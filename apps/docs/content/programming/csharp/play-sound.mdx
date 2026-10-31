@@ -17,7 +17,7 @@ title: "サウンドを鳴らす"
 ### System.Media.SoundPlayer
 Waveファイルを再生するだけであれば、デフォルトで組み込まれている`System.Media.SoundPlayer`を使用するのが一番簡単です。
 
-```csharp:StopWatch.xaml.cs
+```csharp title="StopWatch.xaml.cs"
 // showBalloon() の前に追加
 StopSound();
 PlaySound();
@@ -62,14 +62,14 @@ Small BasicのSoundクラスではmp3を再生することができる事に加�
 
 ![002.png](https://qiita-image-store.s3.amazonaws.com/0/90051/7a2326cc-4d7e-0cbe-8be6-0e6cf63ba38d.png)
 
-```csharp:StopWatch.xaml.cs
+```csharp title="StopWatch.xaml.cs"
 // showBalloon() の前に追加
 Microsoft.SmallBasic.Library.Sound.PlayChimes(); 
 ```
 
 指定の音声ファイルを再生する場合は以下のようにします。
 
-```csharp:StopWatch.xaml.cs
+```csharp title="StopWatch.xaml.cs"
 // TimerStart()のメソッド内に追加
 StopSound();
 
@@ -107,7 +107,7 @@ DLLをダウンロードしてプロジェクトから参照するまでの手�
 
 WaveStreamを生成する処理では、サンプルプログラムのMeteringStreamクラスをそのまま利用していますのでご注意下さい。
 
-```csharp:StopWatch.xaml.cs
+```csharp title="StopWatch.xaml.cs"
 // TimerStart()のメソッド内に追加
 StopSound();
  

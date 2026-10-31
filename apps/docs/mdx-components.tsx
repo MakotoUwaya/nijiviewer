@@ -1,10 +1,17 @@
-import { useMDXComponents as getThemeComponents } from 'nextra-theme-docs';
+import type { MDXComponents } from 'mdx/types';
+import defaultMdxComponents from 'fumadocs-ui/mdx';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Tab, Tabs as FumadocsTabs } from 'fumadocs-ui/components/tabs';
 
-const themeComponents = getThemeComponents();
+// Nextra の <Tabs.Tab> 構文との互換性を維持
+const Tabs = Object.assign(FumadocsTabs, { Tab });
 
-export const useMDXComponents = (components) => {
+export function useMDXComponents(components?: MDXComponents): MDXComponents {
   return {
-    ...themeComponents,
+    ...defaultMdxComponents,
+    Callout,
+    Tabs,
+    Tab,
     ...components,
   };
-};
+}
