@@ -1,6 +1,10 @@
 import type { MDXComponents } from 'mdx/types';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { Callout } from 'fumadocs-ui/components/callout';
+import {
+  ImageZoom,
+  type ImageZoomProps,
+} from 'fumadocs-ui/components/image-zoom';
 import { Tab, Tabs as FumadocsTabs } from 'fumadocs-ui/components/tabs';
 
 // Nextra の <Tabs.Tab> 構文との互換性を維持
@@ -12,6 +16,14 @@ export function useMDXComponents(components?: MDXComponents): MDXComponents {
     Callout,
     Tabs,
     Tab,
+    img: (props) => (
+      <ImageZoom
+        {...(props as ImageZoomProps)}
+        unoptimized={
+          typeof props.src === 'string' && /^https?:\/\//.test(props.src)
+        }
+      />
+    ),
     ...components,
   };
 }
