@@ -1,8 +1,10 @@
 'use client';
 
-import { Button } from 'nextra/components';
 import type { FC, ReactNode } from 'react';
 import { useState } from 'react';
+
+const buttonClass =
+  'inline-flex items-center justify-center rounded-md border border-neutral-300 bg-white px-3 py-1.5 font-medium text-neutral-700 shadow-sm hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 transition-colors';
 
 export const SampleCounter: FC<{ children: ReactNode }> = ({ children }) => {
   const [count, setCount] = useState(0);
@@ -13,9 +15,9 @@ export const SampleCounter: FC<{ children: ReactNode }> = ({ children }) => {
     <>
       <div className="mt-6">{children}</div>
       <div className="mt-3 flex justify-center gap-3 text-sm">
-        <Button onClick={handleClick} variant="outline">
+        <button type="button" onClick={handleClick} className={buttonClass}>
           Clicked {count} times
-        </Button>
+        </button>
       </div>
     </>
   );

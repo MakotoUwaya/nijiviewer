@@ -1,13 +1,12 @@
 {
-  "name": "nextra-docs",
+  "name": "docs",
   "version": "0.0.1",
-  "description": "OiChan Docs, Powered by Nextra",
+  "description": "OiChan Docs, Powered by Fumadocs",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev --port 3001 --turbopack",
     "build": "next build",
-    "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind",
     "start": "next start",
     "lint": "biome lint ./ --files-ignore-unknown=true",
     "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
@@ -15,22 +14,24 @@
   },
   "dependencies": {
     "@microsoft/clarity": "1.0.2",
-    "@next/third-parties": "16.3.5",
+    "@next/third-parties": "16.4.3",
     "@tailwindcss/postcss": "4.3.3",
-    "next": "16.3.5",
-    "nextra": "4.6.1",
-    "nextra-theme-docs": "4.6.1",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
+    "fumadocs-core": "16.17.9",
+    "fumadocs-mdx": "15.4.10",
+    "fumadocs-ui": "16.17.9",
+    "lucide-react": "1.61.0",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
     "tailwindcss": "4.3.3",
     "ui": "*"
   },
   "devDependencies": {
+    "@types/mdx": "2.0.13",
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@typescript/native": "npm:typescript@7.0.2",
-    "pagefind": "1.5.2",
     "tsconfig": "workspace:*",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   }

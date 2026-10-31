@@ -1,27 +1,10 @@
-import nextra from 'nextra';
-import { fileURLToPath } from 'node:url';
-import path from 'node:path';
+import { createMDX } from 'fumadocs-mdx/next';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
-const workspaceRoot = path.resolve(__dirname, '../..');
+const withMDX = createMDX();
 
-const withNextra = nextra({
-  latex: true,
-  search: {
-    codeblocks: false,
-  },
-  contentDirBasePath: '/',
-  defaultShowCopyCode: true,
-});
-
-export default withNextra({
+/** @type {import('next').NextConfig} */
+const config = {
   reactStrictMode: true,
-  turbopack: {
-    root: workspaceRoot,
-    resolveAlias: {
-      'next-mdx-import-source-file': './mdx-components.tsx',
-    },
-  },
   async headers() {
     // Content Security Policy
     const cspHeader = [
@@ -85,4 +68,6 @@ export default withNextra({
       },
     ];
   },
-});
+};
+
+export default withMDX(config);

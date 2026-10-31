@@ -34,5 +34,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-# pagefind
+# fumadocs
+.source/
 _pagefind/
+public/_pagefind/
