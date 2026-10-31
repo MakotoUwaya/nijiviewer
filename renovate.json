@@ -58,6 +58,17 @@
       "matchPackageNames": [
         "pnpm"
       ]
+    },
+    {
+      "description": "Vercel での Pagefind ビルド失敗を回避するため apps/docs の Next.js を固定",
+      "matchPaths": [
+        "apps/docs/**"
+      ],
+      "matchPackageNames": [
+        "next",
+        "@next/third-parties"
+      ],
+      "enabled": false
     }
   ],
   "patch": {
