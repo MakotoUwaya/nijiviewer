@@ -29,9 +29,7 @@ jobs:
           node-version: "24.22.1"
           cache: "pnpm"
       - name: Install dependencies
-        run: |
-          pnpm install --ignore-scripts
-          cd apps/nijiviewer && pnpm exec msw init public/
+        run: pnpm install --ignore-scripts
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
@@ -50,6 +48,7 @@ jobs:
           storybookBaseDir: apps/nijiviewer
           vitest: true
           exitOnceUploaded: true
+          zip: true
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}

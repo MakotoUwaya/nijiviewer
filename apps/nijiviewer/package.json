@@ -78,5 +78,10 @@
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vitest": "5.0.5",
     "vitest-config": "workspace:*"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
