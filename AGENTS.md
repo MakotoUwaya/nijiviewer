@@ -100,3 +100,10 @@ HOLODEX_APIKEY=
 ※ Supabase 変数はビルド時にも必要（未設定時はエラー、CI ではダミー値ガード）。
 
 - Node.js (LTS) & pnpm (12.15.0) は `.mise.toml` で管理（`mise install`）。
+
+---
+
+## Chromatic
+
+This repository is tested by Chromatic. After pushing UI changes, check the Chromatic build for that commit, and before saying a branch can merge, check it is ready in Chromatic.
+If the Chromatic tools are missing, tell the person to sign in to the Chromatic MCP.
