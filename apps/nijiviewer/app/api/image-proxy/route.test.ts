@@ -1,7 +1,9 @@
 import { http, HttpResponse } from 'msw';
 import { NextRequest } from 'next/server';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { server } from '@/test/msw/server';
+
 import { GET } from './route';
 
 const buildRequest = (params?: Record<string, string>): NextRequest => {
@@ -111,11 +113,7 @@ describe('GET /api/image-proxy', () => {
 
   it.each([
     ['hdslb.com', 'https://i0.hdslb.com/cat.png', 'https://www.bilibili.com/'],
-    [
-      'bilibili.com',
-      'https://www.bilibili.com/cat.png',
-      'https://www.bilibili.com/',
-    ],
+    ['bilibili.com', 'https://www.bilibili.com/cat.png', 'https://www.bilibili.com/'],
     ['unrelated host', 'https://example.com/cat.png', null],
   ])(
     'sets Bilibili Referer only for Bilibili-family hostnames (%s)',
@@ -130,11 +128,7 @@ describe('GET /api/image-proxy', () => {
 
   it('returns the upstream status when fetch responds with a non-OK status', async () => {
     const upstreamUrl = 'https://example.com/missing.png';
-    server.use(
-      http.get(upstreamUrl, () =>
-        HttpResponse.text('not found', { status: 404 }),
-      ),
-    );
+    server.use(http.get(upstreamUrl, () => HttpResponse.text('not found', { status: 404 })));
 
     const res = await GET(buildRequest({ url: upstreamUrl }));
     expect(res.status).toBe(404);

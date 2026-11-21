@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { mockPlaceholderVideo, mockStreamVideo } from '@/test/fixtures/holodex';
 
 import type { Video } from '@/lib/holodex';
+import { mockPlaceholderVideo, mockStreamVideo } from '@/test/fixtures/holodex';
 
 const { fetchLiveVideosMock, homeContentMock } = vi.hoisted(() => ({
   fetchLiveVideosMock: vi.fn(),
@@ -47,13 +47,7 @@ describe('Home page (app/page.tsx)', () => {
     });
     const upcoming = mockPlaceholderVideo({ id: 'u1' });
 
-    fetchLiveVideosMock.mockResolvedValue([
-      upcoming,
-      live1,
-      live2,
-      live3,
-      live4,
-    ]);
+    fetchLiveVideosMock.mockResolvedValue([upcoming, live1, live2, live3, live4]);
 
     const tree = await Home();
     const { render } = await import('@testing-library/react');

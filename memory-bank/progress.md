@@ -11,7 +11,7 @@
 
 2. 開発環境
 
-   - ✅ Biome 設定
+   - ✅ Oxlint / Oxfmt 設定
    - ✅ Vitest 設定
    - ✅ Storybook 設定
    - ✅ CI/CD 設定

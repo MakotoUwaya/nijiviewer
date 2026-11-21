@@ -1,10 +1,7 @@
 import { http, HttpResponse } from 'msw';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import {
-  mockAutocompleteChannel,
-  mockChannel,
-  mockStreamVideo,
-} from '@/test/fixtures/holodex';
+
+import { mockAutocompleteChannel, mockChannel, mockStreamVideo } from '@/test/fixtures/holodex';
 import {
   HOLODEX_AUTOCOMPLETE,
   HOLODEX_LIVE,
@@ -12,6 +9,7 @@ import {
   holodexChannelUrl,
 } from '@/test/msw/factories';
 import { server } from '@/test/msw/server';
+
 import {
   fetchAllChannelsByOrg,
   fetchChannelInfo,
@@ -55,11 +53,7 @@ describe('lib/data', () => {
     });
 
     it('returns empty array on invalid JSON response', async () => {
-      server.use(
-        http.get(HOLODEX_LIVE, () =>
-          HttpResponse.text('not-json', { status: 200 }),
-        ),
-      );
+      server.use(http.get(HOLODEX_LIVE, () => HttpResponse.text('not-json', { status: 200 })));
 
       const result = await fetchLiveVideos('Nijisanji');
       expect(result).toEqual([]);
@@ -98,9 +92,7 @@ describe('lib/data', () => {
 
     it('returns empty array on autocomplete invalid JSON', async () => {
       server.use(
-        http.get(HOLODEX_AUTOCOMPLETE, () =>
-          HttpResponse.text('garbage', { status: 200 }),
-        ),
+        http.get(HOLODEX_AUTOCOMPLETE, () => HttpResponse.text('garbage', { status: 200 })),
       );
       expect(await searchChannels('q')).toEqual([]);
     });
@@ -132,9 +124,7 @@ describe('lib/data', () => {
           ]),
         ),
         http.get(holodexChannelUrl('A'), () => HttpResponse.json(channelA)),
-        http.get(holodexChannelUrl('B'), () =>
-          HttpResponse.text('not json', { status: 200 }),
-        ),
+        http.get(holodexChannelUrl('B'), () => HttpResponse.text('not json', { status: 200 })),
       );
 
       const result = await searchChannels('hello');
@@ -145,9 +135,7 @@ describe('lib/data', () => {
   describe('fetchChannelInfo', () => {
     it('returns the channel on success', async () => {
       const channel = mockChannel({ id: 'C' });
-      server.use(
-        http.get(holodexChannelUrl('C'), () => HttpResponse.json(channel)),
-      );
+      server.use(http.get(holodexChannelUrl('C'), () => HttpResponse.json(channel)));
       expect(await fetchChannelInfo('C')).toEqual(channel);
     });
 
@@ -158,9 +146,7 @@ describe('lib/data', () => {
 
     it('returns null on invalid JSON', async () => {
       server.use(
-        http.get(holodexChannelUrl('C'), () =>
-          HttpResponse.text('garbage', { status: 200 }),
-        ),
+        http.get(holodexChannelUrl('C'), () => HttpResponse.text('garbage', { status: 200 })),
       );
       expect(await fetchChannelInfo('C')).toBeNull();
     });
@@ -186,9 +172,7 @@ describe('lib/data', () => {
       const channelA = mockChannel({ id: 'A' });
       server.use(
         http.get(holodexChannelUrl('A'), () => HttpResponse.json(channelA)),
-        http.get(holodexChannelUrl('B'), () =>
-          HttpResponse.text('garbage', { status: 200 }),
-        ),
+        http.get(holodexChannelUrl('B'), () => HttpResponse.text('garbage', { status: 200 })),
       );
 
       const result = await fetchChannels(['A', 'B']);
@@ -225,19 +209,13 @@ describe('lib/data', () => {
 
     it('returns empty array on invalid JSON', async () => {
       server.use(
-        http.get(HOLODEX_USERS_LIVE, () =>
-          HttpResponse.text('not-json', { status: 200 }),
-        ),
+        http.get(HOLODEX_USERS_LIVE, () => HttpResponse.text('not-json', { status: 200 })),
       );
       expect(await fetchUserLiveVideos(['A'])).toEqual([]);
     });
 
     it('returns empty array when response is not an array', async () => {
-      server.use(
-        http.get(HOLODEX_USERS_LIVE, () =>
-          HttpResponse.json({ message: 'ok' }),
-        ),
-      );
+      server.use(http.get(HOLODEX_USERS_LIVE, () => HttpResponse.json({ message: 'ok' })));
       expect(await fetchUserLiveVideos(['A'])).toEqual([]);
     });
   });
@@ -259,11 +237,7 @@ describe('lib/data', () => {
     });
 
     it('returns empty array on error', async () => {
-      server.use(
-        http.get('https://holodex.net/api/v2/channels', () =>
-          HttpResponse.error(),
-        ),
-      );
+      server.use(http.get('https://holodex.net/api/v2/channels', () => HttpResponse.error()));
 
       const result = await fetchChannelsByOrg('Nijisanji');
       expect(result).toEqual([]);

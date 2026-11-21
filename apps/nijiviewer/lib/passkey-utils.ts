@@ -39,20 +39,12 @@ export const getPasskeyErrorMessage = (error: unknown): string => {
   }
 
   // Network or server errors
-  if (
-    message.includes('network') ||
-    message.includes('fetch') ||
-    message.includes('connection')
-  ) {
+  if (message.includes('network') || message.includes('fetch') || message.includes('connection')) {
     return 'Network error. Please check your connection and try again.';
   }
 
   // Invalid or expired passkey
-  if (
-    message.includes('invalid') ||
-    message.includes('expired') ||
-    message.includes('not found')
-  ) {
+  if (message.includes('invalid') || message.includes('expired') || message.includes('not found')) {
     return 'This Passkey is no longer valid. Please register a new one.';
   }
 

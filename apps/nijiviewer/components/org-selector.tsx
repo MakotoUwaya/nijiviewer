@@ -1,5 +1,6 @@
 import { Avatar, Select, SelectItem } from '@heroui/react';
 import type { JSX } from 'react';
+
 import type { Organization } from '@/lib/holodex';
 import { sendOrganizationChangeEvent } from '@/metrics/events';
 

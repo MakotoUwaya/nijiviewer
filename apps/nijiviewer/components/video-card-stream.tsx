@@ -1,20 +1,12 @@
 'use client';
 
 import { SignalIcon } from '@heroicons/react/24/solid';
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  Chip,
-  Image,
-  Spinner,
-  Tooltip,
-  User,
-} from '@heroui/react';
+import { Card, CardFooter, CardHeader, Chip, Image, Spinner, Tooltip, User } from '@heroui/react';
 import { DateTime } from 'luxon';
 import { usePathname, useRouter } from 'next/navigation';
 import type { JSX, MouseEvent } from 'react';
 import { useTransition } from 'react';
+
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { StreamVideo } from '@/lib/holodex';
 import {
@@ -37,9 +29,7 @@ export default function VideoCardStream(
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
 
   const channelGroup = getChannelGroup(video.channel);
-  const channelDescription = `${video.channel.org}${
-    channelGroup ? ` / ${channelGroup}` : ''
-  }`;
+  const channelDescription = `${video.channel.org}${channelGroup ? ` / ${channelGroup}` : ''}`;
   const canShowViewer = video.topic_id !== 'membersonly';
   const viewersCount = canShowViewer
     ? `${video.live_viewers?.toLocaleString() || ''} watching now `
@@ -49,9 +39,7 @@ export default function VideoCardStream(
     ? getStarted(video.available_at || '')
     : video.started
       ? `${viewersCount}Started streaming ${
-          video.start_actual
-            ? DateTime.fromISO(video.start_actual).toRelative()
-            : ''
+          video.start_actual ? DateTime.fromISO(video.start_actual).toRelative() : ''
         }`
       : getVideoStatusText(video.start_scheduled);
   const liverChannelPath = `/liver/${video.channel.id}`;
@@ -60,11 +48,7 @@ export default function VideoCardStream(
     e.preventDefault();
     if (!isYouTubeVideo) {
       sendVideoPlayEvent(video, 'youtube');
-      window.open(
-        `https://www.youtube.com/watch?v=${video.id}`,
-        '_blank',
-        'noopener,noreferrer',
-      );
+      window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank', 'noopener,noreferrer');
     } else {
       sendVideoPlayEvent(video, 'in-app');
       playVideo(video);
@@ -112,9 +96,7 @@ export default function VideoCardStream(
               className="absolute top-0 left-0 w-full h-full object-cover"
               removeWrapper
               radius="none"
-              src={getImageUrl(
-                `https://i.ytimg.com/vi/${video.id}/sddefault.jpg`,
-              )}
+              src={getImageUrl(`https://i.ytimg.com/vi/${video.id}/sddefault.jpg`)}
               crossOrigin="anonymous"
             />
             {video.status === 'live' ? (
@@ -133,9 +115,7 @@ export default function VideoCardStream(
         </button>
         <CardFooter className="mt-auto p-0 z-10 w-full">
           <div className="flex flex-col w-full px-1">
-            <p className="text-tiny break-words line-clamp-2 h-[32px] my-1">
-              {video.title}
-            </p>
+            <p className="text-tiny break-words line-clamp-2 h-[32px] my-1">{video.title}</p>
             <div className="relative">
               <button
                 type="button"
@@ -164,12 +144,7 @@ export default function VideoCardStream(
                 </div>
               )}
             </div>
-            <Tooltip
-              content={videoStatusText}
-              delay={1000}
-              placement="bottom-start"
-              size="sm"
-            >
+            <Tooltip content={videoStatusText} delay={1000} placement="bottom-start" size="sm">
               <p className="text-tiny p-1 truncate">{videoStatusText}</p>
             </Tooltip>
           </div>

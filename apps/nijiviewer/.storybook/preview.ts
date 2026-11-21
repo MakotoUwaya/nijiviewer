@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/nextjs-vite';
 import { DateTime, Settings } from 'luxon';
 import { mswLoader } from 'msw-storybook-addon/csf3';
+
 import '@/styles/globals.css';
 import { handlers } from './mocks/handlers';
 

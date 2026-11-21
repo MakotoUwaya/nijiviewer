@@ -7,9 +7,7 @@ export interface FavoriteLiver {
   liver_id: string;
 }
 
-export async function getFavoriteLivers(
-  userId: string,
-): Promise<FavoriteLiver[]> {
+export async function getFavoriteLivers(userId: string): Promise<FavoriteLiver[]> {
   const { data, error } = await supabase
     .from('favorite_livers')
     .select('*')
@@ -46,10 +44,7 @@ export async function addFavoriteLiver(
   return data as FavoriteLiver;
 }
 
-export async function removeFavoriteLiver(
-  userId: string,
-  liverId: string,
-): Promise<void> {
+export async function removeFavoriteLiver(userId: string, liverId: string): Promise<void> {
   const { error } = await supabase
     .from('favorite_livers')
     .delete()
@@ -62,10 +57,7 @@ export async function removeFavoriteLiver(
   }
 }
 
-export async function checkIsFavorite(
-  userId: string,
-  liverId: string,
-): Promise<boolean> {
+export async function checkIsFavorite(userId: string, liverId: string): Promise<boolean> {
   const { data, error } = await supabase
     .from('favorite_livers')
     .select('id')

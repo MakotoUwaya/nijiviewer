@@ -10,10 +10,7 @@ export class CircularAudioSpectrum {
   private isActive = false;
   private barCount = 120; // より細かく綺麗なスペクトラムにするため増やす
 
-  constructor(
-    audioElement: HTMLAudioElement,
-    spectrumContainer: HTMLDivElement,
-  ) {
+  constructor(audioElement: HTMLAudioElement, spectrumContainer: HTMLDivElement) {
     this.audioElement = audioElement;
     this.spectrumContainer = spectrumContainer;
     this.createSpectrumElements();
@@ -70,16 +67,16 @@ export class CircularAudioSpectrum {
     }
   }
 
+  private handleAudioReset = () => {
+    this.resetToInitialState();
+  };
+
   private setupAudioEventListeners() {
     // 音声終了時に初期状態に戻す
-    this.audioElement.addEventListener('ended', () => {
-      this.resetToInitialState();
-    });
+    this.audioElement.addEventListener('ended', this.handleAudioReset);
 
     // 一時停止時も初期状態に戻す
-    this.audioElement.addEventListener('pause', () => {
-      this.resetToInitialState();
-    });
+    this.audioElement.addEventListener('pause', this.handleAudioReset);
   }
 
   private resetToInitialState() {
@@ -96,15 +93,12 @@ export class CircularAudioSpectrum {
     if (!this.audioContext) {
       this.audioContext = new (
         window.AudioContext ||
-        (window as unknown as { webkitAudioContext: typeof AudioContext })
-          .webkitAudioContext
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
       )();
       this.analyser = this.audioContext.createAnalyser();
       this.analyser.fftSize = 512; // 分解能を上げる
       this.analyser.smoothingTimeConstant = 0.8; // 滑らかに減衰させる
-      const source = this.audioContext.createMediaElementSource(
-        this.audioElement,
-      );
+      const source = this.audioContext.createMediaElementSource(this.audioElement);
       source.connect(this.analyser);
       this.analyser.connect(this.audioContext.destination);
       const buffer = new ArrayBuffer(this.analyser.frequencyBinCount);
@@ -147,9 +141,7 @@ export class CircularAudioSpectrum {
       const mappedIndex = index < halfCount ? index : this.barCount - index;
 
       // mappedIndex を有用な周波数データ範囲にマッピング
-      const dataIndex = Math.floor(
-        (mappedIndex / halfCount) * usefulDataLength,
-      );
+      const dataIndex = Math.floor((mappedIndex / halfCount) * usefulDataLength);
 
       // 単一データではなく近傍データの平均を取って滑らかな波形にする（スムージング）
       let sum = 0;
@@ -190,12 +182,8 @@ export class CircularAudioSpectrum {
     this.stopVisualizer();
 
     // イベントリスナーを削除
-    this.audioElement.removeEventListener('ended', () => {
-      this.resetToInitialState();
-    });
-    this.audioElement.removeEventListener('pause', () => {
-      this.resetToInitialState();
-    });
+    this.audioElement.removeEventListener('ended', this.handleAudioReset);
+    this.audioElement.removeEventListener('pause', this.handleAudioReset);
 
     if (this.audioContext) {
       this.audioContext.close().catch(() => {});

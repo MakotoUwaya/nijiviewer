@@ -20,7 +20,6 @@
     "test:e2e:codegen": "playwright codegen http://localhost:3000"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.8",
     "@playwright/test": "1.65.1",
     "cspell": "10.5.2",
     "dotenv": "18.0.10",
@@ -29,6 +28,8 @@
     "istanbul-reports": "3.2.0",
     "msw": "3.0.7",
     "msw-storybook-addon": "3.0.3",
+    "oxfmt": "0.79.0",
+    "oxlint": "1.94.0",
     "tsconfig": "workspace:*",
     "turbo": "2.11.13"
   },

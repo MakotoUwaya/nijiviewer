@@ -1,16 +1,9 @@
 'use client';
 
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  Chip,
-  Image,
-  Tooltip,
-  User,
-} from '@heroui/react';
+import { Card, CardFooter, CardHeader, Chip, Image, Tooltip, User } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX, MouseEvent } from 'react';
+
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
 import type { ClipVideo } from '@/lib/holodex';
 import { formatVideoDuration } from '@/lib/holodex';
@@ -38,9 +31,7 @@ const getStarted = (target: string | undefined): string => {
     : targetDateTime.toRelative() || '';
 };
 
-export default function VideoCardClip(
-  video: ClipVideo & { started: boolean },
-): JSX.Element {
+export default function VideoCardClip(video: ClipVideo & { started: boolean }): JSX.Element {
   const { playVideo } = useYouTubePlayer();
   // YouTubeの動画IDの形式であれば、YouTubeの動画として扱う
   const isYouTubeVideo = /^[a-zA-Z0-9_-]{11}$/.test(video.id || '');
@@ -50,11 +41,7 @@ export default function VideoCardClip(
     e.preventDefault();
     if (!isYouTubeVideo) {
       sendVideoPlayEvent(video, 'youtube');
-      window.open(
-        `https://www.youtube.com/watch?v=${video.id}`,
-        '_blank',
-        'noopener,noreferrer',
-      );
+      window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank', 'noopener,noreferrer');
     } else {
       sendVideoPlayEvent(video, 'in-app');
       playVideo(video);
@@ -85,9 +72,7 @@ export default function VideoCardClip(
               className="absolute top-0 left-0 w-full h-full object-cover"
               removeWrapper
               radius="none"
-              src={getImageUrl(
-                `https://i.ytimg.com/vi/${video.id}/sddefault.jpg`,
-              )}
+              src={getImageUrl(`https://i.ytimg.com/vi/${video.id}/sddefault.jpg`)}
               crossOrigin="anonymous"
             />
             {video.duration > 0 && (
@@ -99,9 +84,7 @@ export default function VideoCardClip(
         </button>
         <CardFooter className="bottom-0 p-0 z-10">
           <div className="flex flex-col w-full px-1">
-            <p className="text-tiny break-words line-clamp-2 h-[32px] my-1">
-              {video.title}
-            </p>
+            <p className="text-tiny break-words line-clamp-2 h-[32px] my-1">{video.title}</p>
             <User
               avatarProps={{
                 src: getImageUrl(video.channel.photo),
@@ -114,12 +97,7 @@ export default function VideoCardClip(
               }}
               name={video.channel.name}
             />
-            <Tooltip
-              content={videoStatusText}
-              delay={1000}
-              placement="bottom-start"
-              size="sm"
-            >
+            <Tooltip content={videoStatusText} delay={1000} placement="bottom-start" size="sm">
               <p className="text-tiny p-1 truncate">{videoStatusText}</p>
             </Tooltip>
           </div>

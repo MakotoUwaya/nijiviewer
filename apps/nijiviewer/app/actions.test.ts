@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockChannel, mockStreamVideo } from '@/test/fixtures/holodex';
 
 const { fetchChannelsMock, fetchUserLiveVideosMock } = vi.hoisted(() => ({
@@ -29,9 +30,7 @@ describe('app/actions', () => {
     });
 
     it('returns [] when ids is null/undefined-like', async () => {
-      await expect(
-        getChannelsAction(undefined as unknown as string[]),
-      ).resolves.toEqual([]);
+      await expect(getChannelsAction(undefined as unknown as string[])).resolves.toEqual([]);
       expect(fetchChannelsMock).not.toHaveBeenCalled();
     });
 
@@ -51,9 +50,9 @@ describe('app/actions', () => {
     });
 
     it('returns [] when ids is null/undefined-like', async () => {
-      await expect(
-        getFavoritesLiveVideosAction(undefined as unknown as string[]),
-      ).resolves.toEqual([]);
+      await expect(getFavoritesLiveVideosAction(undefined as unknown as string[])).resolves.toEqual(
+        [],
+      );
       expect(fetchUserLiveVideosMock).not.toHaveBeenCalled();
     });
 
@@ -61,9 +60,7 @@ describe('app/actions', () => {
       const video = mockStreamVideo({ id: 'v-1' });
       fetchUserLiveVideosMock.mockResolvedValue([video]);
 
-      await expect(getFavoritesLiveVideosAction(['c-1'])).resolves.toEqual([
-        video,
-      ]);
+      await expect(getFavoritesLiveVideosAction(['c-1'])).resolves.toEqual([video]);
       expect(fetchUserLiveVideosMock).toHaveBeenCalledWith(['c-1']);
     });
   });

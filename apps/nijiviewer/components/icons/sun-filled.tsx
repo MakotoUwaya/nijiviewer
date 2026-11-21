@@ -1,12 +1,8 @@
 import type { FC } from 'react';
+
 import type { IconSvgProps } from '@/types';
 
-export const SunFilledIcon: FC<IconSvgProps> = ({
-  size = 24,
-  width,
-  height,
-  ...props
-}) => (
+export const SunFilledIcon: FC<IconSvgProps> = ({ size = 24, width, height, ...props }) => (
   <svg
     aria-hidden="true"
     focusable="false"

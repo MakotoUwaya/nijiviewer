@@ -1,11 +1,9 @@
 import { expect, test } from '@playwright/test';
+
 import { config } from '@/test/e2e/test-config';
 
 test.describe('ライバー検索機能のテスト', () => {
-  test('「はなび」という名前のライバーを検索できること', async ({
-    page,
-    isMobile,
-  }) => {
+  test('「はなび」という名前のライバーを検索できること', async ({ page, isMobile }) => {
     await page.goto(config.baseURL);
 
     if (isMobile) {
@@ -22,8 +20,6 @@ test.describe('ライバー検索機能のテスト', () => {
 
     await searchBox.press('Enter');
 
-    await expect(page).toHaveURL(
-      /\/liver-search\?q=%E3%81%AF%E3%81%AA%E3%81%B3/,
-    );
+    await expect(page).toHaveURL(/\/liver-search\?q=%E3%81%AF%E3%81%AA%E3%81%B3/);
   });
 });

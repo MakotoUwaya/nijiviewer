@@ -3,6 +3,7 @@
 import { Button, Link, Spinner } from '@heroui/react';
 import NextLink from 'next/link';
 import { useEffect, useState } from 'react';
+
 import { getFavoritesLiveVideosAction } from '@/app/actions';
 import ScrollToTopButton from '@/components/scroll-to-top-button';
 import Videos from '@/components/videos';
@@ -48,11 +49,7 @@ export default function FavoritesPage() {
   }
 
   if (!user) {
-    return (
-      <div className="p-8 text-center">
-        ログインしてお気に入り機能を利用しましょう。
-      </div>
-    );
+    return <div className="p-8 text-center">ログインしてお気に入り機能を利用しましょう。</div>;
   }
 
   if (favorites.length === 0) {
@@ -60,23 +57,14 @@ export default function FavoritesPage() {
       <section className="flex flex-col w-full gap-4 p-4">
         <div className="flex justify-between items-center mb-2">
           <h1 className="text-2xl font-bold">Favorite Live Videos</h1>
-          <Button
-            as={NextLink}
-            href="/favorites/edit"
-            color="primary"
-            variant="flat"
-          >
+          <Button as={NextLink} href="/favorites/edit" color="primary" variant="flat">
             Manage Favorites
           </Button>
         </div>
         <div className="p-8 text-center">
           お気に入りのライバーがいません。
           <br />
-          <Link
-            as={NextLink}
-            href="/favorites/edit"
-            className="mt-2 text-primary"
-          >
+          <Link as={NextLink} href="/favorites/edit" className="mt-2 text-primary">
             Manage Favorites
           </Link>
           から追加してください。
@@ -89,12 +77,7 @@ export default function FavoritesPage() {
     <section className="flex flex-col w-full gap-4 p-4">
       <div className="flex justify-between items-center mb-2">
         <h1 className="text-2xl font-bold">Favorite Live Videos</h1>
-        <Button
-          as={NextLink}
-          href="/favorites/edit"
-          color="primary"
-          variant="flat"
-        >
+        <Button as={NextLink} href="/favorites/edit" color="primary" variant="flat">
           Manage Favorites
         </Button>
       </div>

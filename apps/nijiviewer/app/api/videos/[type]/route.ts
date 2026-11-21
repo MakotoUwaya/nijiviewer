@@ -1,15 +1,13 @@
 import { fromPromise } from 'neverthrow';
 import { type NextRequest, NextResponse } from 'next/server';
+
 import { baseUrl, type VideoType } from '@/lib/holodex';
 
 type VideoRequestParams = {
   type: VideoType;
 };
 
-const getUrl = (
-  type: VideoRequestParams['type'],
-  searchParams: URLSearchParams,
-) => {
+const getUrl = (type: VideoRequestParams['type'], searchParams: URLSearchParams) => {
   const channelId = searchParams.get('channel_id');
   if (!channelId) {
     return undefined;
@@ -21,15 +19,11 @@ const getUrl = (
 
   switch (type) {
     case 'past':
-      return new URL(
-        `${baseUrl}/channels/${channelId}/videos?${searchParams.toString()}`,
-      );
+      return new URL(`${baseUrl}/channels/${channelId}/videos?${searchParams.toString()}`);
     case 'clips':
     case 'collabs':
       searchParams.append('status', 'past');
-      return new URL(
-        `${baseUrl}/channels/${channelId}/${type}?${searchParams.toString()}`,
-      );
+      return new URL(`${baseUrl}/channels/${channelId}/${type}?${searchParams.toString()}`);
     default:
       break;
   }
@@ -59,10 +53,7 @@ export async function GET(
 
     if (response.isErr()) {
       console.error('Holodex API fetch error:', response.error);
-      return NextResponse.json(
-        { error: 'Failed to fetch from Holodex API' },
-        { status: 500 },
-      );
+      return NextResponse.json({ error: 'Failed to fetch from Holodex API' }, { status: 500 });
     }
 
     const videos = await fromPromise(response.value.json(), (e: Error) => e);
@@ -81,9 +72,6 @@ export async function GET(
     return NextResponse.json(videos.value);
   } catch (error) {
     console.error('Unexpected error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

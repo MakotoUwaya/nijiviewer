@@ -9,8 +9,7 @@ export default async function Home(): Promise<JSX.Element> {
     .filter((video) => video.status === 'live')
     .sort(
       (a, b) =>
-        ('live_viewers' in b ? b.live_viewers : 0) -
-        ('live_viewers' in a ? a.live_viewers : 0),
+        ('live_viewers' in b ? b.live_viewers : 0) - ('live_viewers' in a ? a.live_viewers : 0),
     )
     .slice(0, 3);
 

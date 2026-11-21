@@ -1,10 +1,12 @@
-import type { ReactNode } from 'react';
-import { RootProvider } from 'fumadocs-ui/provider/next';
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { DocsLayout } from 'fumadocs-ui/layouts/docs';
+import { RootProvider } from 'fumadocs-ui/provider/next';
+import type { ReactNode } from 'react';
+
+import { baseOptions } from '@/app/layout.config';
 import MicrosoftClarity from '@/component/Clarity';
 import { source } from '@/lib/source';
-import { baseOptions } from '@/app/layout.config';
+
 import './globals.css';
 
 export const metadata = {

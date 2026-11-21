@@ -1,10 +1,12 @@
 import { renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+
 import {
   fireYouTubeApiReady,
   setupYouTubeApi,
   teardownYouTubeApi,
 } from '@/test/helpers/youtube-mock';
+
 import { useYouTubeApi } from './useYouTubeApi';
 
 describe('useYouTubeApi', () => {

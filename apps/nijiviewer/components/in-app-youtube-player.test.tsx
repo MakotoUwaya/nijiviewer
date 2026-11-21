@@ -1,18 +1,9 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import {
-  afterEach,
-  beforeEach,
-  describe,
-  expect,
-  it,
-  type Mock,
-  vi,
-} from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, type Mock, vi } from 'vitest';
+
 import type { Video } from '@/lib/holodex';
-import {
-  setupYouTubeApi,
-  teardownYouTubeApi,
-} from '@/test/helpers/youtube-mock';
+import { setupYouTubeApi, teardownYouTubeApi } from '@/test/helpers/youtube-mock';
+
 import InAppYouTubePlayer from './in-app-youtube-player';
 
 vi.mock('@/hooks/useYouTubePlayerContext', () => ({
@@ -225,13 +216,10 @@ describe('InAppYouTubePlayer', () => {
 
     const { unmount } = render(<InAppYouTubePlayer />);
 
-    expect(addSpy).toHaveBeenCalledWith(
-      'fullscreenchange',
-      expect.any(Function),
-    );
-    const handler = addSpy.mock.calls.find(
-      (c) => c[0] === 'fullscreenchange',
-    )?.[1] as EventListener | undefined;
+    expect(addSpy).toHaveBeenCalledWith('fullscreenchange', expect.any(Function));
+    const handler = addSpy.mock.calls.find((c) => c[0] === 'fullscreenchange')?.[1] as
+      | EventListener
+      | undefined;
     expect(handler).toBeDefined();
 
     unmount();

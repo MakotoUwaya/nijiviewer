@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { Metadata, Viewport } from 'next';
 import type { JSX } from 'react';
+
 import InAppYouTubePlayer from '@/components/in-app-youtube-player';
 import { LayoutComponent } from '@/components/layout-component';
 import { MobileBottomNav } from '@/components/mobile-bottom-nav';
@@ -11,6 +12,7 @@ import { PreferencesProvider } from '@/context/preferences-context'; // Added
 import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
 import Metrics from '@/metrics';
+
 import '@/styles/globals.css';
 
 import { Providers } from './providers';
@@ -34,20 +36,11 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
+export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body
-        className={clsx(
-          'min-h-screen bg-background font-sans antialiased',
-          fontSans.variable,
-        )}
-      >
+      <body className={clsx('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
           <SidebarProvider>
             <PreferencesProvider>

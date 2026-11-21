@@ -64,9 +64,7 @@ export function createMockChain<T = unknown>(result: MockResult<T>): unknown {
 
 export function resetSupabaseMock(): void {
   supabaseMock.from.mockReset();
-  supabaseMock.from.mockImplementation(() =>
-    createMockChain({ data: [], error: null }),
-  );
+  supabaseMock.from.mockImplementation(() => createMockChain({ data: [], error: null }));
 
   supabaseMock.auth.getUser.mockReset();
   supabaseMock.auth.getUser.mockResolvedValue({
@@ -137,9 +135,7 @@ export function mockSupabaseFrom<T = unknown>(result: MockResult<T>): void {
   supabaseMock.from.mockReturnValue(createMockChain(result));
 }
 
-export function queueSupabaseFrom<T = unknown>(
-  results: ReadonlyArray<MockResult<T>>,
-): void {
+export function queueSupabaseFrom<T = unknown>(results: ReadonlyArray<MockResult<T>>): void {
   for (const result of results) {
     supabaseMock.from.mockReturnValueOnce(createMockChain(result));
   }

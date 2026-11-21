@@ -1,7 +1,8 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { HeroUIProvider } from '@heroui/react';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockUser } from '@/test/fixtures/auth';
 import { mockOrganization } from '@/test/fixtures/organizations';
 
@@ -121,9 +122,7 @@ describe('SettingsPage', () => {
 
     render(wrap(<SettingsPage />));
 
-    expect(
-      screen.getByText('You need to be signed in to manage settings.'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('You need to be signed in to manage settings.')).toBeInTheDocument();
   });
 
   it('initializes favorites with every org id when the user has none yet', async () => {
@@ -139,10 +138,7 @@ describe('SettingsPage', () => {
     render(wrap(<SettingsPage />));
 
     await waitFor(() => {
-      expect(prefs.initializeFavorites).toHaveBeenCalledWith([
-        'Nijisanji',
-        'Hololive',
-      ]);
+      expect(prefs.initializeFavorites).toHaveBeenCalledWith(['Nijisanji', 'Hololive']);
     });
   });
 

@@ -2,6 +2,7 @@
 
 import { Modal, ModalBody, ModalContent } from '@heroui/react';
 import { useEffect, useRef, useState } from 'react';
+
 import { useYouTubeApi, type YouTubePlayer } from '@/hooks/useYouTubeApi';
 
 interface YouTubePlayerModalProps {
@@ -10,11 +11,7 @@ interface YouTubePlayerModalProps {
   videoId: string;
 }
 
-export default function YouTubePlayerModal({
-  isOpen,
-  onClose,
-  videoId,
-}: YouTubePlayerModalProps) {
+export default function YouTubePlayerModal({ isOpen, onClose, videoId }: YouTubePlayerModalProps) {
   const playerRef = useRef<YouTubePlayer | null>(null);
   const playerContainerId = 'youtube-player-container';
   const { loadYouTubeApi } = useYouTubeApi();
@@ -56,13 +53,7 @@ export default function YouTubePlayerModal({
   }, [isOpen, isApiReady, videoId]);
 
   return (
-    <Modal
-      hideCloseButton
-      isOpen={isOpen}
-      onClose={onClose}
-      placement="center"
-      size="5xl"
-    >
+    <Modal hideCloseButton isOpen={isOpen} onClose={onClose} placement="center" size="5xl">
       <ModalContent>
         <ModalBody className="aspect-video p-0">
           <div id={playerContainerId} className="w-full h-full" />

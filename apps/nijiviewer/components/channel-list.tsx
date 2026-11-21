@@ -21,6 +21,7 @@ import {
 } from '@heroui/react';
 import NextLink from 'next/link';
 import { useMemo, useState } from 'react';
+
 import { FavoriteButton } from '@/components/favorite-button';
 import { TwitterIcon, YoutubeIcon } from '@/components/icons';
 import type { Channel, Organization } from '@/lib/holodex';
@@ -51,10 +52,7 @@ function formatSubscriberCount(countStr?: string): string {
   return `${count.toLocaleString()}人`;
 }
 
-export default function ChannelList({
-  organization,
-  channels,
-}: ChannelListProps) {
+export default function ChannelList({ organization, channels }: ChannelListProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   // チャンネルの検索フィルタリング
@@ -63,11 +61,9 @@ export default function ChannelList({
     if (!query) return channels;
     return channels.filter((channel) => {
       const nameMatch = channel.name.toLowerCase().includes(query);
-      const enNameMatch =
-        channel.english_name?.toLowerCase().includes(query) ?? false;
+      const enNameMatch = channel.english_name?.toLowerCase().includes(query) ?? false;
       const groupMatch = channel.group?.toLowerCase().includes(query) ?? false;
-      const suborgMatch =
-        channel.suborg?.toLowerCase().includes(query) ?? false;
+      const suborgMatch = channel.suborg?.toLowerCase().includes(query) ?? false;
       return nameMatch || enNameMatch || groupMatch || suborgMatch;
     });
   }, [channels, searchQuery]);
@@ -80,8 +76,7 @@ export default function ChannelList({
     const map = new Map<string, Channel[]>();
 
     for (const channel of filteredChannels) {
-      const groupName =
-        channel.group?.trim() || getChannelGroup(channel) || 'Other';
+      const groupName = channel.group?.trim() || getChannelGroup(channel) || 'Other';
       const existing = map.get(groupName);
       if (existing) {
         existing.push(channel);
@@ -97,15 +92,10 @@ export default function ChannelList({
   }, [filteredChannels]);
 
   // 全グループ名のリスト
-  const allGroupKeys = useMemo(
-    () => groupedList.map((g) => g.groupName),
-    [groupedList],
-  );
+  const allGroupKeys = useMemo(() => groupedList.map((g) => g.groupName), [groupedList]);
 
   // 開閉状態（デフォルトですべて展開）
-  const [selectedKeys, setSelectedKeys] = useState<Selection>(
-    new Set(allGroupKeys),
-  );
+  const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set(allGroupKeys));
 
   const handleExpandAll = () => {
     setSelectedKeys(new Set(allGroupKeys));
@@ -126,9 +116,7 @@ export default function ChannelList({
             src={`https://holodex.net/statics/channelImg/${organization.channelId}/100.png`}
           />
           <div>
-            <h1 className="text-2xl font-bold text-foreground">
-              {organization.name}
-            </h1>
+            <h1 className="text-2xl font-bold text-foreground">{organization.name}</h1>
             <p className="text-sm text-default-500">
               全 {channels.length} チャンネル
               {searchQuery && ` (絞り込み: ${filteredChannels.length} 件)`}
@@ -164,9 +152,7 @@ export default function ChannelList({
           onValueChange={setSearchQuery}
           isClearable
           onClear={() => setSearchQuery('')}
-          startContent={
-            <MagnifyingGlassIcon className="w-4 h-4 text-default-400" />
-          }
+          startContent={<MagnifyingGlassIcon className="w-4 h-4 text-default-400" />}
           className="w-full"
         />
       </div>
@@ -190,9 +176,7 @@ export default function ChannelList({
               aria-label={group.groupName}
               title={
                 <div className="flex items-center gap-3">
-                  <span className="font-semibold text-base text-foreground">
-                    {group.groupName}
-                  </span>
+                  <span className="font-semibold text-base text-foreground">{group.groupName}</span>
                   <Chip size="sm" variant="flat" color="default">
                     {group.channels.length} 名
                   </Chip>
@@ -228,36 +212,26 @@ export default function ChannelList({
                             >
                               {channel.name}
                             </Link>
-                            <FavoriteButton
-                              liverId={channel.id}
-                              className="w-6 h-6 min-w-6"
-                            />
+                            <FavoriteButton liverId={channel.id} className="w-6 h-6 min-w-6" />
                           </div>
 
-                          {channel.english_name &&
-                            channel.english_name !== channel.name && (
-                              <p
-                                className="text-xs text-default-400 truncate"
-                                title={channel.english_name}
-                              >
-                                {channel.english_name}
-                              </p>
-                            )}
+                          {channel.english_name && channel.english_name !== channel.name && (
+                            <p
+                              className="text-xs text-default-400 truncate"
+                              title={channel.english_name}
+                            >
+                              {channel.english_name}
+                            </p>
+                          )}
 
                           <div className="mt-2 flex flex-col gap-0.5 text-xs text-default-500">
                             {channel.subscriber_count && (
-                              <span>
-                                登録者:{' '}
-                                {formatSubscriberCount(
-                                  channel.subscriber_count,
-                                )}
-                              </span>
+                              <span>登録者: {formatSubscriberCount(channel.subscriber_count)}</span>
                             )}
                             {channel.video_count != null && (
                               <span className="flex items-center gap-1">
                                 <VideoCameraIcon className="w-3.5 h-3.5" />
-                                {Number(channel.video_count).toLocaleString()}{' '}
-                                本
+                                {Number(channel.video_count).toLocaleString()} 本
                               </span>
                             )}
                           </div>

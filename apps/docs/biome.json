@@ -2,12 +2,6 @@
   "root": false,
   "extends": "//",
   "files": {
-    "includes": [
-      "**",
-      "!**/.next",
-      "!**/.turbo",
-      "!**/public",
-      "!**/node_modules"
-    ]
+    "includes": ["**", "!**/.next", "!**/.turbo", "!**/public", "!**/node_modules"]
   }
 }

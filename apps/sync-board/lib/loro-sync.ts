@@ -28,10 +28,7 @@ export async function createSyncedDoc(
   const doc = new LoroDoc();
 
   function writeNode(nodesMap: LoroMap, node: Node) {
-    const nodeMap = nodesMap.getOrCreateContainer(
-      node.id,
-      new LoroMapClass(),
-    ) as LoroMap;
+    const nodeMap = nodesMap.getOrCreateContainer(node.id, new LoroMapClass()) as LoroMap;
     nodeMap.set('id', node.id);
     nodeMap.set('label', (node.data.label as string) ?? node.id);
     nodeMap.set('x', node.position.x);
@@ -39,10 +36,7 @@ export async function createSyncedDoc(
   }
 
   function writeEdge(edgesMap: LoroMap, edge: Edge) {
-    const edgeMap = edgesMap.getOrCreateContainer(
-      edge.id,
-      new LoroMapClass(),
-    ) as LoroMap;
+    const edgeMap = edgesMap.getOrCreateContainer(edge.id, new LoroMapClass()) as LoroMap;
     edgeMap.set('id', edge.id);
     edgeMap.set('source', edge.source);
     edgeMap.set('target', edge.target);

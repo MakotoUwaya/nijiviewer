@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { Card, CardBody, Chip, Divider, Image, Link } from '@heroui/react';
 import type { ReactNode } from 'react';
+
 import { FavoriteButton } from '@/components/favorite-button';
 import { getElapsedTime } from '@/components/search-result';
 import type { Channel } from '@/lib/holodex';
@@ -40,13 +41,7 @@ function renderLinkedText(text: string): ReactNode[] {
     }
 
     nodes.push(
-      <Link
-        key={`${url}-${start}`}
-        className="break-all"
-        href={url}
-        isExternal
-        size="sm"
-      >
+      <Link key={`${url}-${start}`} className="break-all" href={url} isExternal size="sm">
         {url}
       </Link>,
     );
@@ -91,13 +86,9 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                     </Chip>
                   )}
                 </div>
-                <h2 className="text-2xl font-semibold leading-tight sm:text-3xl">
-                  {channel.name}
-                </h2>
+                <h2 className="text-2xl font-semibold leading-tight sm:text-3xl">{channel.name}</h2>
                 {channel.english_name && (
-                  <p className="mt-1 text-sm text-default-500">
-                    {channel.english_name}
-                  </p>
+                  <p className="mt-1 text-sm text-default-500">{channel.english_name}</p>
                 )}
               </div>
               <FavoriteButton
@@ -112,35 +103,27 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                   <UserGroupIcon className="h-4 w-4" />
                   Subscribers
                 </div>
-                <div className="mt-1 font-semibold">
-                  {formatCount(channel.subscriber_count)}
-                </div>
+                <div className="mt-1 font-semibold">{formatCount(channel.subscriber_count)}</div>
               </div>
 
               {channel.view_count && (
                 <div className="rounded-md bg-default-100 px-3 py-2">
                   <div className="text-xs text-default-500">Views</div>
-                  <div className="mt-1 font-semibold">
-                    {formatCount(channel.view_count)}
-                  </div>
+                  <div className="mt-1 font-semibold">{formatCount(channel.view_count)}</div>
                 </div>
               )}
 
               {channel.video_count && (
                 <div className="rounded-md bg-default-100 px-3 py-2">
                   <div className="text-xs text-default-500">Videos</div>
-                  <div className="mt-1 font-semibold">
-                    {formatCount(channel.video_count)}
-                  </div>
+                  <div className="mt-1 font-semibold">{formatCount(channel.video_count)}</div>
                 </div>
               )}
 
               {channel.clip_count && (
                 <div className="rounded-md bg-default-100 px-3 py-2">
                   <div className="text-xs text-default-500">Clips</div>
-                  <div className="mt-1 font-semibold">
-                    {formatCount(channel.clip_count)}
-                  </div>
+                  <div className="mt-1 font-semibold">{formatCount(channel.clip_count)}</div>
                 </div>
               )}
             </div>
@@ -205,17 +188,12 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
                   {channel.published_at && (
                     <div className="flex flex-wrap items-center gap-1.5 text-default-600">
                       <CalendarIcon className="h-4 w-4" />
-                      <span className="font-medium text-foreground">
-                        Started:
-                      </span>
+                      <span className="font-medium text-foreground">Started:</span>
                       <span>
-                        {new Date(channel.published_at).toLocaleDateString(
-                          'ja-JP',
-                          {
-                            year: 'numeric',
-                            month: 'long',
-                          },
-                        )}
+                        {new Date(channel.published_at).toLocaleDateString('ja-JP', {
+                          year: 'numeric',
+                          month: 'long',
+                        })}
                         {getElapsedTime(channel.published_at)}
                       </span>
                     </div>
@@ -223,9 +201,7 @@ export default function LiverProfile({ channel }: LiverProfileProps) {
 
                   <div className="flex flex-wrap items-center gap-1.5 text-default-600">
                     <LinkIcon className="h-4 w-4" />
-                    <span className="font-medium text-foreground">
-                      Channel ID:
-                    </span>
+                    <span className="font-medium text-foreground">Channel ID:</span>
                     <span className="break-all">{channel.id}</span>
                   </div>
 

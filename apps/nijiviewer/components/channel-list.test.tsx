@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
+
 import ChannelList from '@/components/channel-list';
 import type { Channel, Organization } from '@/lib/holodex';
 
@@ -68,9 +69,7 @@ describe('ChannelList', () => {
   it('filters channels by search query', () => {
     render(<ChannelList organization={mockOrg} channels={mockChannels} />);
 
-    const searchInput = screen.getByPlaceholderText(
-      'ライバー名・グループ名で検索...',
-    );
+    const searchInput = screen.getByPlaceholderText('ライバー名・グループ名で検索...');
     fireEvent.change(searchInput, { target: { value: '剣持' } });
 
     expect(screen.getByText('剣持刀也')).toBeInTheDocument();
@@ -81,14 +80,10 @@ describe('ChannelList', () => {
   it('shows empty message when no channels match query', () => {
     render(<ChannelList organization={mockOrg} channels={mockChannels} />);
 
-    const searchInput = screen.getByPlaceholderText(
-      'ライバー名・グループ名で検索...',
-    );
+    const searchInput = screen.getByPlaceholderText('ライバー名・グループ名で検索...');
     fireEvent.change(searchInput, { target: { value: '存在しないライバー' } });
 
-    expect(
-      screen.getByText('該当するチャンネルが見つかりませんでした'),
-    ).toBeInTheDocument();
+    expect(screen.getByText('該当するチャンネルが見つかりませんでした')).toBeInTheDocument();
   });
 
   it('handles expand all and collapse all buttons', () => {
@@ -120,9 +115,7 @@ describe('ChannelList', () => {
     expect(groupTitles[2]).toContain('Second Generation');
 
     // グループ内も API 順（名前順に並べ替えない）
-    const names = screen
-      .getAllByRole('link', { name: /^(Zeta|Alpha)$/ })
-      .map((a) => a.textContent);
+    const names = screen.getAllByRole('link', { name: /^(Zeta|Alpha)$/ }).map((a) => a.textContent);
     expect(names).toEqual(['Zeta', 'Alpha']);
   });
 
@@ -138,9 +131,7 @@ describe('ChannelList', () => {
         video_count: 0 as unknown as string,
       },
     ];
-    const { container } = render(
-      <ChannelList organization={mockOrg} channels={zero} />,
-    );
+    const { container } = render(<ChannelList organization={mockOrg} channels={zero} />);
     expect(container.textContent).toContain('0 本');
     expect(container.textContent).not.toMatch(/(^|[^\d,])0(?! 本)/);
   });

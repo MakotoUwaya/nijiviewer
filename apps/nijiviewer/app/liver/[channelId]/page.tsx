@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { JSX } from 'react';
+
 import LiverProfile from '@/components/liver-profile';
 import VideoTabs from '@/components/video-tabs';
 import { fetchChannelInfo } from '@/lib/data';
@@ -19,10 +20,7 @@ function parseVideoCategory(category?: string | string[]): VideoCategory {
   return videoCategories.find((item) => item === value) ?? 'videos';
 }
 
-export default async function LiverPage({
-  params,
-  searchParams,
-}: Props): Promise<JSX.Element> {
+export default async function LiverPage({ params, searchParams }: Props): Promise<JSX.Element> {
   const { channelId } = await params;
   const { category } = (await searchParams) ?? {};
 
@@ -40,10 +38,7 @@ export default async function LiverPage({
     <section className="flex flex-col w-full gap-4 p-4">
       <LiverProfile channel={channel} />
       <div className="mt-4">
-        <VideoTabs
-          channelId={channelId}
-          initialCategory={parseVideoCategory(category)}
-        />
+        <VideoTabs channelId={channelId} initialCategory={parseVideoCategory(category)} />
       </div>
     </section>
   );

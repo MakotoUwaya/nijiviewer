@@ -11,7 +11,6 @@ const GoogleAnalytics = () => {
       <Script
         id={scriptId}
         strategy="afterInteractive"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Google Analytics の初期化に必要
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -21,9 +20,7 @@ const GoogleAnalytics = () => {
           `,
         }}
       />
-      <GoogleTagManager
-        gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER}`}
-      />
+      <GoogleTagManager gtmId={`${process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER}`} />
     </>
   );
 };

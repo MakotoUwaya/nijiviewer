@@ -1,9 +1,7 @@
 import { useEffect, useId, useState } from 'react';
+
 import { useAuth } from '@/context/auth-context';
-import {
-  getPasskeyErrorMessage,
-  isWebAuthnSupported,
-} from '@/lib/passkey-utils';
+import { getPasskeyErrorMessage, isWebAuthnSupported } from '@/lib/passkey-utils';
 
 type AuthFormProps = {
   mode: 'signIn' | 'signUp';
@@ -66,9 +64,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
 
   return (
     <div className="bg-card p-6 rounded-lg shadow-lg max-w-md mx-auto">
-      <h2 className="text-xl font-bold mb-4">
-        {mode === 'signIn' ? 'Sign In' : 'Sign Up'}
-      </h2>
+      <h2 className="text-xl font-bold mb-4">{mode === 'signIn' ? 'Sign In' : 'Sign Up'}</h2>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -93,9 +89,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
               <div className="w-full border-t border-muted" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-card text-muted-foreground">
-                Or continue with email
-              </span>
+              <span className="px-2 bg-card text-muted-foreground">Or continue with email</span>
             </div>
           </div>
         </>
@@ -117,10 +111,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
         </div>
 
         <div className="mb-6">
-          <label
-            htmlFor={`${id}-password`}
-            className="block text-sm font-medium mb-1"
-          >
+          <label htmlFor={`${id}-password`} className="block text-sm font-medium mb-1">
             Password
           </label>
           <input
@@ -146,11 +137,7 @@ export const AuthForm = ({ mode, onSuccess, onCancel }: AuthFormProps) => {
             disabled={loading}
             className="px-4 py-2 text-sm bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50"
           >
-            {loading
-              ? 'Processing...'
-              : mode === 'signIn'
-                ? 'Sign In'
-                : 'Sign Up'}
+            {loading ? 'Processing...' : mode === 'signIn' ? 'Sign In' : 'Sign Up'}
           </button>
         </div>
       </form>

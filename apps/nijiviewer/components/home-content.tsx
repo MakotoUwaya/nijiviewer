@@ -1,20 +1,17 @@
 'use client';
 
-import {
-  ArrowRightIcon,
-  HeartIcon,
-  SignalIcon,
-  SparklesIcon,
-} from '@heroicons/react/24/outline';
+import { ArrowRightIcon, HeartIcon, SignalIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import { button as buttonStyles, Image, Link, Snippet } from '@heroui/react';
 import NextLink from 'next/link';
 import { type JSX, useEffect, useMemo, useState } from 'react';
+
 import { getChannelsAction } from '@/app/actions';
 import { GithubIcon } from '@/components/icons';
 import { siteConfig } from '@/config/site';
 import { useFavoriteLiversList } from '@/hooks/use-favorites';
 import type { Channel, StreamVideo, Video } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
+
 import VideoCardStream from './video-card-stream';
 
 export function HomeContent({
@@ -90,8 +87,8 @@ export function HomeContent({
               with ease.
             </h1>
             <p className="hidden md:block text-lg md:text-xl text-default-600 max-w-2xl mb-12 font-medium leading-relaxed">
-              Track and explore your favorite NijiSanji streamers in one place.
-              A sophisticated hub for the digital age.
+              Track and explore your favorite NijiSanji streamers in one place. A sophisticated hub
+              for the digital age.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 items-center w-full justify-center mt-auto md:mt-0">
@@ -147,9 +144,7 @@ export function HomeContent({
             <span className="text-xs font-bold tracking-[0.3em] uppercase text-default-500 mb-1 block">
               Real-time
             </span>
-            <h3 className="text-2xl md:text-3xl font-black tracking-tight">
-              Live Now
-            </h3>
+            <h3 className="text-2xl md:text-3xl font-black tracking-tight">Live Now</h3>
           </div>
           <Link
             as={NextLink}
@@ -170,9 +165,7 @@ export function HomeContent({
               />
             ))
           ) : (
-            <p className="text-default-500 text-sm">
-              No live videos available at the moment.
-            </p>
+            <p className="text-default-500 text-sm">No live videos available at the moment.</p>
           )}
         </div>
       </section>
@@ -184,9 +177,7 @@ export function HomeContent({
             <span className="text-xs font-bold tracking-[0.3em] uppercase text-default-500 mb-1 block">
               Spotlight
             </span>
-            <h3 className="text-2xl font-black tracking-tight">
-              Featured Talents
-            </h3>
+            <h3 className="text-2xl font-black tracking-tight">Featured Talents</h3>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -268,9 +259,7 @@ export function HomeContent({
                       <div className="w-full h-full rounded-full bg-background" />
                     </div>
                   </div>
-                  <span className="text-sm font-bold text-foreground">
-                    Streamer A
-                  </span>
+                  <span className="text-sm font-bold text-foreground">Streamer A</span>
                   <span className="text-[10px] uppercase tracking-widest text-primary-500 font-bold mt-1">
                     V-Singer
                   </span>
@@ -283,9 +272,7 @@ export function HomeContent({
                       <div className="w-full h-full rounded-full bg-background" />
                     </div>
                   </div>
-                  <span className="text-sm font-bold text-foreground">
-                    Streamer B
-                  </span>
+                  <span className="text-sm font-bold text-foreground">Streamer B</span>
                   <span className="text-[10px] uppercase tracking-widest text-secondary-500 font-bold mt-1">
                     Gamer
                   </span>
@@ -298,9 +285,7 @@ export function HomeContent({
                       <div className="w-full h-full rounded-full bg-background" />
                     </div>
                   </div>
-                  <span className="text-sm font-bold text-foreground">
-                    Streamer C
-                  </span>
+                  <span className="text-sm font-bold text-foreground">Streamer C</span>
                   <span className="text-[10px] uppercase tracking-widest text-pink-500 font-bold mt-1">
                     Chatting
                   </span>
@@ -313,9 +298,7 @@ export function HomeContent({
                       <div className="w-full h-full rounded-full bg-background" />
                     </div>
                   </div>
-                  <span className="text-sm font-bold text-foreground">
-                    Streamer D
-                  </span>
+                  <span className="text-sm font-bold text-foreground">Streamer D</span>
                   <span className="text-[10px] uppercase tracking-widest text-violet-500 font-bold mt-1">
                     ASMR
                   </span>
@@ -381,8 +364,7 @@ export function HomeContent({
                 Your Personal Feed
               </h3>
               <p className="text-[11px] md:text-sm text-default-500 leading-relaxed font-medium">
-                Tailored notifications based on your viewing history and
-                favorites.
+                Tailored notifications based on your viewing history and favorites.
               </p>
             </div>
           </div>

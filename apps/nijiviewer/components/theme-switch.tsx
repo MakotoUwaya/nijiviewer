@@ -7,6 +7,7 @@ import { VisuallyHidden } from '@react-aria/visually-hidden';
 import clsx from 'clsx';
 import { useTheme } from 'next-themes';
 import { type FC, useEffect, useState } from 'react';
+
 import { MoonFilledIcon, SunFilledIcon } from './icons';
 
 export interface ThemeSwitchProps {
@@ -14,10 +15,7 @@ export interface ThemeSwitchProps {
   classNames?: SwitchProps['classNames'];
 }
 
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({
-  className,
-  classNames,
-}) => {
+export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
@@ -27,17 +25,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   }, []);
 
   const onChange = (): void => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
-  const {
-    Component,
-    slots,
-    isSelected,
-    getBaseProps,
-    getInputProps,
-    getWrapperProps,
-  } = useSwitch({
+  const { Component, slots, isSelected, getBaseProps, getInputProps, getWrapperProps } = useSwitch({
     isSelected: theme === 'light' || isSSR,
     'aria-label': `Switch to ${theme === 'light' || isSSR ? 'dark' : 'light'} mode`,
     onChange,
@@ -77,11 +68,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} />
-        ) : (
-          <MoonFilledIcon size={22} />
-        )}
+        {!isSelected || isSSR ? <SunFilledIcon size={22} /> : <MoonFilledIcon size={22} />}
       </div>
     </Component>
   );

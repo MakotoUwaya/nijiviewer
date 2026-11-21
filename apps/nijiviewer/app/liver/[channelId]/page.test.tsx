@@ -1,24 +1,23 @@
 import { render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockChannel } from '@/test/fixtures/holodex';
 
-const { fetchChannelInfoMock, notFoundMock, liverProfileMock, videoTabsMock } =
-  vi.hoisted(() => ({
-    fetchChannelInfoMock: vi.fn(),
-    notFoundMock: vi.fn(() => {
-      throw new Error('NEXT_NOT_FOUND');
-    }),
-    liverProfileMock: vi.fn((..._args: unknown[]) => null),
-    videoTabsMock: vi.fn((..._args: unknown[]) => null),
-  }));
+const { fetchChannelInfoMock, notFoundMock, liverProfileMock, videoTabsMock } = vi.hoisted(() => ({
+  fetchChannelInfoMock: vi.fn(),
+  notFoundMock: vi.fn(() => {
+    throw new Error('NEXT_NOT_FOUND');
+  }),
+  liverProfileMock: vi.fn((..._args: unknown[]) => null),
+  videoTabsMock: vi.fn((..._args: unknown[]) => null),
+}));
 
 vi.mock('@/lib/data', () => ({
   fetchChannelInfo: fetchChannelInfoMock,
 }));
 
 vi.mock('next/navigation', async () => {
-  const actual =
-    await vi.importActual<typeof import('next/navigation')>('next/navigation');
+  const actual = await vi.importActual<typeof import('next/navigation')>('next/navigation');
   return {
     ...actual,
     notFound: notFoundMock,

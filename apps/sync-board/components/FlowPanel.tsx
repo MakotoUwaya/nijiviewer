@@ -12,8 +12,10 @@ import {
   type NodeChangeset,
   ReactFlow,
 } from '@xyflow/react';
+
 import '@xyflow/react/dist/style.css';
 import { useCallback, useEffect, useState } from 'react';
+
 import type { SyncedDoc } from '@/lib/loro-sync';
 
 interface FlowPanelProps {
@@ -39,11 +41,7 @@ export function FlowPanel({ syncedDoc, isDarkMode }: FlowPanelProps) {
 
       for (const change of changes) {
         if (change.type === 'position' && change.position) {
-          syncedDoc.updateNodePosition(
-            change.id,
-            change.position.x,
-            change.position.y,
-          );
+          syncedDoc.updateNodePosition(change.id, change.position.x, change.position.y);
         }
         if (change.type === 'remove') {
           syncedDoc.removeNodes([change.id]);

@@ -27,9 +27,7 @@ export async function getOrganizations(): Promise<Organization[]> {
   }
 }
 
-export async function getUserFavoriteOrganizationIds(
-  userId: string,
-): Promise<string[]> {
+export async function getUserFavoriteOrganizationIds(userId: string): Promise<string[]> {
   const { data, error } = await supabase
     .from('user_favorite_organizations')
     .select('organization_id')
@@ -61,13 +59,11 @@ export async function toggleUserFavoriteOrganization(
 
     const nextOrder = (maxOrderData?.sort_order ?? -1) + 1;
 
-    const { error } = await supabase
-      .from('user_favorite_organizations')
-      .insert({
-        user_id: userId,
-        organization_id: orgId,
-        sort_order: nextOrder,
-      });
+    const { error } = await supabase.from('user_favorite_organizations').insert({
+      user_id: userId,
+      organization_id: orgId,
+      sort_order: nextOrder,
+    });
     if (error && error.code !== '23505') {
       // Ignore unique violation
       throw error;
@@ -82,10 +78,7 @@ export async function toggleUserFavoriteOrganization(
   }
 }
 
-export async function initializeUserFavorites(
-  userId: string,
-  orgIds: string[],
-): Promise<void> {
+export async function initializeUserFavorites(userId: string, orgIds: string[]): Promise<void> {
   if (orgIds.length === 0) return;
 
   const rows = orgIds.map((orgId, index) => ({
@@ -94,9 +87,7 @@ export async function initializeUserFavorites(
     sort_order: index,
   }));
 
-  const { error } = await supabase
-    .from('user_favorite_organizations')
-    .insert(rows);
+  const { error } = await supabase.from('user_favorite_organizations').insert(rows);
 
   if (error) {
     if (error.code !== '23505') {
@@ -105,10 +96,7 @@ export async function initializeUserFavorites(
   }
 }
 
-export async function updateUserFavoriteOrder(
-  userId: string,
-  orgIds: string[],
-): Promise<void> {
+export async function updateUserFavoriteOrder(userId: string, orgIds: string[]): Promise<void> {
   // Upsert is efficient but sort_order is part of update.
   // We need to update each row.
   // Supabase upsert requires primary key or unique constraint.

@@ -1,10 +1,12 @@
 import { http, HttpResponse } from 'msw';
 import { NextRequest } from 'next/server';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+import type { VideoType } from '@/lib/holodex';
 import { mockStreamVideo } from '@/test/fixtures/holodex';
 import { HOLODEX_BASE } from '@/test/msw/factories';
 import { server } from '@/test/msw/server';
-import type { VideoType } from '@/lib/holodex';
+
 import { GET } from './route';
 
 type RouteContext = Parameters<typeof GET>[1];
@@ -54,10 +56,7 @@ describe('GET /api/videos/[type]', () => {
       }),
     );
 
-    const res = await GET(
-      buildRequest({ channel_id: 'C-1', limit: '10' }),
-      ctx('past'),
-    );
+    const res = await GET(buildRequest({ channel_id: 'C-1', limit: '10' }), ctx('past'));
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toEqual([video]);
     expect(receivedUrl?.pathname).toBe('/api/v2/channels/C-1/videos');
@@ -98,11 +97,7 @@ describe('GET /api/videos/[type]', () => {
   });
 
   it('returns 500 when the upstream fetch fails', async () => {
-    server.use(
-      http.get(`${HOLODEX_BASE}/channels/:channelId/videos`, () =>
-        HttpResponse.error(),
-      ),
-    );
+    server.use(http.get(`${HOLODEX_BASE}/channels/:channelId/videos`, () => HttpResponse.error()));
 
     const res = await GET(buildRequest({ channel_id: 'C' }), ctx('past'));
     expect(res.status).toBe(500);
@@ -136,10 +131,7 @@ describe('GET /api/videos/[type]', () => {
     await expect(res.json()).resolves.toEqual({
       error: 'Internal server error',
     });
-    expect(console.error).toHaveBeenCalledWith(
-      'Unexpected error:',
-      expect.any(Error),
-    );
+    expect(console.error).toHaveBeenCalledWith('Unexpected error:', expect.any(Error));
     fetchSpy.mockRestore();
   });
 });

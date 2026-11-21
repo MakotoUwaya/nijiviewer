@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { AuthContext, type AuthContextType } from '@/context/auth-context';
 import { PreferencesContext } from '@/context/preferences-context'; // Added import
 import { SidebarProvider } from '@/context/sidebar-context';
 import { YouTubePlayerProvider } from '@/hooks/useYouTubePlayerContext';
+
 import { Navbar } from './navbar';
 
 // モックのAuthContextの値

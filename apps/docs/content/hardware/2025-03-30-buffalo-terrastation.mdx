@@ -5,7 +5,7 @@ title: Windows 11 から古い TerraStation へ接続する
 ## Windows 11 から古い TerraStation へ接続する
 
 自宅に古い TerraStation が転がっている。  
-中身に何を保存していたのかあまり記憶が定かではないが、ここ数年は起動もしていないことを考えると、見返す頻度の少ない写真などのメディアデータばかりが蓄積されているのだろう。  
+中身に何を保存していたのかあまり記憶が定かではないが、ここ数年は起動もしていないことを考えると、見返す頻度の少ない写真などのメディアデータばかりが蓄積されているのだろう。
 
 必要無ければ処分しようと思い、ひとまずは内容確認してみるか・・・となったところから話は始まる。
 
@@ -28,7 +28,7 @@ IP アドレスの取得方法を DHCP にしていればこの手順は不要�
 
 1. [NAS Navigator2](https://www.buffalo.jp/support/download/detail/?dl_contents_id=60819) をインストール
 2. ストレートの LAN ケーブルで、作業 PC と TerraStation を直接接続する
-    - [NAS Navigator2でLinkStation/TeraStationのIPアドレスが変更できません](https://www.buffalo.jp/support/faq/detail/15611.html)
+   - [NAS Navigator2でLinkStation/TeraStationのIPアドレスが変更できません](https://www.buffalo.jp/support/faq/detail/15611.html)
 
 ### Windows 11 からのアクセス
 
@@ -36,7 +36,7 @@ IP アドレスの変更が終わったら、LAN ケーブルを本来のネッ�
 
 1. `ping xxx.xxx.xxx.xxx` を実行して疎通確認
 2. File Explorer で IP アドレスを指定しアクセス
-    - `\\xxx.xxx.xxx.xxx`
+   - `\\xxx.xxx.xxx.xxx`
 
 ここでエラーが発生した。詳細なトラブルシューティングは行っていないが、おそらく SMB 1.0/CIFS クライアント（サーバーとファイル共有を行うためのネットワークプロトコル）が有効になっていないことで接続プロトコルが解釈できなくなっていたのだと思う。
 

@@ -1,0 +1,44 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "nextjs", "jsx-a11y", "oxc", "unicorn"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "react/rules-of-hooks": "error",
+    "react/self-closing-comp": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/set-state-in-effect": "off",
+    "react/purity": "warn",
+    "react/immutability": "warn",
+    "jsx-a11y/prefer-tag-over-role": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "warn",
+    "typescript/prefer-as-const": "error",
+    "typescript/no-inferrable-types": "error",
+    "no-param-reassign": "error",
+    "default-param-last": "error",
+    "no-else-return": "error",
+    "no-underscore-dangle": "off"
+  },
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/.turbo/**",
+    "**/.source/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/storybook-static/**",
+    "**/test-results/**",
+    "**/public/mockServiceWorker.js",
+    "**/types/holodex.d.ts"
+  ]
+}

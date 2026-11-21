@@ -1,4 +1,5 @@
 import { afterAll, beforeAll, describe, expect, test, vi } from 'vitest';
+
 import { getElapsedTime } from './search-result';
 
 describe('getElapsedTime', () => {

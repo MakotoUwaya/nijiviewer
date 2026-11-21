@@ -18,9 +18,7 @@ export function mockChannel(overrides: Partial<Channel> = {}): Channel {
   };
 }
 
-export function mockStreamVideo(
-  overrides: Partial<StreamVideo> = {},
-): StreamVideo {
+export function mockStreamVideo(overrides: Partial<StreamVideo> = {}): StreamVideo {
   return {
     id: 'video-1',
     title: 'Live Stream Title',
@@ -52,9 +50,7 @@ export function mockClipVideo(overrides: Partial<ClipVideo> = {}): ClipVideo {
   } as ClipVideo;
 }
 
-export function mockPlaceholderVideo(
-  overrides: Partial<PlaceholderVideo> = {},
-): PlaceholderVideo {
+export function mockPlaceholderVideo(overrides: Partial<PlaceholderVideo> = {}): PlaceholderVideo {
   return {
     id: 'placeholder-1',
     title: 'Upcoming event',

@@ -49,7 +49,7 @@
    - ドキュメントサイトの追加
 
 4. 開発環境
-   - Biome の導入
+   - Oxlint / Oxfmt の導入
    - Vitest への移行
    - Storybook の設定
    - **CI/CD の最適化 (2026-02-10)**

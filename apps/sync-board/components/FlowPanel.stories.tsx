@@ -1,12 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { Edge, Node } from '@xyflow/react';
+
 import type { SyncedDoc } from '@/lib/loro-sync';
+
 import { FlowPanel } from './FlowPanel';
 
-function createMockSyncedDoc(
-  initialNodes: Node[],
-  initialEdges: Edge[],
-): SyncedDoc {
+function createMockSyncedDoc(initialNodes: Node[], initialEdges: Edge[]): SyncedDoc {
   let nodes = [...initialNodes];
   let edges = [...initialEdges];
   const subscribers = new Set<() => void>();
@@ -20,9 +19,7 @@ function createMockSyncedDoc(
     getNodes: () => nodes,
     getEdges: () => edges,
     updateNodePosition: (id, x, y) => {
-      nodes = nodes.map((n) =>
-        n.id === id ? { ...n, position: { x, y } } : n,
-      );
+      nodes = nodes.map((n) => (n.id === id ? { ...n, position: { x, y } } : n));
       notify();
     },
     addNode: (node) => {

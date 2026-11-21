@@ -1,12 +1,6 @@
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-} from '@heroui/react';
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@heroui/react';
 import { useState } from 'react';
+
 import { AuthForm } from './auth-form';
 
 type AuthModalProps = {
@@ -26,11 +20,7 @@ export const AuthModal = ({ isOpen, onOpenChange }: AuthModalProps) => {
               {mode === 'signIn' ? 'Sign In' : 'Sign Up'}
             </ModalHeader>
             <ModalBody>
-              <AuthForm
-                mode={mode}
-                onSuccess={() => onClose()}
-                onCancel={() => onClose()}
-              />
+              <AuthForm mode={mode} onSuccess={() => onClose()} onCancel={() => onClose()} />
             </ModalBody>
             <ModalFooter className="flex justify-center">
               <Button
@@ -38,9 +28,7 @@ export const AuthModal = ({ isOpen, onOpenChange }: AuthModalProps) => {
                 variant="light"
                 onPress={() => setMode(mode === 'signIn' ? 'signUp' : 'signIn')}
               >
-                {mode === 'signIn'
-                  ? 'Create Account'
-                  : 'Already have an account?'}
+                {mode === 'signIn' ? 'Create Account' : 'Already have an account?'}
               </Button>
             </ModalFooter>
           </>

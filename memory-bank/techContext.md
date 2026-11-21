@@ -65,7 +65,7 @@
 
 1. コード品質
 
-   - Biome（リンター・フォーマッター。ESLint / Prettier は使用しない）
+   - Oxlint / Oxfmt（リンター・フォーマッター。ESLint / Prettier は使用しない）
    - cspell（スペルチェック）
 
 2. CI/CD

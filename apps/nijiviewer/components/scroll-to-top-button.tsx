@@ -8,9 +8,7 @@ interface ScrollToTopButtonProps {
   threshold?: number;
 }
 
-export default function ScrollToTopButton({
-  threshold = 200,
-}: ScrollToTopButtonProps) {
+export default function ScrollToTopButton({ threshold = 200 }: ScrollToTopButtonProps) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -51,11 +49,7 @@ export default function ScrollToTopButton({
         className="w-6 h-6"
       >
         <title>上矢印アイコン</title>
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M4.5 15.75l7.5-7.5 7.5 7.5"
-        />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
       </svg>
     </Button>
   );

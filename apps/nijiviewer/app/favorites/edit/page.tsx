@@ -2,6 +2,7 @@
 
 import { Spinner } from '@heroui/react';
 import { useEffect, useState } from 'react';
+
 import { getChannelsAction } from '@/app/actions';
 import ScrollToTopButton from '@/components/scroll-to-top-button';
 import { SearchResultList } from '@/components/search-result';
@@ -47,17 +48,11 @@ export default function FavoritesEditPage() {
   }
 
   if (!user) {
-    return (
-      <div className="p-8 text-center">
-        ログインしてお気に入り機能を利用しましょう。
-      </div>
-    );
+    return <div className="p-8 text-center">ログインしてお気に入り機能を利用しましょう。</div>;
   }
 
   if (favorites.length === 0) {
-    return (
-      <div className="p-8 text-center">お気に入りのライバーがいません。</div>
-    );
+    return <div className="p-8 text-center">お気に入りのライバーがいません。</div>;
   }
 
   return (

@@ -2,7 +2,9 @@
 
 import { Spinner } from '@heroui/react';
 import { useCallback, useEffect, useState } from 'react';
+
 import type { Video, VideoType } from '@/lib/holodex';
+
 import ScrollToTopButton from './scroll-to-top-button';
 import VideoCardClip from './video-card-clip';
 import VideoCardPlaceholder from './video-card-placeholder';
@@ -87,9 +89,7 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
         // 重複する動画を除外して追加
         setVideos((prevVideos) => {
           const existingIds = new Set(prevVideos.map((v) => v.id));
-          const uniqueNewVideos = newVideos.filter(
-            (v) => !existingIds.has(v.id),
-          );
+          const uniqueNewVideos = newVideos.filter((v) => !existingIds.has(v.id));
           return [...prevVideos, ...uniqueNewVideos];
         });
         setOffset((prevOffset) => prevOffset + newVideos.length);
@@ -115,12 +115,7 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
       const documentHeight = document.documentElement.scrollHeight;
 
       // 最下部から200px以内に達した場合に追加読み込み
-      if (
-        scrollTop + windowHeight >= documentHeight - 200 &&
-        hasMore &&
-        !loadingMore &&
-        !loading
-      ) {
+      if (scrollTop + windowHeight >= documentHeight - 200 && hasMore && !loadingMore && !loading) {
         loadMoreVideos();
       }
     };
@@ -177,9 +172,7 @@ export default function VideoGrid({ channelId, type }: VideoGridProps) {
               case 'placeholder':
                 return <VideoCardPlaceholder key={v.id} {...v} started />;
               default:
-                return (
-                  <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />
-                );
+                return <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />;
             }
           })}
         </div>

@@ -8,9 +8,7 @@ export async function getChannelsAction(ids: string[]): Promise<Channel[]> {
   return await fetchChannels(ids);
 }
 
-export async function getFavoritesLiveVideosAction(
-  ids: string[],
-): Promise<Video[]> {
+export async function getFavoritesLiveVideosAction(ids: string[]): Promise<Video[]> {
   if (!ids || ids.length === 0) return [];
   return await fetchUserLiveVideos(ids);
 }

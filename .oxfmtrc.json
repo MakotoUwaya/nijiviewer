@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "useTabs": false,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "semi": true,
+  "trailingComma": "all",
+  "arrowParens": "always",
+  "quoteProps": "as-needed",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "sortImports": {},
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/.turbo/**",
+    "**/.source/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/storybook-static/**",
+    "**/test-results/**",
+    "**/public/mockServiceWorker.js",
+    "**/*.log",
+    "pnpm-lock.yaml"
+  ]
+}

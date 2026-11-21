@@ -22,10 +22,7 @@ export const fetchLiveVideos = async (org: string): Promise<Video[]> => {
   if (response.isErr()) {
     return [];
   }
-  const videos = await fromPromise<Video[], Error>(
-    response.value.json(),
-    (e: Error) => e,
-  );
+  const videos = await fromPromise<Video[], Error>(response.value.json(), (e: Error) => e);
   return videos.isOk() ? videos.value : [];
 };
 
@@ -49,10 +46,10 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
   if (response.isErr()) {
     return [];
   }
-  const autoCompleteResponses = await fromPromise<
-    AutocompleteResponse[],
-    Error
-  >(response.value.json(), (e: Error) => e);
+  const autoCompleteResponses = await fromPromise<AutocompleteResponse[], Error>(
+    response.value.json(),
+    (e: Error) => e,
+  );
   if (autoCompleteResponses.isErr()) {
     return [];
   }
@@ -71,10 +68,7 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
       if (response.isErr()) {
         return undefined;
       }
-      const channels = await fromPromise<Channel, Error>(
-        response.value.json(),
-        (e: Error) => e,
-      );
+      const channels = await fromPromise<Channel, Error>(response.value.json(), (e: Error) => e);
       return channels.isOk() ? channels.value : undefined;
     });
 
@@ -82,9 +76,7 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
   return results.filter((channel): channel is Channel => channel !== undefined);
 };
 
-export const fetchChannelInfo = async (
-  channelId: string,
-): Promise<Channel | null> => {
+export const fetchChannelInfo = async (channelId: string): Promise<Channel | null> => {
   noStore();
   const response = await fromPromise(
     fetch(`${baseUrl}/channels/${channelId}`, {
@@ -97,16 +89,11 @@ export const fetchChannelInfo = async (
   if (response.isErr()) {
     return null;
   }
-  const channel = await fromPromise<Channel, Error>(
-    response.value.json(),
-    (e: Error) => e,
-  );
+  const channel = await fromPromise<Channel, Error>(response.value.json(), (e: Error) => e);
   return channel.isOk() ? channel.value : null;
 };
 
-export const fetchChannels = async (
-  channelIds: string[],
-): Promise<Channel[]> => {
+export const fetchChannels = async (channelIds: string[]): Promise<Channel[]> => {
   if (channelIds.length === 0) {
     return [];
   }
@@ -126,10 +113,7 @@ export const fetchChannels = async (
       return undefined;
     }
 
-    const channel = await fromPromise<Channel, Error>(
-      response.value.json(),
-      (e: Error) => e,
-    );
+    const channel = await fromPromise<Channel, Error>(response.value.json(), (e: Error) => e);
 
     return channel.isOk() ? channel.value : undefined;
   });
@@ -169,10 +153,7 @@ export const fetchChannelsByOrg = async (
     return [];
   }
 
-  const channels = await fromPromise<Channel[], Error>(
-    response.value.json(),
-    (e: Error) => e,
-  );
+  const channels = await fromPromise<Channel[], Error>(response.value.json(), (e: Error) => e);
 
   return channels.isOk() && Array.isArray(channels.value) ? channels.value : [];
 };
@@ -180,10 +161,7 @@ export const fetchChannelsByOrg = async (
 /**
  * 指定組織（org）の全チャンネル一覧を取得する（ページネーションを全件巡回）
  */
-export const fetchAllChannelsByOrg = async (
-  org: string,
-  type = 'vtuber',
-): Promise<Channel[]> => {
+export const fetchAllChannelsByOrg = async (org: string, type = 'vtuber'): Promise<Channel[]> => {
   const limit = 100;
   let offset = 0;
   const allChannels: Channel[] = [];
@@ -208,9 +186,7 @@ export const fetchAllChannelsByOrg = async (
   return allChannels;
 };
 
-export const fetchUserLiveVideos = async (
-  channelIds: string[],
-): Promise<Video[]> => {
+export const fetchUserLiveVideos = async (channelIds: string[]): Promise<Video[]> => {
   if (channelIds.length === 0) {
     return [];
   }
@@ -235,10 +211,7 @@ export const fetchUserLiveVideos = async (
     return [];
   }
 
-  const videos = await fromPromise<Video[], Error>(
-    response.value.json(),
-    (e: Error) => e,
-  );
+  const videos = await fromPromise<Video[], Error>(response.value.json(), (e: Error) => e);
 
   return videos.isOk() && Array.isArray(videos.value) ? videos.value : [];
 };

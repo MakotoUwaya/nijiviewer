@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { Card, CardBody, Image, Link } from '@heroui/react';
 import { useId } from 'react';
+
 import { FavoriteButton } from '@/components/favorite-button';
 import { getChannelGroup, type Channel } from '@/lib/holodex';
 
@@ -63,18 +64,13 @@ export function SearchResult({ channel }: { channel: Channel }) {
           <div className="flex-1">
             <div className="flex flex-col md:flex-row md:items-center md:gap-4 mb-2">
               <div className="flex items-center gap-2">
-                <Link
-                  className="text-lg font-bold line-clamp-2"
-                  href={`/liver/${channel.id}`}
-                >
+                <Link className="text-lg font-bold line-clamp-2" href={`/liver/${channel.id}`}>
                   {channel.name}
                 </Link>
                 <FavoriteButton liverId={channel.id} />
               </div>
               {channel.english_name && (
-                <span className="hidden md:block text-default-500">
-                  {channel.english_name}
-                </span>
+                <span className="hidden md:block text-default-500">{channel.english_name}</span>
               )}
             </div>
             <div className="flex flex-col gap-1 text-default-500 text-sm">
@@ -107,18 +103,16 @@ export function SearchResult({ channel }: { channel: Channel }) {
               <div className="flex flex-col md:flex-row md:gap-6 mt-1">
                 <div>
                   {channel.org || 'Independent'}{' '}
-                  {getChannelGroup(channel)
-                    ? `/ ${getChannelGroup(channel)}`
-                    : ''}
+                  {getChannelGroup(channel) ? `/ ${getChannelGroup(channel)}` : ''}
                 </div>
                 <div className="flex items-center gap-1">
                   <CalendarIcon className="w-4 h-4" />
                   <span>
                     {channel.published_at
-                      ? `${new Date(channel.published_at).toLocaleDateString(
-                          'ja-JP',
-                          { year: 'numeric', month: 'long' },
-                        )}${getElapsedTime(channel.published_at)}`
+                      ? `${new Date(channel.published_at).toLocaleDateString('ja-JP', {
+                          year: 'numeric',
+                          month: 'long',
+                        })}${getElapsedTime(channel.published_at)}`
                       : 'Unknown'}
                   </span>
                 </div>
@@ -151,11 +145,7 @@ export function SearchResult({ channel }: { channel: Channel }) {
               {channel.description && (
                 <div
                   className="hidden md:block mt-2 text-sm"
-                  title={
-                    channel.description.length > 100
-                      ? channel.description
-                      : undefined
-                  }
+                  title={channel.description.length > 100 ? channel.description : undefined}
                 >
                   {channel.description.length > 100
                     ? `${channel.description.slice(0, 100)}...`

@@ -3,7 +3,9 @@
 import { Divider } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
+
 import type { Video } from '@/lib/holodex';
+
 import { EmptyImage } from './images';
 import ScrollToTopButton from './scroll-to-top-button';
 import VideoCardPlaceholder from './video-card-placeholder';
@@ -73,15 +75,11 @@ const Videos = (props: VideoProps): JSX.Element => {
             case 'placeholder':
               return <VideoCardPlaceholder key={v.id} {...v} />;
             default:
-              return (
-                <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />
-              );
+              return <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />;
           }
         })}
       </div>
-      {liveVideos.length > 0 && upCommingVideos.length > 0 && (
-        <Divider className="my-4" />
-      )}
+      {liveVideos.length > 0 && upCommingVideos.length > 0 && <Divider className="my-4" />}
       {upCommingVideos.length > 0 && (
         <div className="flex flex-col md:flex-row flex-wrap w-full">
           {upCommingVideos.map((v) => {
@@ -91,9 +89,7 @@ const Videos = (props: VideoProps): JSX.Element => {
               case 'placeholder':
                 return <VideoCardPlaceholder key={v.id} {...v} />;
               default:
-                return (
-                  <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />
-                );
+                return <VideoCardSkeleton key={`skeleton-${crypto.randomUUID()}`} />;
             }
           })}
         </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
+
 import type { Organization } from '@/lib/holodex';
 import {
   getOrganizations,
@@ -9,6 +10,7 @@ import {
   toggleUserFavoriteOrganization,
   updateUserFavoriteOrder,
 } from '@/lib/organizations';
+
 import { useAuth } from './auth-context';
 
 type PreferencesContextType = {
@@ -20,15 +22,9 @@ type PreferencesContextType = {
   updateOrder: (orgIds: string[]) => Promise<void>; // Added
 };
 
-export const PreferencesContext = createContext<
-  PreferencesContextType | undefined
->(undefined);
+export const PreferencesContext = createContext<PreferencesContextType | undefined>(undefined);
 
-export function PreferencesProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function PreferencesProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [favoriteOrgIds, setFavoriteOrgIds] = useState<string[]>([]);
   const [organizations, setOrganizations] = useState<Organization[]>([]);
