@@ -32,8 +32,8 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ['../public'],
-  env: (config) => ({
-    ...config,
+  env: (envConfig) => ({
+    ...envConfig,
     NEXT_PUBLIC_SUPABASE_URL: 'https://storybook-test.supabase.co',
     NEXT_PUBLIC_SUPABASE_ANON_KEY: 'anon_key',
   }),

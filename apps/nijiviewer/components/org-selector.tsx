@@ -34,8 +34,8 @@ export default function OrgSelector({
           sendOrganizationChangeEvent(organization);
         }
       }}
-      renderValue={(items) => {
-        return items.map((item) => (
+      renderValue={(selectedItems) => {
+        return selectedItems.map((item) => (
           <div key={item.key} className="flex items-center gap-2">
             <Avatar
               alt={item.data?.name}

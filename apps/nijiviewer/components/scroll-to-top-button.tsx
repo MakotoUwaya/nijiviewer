@@ -8,6 +8,13 @@ interface ScrollToTopButtonProps {
   threshold?: number;
 }
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+
 export default function ScrollToTopButton({ threshold = 200 }: ScrollToTopButtonProps) {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -19,13 +26,6 @@ export default function ScrollToTopButton({ threshold = 200 }: ScrollToTopButton
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [threshold]);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
 
   if (!showScrollTop) {
     return null;

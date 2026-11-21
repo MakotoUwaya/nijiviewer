@@ -25,7 +25,7 @@ export function HomeContent({
 
   const randomFavIds = useMemo(() => {
     if (!favorites || favorites.length === 0) return [];
-    const shuffled = [...favorites].sort(
+    const shuffled = favorites.toSorted(
       () => 0.5 - crypto.getRandomValues(new Uint32Array(1))[0] / 4294967296,
     );
     return shuffled.slice(0, 4).map((f) => f.liver_id);

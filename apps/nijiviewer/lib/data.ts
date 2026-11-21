@@ -57,7 +57,7 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
   const channelPromises = autoCompleteResponses.value
     .filter((res) => res.type === 'channel')
     .map(async (res) => {
-      const response = await fromPromise(
+      const channelResponse = await fromPromise(
         fetch(`${baseUrl}/channels/${res.value}`, {
           headers: {
             'x-apikey': process.env.HOLODEX_APIKEY || '',
@@ -65,10 +65,13 @@ export const searchChannels = async (query: string): Promise<Channel[]> => {
         }),
         (e: Error) => e,
       );
-      if (response.isErr()) {
+      if (channelResponse.isErr()) {
         return undefined;
       }
-      const channels = await fromPromise<Channel, Error>(response.value.json(), (e: Error) => e);
+      const channels = await fromPromise<Channel, Error>(
+        channelResponse.value.json(),
+        (e: Error) => e,
+      );
       return channels.isOk() ? channels.value : undefined;
     });
 

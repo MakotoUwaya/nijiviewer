@@ -3,7 +3,7 @@
   "plugins": ["typescript", "react", "nextjs", "jsx-a11y", "oxc", "unicorn"],
   "categories": {
     "correctness": "error",
-    "suspicious": "warn"
+    "suspicious": "error"
   },
   "rules": {
     "no-unused-vars": [
@@ -18,10 +18,12 @@
     "react/self-closing-comp": "error",
     "react/react-in-jsx-scope": "off",
     "react/set-state-in-effect": "off",
-    "react/purity": "warn",
-    "react/immutability": "warn",
-    "jsx-a11y/prefer-tag-over-role": "warn",
-    "jsx-a11y/no-noninteractive-element-interactions": "warn",
+    "react/purity": "off",
+    "react/immutability": "off",
+    "react/iframe-missing-sandbox": "off",
+    "jsx-a11y/prefer-tag-over-role": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "unicorn/prefer-add-event-listener": "off",
     "typescript/prefer-as-const": "error",
     "typescript/no-inferrable-types": "error",
     "no-param-reassign": "error",

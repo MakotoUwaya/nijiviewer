@@ -84,7 +84,7 @@ describe('Home page (app/page.tsx)', () => {
       propsArg.liveVideos
         .map((v: { id: string }) => v.id)
         .slice(1)
-        .sort(),
+        .toSorted(),
     ).toEqual(['v1', 'v3']);
   });
 
