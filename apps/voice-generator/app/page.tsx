@@ -2,6 +2,7 @@
 
 import { Button, Textarea } from '@heroui/react';
 import { useEffect, useRef, useState } from 'react';
+
 import { CircularAudioSpectrum } from '@/lib/circular-audio-spectrum';
 
 // MediaSource/ManagedMediaSource の型定義
@@ -120,9 +121,7 @@ export default function AivisCloudAPIPage() {
       // MediaSource / ManagedMediaSource (iOS Safari) ですべての生成が終わる前にストリーミング再生
       // iOS Safari は MediaSource 非対応だが、iOS 17.1 以降では代わりに ManagedMediaSource を利用できる
       const MediaSourceConstructor =
-        window.MediaSource ||
-        window.ManagedMediaSource ||
-        globalThis.ManagedMediaSource;
+        window.MediaSource || window.ManagedMediaSource || globalThis.ManagedMediaSource;
 
       if (!MediaSourceConstructor) {
         throw new Error('MediaSource or ManagedMediaSource is not supported');
@@ -144,9 +143,7 @@ export default function AivisCloudAPIPage() {
         // updating フラグが立っていたら updateend まで待つ
         const waitForIdle = () =>
           sb.updating
-            ? new Promise((r) =>
-                sb.addEventListener('updateend', r, { once: true }),
-              )
+            ? new Promise((r) => sb.addEventListener('updateend', r, { once: true }))
             : Promise.resolve();
 
         const reader = res.body?.getReader();
@@ -177,9 +174,7 @@ export default function AivisCloudAPIPage() {
       });
     } catch (error) {
       console.error('音声生成エラー:', error);
-      alert(
-        '音声の生成に失敗しました。しばらく時間をおいてから再度お試しください。',
-      );
+      alert('音声の生成に失敗しました。しばらく時間をおいてから再度お試しください。');
     } finally {
       setIsLoading(false);
     }
@@ -188,9 +183,7 @@ export default function AivisCloudAPIPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white p-4">
       <div className="flex flex-col items-center p-8 border border-gray-600 rounded-xl bg-gray-800 text-center max-w-lg w-full">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          おしゃべり音声モデル
-        </h1>
+        <h1 className="text-3xl font-bold text-center mb-8">おしゃべり音声モデル</h1>
 
         <div className="relative inline-block my-16 p-20">
           <div
@@ -221,12 +214,7 @@ export default function AivisCloudAPIPage() {
         />
 
         <div className="flex gap-4 mb-4">
-          <Button
-            onPress={handleSpeak}
-            disabled={isLoading}
-            color="primary"
-            size="lg"
-          >
+          <Button onPress={handleSpeak} disabled={isLoading} color="primary" size="lg">
             {isLoading ? '生成中...' : '話して音声モデル！'}
           </Button>
 

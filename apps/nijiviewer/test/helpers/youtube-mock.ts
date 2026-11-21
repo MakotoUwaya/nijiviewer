@@ -1,4 +1,5 @@
 import { type Mock, vi } from 'vitest';
+
 import type { YouTubePlayer } from '@/hooks/useYouTubeApi';
 
 export type YouTubePlayerMock = {
@@ -38,9 +39,7 @@ export interface YouTubeApiMock {
  * The constructor invokes `events.onReady` after a microtask to simulate
  * the IFrame API's lifecycle.
  */
-export function setupYouTubeApi(
-  overrides: Partial<YouTubePlayerMock> = {},
-): YouTubeApiMock {
+export function setupYouTubeApi(overrides: Partial<YouTubePlayerMock> = {}): YouTubeApiMock {
   const player = createYouTubePlayerMock(overrides);
   const Player = vi.fn(function playerCtor(
     _el: unknown,

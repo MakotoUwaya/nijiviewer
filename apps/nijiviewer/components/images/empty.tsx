@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { useId } from 'react';
+
 import type { ImageSvgProps } from '@/types';
 
 export const EmptyImage: FC<ImageSvgProps> = ({
@@ -12,13 +13,7 @@ export const EmptyImage: FC<ImageSvgProps> = ({
 
   return (
     <div className="flex flex-col">
-      <svg
-        fill="none"
-        height={height}
-        viewBox="0 0 257 247"
-        width={width}
-        {...props}
-      >
+      <svg fill="none" height={height} viewBox="0 0 257 247" width={width} {...props}>
         <title>{message}</title>
         <path
           d="M127.701 245.846C191.049 245.846 242.402 194.492 242.402 131.145C242.402 67.797 191.049 16.4436 127.701 16.4436C64.3533 16.4436 12.9999 67.797 12.9999 131.145C12.9999 194.492 64.3533 245.846 127.701 245.846Z"
@@ -179,11 +174,7 @@ export const EmptyImage: FC<ImageSvgProps> = ({
               type="matrix"
               values="0 0 0 0 0.104618 0 0 0 0 0.465612 0 0 0 0 0.545833 0 0 0 0.15 0"
             />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_5_1044"
-            />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5_1044" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -214,11 +205,7 @@ export const EmptyImage: FC<ImageSvgProps> = ({
               type="matrix"
               values="0 0 0 0 0.104618 0 0 0 0 0.465612 0 0 0 0 0.545833 0 0 0 0.09 0"
             />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow_5_1044"
-            />
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5_1044" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -237,11 +224,7 @@ export const EmptyImage: FC<ImageSvgProps> = ({
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feGaussianBlur in="BackgroundImageFix" stdDeviation="8.33757" />
-            <feComposite
-              in2="SourceAlpha"
-              operator="in"
-              result="effect1_backgroundBlur_5_1044"
-            />
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_5_1044" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -259,16 +242,8 @@ export const EmptyImage: FC<ImageSvgProps> = ({
             colorInterpolationFilters="sRGB"
           >
             <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation="10.422"
-              result="effect1_foregroundBlur_5_1044"
-            />
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+            <feGaussianBlur stdDeviation="10.422" result="effect1_foregroundBlur_5_1044" />
           </filter>
           <linearGradient
             id={`${id}-paint0_linear_5_1044`}

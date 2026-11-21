@@ -1363,10 +1363,7 @@
                     "target": ["stream", "clip"],
                     "conditions": [],
                     "topic": ["singing"],
-                    "vch": [
-                      "UChAnqc_AY5_I3Px5dig3X1Q",
-                      "UCvaTdHTWBGv3MKj3KVqJVCw"
-                    ],
+                    "vch": ["UChAnqc_AY5_I3Px5dig3X1Q", "UCvaTdHTWBGv3MKj3KVqJVCw"],
                     "org": ["Nijisanji", "Hololive"],
                     "comment": [],
                     "paginated": true,
@@ -1423,10 +1420,7 @@
                   "vch": {
                     "type": "array",
                     "description": "Videos with all of the specified channel \nids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.",
-                    "example": [
-                      "UChAnqc_AY5_I3Px5dig3X1Q",
-                      "UCvaTdHTWBGv3MKj3KVqJVCw"
-                    ],
+                    "example": ["UChAnqc_AY5_I3Px5dig3X1Q", "UCvaTdHTWBGv3MKj3KVqJVCw"],
                     "items": {
                       "type": "string"
                     }
@@ -1460,10 +1454,7 @@
                     "target": ["stream", "clip"],
                     "conditions": [],
                     "topic": ["singing"],
-                    "vch": [
-                      "UChAnqc_AY5_I3Px5dig3X1Q",
-                      "UCvaTdHTWBGv3MKj3KVqJVCw"
-                    ],
+                    "vch": ["UChAnqc_AY5_I3Px5dig3X1Q", "UCvaTdHTWBGv3MKj3KVqJVCw"],
                     "org": ["Nijisanji", "Hololive"],
                     "comment": [],
                     "paginated": true,
@@ -1630,10 +1621,7 @@
                     "lang": ["en", "ja"],
                     "target": ["stream", "clip"],
                     "topic": ["singing"],
-                    "vch": [
-                      "UChAnqc_AY5_I3Px5dig3X1Q",
-                      "UCvaTdHTWBGv3MKj3KVqJVCw"
-                    ],
+                    "vch": ["UChAnqc_AY5_I3Px5dig3X1Q", "UCvaTdHTWBGv3MKj3KVqJVCw"],
                     "org": ["Nijisanji", "Hololive"],
                     "comment": "Lemon",
                     "paginated": true,
@@ -1681,10 +1669,7 @@
                   "vch": {
                     "type": "array",
                     "description": "Videos with all of the specified channel \nids. If two or more channel IDs are specified, will only return their collabs, or if one channel is a clipper, it will only show clips of the other vtubers made by this clipper.",
-                    "example": [
-                      "UChAnqc_AY5_I3Px5dig3X1Q",
-                      "UCvaTdHTWBGv3MKj3KVqJVCw"
-                    ],
+                    "example": ["UChAnqc_AY5_I3Px5dig3X1Q", "UCvaTdHTWBGv3MKj3KVqJVCw"],
                     "items": {
                       "type": "string"
                     }
@@ -1718,10 +1703,7 @@
                     "target": ["stream", "clip"],
                     "conditions": [],
                     "topic": ["singing"],
-                    "vch": [
-                      "UChAnqc_AY5_I3Px5dig3X1Q",
-                      "UCvaTdHTWBGv3MKj3KVqJVCw"
-                    ],
+                    "vch": ["UChAnqc_AY5_I3Px5dig3X1Q", "UCvaTdHTWBGv3MKj3KVqJVCw"],
                     "org": ["Nijisanji", "Hololive"],
                     "comment": "Lemon",
                     "paginated": true,

@@ -23,9 +23,7 @@ export function DebugPanel({
       <div className="text-xs space-y-1">
         <div>
           Status:
-          <span
-            className={`ml-1 ${isConnected ? 'text-green-600' : 'text-red-600'}`}
-          >
+          <span className={`ml-1 ${isConnected ? 'text-green-600' : 'text-red-600'}`}>
             {isConnected ? 'Connected' : 'Disconnected'}
           </span>
         </div>
@@ -33,9 +31,7 @@ export function DebugPanel({
         <div>Nodes: {nodes.length}</div>
         <div>Edges: {edges.length}</div>
         <div>Last Update: {new Date().toLocaleTimeString()}</div>
-        {lastSyncTime && (
-          <div>Last Sync: {lastSyncTime.toLocaleTimeString()}</div>
-        )}
+        {lastSyncTime && <div>Last Sync: {lastSyncTime.toLocaleTimeString()}</div>}
         <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
           <div className="text-xs text-gray-500">
             <div>• Open in multiple browsers/devices</div>

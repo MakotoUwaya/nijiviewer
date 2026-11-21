@@ -39,9 +39,7 @@ export const getStarted = (target: string | undefined): string => {
     : targetDateTime.toRelative() || '';
 };
 
-export const getVideoStatusText = (
-  start_scheduled: string | undefined,
-): string => {
+export const getVideoStatusText = (start_scheduled: string | undefined): string => {
   if (!start_scheduled) return 'Will probably start soon';
   const start = DateTime.fromISO(start_scheduled);
   const diffMap = start.diffNow(['minutes']).toObject();

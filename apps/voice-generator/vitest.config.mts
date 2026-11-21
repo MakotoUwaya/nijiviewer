@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url';
+
 import { defineAppVitestConfig } from 'vitest-config';
 import { defineConfig } from 'vitest/config';
 

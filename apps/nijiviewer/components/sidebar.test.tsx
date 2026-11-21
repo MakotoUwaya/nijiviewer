@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { Sidebar } from '@/components/sidebar';
 import { PreferencesContext } from '@/context/preferences-context';
 import { SidebarProvider } from '@/context/sidebar-context';

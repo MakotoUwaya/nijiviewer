@@ -1,8 +1,9 @@
 'use client';
 
 import { type Node, ReactFlowProvider } from '@xyflow/react';
-import { useEffect, useId, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { useEffect, useId, useRef, useState } from 'react';
+
 import { DebugPanel } from '@/components/DebugPanel';
 import { FlowPanel } from '@/components/FlowPanel';
 import { type SyncedDoc, createSyncedDoc } from '@/lib/loro-sync';
@@ -24,8 +25,7 @@ type ConnectionState = 'connecting' | 'connected' | 'disconnected';
 
 export default function FlowSamplePage() {
   const [syncedDoc, setSyncedDoc] = useState<SyncedDoc | null>(null);
-  const [connectionState, setConnectionState] =
-    useState<ConnectionState>('connecting');
+  const [connectionState, setConnectionState] = useState<ConnectionState>('connecting');
   const peerCount = 0;
   const [lastSyncTime, setLastSyncTime] = useState<Date | null>(null);
   const { theme } = useTheme();
@@ -86,15 +86,9 @@ export default function FlowSamplePage() {
   if (!isMounted || connectionState === 'connecting') {
     return (
       <div className="w-full h-screen">
-        <h1 className="text-2xl font-bold mb-4 p-4">
-          Sync Board (Loro + React Flow)
-        </h1>
+        <h1 className="text-2xl font-bold mb-4 p-4">Sync Board (Loro + React Flow)</h1>
         <div className="w-full h-[80vh] flex items-center justify-center">
-          <p>
-            {connectionState === 'connecting'
-              ? 'サーバーに接続中...'
-              : '読み込み中...'}
-          </p>
+          <p>{connectionState === 'connecting' ? 'サーバーに接続中...' : '読み込み中...'}</p>
         </div>
       </div>
     );
@@ -103,14 +97,11 @@ export default function FlowSamplePage() {
   if (connectionState === 'disconnected' || !syncedDoc) {
     return (
       <div className="w-full h-screen">
-        <h1 className="text-2xl font-bold mb-4 p-4">
-          Sync Board (Loro + React Flow)
-        </h1>
+        <h1 className="text-2xl font-bold mb-4 p-4">Sync Board (Loro + React Flow)</h1>
         <div className="w-full h-[80vh] flex items-center justify-center flex-col gap-4">
           <p>WebSocket サーバーに接続できません</p>
           <p className="text-sm text-gray-500">
-            {WS_URL}{' '}
-            に接続を試みています。サーバーが起動しているか確認してください。
+            {WS_URL} に接続を試みています。サーバーが起動しているか確認してください。
           </p>
           <button
             type="button"
@@ -156,9 +147,7 @@ export default function FlowSamplePage() {
                 if (file) {
                   const reader = new FileReader();
                   reader.onload = (event) => {
-                    const data = new Uint8Array(
-                      event.target?.result as ArrayBuffer,
-                    );
+                    const data = new Uint8Array(event.target?.result as ArrayBuffer);
                     syncedDoc.importDocument(data);
                   };
                   reader.readAsArrayBuffer(file);
@@ -193,9 +182,7 @@ export default function FlowSamplePage() {
             </button>
             <button
               type="button"
-              onClick={() =>
-                syncedDoc.resetDocument(initialNodes, initialEdges)
-              }
+              onClick={() => syncedDoc.resetDocument(initialNodes, initialEdges)}
               className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
             >
               Reset
@@ -203,9 +190,7 @@ export default function FlowSamplePage() {
             <div className="flex items-center gap-2">
               <div
                 className={`w-2 h-2 rounded-full ${
-                  connectionState === 'connected'
-                    ? 'bg-green-500'
-                    : 'bg-red-500'
+                  connectionState === 'connected' ? 'bg-green-500' : 'bg-red-500'
                 }`}
               />
               <span className="text-sm">

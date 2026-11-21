@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockStreamVideo } from '@/test/fixtures/holodex';
 
 const { fetchLiveVideosMock, videosMock } = vi.hoisted(() => ({

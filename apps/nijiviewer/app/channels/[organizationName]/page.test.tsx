@@ -1,16 +1,15 @@
 import { render } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockChannel } from '@/test/fixtures/holodex';
 
-const { fetchAllChannelsByOrgMock, channelListMock, notFoundMock } = vi.hoisted(
-  () => ({
-    fetchAllChannelsByOrgMock: vi.fn(),
-    channelListMock: vi.fn((..._args: unknown[]) => null),
-    notFoundMock: vi.fn(() => {
-      throw new Error('NEXT_NOT_FOUND');
-    }),
+const { fetchAllChannelsByOrgMock, channelListMock, notFoundMock } = vi.hoisted(() => ({
+  fetchAllChannelsByOrgMock: vi.fn(),
+  channelListMock: vi.fn((..._args: unknown[]) => null),
+  notFoundMock: vi.fn(() => {
+    throw new Error('NEXT_NOT_FOUND');
   }),
-);
+}));
 
 vi.mock('next/navigation', () => ({
   notFound: notFoundMock,
@@ -68,9 +67,7 @@ describe('Channels [organizationName] page', () => {
   });
 
   it('calls notFound when organizationName is unknown', async () => {
-    await expect(ChannelsPage(ctx('Unknown'))).rejects.toThrow(
-      'NEXT_NOT_FOUND',
-    );
+    await expect(ChannelsPage(ctx('Unknown'))).rejects.toThrow('NEXT_NOT_FOUND');
     expect(notFoundMock).toHaveBeenCalled();
     expect(fetchAllChannelsByOrgMock).not.toHaveBeenCalled();
   });

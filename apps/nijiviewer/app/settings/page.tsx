@@ -20,11 +20,8 @@ import { type JSX, useEffect, useMemo, useState } from 'react';
 
 import { useAuth } from '@/context/auth-context';
 import type { PasskeyInfo } from '@/context/auth-context';
-import {
-  getPasskeyErrorMessage,
-  isWebAuthnSupported,
-} from '@/lib/passkey-utils';
 import { usePreferences } from '@/context/preferences-context';
+import { getPasskeyErrorMessage, isWebAuthnSupported } from '@/lib/passkey-utils';
 
 export default function SettingsPage(): JSX.Element {
   const {
@@ -51,9 +48,7 @@ export default function SettingsPage(): JSX.Element {
   const [passkeyError, setPasskeyError] = useState<string | null>(null);
   const [editingPasskeyId, setEditingPasskeyId] = useState<string | null>(null);
   const [newFriendlyName, setNewFriendlyName] = useState('');
-  const [deletingPasskeyId, setDeletingPasskeyId] = useState<string | null>(
-    null,
-  );
+  const [deletingPasskeyId, setDeletingPasskeyId] = useState<string | null>(null);
   const [isPasskeyAvailable, setIsPasskeyAvailable] = useState(false);
 
   useEffect(() => {
@@ -177,9 +172,7 @@ export default function SettingsPage(): JSX.Element {
       <div className="container mx-auto max-w-2xl px-4 py-8">
         <Card>
           <CardBody className="text-center py-10">
-            <p className="text-lg mb-4">
-              You need to be signed in to manage settings.
-            </p>
+            <p className="text-lg mb-4">You need to be signed in to manage settings.</p>
           </CardBody>
         </Card>
       </div>
@@ -214,9 +207,7 @@ export default function SettingsPage(): JSX.Element {
                 onPress={handleRegisterPasskey}
                 isDisabled={passkeysLoading}
                 isLoading={passkeysLoading}
-                startContent={
-                  !passkeysLoading && <KeyIcon className="h-4 w-4" />
-                }
+                startContent={!passkeysLoading && <KeyIcon className="h-4 w-4" />}
               >
                 Register New Passkey
               </Button>
@@ -229,8 +220,7 @@ export default function SettingsPage(): JSX.Element {
             ) : passkeys.length === 0 ? (
               <Card>
                 <CardBody className="text-center py-6 text-default-500">
-                  No passkeys registered yet. Click "Register New Passkey" to
-                  get started.
+                  No passkeys registered yet. Click "Register New Passkey" to get started.
                 </CardBody>
               </Card>
             ) : (
@@ -271,10 +261,7 @@ export default function SettingsPage(): JSX.Element {
                               {passkey.friendly_name || 'Unnamed Passkey'}
                             </div>
                             <div className="text-small text-default-500">
-                              Created:{' '}
-                              {new Date(
-                                passkey.created_at,
-                              ).toLocaleDateString()}
+                              Created: {new Date(passkey.created_at).toLocaleDateString()}
                             </div>
                           </div>
                           <div className="flex gap-2">
@@ -314,12 +301,9 @@ export default function SettingsPage(): JSX.Element {
             </h2>
             <Card>
               <CardBody className="text-center py-6">
-                <p className="text-default-500 mb-2">
-                  Your browser does not support Passkeys.
-                </p>
+                <p className="text-default-500 mb-2">Your browser does not support Passkeys.</p>
                 <p className="text-small text-default-400">
-                  Please use a modern browser like Chrome, Edge, Safari, or
-                  Firefox to use Passkeys.
+                  Please use a modern browser like Chrome, Edge, Safari, or Firefox to use Passkeys.
                 </p>
               </CardBody>
             </Card>
@@ -344,13 +328,8 @@ export default function SettingsPage(): JSX.Element {
                 <Card className="overflow-hidden w-full">
                   <CardBody className="flex flex-row items-center p-3 select-none overflow-hidden">
                     <Bars3Icon className="h-6 w-6 text-default-400 mr-3 flex-shrink-0 cursor-grab active:cursor-grabbing" />
-                    <div className="flex-1 font-medium truncate">
-                      {org.name}
-                    </div>
-                    <Checkbox
-                      isSelected={true}
-                      onValueChange={() => handleToggle(org.id, false)}
-                    />
+                    <div className="flex-1 font-medium truncate">{org.name}</div>
+                    <Checkbox isSelected={true} onValueChange={() => handleToggle(org.id, false)} />
                   </CardBody>
                 </Card>
               </Reorder.Item>
@@ -362,22 +341,14 @@ export default function SettingsPage(): JSX.Element {
         {disabledOrgs.length > 0 && (
           <section>
             <h2 className="text-lg font-bold mb-2">Available Organizations</h2>
-            <p className="text-small text-default-500 mb-4">
-              Check to add to sidebar favorites.
-            </p>
+            <p className="text-small text-default-500 mb-4">Check to add to sidebar favorites.</p>
             <div className="space-y-2">
               {disabledOrgs.map((org) => (
                 <Card key={org.id} className="overflow-hidden w-full">
                   <CardBody className="flex flex-row items-center p-3 overflow-hidden">
-                    <div className="h-6 w-6 mr-3 flex-shrink-0" />{' '}
-                    {/* Spacer for alignment */}
-                    <div className="flex-1 text-default-600 truncate">
-                      {org.name}
-                    </div>
-                    <Checkbox
-                      isSelected={false}
-                      onValueChange={() => handleToggle(org.id, true)}
-                    />
+                    <div className="h-6 w-6 mr-3 flex-shrink-0" /> {/* Spacer for alignment */}
+                    <div className="flex-1 text-default-600 truncate">{org.name}</div>
+                    <Checkbox isSelected={false} onValueChange={() => handleToggle(org.id, true)} />
                   </CardBody>
                 </Card>
               ))}
@@ -390,9 +361,7 @@ export default function SettingsPage(): JSX.Element {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                Selection Required
-              </ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Selection Required</ModalHeader>
               <ModalBody>
                 <p>You must select at least one organization.</p>
               </ModalBody>
@@ -406,24 +375,16 @@ export default function SettingsPage(): JSX.Element {
         </ModalContent>
       </Modal>
 
-      <Modal
-        isOpen={deleteConfirmModal.isOpen}
-        onOpenChange={deleteConfirmModal.onOpenChange}
-      >
+      <Modal isOpen={deleteConfirmModal.isOpen} onOpenChange={deleteConfirmModal.onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                Delete Passkey
-              </ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Delete Passkey</ModalHeader>
               <ModalBody>
-                <p>
-                  Are you sure you want to delete this Passkey? This action
-                  cannot be undone.
-                </p>
+                <p>Are you sure you want to delete this Passkey? This action cannot be undone.</p>
                 <p className="text-small text-default-500 mt-2">
-                  You will need to register a new Passkey if you want to use
-                  passwordless sign-in again.
+                  You will need to register a new Passkey if you want to use passwordless sign-in
+                  again.
                 </p>
               </ModalBody>
               <ModalFooter>
@@ -436,11 +397,7 @@ export default function SettingsPage(): JSX.Element {
                 >
                   Cancel
                 </Button>
-                <Button
-                  color="danger"
-                  onPress={handleDeleteConfirm}
-                  isLoading={passkeysLoading}
-                >
+                <Button color="danger" onPress={handleDeleteConfirm} isLoading={passkeysLoading}>
                   Delete
                 </Button>
               </ModalFooter>

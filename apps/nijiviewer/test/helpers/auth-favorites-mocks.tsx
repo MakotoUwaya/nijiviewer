@@ -2,6 +2,7 @@ import { HeroUIProvider } from '@heroui/react';
 import type { Session, User } from '@supabase/supabase-js';
 import type { ReactNode } from 'react';
 import { type Mock, vi } from 'vitest';
+
 import type { FavoriteLiver } from '@/lib/favorites';
 
 type AuthValue = {
@@ -17,9 +18,7 @@ type AuthValue = {
     friendly_name: string;
     created_at: string;
   }>;
-  listPasskeys: () => Promise<
-    Array<{ id: string; friendly_name: string; created_at: string }>
-  >;
+  listPasskeys: () => Promise<Array<{ id: string; friendly_name: string; created_at: string }>>;
   updatePasskey: () => Promise<void>;
   deletePasskey: () => Promise<void>;
 };
@@ -30,14 +29,9 @@ type FavoritesValue = {
   refetch: () => Promise<void>;
 };
 
-export const wrapWithHeroUI = (ui: ReactNode) => (
-  <HeroUIProvider>{ui}</HeroUIProvider>
-);
+export const wrapWithHeroUI = (ui: ReactNode) => <HeroUIProvider>{ui}</HeroUIProvider>;
 
-export const stubAuth = (
-  mock: Mock,
-  overrides: Partial<AuthValue> = {},
-): void => {
+export const stubAuth = (mock: Mock, overrides: Partial<AuthValue> = {}): void => {
   mock.mockReturnValue({
     user: null,
     session: null,
@@ -46,9 +40,7 @@ export const stubAuth = (
     signUp: vi.fn(),
     signOut: vi.fn(),
     signInWithPasskey: vi.fn(),
-    registerPasskey: vi
-      .fn()
-      .mockResolvedValue({ id: '', friendly_name: '', created_at: '' }),
+    registerPasskey: vi.fn().mockResolvedValue({ id: '', friendly_name: '', created_at: '' }),
     listPasskeys: vi.fn().mockResolvedValue([]),
     updatePasskey: vi.fn(),
     deletePasskey: vi.fn(),
@@ -56,10 +48,7 @@ export const stubAuth = (
   });
 };
 
-export const stubFavorites = (
-  mock: Mock,
-  overrides: Partial<FavoritesValue> = {},
-): void => {
+export const stubFavorites = (mock: Mock, overrides: Partial<FavoritesValue> = {}): void => {
   mock.mockReturnValue({
     favorites: [],
     isLoading: false,

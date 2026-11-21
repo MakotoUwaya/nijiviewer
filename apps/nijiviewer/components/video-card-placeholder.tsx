@@ -4,12 +4,9 @@ import { SignalIcon } from '@heroicons/react/24/solid';
 import { Card, CardFooter, CardHeader, Chip, Image, User } from '@heroui/react';
 import { DateTime } from 'luxon';
 import type { JSX } from 'react';
+
 import type { PlaceholderVideo } from '@/lib/holodex';
-import {
-  formatVideoDuration,
-  getChannelGroup,
-  getVideoStatusText,
-} from '@/lib/holodex';
+import { formatVideoDuration, getChannelGroup, getVideoStatusText } from '@/lib/holodex';
 import { getImageUrl } from '@/lib/image-utils';
 
 const getDomain = (url: string): string => {
@@ -20,14 +17,10 @@ export default function VideoCardPlaceholder(
   video: PlaceholderVideo & { started: boolean },
 ): JSX.Element {
   const channelGroup = getChannelGroup(video.channel);
-  const channelDescription = `${video.channel.org}${
-    channelGroup ? ` / ${channelGroup}` : ''
-  }`;
+  const channelDescription = `${video.channel.org}${channelGroup ? ` / ${channelGroup}` : ''}`;
   const videoStatusText = video.started
     ? `Live - ${getDomain(video.link)} Started streaming ${
-        video.start_actual
-          ? DateTime.fromISO(video.start_actual).toRelative()
-          : ''
+        video.start_actual ? DateTime.fromISO(video.start_actual).toRelative() : ''
       }`
     : getVideoStatusText(video.start_scheduled);
   return (

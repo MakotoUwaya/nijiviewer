@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+
 import ChannelList from '@/components/channel-list';
 import { organizationMap } from '@/const/organizations';
 import { fetchAllChannelsByOrg } from '@/lib/data';

@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
+
 import { Search } from './search';
 
 // AuthContextをモック
@@ -14,9 +15,7 @@ vi.mock('@/context/auth-context', () => {
       signOut: vi.fn(),
       session: null,
     }),
-    AuthProvider: ({ children }: { children: React.ReactNode }) => (
-      <>{children}</>
-    ),
+    AuthProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   };
 });
 
@@ -24,9 +23,7 @@ describe('Search', () => {
   it('displays the search box', () => {
     render(<Search onSearch={() => {}} />);
     // Use getAllByPlaceholderText and check that at least one exists
-    expect(
-      screen.getAllByPlaceholderText('Search Liver Name...').length,
-    ).toBeGreaterThan(0);
+    expect(screen.getAllByPlaceholderText('Search Liver Name...').length).toBeGreaterThan(0);
   });
 
   // TODO: Fix this test

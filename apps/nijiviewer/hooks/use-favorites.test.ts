@@ -1,5 +1,6 @@
 import { act, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockUser } from '@/test/fixtures/auth';
 import { mockFavoriteLiver } from '@/test/fixtures/favorites';
 import { renderHookWithProviders } from '@/test/helpers/render-with-providers';
@@ -8,6 +9,7 @@ import {
   mockSupabaseFromOnce,
   queueSupabaseFrom,
 } from '@/test/helpers/supabase-mock';
+
 import { useFavoriteLiver, useFavoriteLiversList } from './use-favorites';
 
 describe('useFavoriteLiver', () => {
@@ -19,19 +21,16 @@ describe('useFavoriteLiver', () => {
   });
 
   it('starts as not favorite when user is missing', () => {
-    const { result } = renderHookWithProviders(() =>
-      useFavoriteLiver('liver-1'),
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiver('liver-1'));
     expect(result.current.isFavorite).toBe(false);
   });
 
   it('checks favorite status when user is signed in', async () => {
     mockSupabaseFromOnce({ data: { id: 1 }, error: null });
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiver('liver-1'),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiver('liver-1'), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(result.current.isFavorite).toBe(true);
@@ -47,10 +46,9 @@ describe('useFavoriteLiver', () => {
     const { supabaseMock } = await import('@/test/helpers/supabase-mock');
     supabaseMock.from.mockImplementationOnce(failingFrom);
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiver('liver-1'),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiver('liver-1'), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(console.error).toHaveBeenCalled();
@@ -66,10 +64,9 @@ describe('useFavoriteLiver', () => {
       { data: mockFavoriteLiver(), error: null },
     ]);
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiver('liver-1'),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiver('liver-1'), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(result.current.isFavorite).toBe(false);
@@ -91,10 +88,9 @@ describe('useFavoriteLiver', () => {
       { data: null, error: null },
     ]);
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiver('liver-1'),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiver('liver-1'), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(result.current.isFavorite).toBe(true);
@@ -108,9 +104,7 @@ describe('useFavoriteLiver', () => {
   });
 
   it('toggleFavorite is a no-op when user is missing', async () => {
-    const { result } = renderHookWithProviders(() =>
-      useFavoriteLiver('liver-1'),
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiver('liver-1'));
 
     await act(async () => {
       await result.current.toggleFavorite();
@@ -126,10 +120,9 @@ describe('useFavoriteLiver', () => {
       { data: null, error: { code: '500', message: 'boom' } },
     ]);
 
-    const { result } = renderHookWithProviders(
-      () => useFavoriteLiver('liver-1'),
-      { authState: { user: mockUser({ id: 'u1' }) } },
-    );
+    const { result } = renderHookWithProviders(() => useFavoriteLiver('liver-1'), {
+      authState: { user: mockUser({ id: 'u1' }) },
+    });
 
     await waitFor(() => {
       expect(result.current.isFavorite).toBe(false);

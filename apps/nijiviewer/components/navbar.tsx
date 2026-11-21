@@ -14,11 +14,13 @@ import {
 import NextLink from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { type JSX, useEffect, useState } from 'react';
+
 import { siteConfig } from '@/config/site';
 import { useAuth } from '@/context/auth-context';
 import { useSidebar } from '@/context/sidebar-context';
 import { fetchChannelInfo } from '@/lib/data';
 import type { Organization } from '@/lib/holodex';
+
 import { AuthModal } from './auth-modal';
 import { GithubIcon, Logo, MenuIcon } from './icons';
 import { Sidebar } from './sidebar';
@@ -27,8 +29,7 @@ import { ThemeSwitch } from './theme-switch';
 export function Navbar(): JSX.Element {
   const router = useRouter();
   const pathName = usePathname();
-  const { isSidebarOpen, setIsSidebarOpen, isMobile, toggleSidebar } =
-    useSidebar();
+  const { isSidebarOpen, setIsSidebarOpen, isMobile, toggleSidebar } = useSidebar();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { user, signOut, isLoading } = useAuth();
   const [selectedOrgId, setSelectedOrgId] = useState('');
@@ -82,21 +83,13 @@ export function Navbar(): JSX.Element {
       >
         <NavbarContent justify="start">
           <NavbarItem>
-            <Button
-              variant="light"
-              isIconOnly
-              onPress={toggleSidebar}
-              aria-label="Toggle sidebar"
-            >
+            <Button variant="light" isIconOnly onPress={toggleSidebar} aria-label="Toggle sidebar">
               <MenuIcon className="w-6 h-6 text-default-500" />
             </Button>
           </NavbarItem>
 
           <NavbarBrand className="gap-3 max-w-fit">
-            <NextLink
-              className="flex justify-start items-center gap-1"
-              href="/"
-            >
+            <NextLink className="flex justify-start items-center gap-1" href="/">
               <Logo />
               <p className="font-bold text-inherit ml-2">NijiViewer</p>
             </NextLink>
@@ -136,12 +129,7 @@ export function Navbar(): JSX.Element {
                 >
                   <Cog6ToothIcon className="w-5 h-5 text-default-500" />
                 </Button>
-                <Button
-                  color="danger"
-                  size="sm"
-                  variant="light"
-                  onPress={handleSignOut}
-                >
+                <Button color="danger" size="sm" variant="light" onPress={handleSignOut}>
                   Sign Out
                 </Button>
               </>

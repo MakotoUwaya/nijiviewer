@@ -1,11 +1,10 @@
 import { act, renderHook } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { describe, expect, it } from 'vitest';
+
 import { mockStreamVideo } from '@/test/fixtures/holodex';
-import {
-  useYouTubePlayer,
-  YouTubePlayerProvider,
-} from './useYouTubePlayerContext';
+
+import { useYouTubePlayer, YouTubePlayerProvider } from './useYouTubePlayerContext';
 
 const wrapper = ({ children }: { children: ReactNode }) => (
   <YouTubePlayerProvider>{children}</YouTubePlayerProvider>

@@ -12,24 +12,23 @@ const nijisanjiStoreIdsByChannelId: Record<string, string> = {
   'UC_4QF0dL-9XI9VajsNkMtmQ': '1186',
 };
 
-const organizationLinkResolvers: Record<string, OrganizationLiverLinkResolver> =
-  {
-    Nijisanji: (channel) => {
-      const storeId = nijisanjiStoreIdsByChannelId[channel.id];
+const organizationLinkResolvers: Record<string, OrganizationLiverLinkResolver> = {
+  Nijisanji: (channel) => {
+    const storeId = nijisanjiStoreIdsByChannelId[channel.id];
 
-      if (!storeId) {
-        return [];
-      }
+    if (!storeId) {
+      return [];
+    }
 
-      return [
-        {
-          label: 'にじさんじオフィシャルストア',
-          url: `https://shop.nijisanji.jp/${storeId}`,
-          kind: 'official-store',
-        },
-      ];
-    },
-  };
+    return [
+      {
+        label: 'にじさんじオフィシャルストア',
+        url: `https://shop.nijisanji.jp/${storeId}`,
+        kind: 'official-store',
+      },
+    ];
+  },
+};
 
 export function getLiverExternalLinks(channel: Channel): LiverExternalLink[] {
   if (!channel.org) {

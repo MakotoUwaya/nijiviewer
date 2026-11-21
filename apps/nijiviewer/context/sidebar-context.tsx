@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  createContext,
-  type ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
 
 interface SidebarContextType {
   isSidebarOpen: boolean;
@@ -34,17 +28,11 @@ export function SidebarProvider({ children }: { children: ReactNode }) {
       // レスポンシブな幅の設定
       if (mobile) {
         // モバイル: 画面幅の85%、最大320px、最小280px
-        const mobileWidth = Math.min(
-          320,
-          Math.max(280, window.innerWidth * 0.85),
-        );
+        const mobileWidth = Math.min(320, Math.max(280, window.innerWidth * 0.85));
         setSidebarWidth(mobileWidth);
       } else {
         // デスクトップ: 画面幅に応じて調整、最大400px、最小320px
-        const desktopWidth = Math.min(
-          400,
-          Math.max(320, window.innerWidth * 0.2),
-        );
+        const desktopWidth = Math.min(400, Math.max(320, window.innerWidth * 0.2));
         setSidebarWidth(desktopWidth);
       }
     };

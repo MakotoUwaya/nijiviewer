@@ -2,11 +2,7 @@ import type { Organization, Video } from '@/lib/holodex';
 
 declare global {
   interface Window {
-    gtag: (
-      command: 'event',
-      eventName: string,
-      eventParameters: Record<string, unknown>,
-    ) => void;
+    gtag: (command: 'event', eventName: string, eventParameters: Record<string, unknown>) => void;
   }
 }
 
@@ -17,10 +13,7 @@ export const sendOrganizationChangeEvent = (organization: Organization) => {
   });
 };
 
-export const sendVideoPlayEvent = (
-  video: Video,
-  playLocation: 'youtube' | 'in-app',
-) => {
+export const sendVideoPlayEvent = (video: Video, playLocation: 'youtube' | 'in-app') => {
   window.gtag?.('event', 'play_video', {
     video_id: video.id,
     video_title: video.title,

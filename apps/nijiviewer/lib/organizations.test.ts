@@ -1,10 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { organizationMap } from '@/const/organizations';
 import { mockOrganizationRow } from '@/test/fixtures/organizations';
-import {
-  mockSupabaseFromOnce,
-  queueSupabaseFrom,
-} from '@/test/helpers/supabase-mock';
+import { mockSupabaseFromOnce, queueSupabaseFrom } from '@/test/helpers/supabase-mock';
+
 import {
   getOrganizations,
   getUserFavoriteOrganizationIds,
@@ -66,10 +65,7 @@ describe('organizations', () => {
   describe('getUserFavoriteOrganizationIds', () => {
     it('returns ordered organization_id array', async () => {
       mockSupabaseFromOnce({
-        data: [
-          { organization_id: 'Nijisanji' },
-          { organization_id: 'Hololive' },
-        ],
+        data: [{ organization_id: 'Nijisanji' }, { organization_id: 'Hololive' }],
         error: null,
       });
 
@@ -108,9 +104,7 @@ describe('organizations', () => {
         { data: null, error: null },
       ]);
 
-      await expect(
-        toggleUserFavoriteOrganization('u1', 'Hololive', true),
-      ).resolves.toBeUndefined();
+      await expect(toggleUserFavoriteOrganization('u1', 'Hololive', true)).resolves.toBeUndefined();
     });
 
     it('ignores 23505 unique violation on insert', async () => {
@@ -130,9 +124,9 @@ describe('organizations', () => {
         { data: null, error: { code: '99', message: 'real error' } },
       ]);
 
-      await expect(
-        toggleUserFavoriteOrganization('u1', 'Nijisanji', true),
-      ).rejects.toMatchObject({ code: '99' });
+      await expect(toggleUserFavoriteOrganization('u1', 'Nijisanji', true)).rejects.toMatchObject({
+        code: '99',
+      });
     });
 
     it('deletes the row on favorite=false', async () => {
@@ -149,9 +143,9 @@ describe('organizations', () => {
         error: { message: 'delete failed' },
       });
 
-      await expect(
-        toggleUserFavoriteOrganization('u1', 'Nijisanji', false),
-      ).rejects.toMatchObject({ message: 'delete failed' });
+      await expect(toggleUserFavoriteOrganization('u1', 'Nijisanji', false)).rejects.toMatchObject({
+        message: 'delete failed',
+      });
     });
   });
 
@@ -174,9 +168,7 @@ describe('organizations', () => {
         error: { code: '23505', message: 'dup' },
       });
 
-      await expect(
-        initializeUserFavorites('u1', ['Nijisanji']),
-      ).resolves.toBeUndefined();
+      await expect(initializeUserFavorites('u1', ['Nijisanji'])).resolves.toBeUndefined();
     });
 
     it('throws on non-23505 errors', async () => {
@@ -185,9 +177,9 @@ describe('organizations', () => {
         error: { code: '11', message: 'fail' },
       });
 
-      await expect(
-        initializeUserFavorites('u1', ['Nijisanji']),
-      ).rejects.toMatchObject({ code: '11' });
+      await expect(initializeUserFavorites('u1', ['Nijisanji'])).rejects.toMatchObject({
+        code: '11',
+      });
     });
   });
 
@@ -206,9 +198,9 @@ describe('organizations', () => {
         error: { message: 'fail' },
       });
 
-      await expect(
-        updateUserFavoriteOrder('u1', ['Nijisanji']),
-      ).rejects.toMatchObject({ message: 'fail' });
+      await expect(updateUserFavoriteOrder('u1', ['Nijisanji'])).rejects.toMatchObject({
+        message: 'fail',
+      });
     });
   });
 });

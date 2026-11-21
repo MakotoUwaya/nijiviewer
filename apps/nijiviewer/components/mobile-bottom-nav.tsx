@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  Cog8ToothIcon,
-  HeartIcon,
-  SignalIcon,
-} from '@heroicons/react/24/outline';
+import { Cog8ToothIcon, HeartIcon, SignalIcon } from '@heroicons/react/24/outline';
 import {
   Cog8ToothIcon as Cog8ToothIconSolid,
   HeartIcon as HeartIconSolid,
@@ -56,9 +52,7 @@ export function MobileBottomNav() {
       icon: SignalIcon,
       activeIcon: SignalIconSolid,
       isActive:
-        pathname === '/' ||
-        pathname.startsWith('/live-videos') ||
-        pathname.startsWith('/liver/'),
+        pathname === '/' || pathname.startsWith('/live-videos') || pathname.startsWith('/liver/'),
     },
     {
       href: '/favorites',
@@ -95,9 +89,7 @@ export function MobileBottomNav() {
             }`}
           >
             <Icon className="w-6 h-6" />
-            <span className="text-[9px] font-bold tracking-wide uppercase">
-              {item.label}
-            </span>
+            <span className="text-[9px] font-bold tracking-wide uppercase">{item.label}</span>
           </NextLink>
         );
       })}

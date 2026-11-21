@@ -1,5 +1,6 @@
 import type { Edge, Node } from '@xyflow/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { createSyncedDoc, type SyncedDoc } from './loro-sync';
 
 const WS_OPEN = 1;
@@ -120,11 +121,7 @@ describe('createSyncedDoc', () => {
     seedDoc.cleanup();
 
     // New doc reuses the snapshot — initialNodes should be ignored.
-    const { synced } = await initialize(
-      [makeNode('should-be-ignored')],
-      [],
-      snapshot,
-    );
+    const { synced } = await initialize([makeNode('should-be-ignored')], [], snapshot);
 
     expect(synced.getNodes().map((n) => n.id)).toEqual(['seed']);
   });
@@ -149,16 +146,11 @@ describe('createSyncedDoc', () => {
   });
 
   it('updateNodePosition mutates only the targeted node', async () => {
-    const { synced } = await initialize(
-      [makeNode('a', 0, 0), makeNode('b', 100, 100)],
-      [],
-    );
+    const { synced } = await initialize([makeNode('a', 0, 0), makeNode('b', 100, 100)], []);
 
     synced.updateNodePosition('a', 50, 75);
 
-    const byId = Object.fromEntries(
-      synced.getNodes().map((n) => [n.id, n.position]),
-    );
+    const byId = Object.fromEntries(synced.getNodes().map((n) => [n.id, n.position]));
     expect(byId.a).toEqual({ x: 50, y: 75 });
     expect(byId.b).toEqual({ x: 100, y: 100 });
   });
@@ -171,10 +163,7 @@ describe('createSyncedDoc', () => {
   });
 
   it('addEdge / removeEdges mutate the edge collection', async () => {
-    const { synced } = await initialize(
-      [makeNode('a'), makeNode('b'), makeNode('c')],
-      [],
-    );
+    const { synced } = await initialize([makeNode('a'), makeNode('b'), makeNode('c')], []);
 
     synced.addEdge(makeEdge('e1', 'a', 'b'));
     synced.addEdge(makeEdge('e2', 'b', 'c'));
@@ -213,17 +202,12 @@ describe('createSyncedDoc', () => {
       [makeEdge('old-edge', 'old1', 'old2')],
     );
 
-    synced.resetDocument(
-      [makeNode('new1', 9, 9, 'New')],
-      [makeEdge('new-edge', 'new1', 'new1')],
-    );
+    synced.resetDocument([makeNode('new1', 9, 9, 'New')], [makeEdge('new-edge', 'new1', 'new1')]);
 
     expect(synced.getNodes()).toEqual([
       { id: 'new1', position: { x: 9, y: 9 }, data: { label: 'New' } },
     ]);
-    expect(synced.getEdges()).toEqual([
-      { id: 'new-edge', source: 'new1', target: 'new1' },
-    ]);
+    expect(synced.getEdges()).toEqual([{ id: 'new-edge', source: 'new1', target: 'new1' }]);
   });
 
   it('subscribe fires the callback when the doc changes', async () => {
@@ -280,10 +264,7 @@ describe('createSyncedDoc', () => {
     ws.emit(new Uint8Array([0xff, 0xff, 0xff, 0xff]));
     await new Promise((r) => setTimeout(r, 0));
 
-    expect(errorSpy).toHaveBeenCalledWith(
-      'Failed to import remote update:',
-      expect.anything(),
-    );
+    expect(errorSpy).toHaveBeenCalledWith('Failed to import remote update:', expect.anything());
     errorSpy.mockRestore();
   });
 

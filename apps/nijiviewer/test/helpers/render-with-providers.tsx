@@ -8,6 +8,7 @@ import {
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { ReactElement, ReactNode } from 'react';
 import { vi } from 'vitest';
+
 import { AuthContext, type AuthContextType } from '@/context/auth-context';
 import { PreferencesContext } from '@/context/preferences-context';
 import type { Organization } from '@/lib/holodex';
@@ -52,7 +53,6 @@ const defaultPreferences: PreferencesValue = {
 };
 
 export function buildWrapper(options: ProviderOptions = {}) {
-  // biome-ignore lint/correctness/noComponentHookFactories: helper to create custom wrapper for test rendering
   return function Wrapper({ children }: { children: ReactNode }) {
     let tree: ReactNode = children;
 
@@ -64,11 +64,7 @@ export function buildWrapper(options: ProviderOptions = {}) {
         updateOrder: vi.fn(defaultPreferences.updateOrder),
         ...options.preferencesState,
       };
-      tree = (
-        <PreferencesContext.Provider value={value}>
-          {tree}
-        </PreferencesContext.Provider>
-      );
+      tree = <PreferencesContext.Provider value={value}>{tree}</PreferencesContext.Provider>;
     }
 
     if (options.authState) {

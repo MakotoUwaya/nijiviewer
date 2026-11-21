@@ -1,13 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockUser } from '@/test/fixtures/auth';
 import { mockFavoriteLiver } from '@/test/fixtures/favorites';
 import { mockStreamVideo } from '@/test/fixtures/holodex';
-import {
-  stubAuth,
-  stubFavorites,
-  wrapWithHeroUI,
-} from '@/test/helpers/auth-favorites-mocks';
+import { stubAuth, stubFavorites, wrapWithHeroUI } from '@/test/helpers/auth-favorites-mocks';
 
 const {
   useAuthMock,
@@ -57,9 +54,7 @@ describe('FavoritesPage', () => {
     expect(
       screen.queryByText('ログインしてお気に入り機能を利用しましょう。'),
     ).not.toBeInTheDocument();
-    expect(
-      screen.queryByRole('heading', { name: 'Favorite Live Videos' }),
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'Favorite Live Videos' })).not.toBeInTheDocument();
   });
 
   it('shows the spinner (and nothing else) while favorites are loading', () => {
@@ -80,9 +75,7 @@ describe('FavoritesPage', () => {
     render(wrapWithHeroUI(<FavoritesPage />));
 
     await waitFor(() => {
-      expect(
-        screen.getByText('ログインしてお気に入り機能を利用しましょう。'),
-      ).toBeInTheDocument();
+      expect(screen.getByText('ログインしてお気に入り機能を利用しましょう。')).toBeInTheDocument();
     });
   });
 
@@ -94,9 +87,7 @@ describe('FavoritesPage', () => {
     render(wrapWithHeroUI(<FavoritesPage />));
 
     await waitFor(() => {
-      expect(
-        screen.getByText(/お気に入りのライバーがいません/),
-      ).toBeInTheDocument();
+      expect(screen.getByText(/お気に入りのライバーがいません/)).toBeInTheDocument();
     });
     expect(getFavoritesLiveVideosActionMock).not.toHaveBeenCalled();
   });
@@ -112,9 +103,7 @@ describe('FavoritesPage', () => {
     render(wrapWithHeroUI(<FavoritesPage />));
 
     await waitFor(() => {
-      expect(getFavoritesLiveVideosActionMock).toHaveBeenCalledWith([
-        'liver-1',
-      ]);
+      expect(getFavoritesLiveVideosActionMock).toHaveBeenCalledWith(['liver-1']);
     });
     await waitFor(() => {
       expect(videosMock).toHaveBeenCalled();

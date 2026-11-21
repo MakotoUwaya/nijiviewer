@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { usePlayerHistory } from './usePlayerHistory';
 
 describe('usePlayerHistory', () => {
@@ -88,9 +89,7 @@ describe('usePlayerHistory', () => {
     rerender({ isOpen: true });
 
     act(() => {
-      window.dispatchEvent(
-        new PopStateEvent('popstate', { state: { inAppPlayer: true } }),
-      );
+      window.dispatchEvent(new PopStateEvent('popstate', { state: { inAppPlayer: true } }));
     });
 
     expect(onClose).not.toHaveBeenCalled();
@@ -114,9 +113,6 @@ describe('usePlayerHistory', () => {
 
     unmount();
 
-    expect(removeListenerSpy).toHaveBeenCalledWith(
-      'popstate',
-      expect.any(Function),
-    );
+    expect(removeListenerSpy).toHaveBeenCalledWith('popstate', expect.any(Function));
   });
 });

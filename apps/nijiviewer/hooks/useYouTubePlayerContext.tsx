@@ -1,12 +1,7 @@
 'use client';
 
-import {
-  createContext,
-  type ReactNode,
-  useCallback,
-  useContext,
-  useState,
-} from 'react';
+import { createContext, type ReactNode, useCallback, useContext, useState } from 'react';
+
 import type { Video } from '@/lib/holodex';
 
 interface YouTubePlayerContextType {
@@ -15,9 +10,7 @@ interface YouTubePlayerContextType {
   closePlayer: () => void;
 }
 
-const YouTubePlayerContext = createContext<
-  YouTubePlayerContextType | undefined
->(undefined);
+const YouTubePlayerContext = createContext<YouTubePlayerContextType | undefined>(undefined);
 
 export function YouTubePlayerProvider({ children }: { children: ReactNode }) {
   const [currentVideo, setCurrentVideo] = useState<Video | null>(null);
@@ -46,9 +39,7 @@ export function YouTubePlayerProvider({ children }: { children: ReactNode }) {
 export function useYouTubePlayer(): YouTubePlayerContextType {
   const context = useContext(YouTubePlayerContext);
   if (context === undefined) {
-    throw new Error(
-      'useYouTubePlayer must be used within a YouTubePlayerProvider',
-    );
+    throw new Error('useYouTubePlayer must be used within a YouTubePlayerProvider');
   }
   return context;
 }

@@ -3,6 +3,7 @@
 import { Input } from '@heroui/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useId, useState } from 'react';
+
 import { SearchIcon } from '@/components/icons';
 import { useAuth } from '@/context/auth-context';
 import { supabase } from '@/lib/supabase';
@@ -93,10 +94,7 @@ export function Search({ onSearch }: SearchProps) {
   };
 
   // 検索履歴を削除する関数
-  const deleteSearchHistory = async (
-    searchWord: string,
-    e: React.MouseEvent,
-  ) => {
+  const deleteSearchHistory = async (searchWord: string, e: React.MouseEvent) => {
     e.stopPropagation(); // 親要素のクリックイベントが発火するのを防止
 
     if (!user) return;
@@ -156,9 +154,7 @@ export function Search({ onSearch }: SearchProps) {
   };
 
   if (!mounted) {
-    return (
-      <div className="w-full h-10 bg-default-100 dark:bg-default-50 rounded-medium" />
-    );
+    return <div className="w-full h-10 bg-default-100 dark:bg-default-50 rounded-medium" />;
   }
 
   return (
@@ -228,9 +224,7 @@ export function Search({ onSearch }: SearchProps) {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
-                      <title id={deleteIconId}>
-                        {`${history.search_word} を削除`}
-                      </title>
+                      <title id={deleteIconId}>{`${history.search_word} を削除`}</title>
                       <line x1="18" y1="6" x2="6" y2="18" />
                       <line x1="6" y1="6" x2="18" y2="18" />
                     </svg>

@@ -15,9 +15,7 @@ const isValidOrganizationName = (organizationName: string): boolean => {
   );
 };
 
-export default async function LiveVideosPage({
-  params,
-}: Props): Promise<JSX.Element> {
+export default async function LiveVideosPage({ params }: Props): Promise<JSX.Element> {
   const { organizationName } = await params;
   const decodedOrg = decodeURIComponent(organizationName);
   if (!isValidOrganizationName(decodedOrg)) {

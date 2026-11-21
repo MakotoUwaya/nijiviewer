@@ -1,11 +1,7 @@
 import { DateTime } from 'luxon';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import {
-  formatVideoDuration,
-  getChannelGroup,
-  getStarted,
-  getVideoStatusText,
-} from './holodex';
+
+import { formatVideoDuration, getChannelGroup, getStarted, getVideoStatusText } from './holodex';
 
 describe('holodex utils', () => {
   describe('getStarted', () => {

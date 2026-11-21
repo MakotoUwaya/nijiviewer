@@ -7,9 +7,7 @@ export interface OrganizationRow {
   created_at: string;
 }
 
-export function mockOrganization(
-  overrides: Partial<Organization> = {},
-): Organization {
+export function mockOrganization(overrides: Partial<Organization> = {}): Organization {
   return {
     id: 'Nijisanji',
     name: 'にじさんじ',
@@ -18,9 +16,7 @@ export function mockOrganization(
   };
 }
 
-export function mockOrganizationRow(
-  overrides: Partial<OrganizationRow> = {},
-): OrganizationRow {
+export function mockOrganizationRow(overrides: Partial<OrganizationRow> = {}): OrganizationRow {
   return {
     id: 'Nijisanji',
     name: 'にじさんじ',

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import ErrorPage from './error';
 
 describe('Error page', () => {
@@ -17,9 +18,7 @@ describe('Error page', () => {
     expect(
       screen.getByRole('heading', { level: 2, name: 'Something went wrong!' }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: 'Try again' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument();
     expect(console.error).toHaveBeenCalledWith(error);
   });
 

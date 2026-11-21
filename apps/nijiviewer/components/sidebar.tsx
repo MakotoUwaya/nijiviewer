@@ -6,14 +6,15 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import { type JSX, Suspense, useEffect, useState } from 'react';
+
 import { ClientOnly } from '@/components/client-only';
 import OrgSelector from '@/components/org-selector';
 import { siteConfig } from '@/config/site';
-
 import { useAuth } from '@/context/auth-context';
 import { usePreferences } from '@/context/preferences-context'; // Added
 import { useSidebar } from '@/context/sidebar-context';
 import type { Organization } from '@/lib/holodex';
+
 import { Search } from './search';
 
 type SidebarProps = {
@@ -46,9 +47,7 @@ export function Sidebar({
   const { favoriteOrgIds, organizations: allOrgs } = usePreferences();
 
   // Local derived state
-  const [displayedOrganizations, setDisplayedOrganizations] = useState<
-    Organization[]
-  >([]);
+  const [displayedOrganizations, setDisplayedOrganizations] = useState<Organization[]>([]);
 
   useEffect(() => {
     if (!user) {
@@ -104,14 +103,10 @@ export function Sidebar({
       <Divider className="mb-6" />
       {/* Organization セレクター */}
       <div className="mb-6 min-w-0">
-        <h3 className="text-sm font-semibold text-default-600 mb-3">
-          Organization
-        </h3>
+        <h3 className="text-sm font-semibold text-default-600 mb-3">Organization</h3>
         <div className="w-full min-w-0 space-y-2">
           <ClientOnly
-            fallback={
-              <div className="h-10 w-full bg-default-100 rounded-medium animate-pulse" />
-            }
+            fallback={<div className="h-10 w-full bg-default-100 rounded-medium animate-pulse" />}
           >
             <OrgSelector
               items={displayedOrganizations}
@@ -122,18 +117,13 @@ export function Sidebar({
           </ClientOnly>
           <Button
             as={leafSegmentName ? NextLink : 'button'}
-            href={
-              leafSegmentName
-                ? `/channels/${encodeURIComponent(leafSegmentName)}`
-                : undefined
-            }
+            href={leafSegmentName ? `/channels/${encodeURIComponent(leafSegmentName)}` : undefined}
             isDisabled={!leafSegmentName}
             variant="flat"
             color={pathName.startsWith('/channels') ? 'primary' : 'default'}
             className={clsx(
               'w-full justify-start font-medium text-sm',
-              pathName.startsWith('/channels') &&
-                'bg-primary/10 text-primary font-semibold',
+              pathName.startsWith('/channels') && 'bg-primary/10 text-primary font-semibold',
             )}
             onClick={handleLinkClick}
             startContent={<UserGroupIcon className="w-4 h-4 flex-shrink-0" />}
@@ -144,9 +134,7 @@ export function Sidebar({
       </div>
       <Divider className="mb-6" /> {/* ナビゲーションメニュー */}
       <div className="flex-1 min-w-0">
-        <h3 className="text-sm font-semibold text-default-600 mb-3">
-          Navigation
-        </h3>
+        <h3 className="text-sm font-semibold text-default-600 mb-3">Navigation</h3>
         <nav className="space-y-2">
           {siteConfig.navItems.map((item) => (
             <NextLink

@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+
 import { config } from '@/test/e2e/test-config';
 
 test.describe('ライブ配信一覧のテスト', () => {

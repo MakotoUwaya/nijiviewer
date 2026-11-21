@@ -1,12 +1,7 @@
 'use client';
 
-import {
-  type MouseEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { type MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+
 import { usePlayerHistory } from '@/hooks/usePlayerHistory';
 import { useYouTubeApi, type YouTubePlayer } from '@/hooks/useYouTubeApi';
 import { useYouTubePlayer } from '@/hooks/useYouTubePlayerContext';
@@ -33,14 +28,7 @@ export default function InAppYouTubePlayer() {
 
   // IFrame の初期化 (autoplay なしでロード)
   useEffect(() => {
-    if (
-      !isOpen ||
-      !isApiReady ||
-      playerRef.current ||
-      !currentVideo ||
-      !iframeRef.current
-    )
-      return;
+    if (!isOpen || !isApiReady || playerRef.current || !currentVideo || !iframeRef.current) return;
 
     playerRef.current = new window.YT.Player(iframeRef.current, {
       events: {

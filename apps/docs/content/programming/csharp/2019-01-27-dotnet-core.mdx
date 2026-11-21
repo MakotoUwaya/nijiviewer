@@ -27,10 +27,12 @@ https://github.com/Microsoft/wpf-samples
 ### 2. プロジェクトファイルの書換
 
 ビルドを実行すると、以下のようなエラーが出ます。
+
 ```
-error MC1003: Project file cannot specify more than one ApplicationDefinition element. 
-error BG1003: The project file contains a property value that is not valid. 
+error MC1003: Project file cannot specify more than one ApplicationDefinition element.
+error BG1003: The project file contains a property value that is not valid.
 ```
+
 どうも余分な定義があるのが原因のようなので、必要最低限の定義に変更します。
 
 ```xml filename="*.netcore.csproj"
@@ -46,7 +48,7 @@ error BG1003: The project file contains a property value that is not valid.
 
 ### 3. AssemblyInfo ファイルの削除
 
-`*Attribute 属性が重複しています`  というエラーが６件くらい出ていましたので、
+`*Attribute 属性が重複しています` というエラーが６件くらい出ていましたので、
 Properties/AssemblyInfo.cs ファイル自体をごっそり消してしまいます。
 
 ## 結果

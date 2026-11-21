@@ -13,8 +13,8 @@ Turborepo によるモノレポ構成（メインアプリ: `apps/nijiviewer`）
 pnpm install       # 依存関係インストール
 pnpm dev           # 全アプリ開発サーバー起動（nijiviewer: http://localhost:3000）
 pnpm build         # 全アプリビルド
-pnpm lint          # Biome リンター
-pnpm format        # Biome フォーマッター
+pnpm lint          # Oxlint リンター
+pnpm format        # Oxfmt フォーマッター
 pnpm test          # Vitest ユニットテスト
 pnpm test:coverage # カバレッジ集約レポート生成
 pnpm test:e2e      # Playwright E2E テスト
@@ -60,20 +60,20 @@ pnpm test:e2e --grep "テスト名"
 CI エラー防止のため、実装完了時は必ず以下を全てパスさせること:
 ```bash
 pnpm build   # Next.js 型チェック含むため省略不可
-pnpm lint    # Biome
+pnpm lint    # Oxlint
 pnpm test    # Vitest（unit + Storybook）
 ```
 ※ 変更直後は `pnpm format` を適宜実行。Storybook テスト初回は `pnpm exec playwright install chromium` が必要。
 
-### コード品質・Biome
-Biome がリンティング・フォーマットの唯一のツール（ESLint/Prettier 不使用）。
+### コード品質・Oxlint / Oxfmt
+Oxlint（`.oxlintrc.json`）と Oxfmt（`.oxfmtrc.json`）がリンティング・フォーマットのツール（ESLint/Prettier 不使用）。
 - インデント 2 スペース、シングルクォート、末尾カンマあり、セミコロンあり、アロー括弧あり、JSX ダブルクォート。
-- 強制ルール: `noUnusedImports`, `noUnusedVariables`, `useHookAtTopLevel`, `noParameterAssign`, `useSelfClosingElements`, `noUselessElse`。
+- 強制ルール: `no-unused-vars`, `react/rules-of-hooks`, `no-param-reassign`, `react/self-closing-comp`, `no-else-return`。
 
 ### TypeScript
 - 共有プリセット: `packages/tsconfig` を `workspace:*` で参照。
 - パスエイリアス: `@` はアプリルートに解決。
-- 型注釈: `useAsConstAssertion` 優先、推論可能な型注釈は省略（`noInferrableTypes`）。
+- 型注釈: `typescript/prefer-as-const` 優先、推論可能な型注釈は省略（`typescript/no-inferrable-types`）。
 
 ### テスト
 - **Vitest + Storybook (Playwright)**: 2 プロジェクト構成（共通設定: `packages/vitest-config`）。

@@ -3,6 +3,7 @@
 import { Tab, Tabs } from '@heroui/react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import type { Key, ReactNode } from 'react';
+
 import VideoGrid from '@/components/video-grid';
 import type { VideoType } from '@/lib/holodex';
 
@@ -47,24 +48,17 @@ function renderTitle(label: string, description: string): ReactNode {
   return (
     <span className="flex flex-col text-left leading-tight">
       <span>{label}</span>
-      <span className="text-xs font-normal text-default-500">
-        {description}
-      </span>
+      <span className="text-xs font-normal text-default-500">{description}</span>
     </span>
   );
 }
 
-export default function VideoTabs({
-  channelId,
-  initialCategory = 'videos',
-}: VideoTabsProps) {
+export default function VideoTabs({ channelId, initialCategory = 'videos' }: VideoTabsProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const requestedCategory = searchParams.get('category');
-  const selectedCategory = isVideoCategory(requestedCategory)
-    ? requestedCategory
-    : initialCategory;
+  const selectedCategory = isVideoCategory(requestedCategory) ? requestedCategory : initialCategory;
 
   const onSelectionChange = (key: Key) => {
     const nextCategory = String(key);
@@ -84,8 +78,7 @@ export default function VideoTabs({
         aria-label="Video types"
         classNames={{
           base: 'w-full',
-          tabList:
-            'w-full gap-1 rounded-md border border-default-200 bg-default-50 p-1',
+          tabList: 'w-full gap-1 rounded-md border border-default-200 bg-default-50 p-1',
           cursor: 'rounded-sm',
           tab: 'h-auto flex-1 px-3 py-2',
           tabContent: 'group-data-[selected=true]:text-primary',
@@ -96,10 +89,7 @@ export default function VideoTabs({
         className="w-full"
       >
         {categories.map((category) => (
-          <Tab
-            key={category.key}
-            title={renderTitle(category.label, category.description)}
-          >
+          <Tab key={category.key} title={renderTitle(category.label, category.description)}>
             <VideoGrid channelId={channelId} type={category.type} />
           </Tab>
         ))}

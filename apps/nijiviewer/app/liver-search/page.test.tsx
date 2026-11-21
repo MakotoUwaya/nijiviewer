@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockChannel } from '@/test/fixtures/holodex';
 
 const { searchChannelsMock, searchResultListMock } = vi.hoisted(() => ({
@@ -30,14 +31,10 @@ describe('LiverSearchPage', () => {
   it('renders only the title when q is empty', async () => {
     searchChannelsMock.mockResolvedValue([]);
 
-    const tree = await LiverSearchPage(
-      ctx() as Parameters<typeof LiverSearchPage>[0],
-    );
+    const tree = await LiverSearchPage(ctx() as Parameters<typeof LiverSearchPage>[0]);
     render(tree);
 
-    expect(
-      screen.getByRole('heading', { name: 'Liver List' }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Liver List' })).toBeInTheDocument();
     expect(screen.queryByText(/Search Results for/)).not.toBeInTheDocument();
     expect(searchResultListMock).not.toHaveBeenCalled();
   });

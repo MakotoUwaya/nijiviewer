@@ -5,10 +5,7 @@ export async function GET(request: NextRequest) {
   const imageUrl = searchParams.get('url');
 
   if (!imageUrl) {
-    return NextResponse.json(
-      { error: 'URL parameter is required' },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: 'URL parameter is required' }, { status: 400 });
   }
 
   try {
@@ -22,15 +19,11 @@ export async function GET(request: NextRequest) {
     const fetchHeaders: Record<string, string> = {
       'User-Agent':
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
-      Accept:
-        'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+      Accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
     };
 
     // Referer が必要なドメイン（例: Bilibili）は引き続き個別対応
-    if (
-      url.hostname.endsWith('hdslb.com') ||
-      url.hostname.endsWith('bilibili.com')
-    ) {
+    if (url.hostname.endsWith('hdslb.com') || url.hostname.endsWith('bilibili.com')) {
       fetchHeaders.Referer = 'https://www.bilibili.com/';
     }
 
@@ -41,23 +34,14 @@ export async function GET(request: NextRequest) {
     });
 
     if (!response.ok) {
-      return NextResponse.json(
-        { error: 'Failed to fetch image' },
-        { status: response.status },
-      );
+      return NextResponse.json({ error: 'Failed to fetch image' }, { status: response.status });
     }
 
     const contentType = response.headers.get('Content-Type') || '';
 
     // 取得したコンテンツが画像でない場合はエラーを返す（SSRF対策の一環）
-    if (
-      !contentType.startsWith('image/') &&
-      contentType !== 'application/octet-stream'
-    ) {
-      return NextResponse.json(
-        { error: 'URL did not return an image' },
-        { status: 400 },
-      );
+    if (!contentType.startsWith('image/') && contentType !== 'application/octet-stream') {
+      return NextResponse.json({ error: 'URL did not return an image' }, { status: 400 });
     }
 
     const imageBuffer = await response.arrayBuffer();
@@ -73,9 +57,6 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error('Image proxy error:', error);
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

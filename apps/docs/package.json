@@ -1,16 +1,16 @@
 {
   "name": "docs",
   "version": "0.0.1",
+  "private": true,
   "description": "OiChan Docs, Powered by Fumadocs",
   "type": "module",
-  "private": true,
   "scripts": {
     "dev": "next dev --port 3001 --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint ./ --files-ignore-unknown=true",
-    "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
-    "format": "biome format ./ --write"
+    "lint": "oxlint -c ../../.oxlintrc.json .",
+    "lint:fix": "oxlint -c ../../.oxlintrc.json --fix .",
+    "format": "oxfmt -c ../../.oxfmtrc.json --write ."
   },
   "dependencies": {
     "@microsoft/clarity": "1.0.2",

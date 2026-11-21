@@ -1,13 +1,13 @@
 {
   "name": "ui",
   "version": "0.0.0",
+  "license": "MIT",
   "main": "./index.tsx",
   "types": "./index.tsx",
-  "license": "MIT",
   "scripts": {
-    "lint": "biome lint ./ --files-ignore-unknown=true",
-    "lint:fix": "biome check --apply ./ --files-ignore-unknown=true",
-    "format": "biome format ./ --write"
+    "lint": "oxlint -c ../../.oxlintrc.json .",
+    "lint:fix": "oxlint -c ../../.oxlintrc.json --fix .",
+    "format": "oxfmt -c ../../.oxfmtrc.json --write ."
   },
   "devDependencies": {
     "@types/node": "26.6.6",

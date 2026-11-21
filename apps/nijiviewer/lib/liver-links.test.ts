@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
+
 import { mockChannel } from '@/test/fixtures/holodex';
+
 import { getInuiFansMusicUrl, getLiverExternalLinks } from './liver-links';
 
 describe('getLiverExternalLinks', () => {

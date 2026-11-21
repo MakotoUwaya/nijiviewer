@@ -1,13 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { mockUser } from '@/test/fixtures/auth';
 import { mockFavoriteLiver } from '@/test/fixtures/favorites';
 import { mockChannel } from '@/test/fixtures/holodex';
-import {
-  stubAuth,
-  stubFavorites,
-  wrapWithHeroUI,
-} from '@/test/helpers/auth-favorites-mocks';
+import { stubAuth, stubFavorites, wrapWithHeroUI } from '@/test/helpers/auth-favorites-mocks';
 
 const {
   useAuthMock,
@@ -82,9 +79,7 @@ describe('FavoritesEditPage', () => {
     render(wrapWithHeroUI(<FavoritesEditPage />));
 
     await waitFor(() => {
-      expect(
-        screen.getByText('ログインしてお気に入り機能を利用しましょう。'),
-      ).toBeInTheDocument();
+      expect(screen.getByText('ログインしてお気に入り機能を利用しましょう。')).toBeInTheDocument();
     });
   });
 
@@ -96,9 +91,7 @@ describe('FavoritesEditPage', () => {
     render(wrapWithHeroUI(<FavoritesEditPage />));
 
     await waitFor(() => {
-      expect(
-        screen.getByText('お気に入りのライバーがいません。'),
-      ).toBeInTheDocument();
+      expect(screen.getByText('お気に入りのライバーがいません。')).toBeInTheDocument();
     });
     expect(getChannelsActionMock).not.toHaveBeenCalled();
   });
