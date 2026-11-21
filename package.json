@@ -20,9 +20,9 @@
     "test:e2e:codegen": "playwright codegen http://localhost:3000"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.6.3",
-    "@playwright/test": "1.64.1",
-    "cspell": "10.5.0",
+    "@biomejs/biome": "2.6.8",
+    "@playwright/test": "1.65.1",
+    "cspell": "10.5.2",
     "dotenv": "17.4.2",
     "istanbul-lib-coverage": "3.2.2",
     "istanbul-lib-report": "3.0.1",
@@ -30,7 +30,7 @@
     "msw": "2.15.0",
     "msw-storybook-addon": "3.0.3",
     "tsconfig": "workspace:*",
-    "turbo": "2.11.10"
+    "turbo": "2.11.13"
   },
   "name": "nijiviewer",
   "packageManager": "pnpm@12.16.1",
