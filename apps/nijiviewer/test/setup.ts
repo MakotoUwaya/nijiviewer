@@ -23,7 +23,7 @@ if (typeof window !== 'undefined' && !window.matchMedia) {
 }
 
 beforeAll(() => {
-  server.listen({ onUnhandledRequest: 'error' });
+  server.listen({ onUnhandledFrame: 'error' });
 });
 
 beforeEach(() => {
