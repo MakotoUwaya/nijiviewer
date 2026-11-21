@@ -24,7 +24,7 @@
     "next-themes": "0.4.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "tailwind-variants": "3.3.1"
+    "tailwind-variants": "4.0.2"
   },
   "devDependencies": {
     "@storybook/addon-vitest": "10.6.7",
