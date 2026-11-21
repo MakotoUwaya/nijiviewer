@@ -53,25 +53,25 @@ declare global {
   }
 }
 
+const loadYouTubeApi = (): Promise<void> => {
+  return new Promise((resolve) => {
+    if (window.YT) {
+      resolve();
+      return;
+    }
+
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+
+    window.onYouTubeIframeAPIReady = () => {
+      resolve();
+    };
+
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+  });
+};
+
 export const useYouTubeApi = () => {
-  const loadYouTubeApi = (): Promise<void> => {
-    return new Promise((resolve) => {
-      if (window.YT) {
-        resolve();
-        return;
-      }
-
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-
-      window.onYouTubeIframeAPIReady = () => {
-        resolve();
-      };
-
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-    });
-  };
-
   return { loadYouTubeApi };
 };

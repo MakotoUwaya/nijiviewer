@@ -1,7 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": [
-    "**/.env.*local"
+    "**/.env.*local",
+    ".oxlintrc.json",
+    ".oxfmtrc.json"
   ],
   "globalEnv": [
     "HOLODEX_APIKEY",

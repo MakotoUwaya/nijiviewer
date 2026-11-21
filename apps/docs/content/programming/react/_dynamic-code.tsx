@@ -28,12 +28,11 @@ export const DynamicCode: FC<{ children: ReactNode }> = ({ children }) => {
           type="button"
           className={buttonClass}
           onClick={() => {
-            const token = tokenRef?.current;
-            if (!token) {
+            if (!tokenRef.current) {
               return;
             }
-            const prev = token?.textContent || '0';
-            token.textContent = String((+prev || 0) + 1);
+            const prev = tokenRef.current.textContent || '0';
+            tokenRef.current.textContent = String((+prev || 0) + 1);
           }}
         >
           Increase the number

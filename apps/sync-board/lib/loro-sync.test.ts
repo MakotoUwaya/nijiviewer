@@ -103,7 +103,7 @@ describe('createSyncedDoc', () => {
       [makeEdge('e1', 'a', 'b')],
     );
 
-    const nodes = synced.getNodes().sort((x, y) => x.id.localeCompare(y.id));
+    const nodes = synced.getNodes().toSorted((x, y) => x.id.localeCompare(y.id));
     expect(nodes).toEqual([
       { id: 'a', position: { x: 10, y: 20 }, data: { label: 'NodeA' } },
       { id: 'b', position: { x: 30, y: 40 }, data: { label: 'NodeB' } },
@@ -171,7 +171,7 @@ describe('createSyncedDoc', () => {
       synced
         .getEdges()
         .map((e) => e.id)
-        .sort(),
+        .toSorted(),
     ).toEqual(['e1', 'e2']);
 
     synced.removeEdges(['e1']);
