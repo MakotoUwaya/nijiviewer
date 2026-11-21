@@ -2,16 +2,14 @@
 
 import {
   addEdge,
-  applyEdgeChanges,
-  applyNodeChanges,
   Background,
   type Connection,
   Controls,
   type Edge,
-  type EdgeChange,
+  type EdgeChangeset,
   MiniMap,
   type Node,
-  type NodeChange,
+  type NodeChangeset,
   ReactFlow,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
@@ -36,9 +34,8 @@ export function FlowPanel({ syncedDoc, isDarkMode }: FlowPanelProps) {
   }, [syncedDoc]);
 
   const onNodesChange = useCallback(
-    (changes: NodeChange[]) => {
-      const updated = applyNodeChanges(changes, nodes);
-      setNodes(updated);
+    (changes: NodeChangeset) => {
+      setNodes((nds) => changes.applyTo(nds));
 
       for (const change of changes) {
         if (change.type === 'position' && change.position) {
@@ -53,22 +50,19 @@ export function FlowPanel({ syncedDoc, isDarkMode }: FlowPanelProps) {
         }
       }
     },
-    [nodes, syncedDoc],
+    [syncedDoc],
   );
 
   const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) => {
-      const updated = applyEdgeChanges(changes, edges);
-      setEdges(updated);
+    (changes: EdgeChangeset) => {
+      setEdges((eds) => changes.applyTo(eds));
 
-      const removedIds = changes
-        .filter((c) => c.type === 'remove')
-        .map((c) => c.id);
+      const removedIds = changes.getByType('remove').map((c) => c.id);
       if (removedIds.length > 0) {
         syncedDoc.removeEdges(removedIds);
       }
     },
-    [edges, syncedDoc],
+    [syncedDoc],
   );
 
   const onConnect = useCallback(
