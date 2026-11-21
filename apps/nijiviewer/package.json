@@ -41,7 +41,7 @@
     "postcss": "8.5.33",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "tailwind-variants": "3.3.1",
+    "tailwind-variants": "4.0.2",
     "tailwindcss": "4.3.5",
     "ui": "^0.2.5"
   },

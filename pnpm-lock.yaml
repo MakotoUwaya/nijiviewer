@@ -336,8 +336,8 @@ importers:
         specifier: 19.3.1
         version: 19.3.1(react@19.3.1)
       tailwind-variants:
-        specifier: 3.3.1
-        version: 3.3.1(tailwind-merge@3.4.0)(tailwindcss@4.3.5)
+        specifier: 4.0.2
+        version: 4.0.2
       tailwindcss:
         specifier: 4.3.5
         version: 4.3.5
@@ -472,8 +472,8 @@ importers:
         specifier: 19.3.1
         version: 19.3.1(react@19.3.1)
       tailwind-variants:
-        specifier: 3.3.1
-        version: 3.3.1(tailwind-merge@3.4.0)(tailwindcss@4.3.5)
+        specifier: 4.0.2
+        version: 4.0.2
     devDependencies:
       '@storybook/addon-vitest':
         specifier: 10.6.7
@@ -600,8 +600,8 @@ importers:
         specifier: 19.3.1
         version: 19.3.1(react@19.3.1)
       tailwind-variants:
-        specifier: 3.3.1
-        version: 3.3.1(tailwind-merge@3.4.0)(tailwindcss@4.3.5)
+        specifier: 4.0.2
+        version: 4.0.2
     devDependencies:
       '@heroui/theme':
         specifier: 2.4.26
@@ -6482,17 +6482,9 @@ packages:
       tailwind-merge:
         optional: true
 
-  tailwind-variants@3.3.1:
-    resolution: {integrity: sha512-4pAvwUtM4HKBiRZftncAbpn6V9Hhwoa5Fl7O2u5zbp7Z5Cvu+/o/6+176WY3WCEES209543quG8zFIcXCsc5Jw==}
+  tailwind-variants@4.0.2:
+    resolution: {integrity: sha512-sZvOFkfe5LlYG/crRX5IvP3oUHmJPu+7WmrLQFvF0kCRq51C+lurlzFMm/jURG/5keT7VOJ/it0N3jkzYux85w==}
     engines: {node: '>=16.9.x', pnpm: '>=7.x'}
-    peerDependencies:
-      tailwind-merge: '>=3.0.0'
-      tailwindcss: '*'
-    peerDependenciesMeta:
-      tailwind-merge:
-        optional: true
-      tailwindcss:
-        optional: true
 
   tailwindcss@4.3.5:
     resolution: {integrity: sha512-FcQk9BuffmEHJP2G0XmB2SplU1aLTI7j07Kunk+U74Ny+XiWOtzXz9aujFZ/avntw1e2cOv/3PkgzflQ7gX2vQ==}
@@ -13751,10 +13743,7 @@ snapshots:
     optionalDependencies:
       tailwind-merge: 3.4.0
 
-  tailwind-variants@3.3.1(tailwind-merge@3.4.0)(tailwindcss@4.3.5):
-    optionalDependencies:
-      tailwind-merge: 3.4.0
-      tailwindcss: 4.3.5
+  tailwind-variants@4.0.2: {}
 
   tailwindcss@4.3.5: {}
 
